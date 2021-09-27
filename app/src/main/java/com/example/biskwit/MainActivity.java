@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity{
     //Papuntang MainMenu.java ito;
     public void Login(View v)
     {
-        intent = new Intent(MainActivity.this, MainMenu.class);
+        intent = new Intent(MainActivity.this, MainNavMenu.class);
         startActivity(intent);
     }
     //Papuntang SignUp_Form.java ito;

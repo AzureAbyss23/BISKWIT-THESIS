@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
-        <activity android:name=".MainMenu"></activity>
+        <activity
+            android:name=".MainNavMenu"
+            android:exported="true"
+            android:label="@string/title_activity_main_nav_menu"
+            android:theme="@style/Theme.BISKWIT.NoActionBar" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".SignUp_Form" />
         <activity android:name=".MainActivity">
             <intent-filter>
