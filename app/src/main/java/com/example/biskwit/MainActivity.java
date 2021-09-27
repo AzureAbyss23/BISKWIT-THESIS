@@ -1,11 +1,16 @@
 package com.example.biskwit;
 
-import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.Intent;
-import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
     Button LoginButton,CreateAccButton;
@@ -18,34 +23,18 @@ public class MainActivity extends AppCompatActivity{
 
         //Process ng pagpunta sa MainMenu.java
         LoginButton = (Button) findViewById(R.id.login);
-        LoginButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Login();
-            }
-        });
 
         //Process ng pagpunta sa SignUp_Form.java
         CreateAccButton = (Button) findViewById(R.id.create_account);
-        CreateAccButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Create_Account();
-            }
-        });
     }
     //Papuntang MainMenu.java ito;
-    public void Login()
+    public void Login(View v)
     {
         intent = new Intent(MainActivity.this, MainMenu.class);
         startActivity(intent);
     }
     //Papuntang SignUp_Form.java ito;
-    public void Create_Account()
+    public void Create_Account(View v)
     {
         intent = new Intent(MainActivity.this, SignUp_Form.class);
         startActivity(intent);

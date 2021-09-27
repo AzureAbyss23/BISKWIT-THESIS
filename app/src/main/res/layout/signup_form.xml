@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/BG">
+    android:background="@drawable/bg">
 
     <ScrollView
         android:layout_width="409dp"
@@ -44,7 +44,8 @@
                 android:ems="10"
                 android:hint="Email:"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/password"
@@ -55,7 +56,8 @@
                 android:ems="10"
                 android:hint="Password:"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/confirm_password"
@@ -66,7 +68,8 @@
                 android:ems="10"
                 android:hint="Confirm Password:"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/parent_or_instructor"
@@ -77,7 +80,8 @@
                 android:ems="10"
                 android:hint="Name of Parents/Instuctor:"
                 android:inputType="textPersonName"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/child_name"
@@ -88,7 +92,8 @@
                 android:ems="10"
                 android:hint="Name of Child:"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/age"
@@ -99,7 +104,8 @@
                 android:ems="10"
                 android:hint="Age of Child:"
                 android:inputType="number"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/birthday"
@@ -110,7 +116,8 @@
                 android:ems="10"
                 android:hint="Birthdate of Child:"
                 android:inputType="date"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/level_severity"
@@ -121,7 +128,8 @@
                 android:ems="10"
                 android:hint="Severity level of Child:"
                 android:inputType="number"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp"
+                android:textColorHint="#000000" />
 
             <Button
                 android:id="@+id/signup"
@@ -139,7 +147,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:text="Log-In"
-                android:minHeight="48dp"/>
+                android:minHeight="48dp"
+                android:layout_marginBottom="100px"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
