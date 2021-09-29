@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity{
         intent = new Intent(MainActivity.this, MainNavMenu.class);
         startActivity(intent);
     }
-    //Papuntang SignUp_Form.java ito;
+    //Papuntang Terms.java ito;
     public void Create_Account(View v)
     {
-        intent = new Intent(MainActivity.this, SignUp_Form.class);
+        intent = new Intent(MainActivity.this, Terms.class);
         startActivity(intent);
     }
 }

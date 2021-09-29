@@ -14,8 +14,8 @@
             android:exported="true"
             android:label="@string/title_activity_main_nav_menu"
             android:theme="@style/Theme.BISKWIT.NoActionBar" />
-        <activity android:name=".Lesson" />
         <activity android:name=".SignUp_Form" />
+        <activity android:name=".Terms" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

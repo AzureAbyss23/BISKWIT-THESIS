@@ -14,14 +14,9 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.biskwit.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_gallery" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.biskwit.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/lessonFragment"
         android:name="com.example.biskwit.LessonFragment"
@@ -33,8 +28,8 @@
         android:label="fragment_story"
         tools:layout="@layout/fragment_story" />
     <fragment
-        android:id="@+id/patinigFragment"
-        android:name="com.example.biskwit.PatinigFragment"
-        android:label="fragment_patinig"
-        tools:layout="@layout/fragment_patinig" />
+        android:id="@+id/nav_settings"
+        android:name="com.example.biskwit.ui.settings.SettingsFragment"
+        android:label="@string/action_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
