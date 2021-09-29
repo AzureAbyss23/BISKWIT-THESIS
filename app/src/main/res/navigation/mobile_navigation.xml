@@ -22,4 +22,19 @@
         android:name="com.example.biskwit.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/lessonFragment"
+        android:name="com.example.biskwit.LessonFragment"
+        android:label="fragment_lesson"
+        tools:layout="@layout/fragment_lesson" />
+    <fragment
+        android:id="@+id/storyFragment"
+        android:name="com.example.biskwit.storyFragment"
+        android:label="fragment_story"
+        tools:layout="@layout/fragment_story" />
+    <fragment
+        android:id="@+id/patinigFragment"
+        android:name="com.example.biskwit.PatinigFragment"
+        android:label="fragment_patinig"
+        tools:layout="@layout/fragment_patinig" />
 </navigation>
