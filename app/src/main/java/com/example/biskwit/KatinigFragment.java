@@ -4,35 +4,34 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.biskwit.databinding.FragmentHomeBinding;
-import com.example.biskwit.databinding.FragmentLessonBinding;
+import com.example.biskwit.databinding.FragmentKatinigBinding;
+import com.example.biskwit.databinding.FragmentPatinigBinding;
 
-public class LessonFragment extends Fragment {
 
-    FragmentLessonBinding binding;
-    Intent intent;
+public class KatinigFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentLessonBinding.inflate(getLayoutInflater());
-        return binding.getRoot();
-    }
+    FragmentKatinigBinding binding;
+        Intent intent;
 
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            binding = FragmentKatinigBinding.inflate(getLayoutInflater());
+            return binding.getRoot(); // for the drawer
+        }
 
-        // eto yung code para sa Aralin para sa patinig na button natin
-        binding.Patinig.setOnClickListener(new View.OnClickListener() {
+        public void onViewCreated(View view, Bundle savedInstanceState)
+        {
+            super.onViewCreated(view, savedInstanceState);
+
+            // eto yung code para sa Aralin na button natin
+        /*binding.Patinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragmentPatinig = new PatinigFragment();
@@ -45,26 +44,27 @@ public class LessonFragment extends Fragment {
             }
         });
 
-        // eto yung code para sa Aralin para sa katinig na button
+        // eto yung code para sa maikling kwento na button
         binding.Katinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragmentKatinig = new KatinigFragment();
+                Fragment fragmentStory = new storyFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentKatinig);
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentStory);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
-        });
+        });*/
 
-    }
+        }
 
-    // need ito somehow para di magkabuhol buhol yung navigation thingy niya
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+        // need ito somehow para di magkabuhol buhol yung navigation thingy niya
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            binding = null;
+        }
+
 }
