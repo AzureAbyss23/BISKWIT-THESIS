@@ -22,6 +22,7 @@ public class SignUp_Form extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Created_Account_Message();
+                Go_Login();
             }
         });
         Login = (Button) findViewById(R.id.go_back_login);

@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        // dito iniinitialize yung layout ng home
+        // dito iniinitialize yung layout ng home and navbar
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
