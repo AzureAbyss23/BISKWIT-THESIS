@@ -15,6 +15,8 @@ public class SignUp_Form extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_form);
 
+        // eto yung sa sign up forms natin na buttons
+        //di pa nakaset yung igeget niya yung input details ng user
         SignUp = (Button) findViewById(R.id.signup);
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,11 +22,14 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        // dito iniinitialize yung layout niya
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
     }
+
+    //wala pang logic sa profile pero pag may database na huhugutin siya don so eventually need na
 
     @Override
     public void onDestroyView() {

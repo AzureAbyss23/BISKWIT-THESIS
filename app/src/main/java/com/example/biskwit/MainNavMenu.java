@@ -25,6 +25,7 @@ public class MainNavMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Dito dinedeclare saka sineset yung Drawer Layout natin
         binding = ActivityMainNavMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -38,13 +39,16 @@ public class MainNavMenu extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_settings,R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
+        //eto yung nagcocontrol ng paglipat lipat ng pages
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_nav_menu);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        // some codes needed for the Navigation
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_nav_menu);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

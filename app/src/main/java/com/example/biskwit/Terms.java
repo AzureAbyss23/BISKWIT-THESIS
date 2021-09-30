@@ -20,6 +20,7 @@ public class Terms extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.terms);
 
+        //eto yung part na ginagawa niyang unclickable yung continue pag di pa nag aagree
     Continue = findViewById(R.id.Continue);
     Continue.setClickable(false);
     Continue.setBackgroundColor(Color.GRAY);
@@ -30,6 +31,7 @@ public class Terms extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // code eto para sa check box para tignan kung nacheck na siya, pag checked na clickable na din si continue
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         Continue = findViewById(R.id.Continue);

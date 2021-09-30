@@ -21,10 +21,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Process ng pagpunta sa MainMenu.java
         LoginButton = (Button) findViewById(R.id.login);
 
-        //Process ng pagpunta sa SignUp_Form.java
         CreateAccButton = (Button) findViewById(R.id.create_account);
     }
     //Papuntang MainMenu.java ito;

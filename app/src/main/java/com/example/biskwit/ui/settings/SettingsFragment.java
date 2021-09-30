@@ -3,12 +3,16 @@ package com.example.biskwit.ui.settings;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.biskwit.LessonFragment;
 import com.example.biskwit.R;
+import com.example.biskwit.storyFragment;
 
 public class SettingsFragment extends Fragment {
 
@@ -17,5 +21,12 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false);
+    }
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Alde lods ikaw na bahala magcode ng settings natin dito ka magcode
+
     }
 }

@@ -18,4 +18,6 @@ public class LessonFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lesson, container, false);
     }
+
+    // eto yung sa menu ng lesson puro buttons lang din need dito
 }

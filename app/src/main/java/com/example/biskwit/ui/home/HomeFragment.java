@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        // dito iniinitialize yung layout ng home
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
@@ -33,6 +34,7 @@ public class HomeFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
+        // eto yung code para sa Aralin na button natin
         binding.LessonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,8 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        // eto yung code para sa maikling kwento na button
         binding.StoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +64,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+    // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override
     public void onDestroyView() {
         super.onDestroyView();
