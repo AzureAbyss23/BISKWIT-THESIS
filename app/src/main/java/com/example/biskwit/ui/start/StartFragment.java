@@ -1,6 +1,5 @@
 package com.example.biskwit.ui.start;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +7,10 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.example.biskwit.LessonFragment;
+import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentStartBinding;
-import com.example.biskwit.storyFragment;
+import com.example.biskwit.Content.storyFragment;
 
 public class StartFragment extends Fragment {
 

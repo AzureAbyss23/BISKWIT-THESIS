@@ -1,37 +1,36 @@
-package com.example.biskwit;
+package com.example.biskwit.Content.Lessons;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.biskwit.databinding.FragmentLessonBinding;
+import com.example.biskwit.databinding.FragmentKatinigBinding;
 import com.example.biskwit.databinding.FragmentPatinigBinding;
 
-public class PatinigFragment extends Fragment {
 
-    FragmentPatinigBinding binding;
-    Intent intent;
+public class KatinigFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentPatinigBinding.inflate(getLayoutInflater());
-        return binding.getRoot();
-    }
+    FragmentKatinigBinding binding;
+        Intent intent;
 
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            binding = FragmentKatinigBinding.inflate(getLayoutInflater());
+            return binding.getRoot(); // for the drawer
+        }
 
-        // eto yung code para sa Aralin na button natin
+        public void onViewCreated(View view, Bundle savedInstanceState)
+        {
+            super.onViewCreated(view, savedInstanceState);
+
+            // eto yung code para sa Aralin na button natin
         /*binding.Patinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,12 +58,13 @@ public class PatinigFragment extends Fragment {
             }
         });*/
 
-    }
+        }
 
-    // need ito somehow para di magkabuhol buhol yung navigation thingy niya
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+        // need ito somehow para di magkabuhol buhol yung navigation thingy niya
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            binding = null;
+        }
+
 }

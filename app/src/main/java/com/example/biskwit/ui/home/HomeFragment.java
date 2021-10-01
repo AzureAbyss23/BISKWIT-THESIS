@@ -5,12 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import com.example.biskwit.R;
+
 import com.example.biskwit.databinding.FragmentHomeBinding;
-import com.example.biskwit.storyFragment;
-import com.example.biskwit.ui.start.StartFragment;
 
 public class HomeFragment extends Fragment {
 
