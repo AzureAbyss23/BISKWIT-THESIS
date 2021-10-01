@@ -37,4 +37,9 @@
         android:name="com.example.biskwit.Logout"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_start"
+        android:name="com.example.biskwit.ui.start.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" />
 </navigation>
