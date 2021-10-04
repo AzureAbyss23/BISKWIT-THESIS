@@ -27,18 +27,36 @@ public class MainActivity extends AppCompatActivity{
         LoginButton = (Button) findViewById(R.id.login);
 
         CreateAccButton = (Button) findViewById(R.id.create_account);
+
+        User = findViewById(R.id.email);
+        Pass = findViewById(R.id.password);
+
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Email = User.getText().toString();
+                String Password = Pass.getText().toString();
+
+                Boolean checklogindata = DB.login(Email, Password);
+                if(checklogindata==true)
+                    intent = new Intent(MainActivity.this, MainNavMenu.class);
+                else
+                    Toast.makeText(MainActivity.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
     }
-    //Papuntang MainMenu.java ito;
-    public void Login(View v)
-    {
-        intent = new Intent(MainActivity.this, MainNavMenu.class);
-        finish();
-        startActivity(intent);
-    }
+
+
     //Papuntang Terms.java ito;
     public void Create_Account(View v)
     {
         intent = new Intent(MainActivity.this, Terms.class);
         startActivity(intent);
     }
+
+
+
+
 }
