@@ -13,14 +13,16 @@ import com.example.biskwit.R;
 
 public class PatinigLesson1 extends AppCompatActivity {
 
-    TextView txtresult;
+    TextView txtresult,txtword;
+    String word = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patinig_lesson1);
 
-        txtresult = (TextView) findViewById(R.id.Word);
+        txtresult = (TextView) findViewById(R.id.result);
+        txtword = (TextView) findViewById(R.id.Word);
     }
 
     public void getSpeechInput(View view) {
@@ -44,7 +46,13 @@ public class PatinigLesson1 extends AppCompatActivity {
             case 10:
                 if (resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    txtresult.setText(result.get(0));
+                    word = result.get(0);
+                    if(word.equals("aso")){
+                        txtresult.setText("CORRECT WORD!");
+                    }
+                    else{
+                        txtresult.setText("Try again!");
+                    }
                 }
                 break;
         }
