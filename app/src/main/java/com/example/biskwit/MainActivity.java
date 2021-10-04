@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
                     intent = new Intent(MainActivity.this, MainNavMenu.class);
                     startActivity(intent);
                 }
-                else if(User.getText().toString() == "" && Pass.getText().toString() == "" ){
+                else if(User.getText().toString().isEmpty() && Pass.getText().toString().isEmpty()){
                     Toast.makeText(MainActivity.this, "No Account Found", Toast.LENGTH_SHORT).show();
                 }
                 else
