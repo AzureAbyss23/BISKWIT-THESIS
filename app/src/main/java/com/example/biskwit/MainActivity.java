@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity{
                 String Password = Pass.getText().toString();
 
                 Boolean checklogindata = DB.login(Email, Password);
-                if(checklogindata==true)
+                if(checklogindata==true) {
                     intent = new Intent(MainActivity.this, MainNavMenu.class);
+                    startActivity(intent);
+                }
                 else
                     Toast.makeText(MainActivity.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
 
