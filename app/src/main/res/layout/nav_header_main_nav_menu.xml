@@ -8,9 +8,30 @@
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/Title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/logo" />
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:text="BISKWIT"
+        android:textColor="#1C388F"
+        android:textSize="85sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bringing Insight to Special-needs Kids"
+        android:gravity="center"
+        android:textColor="#1C388F"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="through Words and Interactive Tales"
+        android:gravity="center"
+        android:textColor="#1C388F"
+        android:layout_marginBottom="40dp"/>
 </LinearLayout>

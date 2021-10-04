@@ -39,7 +39,7 @@ public class Terms extends AppCompatActivity {
             case R.id.Agree:
                 if (checked){
                     Continue.setClickable(true);
-                    Continue.setBackgroundColor(Color.BLUE);
+                    Continue.setBackgroundColor(Color.parseColor("#1C388F"));
                 }
 
                 else{

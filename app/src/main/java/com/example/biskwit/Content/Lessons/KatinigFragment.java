@@ -1,4 +1,4 @@
-package com.example.biskwit;
+package com.example.biskwit.Content.Lessons;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity{
     public void Login(View v)
     {
         intent = new Intent(MainActivity.this, MainNavMenu.class);
+        finish();
         startActivity(intent);
     }
     //Papuntang Terms.java ito;

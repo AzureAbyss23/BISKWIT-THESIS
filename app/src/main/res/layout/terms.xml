@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/Terms"
-        android:layout_width="323dp"
-        android:layout_height="509dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_width="324dp"
+        android:layout_height="424dp"
+        android:fontFamily="@font/chewy"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae sapien. Hendrerit gravida rutrum quisque non tellus orci ac."
         android:textColor="#304FBF"
         android:textSize="30dp"
@@ -26,15 +26,17 @@
         android:id="@+id/TermsTitle"
         android:layout_width="337dp"
         android:layout_height="58dp"
+        android:fontFamily="@font/chewy"
         android:gravity="center"
         android:text="Terms and Condition"
-        android:textColor="#C83B3B"
+        android:textColor="@color/text"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Terms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.673" />
 
     <CheckBox
         android:id="@+id/Agree"
@@ -44,6 +46,7 @@
         android:text="I Agree"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
+        android:fontFamily="@font/chewy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.147"
@@ -57,6 +60,7 @@
         android:layout_height="70dp"
         android:onClick="GoToSignUp"
         android:text="Accept and Continue"
+        android:fontFamily="@font/chewy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.824"

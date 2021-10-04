@@ -4,53 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    tools:context=".Content.LessonFragment">
+    tools:context=".ui.start.StartFragment"
+    android:background="@drawable/bg">
 
     <Button
-        android:id="@+id/Patinig"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Patinig"
+        android:id="@+id/LessonButton"
+        android:layout_width="165dp"
+        android:layout_height="79dp"
+        android:text="Aralin"
         app:backgroundTint="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintVertical_bias="0.437" />
 
     <Button
-        android:id="@+id/Katinig"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Katinig"
+        android:id="@+id/StoryButton"
+        android:layout_width="165dp"
+        android:layout_height="79dp"
+        android:text="Maikling Kwento"
         app:backgroundTint="#FFEB3B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.61" />
 
     <Button
-        android:id="@+id/LarAtSal"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Larawan at Salita"
+        android:id="@+id/ProgressButton"
+        android:layout_width="165dp"
+        android:layout_height="79dp"
+        android:text="Progreso"
         app:backgroundTint="#8BC34A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.779" />
 
     <TextView
-        android:id="@+id/Title"
-        android:layout_width="298dp"
-        android:layout_height="57dp"
+        android:id="@+id/textView"
+        android:layout_width="293dp"
+        android:layout_height="63dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/chewy"
         android:gravity="center_horizontal"
-        android:text="Aralin"
+        android:text="Activities"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/text"
@@ -58,8 +58,7 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.168" />
 </androidx.constraintlayout.widget.ConstraintLayout>
