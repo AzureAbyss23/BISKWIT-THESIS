@@ -16,10 +16,13 @@ public class MainActivity extends AppCompatActivity{
     Button LoginButton,CreateAccButton;
     public EditText User, Pass;
     Intent intent;
+    DBHelper DB;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DB = new DBHelper(this);
 
         LoginButton = (Button) findViewById(R.id.login);
 
