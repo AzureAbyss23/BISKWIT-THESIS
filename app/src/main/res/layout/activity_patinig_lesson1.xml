@@ -16,8 +16,9 @@
         android:text="Pagsusulit # 1"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="#000000"
+        android:textColor="@color/text"
         android:textColorHint="#000000"
+        android:fontFamily="@font/chewy"
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +35,7 @@
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
         android:layout_marginBottom="63dp"
+        android:onClick="getSpeechInput"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -46,6 +48,7 @@
         android:id="@+id/imageView3"
         android:layout_width="143dp"
         android:layout_height="229dp"
+        android:onClick="getSpeechInput"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +57,7 @@
         app:srcCompat="@drawable/dog" />
 
     <TextView
-        android:id="@+id/Lesson"
+        android:id="@+id/Word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aso"
