@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity{
                     intent = new Intent(MainActivity.this, MainNavMenu.class);
                     startActivity(intent);
                 }
+                else if(User.getText().toString() == "" && Pass.getText().toString() == "" ){
+                    Toast.makeText(MainActivity.this, "No Account Found", Toast.LENGTH_SHORT).show();
+                }
                 else
                     Toast.makeText(MainActivity.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-
-
-            }
+                }
         });
+
     }
 
 
