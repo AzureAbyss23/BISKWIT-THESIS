@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -21,8 +22,8 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Boolean insertuserdata(String email, String password, String parent_instructor
-        , String namechild, int age, String birthdate, String sever_level)
-    {
+        , String namechild, int age, String birthdate, String sever_level){
+
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Email", email);
@@ -39,6 +40,18 @@ public class DBHelper extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+
+    public boolean login(String email, String password){
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM User WHERE Email IN ('"+email+"') and Password IN ('"+password+"');",null);
+        if(cursor.getCount()==0){
+            return false;
+            }
+            else {
+            return true;
+            }
     }
 
     public Cursor getdata ()
