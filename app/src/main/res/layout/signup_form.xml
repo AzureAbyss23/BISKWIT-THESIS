@@ -114,7 +114,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Birthdate of Child:"
+                android:hint="Birthdate of Child: 03-26-00"
                 android:inputType="date"
                 android:minHeight="48dp"
                 android:textColorHint="#000000" />
