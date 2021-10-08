@@ -3,6 +3,8 @@ package com.example.biskwit.Content.Lessons.PatinigActivities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -18,7 +20,7 @@ import com.example.biskwit.R;
 public class PatinigLesson1 extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next;
+    ImageView next,bot;
     String word = "";
     DBHelper DB;
     Cursor c;
@@ -34,6 +36,7 @@ public class PatinigLesson1 extends AppCompatActivity {
         txtresult = (TextView) findViewById(R.id.result);
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
+        bot = findViewById(R.id.Bot);
 
         DB = new DBHelper(this);
 
@@ -61,6 +64,11 @@ public class PatinigLesson1 extends AppCompatActivity {
                 ++all_ctr;
                 txtword.setText(P_Lesson_Words[all_ctr]);
                 txtresult.setText("Speak Now");
+
+                //pampagrayscale lang to nung bot na icon
+                ColorMatrix matrix = new ColorMatrix();
+                matrix.setSaturation(0);
+                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
             }
         });
 

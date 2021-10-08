@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
 import com.example.biskwit.databinding.FragmentPatinigBinding;
 
 public class PatinigFragment extends Fragment {
@@ -35,19 +36,29 @@ public class PatinigFragment extends Fragment {
             }
         });
 
-        // eto yung code para sa maikling kwento na button
-        /*binding.Katinig.setOnClickListener(new View.OnClickListener() {
+        binding.Patinig2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragmentStory = new storyFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentStory);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                intent = new Intent(getContext(), PatinigChoices1.class);
+                startActivity(intent);
             }
-        });*/
+        });
+
+        binding.Patinig3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getContext(), PatinigLesson1.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.LarAtSal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getContext(), PatinigLesson1.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
