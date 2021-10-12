@@ -12,20 +12,20 @@
         android:layout_width="330dp"
         android:layout_height="76dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/chewy"
         android:gravity="center_horizontal"
         android:text="Pagsusulit # 1"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/text"
         android:textColorHint="#000000"
-        android:fontFamily="@font/chewy"
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/Word"
@@ -40,14 +40,16 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/result"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.754" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="330dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="128dp"
         android:fontFamily="@font/chewy"
         android:gravity="center_horizontal"
         android:text="Speak Now"
@@ -61,20 +63,19 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView2"
         android:layout_width="93dp"
         android:layout_height="91dp"
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
-        android:onClick="getSpeechInput"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942"
-        app:srcCompat="@drawable/mic_logo"
+        android:background="@drawable/mic_logo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -83,7 +84,6 @@
         android:layout_height="91dp"
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
-        android:onClick="getSpeechInput"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
@@ -101,7 +101,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328"
+        app:layout_constraintVertical_bias="0.384"
         app:srcCompat="@drawable/dog" />
+
+    <ImageView
+        android:id="@+id/Bot"
+        android:layout_width="82dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193"
+        app:srcCompat="@drawable/bot_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
