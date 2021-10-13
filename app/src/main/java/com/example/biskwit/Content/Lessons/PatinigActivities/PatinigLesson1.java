@@ -41,7 +41,7 @@ public class PatinigLesson1 extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"aso","si juan tamad","ang aso ay naipit sa pintuan","ama","anak","atis","alay","aliw","amihan"};
+    String[] P_Lesson_Words = {"aso","aklat","antigo","ama","anak","atis","alay","aliw","amihan"};
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
@@ -202,20 +202,16 @@ public class PatinigLesson1 extends AppCompatActivity {
     // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
-        if (s1.length() < s2.length()) { // longer should always have greater length
+        if (s1.length() < s2.length()) {
             longer = s2; shorter = s1;
         }
         int longerLength = longer.length();
-        if (longerLength == 0) { return 1.0; /* both strings are zero length */ }
-    /* // If you have Apache Commons Text, you can use it to calculate the edit distance:
-    LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
-    return (longerLength - levenshteinDistance.apply(longer, shorter)) / (double) longerLength; */
+        if (longerLength == 0) { return 1.0;}
+
         return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
 
     }
 
-    // Example implementation of the Levenshtein Edit Distance
-    // See http://rosettacode.org/wiki/Levenshtein_distance#Java
     public static int editDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();
