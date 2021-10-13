@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Lessons.PatinigActivities;
+package com.example.biskwit.Content.Lessons.KatinigActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

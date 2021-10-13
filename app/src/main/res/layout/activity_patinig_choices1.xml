@@ -11,8 +11,8 @@
         android:id="@+id/Title"
         android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:text="MENU"
         android:gravity="center"
+        android:text="MENU"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/text"
         android:textStyle="bold"
@@ -21,60 +21,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144" />
-
-    <ImageButton
-        android:id="@+id/LetterA"
-        android:layout_width="88dp"
-        android:layout_height="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <ImageButton
         android:id="@+id/LetterE"
-        android:layout_width="99dp"
-        android:layout_height="99dp"
+        android:layout_width="127dp"
+        android:layout_height="119dp"
+        android:background="@drawable/patinig_e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.781"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
-
-    <ImageButton
-        android:id="@+id/LetterI"
-        android:layout_width="100dp"
-        android:layout_height="102dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.354" />
 
     <ImageButton
         android:id="@+id/LetterO"
-        android:layout_width="97dp"
-        android:layout_height="94dp"
+        android:layout_width="127dp"
+        android:layout_height="119dp"
+        android:background="@drawable/patinig_o"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.781"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.594" />
 
     <ImageButton
         android:id="@+id/LetterU"
-        android:layout_width="97dp"
-        android:layout_height="94dp"
+        android:layout_width="127dp"
+        android:layout_height="119dp"
+        android:background="@drawable/patinig_u"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.833" />
+
+    <ImageButton
+        android:id="@+id/LetterI"
+        android:layout_width="127dp"
+        android:layout_height="119dp"
+        android:background="@drawable/patinig_i"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
+
+    <ImageButton
+        android:id="@+id/LetterA"
+        android:layout_width="127dp"
+        android:layout_height="119dp"
+        android:background="@drawable/patinig_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
