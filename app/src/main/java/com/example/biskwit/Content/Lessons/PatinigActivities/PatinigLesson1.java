@@ -9,11 +9,15 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -45,6 +49,7 @@ public class PatinigLesson1 extends AppCompatActivity {
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
+    MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -91,10 +96,23 @@ public class PatinigLesson1 extends AppCompatActivity {
                 txtword.setText(P_Lesson_Words[all_ctr]);
                 txtresult.setText("Speak Now");
 
+                stopPlaying();
+
                 //pampagrayscale lang to nung bot na icon
                 ColorMatrix matrix = new ColorMatrix();
                 matrix.setSaturation(0);
                 bot.setColorFilter(new ColorMatrixColorFilter(matrix));
+            }
+        });
+
+        bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                Resources res = getResources();
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                ai = MediaPlayer.create(PatinigLesson1.this, sound);
+                ai.start();
             }
         });
 
@@ -171,6 +189,15 @@ public class PatinigLesson1 extends AppCompatActivity {
         });
     }
 
+    protected void stopPlaying(){
+        // If media player is not null then try to stop it
+        if(ai!=null){
+            ai.stop();
+            ai.release();
+            ai = null;
+        }
+    }
+
 
     public void toastMsg(String msg) {
         Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
@@ -240,8 +267,22 @@ public class PatinigLesson1 extends AppCompatActivity {
     }
 
     public void printSimilarity(String s, String t) {
-        txtresult.setText(String.format(
+
+        float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
+        if(val >= 0.0 && val <= 0.49){
+            ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_0_to_49);
+            ai.start();
+        }
+        if(val >= 0.5 && val <= 0.99){
+            ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_50_to_69);
+            ai.start();
+        }
+        if(val ==1.0){
+            ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_70_to_100);
+            ai.start();
+        }
+
     }
 }
 

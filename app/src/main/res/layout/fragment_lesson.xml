@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/alphabet"
+        android:id="@+id/Alphabet"
         android:layout_width="340dp"
         android:layout_height="90dp"
         android:background="@drawable/roundshape"
