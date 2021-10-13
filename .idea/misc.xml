@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main_nav_menu.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_choices1.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_lesson1.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/app_bar_main_nav_menu.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/content_main_nav_menu.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_gallery.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_home.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_logout.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_settings.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_story.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/mainmenu.xml" value="0.25" />
+        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/nav_header_main_nav_menu.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/profile.xml" value="0.25" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/settings.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/signup_form.xml" value="0.19067028985507245" />

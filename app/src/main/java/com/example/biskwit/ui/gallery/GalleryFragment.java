@@ -25,8 +25,9 @@ public class GalleryFragment extends Fragment {
         // dito iniinitialize yung layout niya
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         return root;
+
+
     }
 
     //wala pang logic sa profile pero pag may database na huhugutin siya don so eventually need na
