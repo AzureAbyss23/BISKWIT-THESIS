@@ -23,7 +23,7 @@
         android:id="@+id/StoryButton"
         android:layout_width="165dp"
         android:layout_height="79dp"
-        android:text="Maikling Kwento"
+        android:text="Magbasa"
         app:backgroundTint="#FFEB3B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

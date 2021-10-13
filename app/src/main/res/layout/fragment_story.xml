@@ -7,77 +7,51 @@
     android:background="@drawable/bg"
     tools:context=".Content.storyFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/Tula"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Tula"
+        android:background="@drawable/roundshape"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/Pabula"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Pabula"
+        android:background="@drawable/roundshape"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
-            <TextView
-                android:id="@+id/Title"
-                android:layout_width="287dp"
-                android:layout_height="132dp"
-                android:layout_marginTop="50dp"
-                android:gravity="center_horizontal"
-                android:text="Aralin"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#000000"
-                android:textColorHint="#000000"
-                android:textSize="50dp" />
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="288dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="center_horizontal"
+        android:text="Magbasa"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@color/text"
+        android:textColorHint="#000000"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
 
-            <Button
-                android:id="@+id/Nagbakasyon"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Nagbakasyon"
-                app:backgroundTint="#00BCD4" />
-
-            <Button
-                android:id="@+id/AngPasko"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Ang Pasko"
-                app:backgroundTint="#FFEB3B" />
-
-            <Button
-                android:id="@+id/GatasAtItlog"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Gatas at Itlog"
-                app:backgroundTint="#8BC34A" />
-
-            <Button
-                android:id="@+id/KaarawanNiNanay"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Kaarawan ni Nanay"
-                app:backgroundTint="#8BC34A" />
-
-            <Button
-                android:id="@+id/AngKartero"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Ang Kartero"
-                app:backgroundTint="#8BC34A" />
-
-            <Button
-                android:id="@+id/AngMagAaral"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Ang Mag-aaral"
-                app:backgroundTint="#8BC34A" />
-
-            <Button
-                android:id="@+id/AngBangkaniRomy"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="Ang Bangka ni Romy"
-                app:backgroundTint="#8BC34A" />
-        </LinearLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
