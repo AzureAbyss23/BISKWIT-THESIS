@@ -9,11 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.biskwit.Content.Lessons.PatinigActivities.KatinigLesson1;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
 import com.example.biskwit.databinding.FragmentKatinigBinding;
-import com.example.biskwit.databinding.FragmentPatinigBinding;
 
 
 public class KatinigFragment extends Fragment {
@@ -32,34 +29,17 @@ public class KatinigFragment extends Fragment {
         public void onViewCreated(View view, Bundle savedInstanceState)
         {
             super.onViewCreated(view, savedInstanceState);
-
-            binding.Katinig.setOnClickListener(new View.OnClickListener() {
+            binding.KatinigAralin1.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     intent = new Intent(getContext(), KatinigLesson1.class);
                     startActivity(intent);
                 }
             });
 
-            binding.Katinig2.setOnClickListener(new View.OnClickListener() {
+            binding.KatinigAralin2.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    intent = new Intent(getContext(), KatinigLesson1.class);
-                    startActivity(intent);
-                }
-            });
-
-            binding.Katinig3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    intent = new Intent(getContext(), KatinigLesson1.class);
-                    startActivity(intent);
-                }
-            });
-
-            binding.LarAtSal.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     intent = new Intent(getContext(), KatinigLesson1.class);
                     startActivity(intent);
                 }

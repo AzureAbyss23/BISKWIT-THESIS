@@ -28,34 +28,18 @@ public class PatinigFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // eto yung code para sa Aralin na button natin
-        binding.Patinig.setOnClickListener(new View.OnClickListener() {
+        binding.PatinigAralin1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 intent = new Intent(getContext(), PatinigChoices1.class);
                 startActivity(intent);
             }
         });
 
-        binding.Patinig2.setOnClickListener(new View.OnClickListener() {
+        binding.PatinigAralin2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 intent = new Intent(getContext(), PatinigChoices1.class);
-                startActivity(intent);
-            }
-        });
-
-        binding.Patinig3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getContext(), PatinigLesson1.class);
-                startActivity(intent);
-            }
-        });
-
-        binding.LarAtSal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getContext(), PatinigLesson1.class);
                 startActivity(intent);
             }
         });

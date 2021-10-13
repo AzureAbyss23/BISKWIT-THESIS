@@ -4,56 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/greenbg"
     tools:context=".Content.Lessons.KatinigFragment">
 
     <Button
-        android:id="@+id/Katinig"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Katinig"
-        app:backgroundTint="#00BCD4"
+        android:id="@+id/Katinig_aralin1"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:background="@drawable/roundshape"
+        android:text="Aralin 1"
+        android:textColor="#000000"
+        app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <Button
-        android:id="@+id/Katinig2"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Katinig Aralin 2"
-        app:backgroundTint="#FFEB3B"
+        android:id="@+id/Katinig_aralin2"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:background="@drawable/roundshape"
+        android:text="Aralin 2"
+        android:textColor="#000000"
+        app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
-
-    <Button
-        android:id="@+id/Katinig3"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Kambal Katinig"
-        app:backgroundTint="#FFEB3B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <Button
-        android:id="@+id/LarAtSal"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="Larawan at Salita"
-        app:backgroundTint="#8BC34A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <TextView
         android:id="@+id/Title"
@@ -72,4 +53,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.125" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

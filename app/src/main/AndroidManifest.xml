@@ -3,8 +3,8 @@
     package="com.example.biskwit">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -15,7 +15,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
-            android:name=".Content.Lessons.PatinigActivities.KatinigLesson1"
+            android:name=".Content.Story.TulaActivities.Maglaro"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Story.TulaActivities.ParuparoRosas"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Story.TulaActivities.Magdasal"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Story.PabulaActivities.TipaklongLanggam"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Story.PabulaActivities.LamokLeon"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.KatinigActivities.KatinigLesson2"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Sounds"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Years"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Days"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Opposite"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.OrtonActivities.Pagbabaybay"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.OrtonActivities.Blending"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.OrtonActivities.Sight"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.KatinigActivities.KatinigLesson1"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.PatinigActivities.PatinigChoices1"
