@@ -274,11 +274,11 @@ public class PatinigLesson1 extends AppCompatActivity {
             ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_0_to_49);
             ai.start();
         }
-        if(val >= 0.5 && val <= 0.99){
+        else if(val >= 0.5 && val <= 0.99){
             ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_50_to_69);
             ai.start();
         }
-        if(val ==1.0){
+        else if(val ==1.0){
             ai = MediaPlayer.create(PatinigLesson1.this, R.raw.response_70_to_100);
             ai.start();
         }
