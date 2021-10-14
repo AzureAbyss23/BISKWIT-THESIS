@@ -88,7 +88,7 @@ public class LessonFragment extends Fragment {
             }
         });
 
-        binding.Alphabet.setOnClickListener(new View.OnClickListener() {
+        binding.Alamkoito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragmentAlamkoito = new AlamkoitoFragment();

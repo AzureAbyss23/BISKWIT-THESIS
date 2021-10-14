@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson2;
+import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentKatinigBinding;
 
 
@@ -40,8 +45,21 @@ public class KatinigFragment extends Fragment {
             binding.KatinigAralin2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    intent = new Intent(getContext(), KatinigLesson1.class);
+                    intent = new Intent(getContext(), KatinigLesson2.class);
                     startActivity(intent);
+                }
+            });
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragmentBack = new LessonFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentBack);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
             });
 

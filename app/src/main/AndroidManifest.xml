@@ -9,10 +9,10 @@
 
     <queries>
         <intent>
-            <action
-                android:name="android.speech.RecognitionService" />
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/mainlogo"
@@ -20,6 +20,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
+        <activity
+            android:name=".Content.Lessons.Score"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
+            android:exported="true" />
         <activity
             android:name=".Content.Story.TulaActivities.Maglaro"
             android:exported="true" />
@@ -37,9 +46,6 @@
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson2"
-            android:exported="true" />
-        <activity
-            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.AlamkoitoActivities.Sounds"
@@ -72,7 +78,7 @@
             android:name=".Content.Lessons.PatinigActivities.PatinigChoices1"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
+            android:name=".Content.Lessons.PatinigActivities.PatinigLesson2"
             android:exported="true" />
         <activity
             android:name=".MainNavMenu"

@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -14,26 +12,17 @@ import android.database.Cursor;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import com.example.biskwit.DBHelper;
 import com.example.biskwit.R;
 
@@ -45,7 +34,7 @@ public class PatinigLesson1 extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"aso","aklat","antigo","ama","anak","atis","alay","aliw","amihan"};
+    String[] P_Lesson_Words = {"a e i o u"};
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
@@ -69,13 +58,13 @@ public class PatinigLesson1 extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         mic = findViewById(R.id.imageView2);
 
-        DB = new DBHelper(this);
+        //DB = new DBHelper(this);
 
         String letter = getIntent().getStringExtra("letter");
 
-        c = DB.getlessondata(letter);
+        //c = DB.getlessondata(letter);
 
-        if(c.getCount()==0){
+        /*if(c.getCount()==0){
             Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -85,7 +74,7 @@ public class PatinigLesson1 extends AppCompatActivity {
                 //P_Lesson_Words[i] = buff.toString();
             }
         }
-        c.close();
+        c.close();*/
 
         txtword.setText(P_Lesson_Words[all_ctr]);
 

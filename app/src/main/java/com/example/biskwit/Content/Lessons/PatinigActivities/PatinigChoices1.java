@@ -28,7 +28,7 @@ public class PatinigChoices1 extends AppCompatActivity {
         LetterA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(PatinigChoices1.this, PatinigLesson1.class);
+                intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
                 intent.putExtra("letter","a");
                 startActivity(intent);
             }
@@ -37,7 +37,7 @@ public class PatinigChoices1 extends AppCompatActivity {
         LetterE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(PatinigChoices1.this, PatinigLesson1.class);
+                intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
                 intent.putExtra("letter","e");
                 startActivity(intent);
             }
@@ -46,7 +46,7 @@ public class PatinigChoices1 extends AppCompatActivity {
         LetterI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(PatinigChoices1.this, PatinigLesson1.class);
+                intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
                 intent.putExtra("letter","i");
                 startActivity(intent);
             }
@@ -55,7 +55,7 @@ public class PatinigChoices1 extends AppCompatActivity {
         LetterO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(PatinigChoices1.this, PatinigLesson1.class);
+                intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
                 intent.putExtra("letter","o");
                 startActivity(intent);
             }
@@ -64,7 +64,7 @@ public class PatinigChoices1 extends AppCompatActivity {
         LetterU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(PatinigChoices1.this, PatinigLesson1.class);
+                intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
                 intent.putExtra("letter","u");
                 startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Story.TulaActivities;
+package com.example.biskwit.Content.Lessons.PatinigActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import com.example.biskwit.DBHelper;
 import com.example.biskwit.R;
 
-public class Magdasal extends AppCompatActivity {
+public class PatinigLesson2 extends AppCompatActivity {
 
     TextView txtresult,txtword;
     ImageView next,bot;
@@ -34,8 +34,7 @@ public class Magdasal extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"tayo ay magdasal","sa ating amang banal","tayo ay magdasal","isa itong magandang asal",
-            "tayo ay manalangin","nang tayo ay pagpalain","araw-araw","gabi gabi","ito ay ating gawin"};
+    String[] P_Lesson_Words = {"aso","aklat","antigo","ama","anak","atis","alay","aliw","amihan"};
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
@@ -47,7 +46,7 @@ public class Magdasal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_magdasal);
+        setContentView(R.layout.activity_patinig_lesson1);
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -59,13 +58,13 @@ public class Magdasal extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         mic = findViewById(R.id.imageView2);
 
-        //DB = new DBHelper(this);
+        DB = new DBHelper(this);
 
-        //String letter = getIntent().getStringExtra("letter");
+        String letter = getIntent().getStringExtra("letter");
 
-        //c = DB.getlessondata(letter);
+        c = DB.getlessondata(letter);
 
-        /*if(c.getCount()==0){
+        if(c.getCount()==0){
             Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -75,7 +74,7 @@ public class Magdasal extends AppCompatActivity {
                 //P_Lesson_Words[i] = buff.toString();
             }
         }
-        c.close();*/
+        c.close();
 
         txtword.setText(P_Lesson_Words[all_ctr]);
 
@@ -101,7 +100,7 @@ public class Magdasal extends AppCompatActivity {
                 stopPlaying();
                 Resources res = getResources();
                 int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
-                ai = MediaPlayer.create(Magdasal.this, sound);
+                ai = MediaPlayer.create(PatinigLesson2.this, sound);
                 ai.start();
             }
         });
@@ -261,15 +260,15 @@ public class Magdasal extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
-            ai = MediaPlayer.create(Magdasal.this, R.raw.response_0_to_49);
+            ai = MediaPlayer.create(PatinigLesson2.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            ai = MediaPlayer.create(Magdasal.this, R.raw.response_50_to_69);
+            ai = MediaPlayer.create(PatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            ai = MediaPlayer.create(Magdasal.this, R.raw.response_70_to_100);
+            ai = MediaPlayer.create(PatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
         }
 

@@ -3,11 +3,17 @@ package com.example.biskwit.Content.Lessons;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
+import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentPatinigBinding;
 
 public class PatinigFragment extends Fragment {
@@ -31,7 +37,7 @@ public class PatinigFragment extends Fragment {
         binding.PatinigAralin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), PatinigChoices1.class);
+                intent = new Intent(getContext(), PatinigLesson1.class);
                 startActivity(intent);
             }
         });
@@ -41,6 +47,19 @@ public class PatinigFragment extends Fragment {
             public void onClick(View view) {
                 intent = new Intent(getContext(), PatinigChoices1.class);
                 startActivity(intent);
+            }
+        });
+
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragmentBack = new LessonFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentBack);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
