@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/LessonButton"
-        android:layout_width="165dp"
-        android:layout_height="79dp"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
         android:text="Aralin"
         app:backgroundTint="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/StoryButton"
-        android:layout_width="165dp"
-        android:layout_height="79dp"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
         android:text="Magbasa"
         app:backgroundTint="#FFEB3B"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,8 +33,8 @@
 
     <Button
         android:id="@+id/ProgressButton"
-        android:layout_width="165dp"
-        android:layout_height="79dp"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
         android:text="Progreso"
         app:backgroundTint="#8BC34A"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,4 +61,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.168" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

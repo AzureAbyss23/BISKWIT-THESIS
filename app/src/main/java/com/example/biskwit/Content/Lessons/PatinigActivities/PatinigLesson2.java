@@ -52,12 +52,7 @@ public class PatinigLesson2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patinig_lesson1);
-
-        //progress bar ito
-
-
-
+        setContentView(R.layout.activity_patinig_lesson2);
 
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
