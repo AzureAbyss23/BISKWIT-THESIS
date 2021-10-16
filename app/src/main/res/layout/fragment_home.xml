@@ -14,7 +14,7 @@
         android:layout_height="330dp"
         android:fontFamily="@font/chewy"
         android:gravity="center"
-        android:text="HELLO WELCOME TO BISKWIT LIAM!"
+        android:text="HELLO WELCOME TO BISKWIT!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/text"
         android:textSize="60sp"
@@ -24,15 +24,6 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.498" />
 
-    <VideoView
-        android:id="@+id/Intro"
-        android:layout_width="355dp"
-        android:layout_height="219dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title"
-        app:layout_constraintVertical_bias="0.281" />
 </androidx.constraintlayout.widget.ConstraintLayout>

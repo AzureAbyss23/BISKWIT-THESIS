@@ -24,6 +24,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
+import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
 import com.example.biskwit.R;
 
@@ -37,11 +40,13 @@ public class Alphabet extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"a","b","c","d","e"};
-    String[] UpperCase = {"A","B","C","D","E"};
+    String[] P_Lesson_Words = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    String[] UpperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
+    int mic_ctr = 0;
+    int score = 0, add = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -86,9 +91,25 @@ public class Alphabet extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ++all_ctr;
-                txtword.setText(P_Lesson_Words[all_ctr]);
-                txtresult.setText("Speak Now");
+                if(all_ctr < 25) {
+                    if (mic_ctr == 0) {
+                        toastMsg("Try the word first.");
+                    } else {
+                        ++all_ctr;
+                        mic_ctr = 0;
+                        txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
+                        txtresult.setText("Speak Now");
+                        score += add;
+                    }
+                } else {
+                    if (mic_ctr == 0) {
+                        toastMsg("Try the word first.");
+                    } else {
+                        Intent intent = new Intent(Alphabet.this, Score.class);
+                        intent.putExtra("Score", score);
+                        startActivity(intent);
+                    }
+                }
 
                 stopPlaying();
 
@@ -170,6 +191,7 @@ public class Alphabet extends AppCompatActivity {
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mic_ctr++;
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     toastMsg("Start speaking");
@@ -265,14 +287,17 @@ public class Alphabet extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
+            add = 0;
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
+            add = 1;
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
+            add = 2;
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }

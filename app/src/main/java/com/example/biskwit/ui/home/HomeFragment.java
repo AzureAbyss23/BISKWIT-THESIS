@@ -26,13 +26,6 @@ public class HomeFragment extends Fragment {
         container.removeAllViews();
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        MediaController mc= new MediaController(getActivity());
-
-        VideoView view = (VideoView)rootView.findViewById(R.id.Intro);
-        String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.intro;
-        view.setVideoURI(Uri.parse(path));
-        view.setMediaController(mc);
-        view.start();
 
         return rootView;
     }

@@ -27,6 +27,9 @@
             android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
             android:exported="true" />
         <activity
+            android:name=".Content.Lessons.OrtonActivities.Phoenimic"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.AlphabetActivities.Alphabet"
             android:exported="true" />
         <activity
