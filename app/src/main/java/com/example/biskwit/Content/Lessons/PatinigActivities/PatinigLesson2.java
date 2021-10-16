@@ -84,7 +84,7 @@ public class PatinigLesson2 extends AppCompatActivity {
         c.close();
 
         txtword.setText(P_Lesson_Words[all_ctr]);
-        progressBar = findViewById(R.id.ProgressBar);
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

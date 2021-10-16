@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/purplebg"
     tools:context=".Content.Story.PabulaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="288dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/chewy"
+                android:gravity="center_horizontal"
+                android:text="Pabula"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="@color/text"
+                android:textColorHint="#000000"
+                android:textSize="50dp"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/Tula"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:text="Si Lamok at si Leon"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/Pabula"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:text="Si Langgam at si Tipaklong"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
