@@ -18,8 +18,10 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -43,10 +45,15 @@ public class PatinigLesson1 extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
+    //ito yung sa progress bar
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patinig_lesson1);
+
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -77,6 +84,7 @@ public class PatinigLesson1 extends AppCompatActivity {
         c.close();*/
 
         txtword.setText(P_Lesson_Words[all_ctr]);
+        progressBar = findViewById(R.id.ProgressBar);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +99,10 @@ public class PatinigLesson1 extends AppCompatActivity {
                 ColorMatrix matrix = new ColorMatrix();
                 matrix.setSaturation(0);
                 bot.setColorFilter(new ColorMatrixColorFilter(matrix));
+                //progress bar
+                CurrentProgress = CurrentProgress +15;
+                progressBar.setProgress(CurrentProgress);
+                progressBar.setMax(100);
             }
         });
 
