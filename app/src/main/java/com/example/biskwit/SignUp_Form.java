@@ -1,6 +1,9 @@
 package com.example.biskwit;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,6 +11,16 @@ import android.content.Intent;
 import android.view.View;
 import android.database.Cursor;
 import android.widget.Toast;
+
+import com.example.biskwit.Data.NetworkClient;
+import com.example.biskwit.Data.NetworkService;
+import com.example.biskwit.Data.RegistrationResponseModel;
+
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUp_Form extends AppCompatActivity {
     Button SignUp,Login;
@@ -31,40 +44,76 @@ public class SignUp_Form extends AppCompatActivity {
         Birthdate = findViewById(R.id.birthday);
         Severity_Level = findViewById(R.id.level_severity);
 
-        DB = new DBHelper(this);
+        //DB = new DBHelper(this);
 
-        SignUp = (Button) findViewById(R.id.signup);
+        SignUp = findViewById(R.id.signup);
         SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = Email.getText().toString();
-                String password = Password.getText().toString();
-                String confirmpass = Confirm_Password.getText().toString();
-                String parent_instructor = Parents_Instructor.getText().toString();
-                String namechild = Name_Child.getText().toString();
-                int age = Integer.parseInt(Age.getText().toString());
-                String birthdate = Birthdate.getText().toString();
-                String sever_level = Severity_Level.getText().toString();
 
-                Boolean checkinsertdata = DB.insertuserdata(email, password, parent_instructor
-                        , namechild, age, birthdate, sever_level);
-                if(checkinsertdata==true)
-                    Created_Account_Message();
-                else
-                    Toast.makeText(SignUp_Form.this, "New Entry Not Inserted", Toast.LENGTH_SHORT).show();
-
-                Go_Login();
-            }
-        });
-        Login = (Button) findViewById(R.id.go_back_login);
-        Login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Go_Login();
+            public void onClick(View view) {
+
+                if (Name_Child.getText().toString().equals("")) {
+                    Toast.makeText(SignUp_Form.this, "Enter first name", Toast.LENGTH_SHORT).show();
+                } else if (Email.getText().toString().equals("")) {
+                    Toast.makeText(SignUp_Form.this, "Enter email", Toast.LENGTH_SHORT).show();
+                } else if (Password.getText().toString().equals("")) {
+                    Toast.makeText(SignUp_Form.this, "Enter password", Toast.LENGTH_SHORT).show();
+                }/* else if (!emailValidator(inputemail.getText().toString())) {
+                    Toast.makeText(RegisterActivity.this, "Enter valid email", Toast.LENGTH_SHORT).show();
+
+                } */ else {
+
+                    HashMap<String, String> params = new HashMap<>();
+                    params.put("email", Email.getText().toString());
+                    params.put("password", Password.getText().toString());
+                    params.put("parent", Parents_Instructor.getText().toString());
+                    params.put("child", Name_Child.getText().toString());
+                    params.put("age", Age.getText().toString());
+                    params.put("birthday", Birthdate.getText().toString());
+                    params.put("severity", Severity_Level.getText().toString());
+                    register(params);
+                }
+
             }
+
         });
 
     }
+
+    private void register(HashMap<String, String> params) {
+
+        final ProgressDialog progressDialog = new ProgressDialog(SignUp_Form.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Creating your account...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        NetworkService networkService = NetworkClient.getClient().create(NetworkService.class);
+        Call<RegistrationResponseModel> registerCall = networkService.register(params);
+        registerCall.enqueue(new Callback<RegistrationResponseModel>() {
+            @Override
+            public void onResponse(@NonNull Call<RegistrationResponseModel> call, @NonNull Response<RegistrationResponseModel> response) {
+                RegistrationResponseModel responseBody = response.body();
+                if (responseBody != null) {
+                    if (responseBody.getSuccess().equals("1")) {
+                        Toast.makeText(SignUp_Form.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUp_Form.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(SignUp_Form.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<RegistrationResponseModel> call, @NonNull Throwable t) {
+                progressDialog.dismiss();
+            }
+        });
+    }
+
     //maglalabas ng message ito kapag pinindot nya ung signup button
     public void Created_Account_Message()
     {
