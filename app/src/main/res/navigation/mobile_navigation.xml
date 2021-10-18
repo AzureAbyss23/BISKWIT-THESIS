@@ -42,4 +42,10 @@
         android:name="com.example.biskwit.ui.start.StartFragment"
         android:label="Get Started"
         tools:layout="@layout/fragment_start" />
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.example.biskwit.ui.aboutus.Aboutus"
+        android:label="fragment_aboutus"
+        tools:layout="@layout/fragment_aboutus" />
+
 </navigation>

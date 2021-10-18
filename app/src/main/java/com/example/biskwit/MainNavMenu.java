@@ -36,7 +36,7 @@ public class MainNavMenu extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_start, R.id.nav_gallery, R.id.nav_settings,R.id.nav_logout)
+                R.id.nav_home, R.id.nav_start, R.id.nav_gallery, R.id.nav_settings,R.id.nav_aboutus,R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
         //eto yung nagcocontrol ng paglipat lipat ng pages
