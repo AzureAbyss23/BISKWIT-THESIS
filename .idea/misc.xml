@@ -65,6 +65,7 @@
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sounds.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/app_bar_main_nav_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/content_main_nav_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_aboutus.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_alamkoito.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_alphabet.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_gallery.xml" value="0.17864583333333334" />
@@ -80,6 +81,7 @@
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_tula.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/signup_form.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/terms.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/menu/activity_main_drawer.xml" value="0.1796875" />
       </map>
     </option>
   </component>
