@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/arya</item>
+        <item>@font/asul</item>
         <item>@font/chewy</item>
+        <item>@font/crimson_text</item>
+        <item>@font/source_sans_pro</item>
+        <item>@font/yrsa</item>
     </array>
 </resources>
