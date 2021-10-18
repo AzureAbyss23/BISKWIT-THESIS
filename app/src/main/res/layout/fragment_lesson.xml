@@ -40,7 +40,7 @@
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 1"
+                android:text="Kabanata 1: Alphabet"
                 app:backgroundTint="#FF7F7F" />
 
             <Button
@@ -50,7 +50,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/roundshape"
-                android:text="Kabanata 2"
+                android:text="Kabanata 2: Orton-Gillingham"
                 app:backgroundTint="#FFA500" />
 
             <Button
@@ -60,7 +60,7 @@
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 3"
+                android:text="Kabanata 3: Patinig"
                 app:backgroundTint="#FFEB3B" />
 
             <Button
@@ -70,7 +70,7 @@
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 4"
+                android:text="Kabanata 4: Katinig"
                 app:backgroundTint="#90EE90" />
 
             <Button
@@ -80,7 +80,7 @@
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 5"
+                android:text="Kabanata 5: Alam ko ito"
                 app:backgroundTint="#00BCD4" />
 
         </LinearLayout>
