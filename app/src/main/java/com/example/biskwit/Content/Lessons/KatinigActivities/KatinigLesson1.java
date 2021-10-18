@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -20,13 +21,14 @@ import java.util.Locale;
 public class KatinigLesson1 extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next;
+    ImageView next,bot,bot2;
     String word = "";
     DBHelper DB;
     Cursor c;
     String[] P_Lesson_Words = {"bahay","baboy","baso","baka","bintana","bulak","buhok","buko","bawang"};
     StringBuffer buff;
     int all_ctr = 0;
+    MediaPlayer ai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class KatinigLesson1 extends AppCompatActivity {
         txtresult = (TextView) findViewById(R.id.result);
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
+        bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
 
         DB = new DBHelper(this);
 
@@ -63,6 +67,15 @@ public class KatinigLesson1 extends AppCompatActivity {
                 ++all_ctr;
                 txtword.setText(P_Lesson_Words[all_ctr]);
                 txtresult.setText("Speak Now");
+            }
+        });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //stopPlaying();
+                ai = MediaPlayer.create(KatinigLesson1.this, R.raw.kab4_p1_1);
+                ai.start();
             }
         });
 

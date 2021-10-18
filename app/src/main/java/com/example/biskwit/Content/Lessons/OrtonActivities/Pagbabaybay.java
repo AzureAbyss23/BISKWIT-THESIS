@@ -20,6 +20,8 @@ public class Pagbabaybay extends AppCompatActivity {
     String[] data = {"aso","elepante","ibon","oso",",unggoy","ako ay isang pilipino","ako ay masipag",
             "si maria ay maganda","naglinis ng banyo si mama","napakainit ng panahon ngayon"};
     int all_ctr = 0, score = 0;
+    MediaPlayer ai;
+    ImageView bot, bot2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class Pagbabaybay extends AppCompatActivity {
 
         spell = findViewById(R.id.Spell);
         nextButton = findViewById(R.id.nextButton);
+        bot2 = findViewById(R.id.Bot2);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,24 @@ public class Pagbabaybay extends AppCompatActivity {
                 }
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(Pagbabaybay.this, R.raw.kab2_p4);
+                ai.start();
+            }
+        });
+    }
+
+    protected void stopPlaying(){
+        // If media player is not null then try to stop it
+        if(ai!=null){
+            ai.stop();
+            ai.release();
+            ai = null;
+        }
     }
 
     public void toastMsg(String msg) {

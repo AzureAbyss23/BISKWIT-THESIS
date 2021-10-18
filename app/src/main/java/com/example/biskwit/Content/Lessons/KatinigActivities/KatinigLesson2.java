@@ -29,7 +29,7 @@ import com.example.biskwit.R;
 public class KatinigLesson2 extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot;
+    ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
     DBHelper DB;
@@ -56,6 +56,7 @@ public class KatinigLesson2 extends AppCompatActivity {
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
 
         DB = new DBHelper(this);
@@ -101,6 +102,15 @@ public class KatinigLesson2 extends AppCompatActivity {
                 Resources res = getResources();
                 int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
                 ai = MediaPlayer.create(KatinigLesson2.this, sound);
+                ai.start();
+            }
+        });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(KatinigLesson2.this, R.raw.kab4_p2_b);
                 ai.start();
             }
         });

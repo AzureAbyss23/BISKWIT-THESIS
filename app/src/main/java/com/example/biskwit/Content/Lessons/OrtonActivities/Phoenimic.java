@@ -3,6 +3,7 @@ package com.example.biskwit.Content.Lessons.OrtonActivities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.R;
 
@@ -25,7 +27,7 @@ public class Phoenimic extends AppCompatActivity {
 
     TextView word1,word2,category;
     ImageButton mic1,mic2;
-    ImageView next;
+    ImageView next,bot,bot2;
     String word;
     String[][] words1 = {{"ibon","aso","bibe","matsing","pusa"},{"polo","pantalon","medyas","kwintas","palda"}};
     String[][] words2 = {{"hipon","oso","tigre","kambing","daga"},{"sando","sinturon","tsinelas","pulseras","blusa"}};
@@ -46,6 +48,8 @@ public class Phoenimic extends AppCompatActivity {
         category = findViewById(R.id.Category);
         mic1 = findViewById(R.id.Mic);
         mic2 = findViewById(R.id.Mic2);
+        bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
 
         word1.setText(words1[all_ctr][all_ctr2]);
@@ -147,6 +151,26 @@ public class Phoenimic extends AppCompatActivity {
                     speechRecognizer.stopListening();
                     click=0;
                 }
+            }
+        });
+
+        bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                //Resources res = getResources();
+                //int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                //ai = MediaPlayer.create(Alphabet.this, sound);
+                //ai.start();
+            }
+        });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(Phoenimic.this, R.raw.kab2_p1);
+                ai.start();
             }
         });
 

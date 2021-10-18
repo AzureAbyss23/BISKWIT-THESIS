@@ -31,7 +31,7 @@ import com.example.biskwit.R;
 public class PatinigLesson2 extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot;
+    ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
     DBHelper DB;
@@ -63,6 +63,7 @@ public class PatinigLesson2 extends AppCompatActivity {
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
 
         DB = new DBHelper(this);
@@ -100,7 +101,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                 matrix.setSaturation(0);
                 bot.setColorFilter(new ColorMatrixColorFilter(matrix));
                 //progress bar
-                CurrentProgress = CurrentProgress +15;
+                CurrentProgress = CurrentProgress +7;
                 progressBar.setProgress(CurrentProgress);
                 progressBar.setMax(100);
             }
@@ -113,6 +114,15 @@ public class PatinigLesson2 extends AppCompatActivity {
                 Resources res = getResources();
                 int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
                 ai = MediaPlayer.create(PatinigLesson2.this, sound);
+                ai.start();
+            }
+        });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(PatinigLesson2.this, R.raw.kab3_p2_a);
                 ai.start();
             }
         });

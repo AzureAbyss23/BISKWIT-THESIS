@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class Sight extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot;
+    ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
     DBHelper DB;
@@ -64,6 +64,7 @@ public class Sight extends AppCompatActivity {
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
 
         //DB = new DBHelper(this);
@@ -123,6 +124,15 @@ public class Sight extends AppCompatActivity {
                 Resources res = getResources();
                 int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
                 ai = MediaPlayer.create(Sight.this, sound);
+                ai.start();
+            }
+        });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(Sight.this, R.raw.kab2_p2);
                 ai.start();
             }
         });
