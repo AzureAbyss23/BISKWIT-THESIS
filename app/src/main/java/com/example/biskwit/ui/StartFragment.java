@@ -1,4 +1,4 @@
-package com.example.biskwit.ui.start;
+package com.example.biskwit.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

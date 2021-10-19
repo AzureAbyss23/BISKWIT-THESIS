@@ -1,6 +1,5 @@
 package com.example.biskwit.Data;
 
-import com.example.biskwit.ui.UserDetailModel;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginResponseModel {

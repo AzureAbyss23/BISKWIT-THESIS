@@ -1,4 +1,4 @@
-package com.example.biskwit.ui.settings;
+package com.example.biskwit.ui;
 
 import android.os.Bundle;
 

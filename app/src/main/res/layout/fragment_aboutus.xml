@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".ui.aboutus.Aboutus">
+    tools:context=".ui.Aboutus">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             <VideoView
                 android:id="@+id/Intro"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="214dp"
                 android:layout_gravity="center" />
 
             <ImageView

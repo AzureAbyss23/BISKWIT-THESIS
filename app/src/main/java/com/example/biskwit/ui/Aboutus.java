@@ -1,4 +1,4 @@
-package com.example.biskwit.ui.aboutus;
+package com.example.biskwit.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAboutusBinding;
-import com.example.biskwit.databinding.FragmentHomeBinding;
 
 public class Aboutus extends Fragment {
 

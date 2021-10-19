@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.biskwit.ui.home.HomeFragment"
+        android:name="com.example.biskwit.ui.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.biskwit.ui.gallery.GalleryFragment"
+        android:name="com.example.biskwit.ui.ProfileFragment"
         android:label="@string/menu_profile"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/lessonFragment"
@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_story" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.biskwit.ui.settings.SettingsFragment"
+        android:name="com.example.biskwit.ui.SettingsFragment"
         android:label="@string/action_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
@@ -39,12 +39,12 @@
         tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/nav_start"
-        android:name="com.example.biskwit.ui.start.StartFragment"
+        android:name="com.example.biskwit.ui.StartFragment"
         android:label="Get Started"
         tools:layout="@layout/fragment_start" />
     <fragment
         android:id="@+id/nav_aboutus"
-        android:name="com.example.biskwit.ui.aboutus.Aboutus"
+        android:name="com.example.biskwit.ui.Aboutus"
         android:label="fragment_aboutus"
         tools:layout="@layout/fragment_aboutus" />
 
