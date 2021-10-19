@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".ui.aboutus.Aboutus">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HELLO CHASEY MADAMI KA PA GAGAWIN" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/chewy"
+                android:gravity="center_horizontal"
+                android:text="BISKWIT"
+                android:textAlignment="center"
+                android:textColor="#48CCCD"
+                android:textColorHint="#000000"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/chewy"
+                android:gravity="center_horizontal"
+                android:text=" (Bringing Insight to Special-needs Kids through Words and Interactive Tales)"
+                android:textColor="#48CCCD"
+                android:textColorHint="#000000"
+                android:textAlignment="center" />
+
+            <VideoView
+                android:id="@+id/Intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/poster"
+                android:layout_width="390dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/poster" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

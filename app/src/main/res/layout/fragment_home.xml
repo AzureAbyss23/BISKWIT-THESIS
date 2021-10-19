@@ -49,7 +49,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -62,9 +62,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="it's a application software that designed to enhance basic Filipino speech for grade 1 students with special needs (Dyslexic Students). What your children can expect from this app is a portable and accessible language companion app which will be dubbed in full Tagalog, tailored to improve the communicative skills of your children."
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1569C7"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:text="Aralin"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textSize="30dp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#FF7F7F"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -128,7 +128,7 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Alphabet"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
                 android:textSize="20dp" />
 
@@ -146,7 +146,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#FFA500"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -162,7 +162,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#FFA500"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -175,9 +175,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Phoenimic Awareness\n\u2022 Sight Words\n\u2022 Blending Drills\n\u2022 Pagbabaybay "
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFA500"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kab3"
@@ -193,7 +193,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#FFEB3B"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -209,7 +209,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#FFEB3B"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -222,9 +222,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Patinig Aralin 1\n\u2022 Patinig Aralin 2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFEB3B"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kab4"
@@ -240,7 +240,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#90EE90"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -256,7 +256,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#90EE90"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -269,9 +269,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Katinig Aralin 1\n\u2022 Katinig Aralin 2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#90EE90"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/kab5"
@@ -287,7 +287,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#00BCD4"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -303,7 +303,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#00BCD4"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -316,9 +316,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Mga araw sa isang linggo\n\u2022 Mga buwan sa isang taon\n\u2022 Mga salitang magkasingkahulugan\n\u2022 Mga salitang magkasalungat\n\u2022 Mga tunog "
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#00BCD4"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/magbasa"
@@ -332,7 +332,7 @@
                 android:text="Magbasa"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textSize="30dp" />
 
@@ -350,7 +350,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#B09FCA"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -363,9 +363,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Tayo ay magdasal \n\u2022Ang Paruparo at ang Rosas\n\u2022Halina at maglaro"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#B09FCA"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/pabula"
@@ -381,7 +381,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#00BCD4"
                 android:textColorHint="#000000"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -394,9 +394,9 @@
                 android:fontFamily="@font/crimson_text"
                 android:text="\u2022 Si lamok at si leon \n\u2022Si langgam at si tipaklong"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#00BCD4"
+                android:textColor="#1C388F"
                 android:textColorHint="#000000"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/cite"
@@ -410,7 +410,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
-                android:textSize="5dp" />
+                android:textSize="8dp" />
 
         </LinearLayout>
     </ScrollView>
