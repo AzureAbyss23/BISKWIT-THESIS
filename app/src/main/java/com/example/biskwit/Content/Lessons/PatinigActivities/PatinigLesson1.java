@@ -45,9 +45,6 @@ public class PatinigLesson1 extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
-    //ito yung sa progress bar
-    private int CurrentProgress = 0;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +82,7 @@ public class PatinigLesson1 extends AppCompatActivity {
         c.close();*/
 
         txtword.setText(P_Lesson_Words[all_ctr]);
-        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,10 +97,7 @@ public class PatinigLesson1 extends AppCompatActivity {
                 ColorMatrix matrix = new ColorMatrix();
                 matrix.setSaturation(0);
                 bot.setColorFilter(new ColorMatrixColorFilter(matrix));
-                //progress bar
-                CurrentProgress = CurrentProgress +15;
-                progressBar.setProgress(CurrentProgress);
-                progressBar.setMax(100);
+
             }
         });
 
