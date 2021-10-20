@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.biskwit.Content.LessonFragment;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Years;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Years.Years;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAlamkoitoBinding;
 

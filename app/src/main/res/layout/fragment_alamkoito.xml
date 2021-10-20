@@ -34,6 +34,28 @@
                 android:textSize="40dp" />
 
             <Button
+                android:id="@+id/Days"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/roundshape"
+                android:text="Mga araw sa isang linggo"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/Years"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/roundshape"
+                android:text="Mga Buwan sa Isang Taon"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
                 android:id="@+id/Opposite"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
@@ -52,28 +74,6 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Mga Tunog"
-                android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
-
-            <Button
-                android:id="@+id/Days"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:background="@drawable/roundshape"
-                android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:text="Mga araw sa isang linggo"
-                android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
-
-            <Button
-                android:id="@+id/Years"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:background="@drawable/roundshape"
-                android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:text="Mga Buwan sa Isang Taon"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF" />
 

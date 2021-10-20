@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Days.DaysAct"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.Score"
             android:exported="true" />
         <activity
@@ -54,10 +57,10 @@
             android:name=".Content.Lessons.AlamkoitoActivities.Sounds"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Years"
+            android:name=".Content.Lessons.AlamkoitoActivities.Years.Years"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Days"
+            android:name=".Content.Lessons.AlamkoitoActivities.Days.Days"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.AlamkoitoActivities.Opposite"
