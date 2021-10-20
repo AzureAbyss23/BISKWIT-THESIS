@@ -5,16 +5,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite.Opposite;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Years.Years;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAlamkoitoBinding;
