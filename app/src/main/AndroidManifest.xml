@@ -21,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Years.YearsAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous.SynonymousAct"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.AlamkoitoActivities.Days.DaysAct"
             android:exported="true" />
         <activity
@@ -54,7 +63,7 @@
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson2"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Sounds"
+            android:name=".Content.Lessons.AlamkoitoActivities.Sounds.Sounds"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.AlamkoitoActivities.Years.Years"
@@ -63,10 +72,10 @@
             android:name=".Content.Lessons.AlamkoitoActivities.Days.Days"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Opposite"
+            android:name=".Content.Lessons.AlamkoitoActivities.Opposite.Opposite"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous"
+            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.OrtonActivities.Pagbabaybay"
