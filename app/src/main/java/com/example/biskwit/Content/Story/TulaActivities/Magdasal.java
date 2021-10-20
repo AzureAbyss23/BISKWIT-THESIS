@@ -20,6 +20,7 @@ import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -28,21 +29,26 @@ import com.example.biskwit.R;
 
 public class Magdasal extends AppCompatActivity {
 
-    TextView txtresult,txtword;
+    TextView txtstory,txtword,txtqueue;
     ImageView next,bot;
     ImageButton mic;
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"tayo ay magdasal","sa ating amang banal","tayo ay magdasal","isa itong magandang asal",
-            "tayo ay manalangin","nang tayo ay pagpalain","araw-araw","gabi gabi","ito ay ating gawin"};
+    String[] P_Lesson_Words = {"Tayo ay magdasal","Sa ating amang banal","Tayo ay magdasal","Isa itong magandang asal",
+            "Tayo ay manalangin","Nang tayo ay pagpalain","araw-araw","gabi gabi","Ito ay ating gawin"};
+    String queue="",story="";
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
+    int queuectr=2;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
+
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +59,9 @@ public class Magdasal extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
         }
 
-        txtresult = (TextView) findViewById(R.id.result);
         txtword = (TextView) findViewById(R.id.Word);
+        txtstory = (TextView) findViewById(R.id.Story);
+        txtqueue = (TextView) findViewById(R.id.Queue);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
         mic = findViewById(R.id.imageView2);
@@ -76,17 +83,36 @@ public class Magdasal extends AppCompatActivity {
             }
         }
         c.close();*/
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         txtword.setText(P_Lesson_Words[all_ctr]);
+        for(int i = 1; i < 9; i++) {
+            queue += (P_Lesson_Words[i] + "\n ");
+            txtqueue.setText(queue);
+        }
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ++all_ctr;
+                story += (P_Lesson_Words[all_ctr-1] + "\n");
+                txtstory.setText(story);
+
                 txtword.setText(P_Lesson_Words[all_ctr]);
-                txtresult.setText("Speak Now");
+                queue = " ";
+
+                for(int i = queuectr; i < 9; i++) {
+                    queue += (P_Lesson_Words[i] + "\n");
+                }
+
+                txtqueue.setText(queue);
+                ++queuectr;
 
                 stopPlaying();
+
+                CurrentProgress = CurrentProgress +11;
+                progressBar.setProgress(CurrentProgress);
+                progressBar.setMax(100);
 
                 //pampagrayscale lang to nung bot na icon
                 ColorMatrix matrix = new ColorMatrix();
@@ -120,7 +146,7 @@ public class Magdasal extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+
             }
 
             @Override
