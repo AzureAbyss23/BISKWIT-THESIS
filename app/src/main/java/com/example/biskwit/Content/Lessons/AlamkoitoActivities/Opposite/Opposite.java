@@ -112,17 +112,19 @@ public class Opposite extends AppCompatActivity {
         });
 
 
+
         mic1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic1.setImageResource(R.drawable.mic_on);
                     micctr1++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic1.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
@@ -133,16 +135,18 @@ public class Opposite extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic2.setImageResource(R.drawable.mic_on);
                     micctr2++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic2.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
         });
+
 
         bot.setOnClickListener(new View.OnClickListener() {
             @Override

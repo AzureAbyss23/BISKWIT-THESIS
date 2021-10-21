@@ -87,6 +87,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942"
         android:background="@drawable/mic_off"
+        android:scaleType="fitXY"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -114,7 +115,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.193"
-        app:srcCompat="@drawable/bot_icon" />
+        app:srcCompat="@drawable/kuyamatt" />
 
     <ImageView
         android:id="@+id/Bot2"
@@ -126,6 +127,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.193"
-        app:srcCompat="@drawable/bot_icon" />
+        app:srcCompat="@drawable/atechay" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

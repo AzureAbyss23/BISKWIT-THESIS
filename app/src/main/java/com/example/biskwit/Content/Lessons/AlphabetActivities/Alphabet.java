@@ -201,14 +201,14 @@ public class Alphabet extends AppCompatActivity {
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mic_ctr++;
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic.setImageResource(R.drawable.mic_on);
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }

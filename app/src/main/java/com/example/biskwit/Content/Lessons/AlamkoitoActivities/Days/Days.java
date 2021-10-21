@@ -199,11 +199,12 @@ public class Days extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic.setImageResource(R.drawable.mic_on);
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
