@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Sounds.SoundsAct"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct"
             android:exported="true" />
         <activity

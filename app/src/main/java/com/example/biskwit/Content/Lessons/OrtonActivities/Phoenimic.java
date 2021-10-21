@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
+import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Phoenimic extends AppCompatActivity {
     String[][] words1 = {{"ibon","aso","bibe","matsing","pusa"},{"polo","pantalon","medyas","kwintas","palda"}};
     String[][] words2 = {{"hipon","oso","tigre","kambing","daga"},{"sando","sinturon","tsinelas","pulseras","blusa"}};
     String[] categ = {"Hayop","Kasuotan","Prutas","Gulay"};
-    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0;
+    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, add = 0, score = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -127,12 +128,13 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic1.setImageResource(R.drawable.mic_on);
                     micctr1++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic1.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
@@ -143,12 +145,13 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic2.setImageResource(R.drawable.mic_on);
                     micctr2++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic2.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
@@ -177,17 +180,26 @@ public class Phoenimic extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setupnext();
-                word1.setText(words1[all_ctr][all_ctr2]);
-                word2.setText(words2[all_ctr][all_ctr2]);
-                category.setText(categ[all_ctr]);
+                if(all_ctr < 19) {
+                    if (micctr1 == 0 && micctr2 == 0) {
+                        toastMsg("Try the words first.");
+                    } else {
+                        setupnext();
+                        word1.setText(words1[all_ctr][all_ctr2]);
+                        word2.setText(words2[all_ctr][all_ctr2]);
+                        category.setText(categ[all_ctr]);
 
-                stopPlaying();
-
-                //pampagrayscale lang to nung bot na icon
-               // ColorMatrix matrix = new ColorMatrix();
-                //matrix.setSaturation(0);
-               // bot.setColorFilter(new ColorMatrixColorFilter(matrix));
+                        stopPlaying();
+                    }
+                } else {
+                    if (micctr1 == 0 && micctr2 == 0) {
+                        toastMsg("Try the words first.");
+                    } else {
+                        setupnext();
+                        Intent intent = new Intent(Phoenimic.this, Score.class);
+                        startActivity(intent);
+                    }
+                }
             }
         });
     }
@@ -259,14 +271,17 @@ public class Phoenimic extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
+            add = 0;
             ai = MediaPlayer.create(Phoenimic.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
+            add = 1;
             ai = MediaPlayer.create(Phoenimic.this, R.raw.response_50_to_69);
             ai.start();
         }
-        else if(val ==1.0){
+        else if(val == 1.0){
+            add = 2;
             ai = MediaPlayer.create(Phoenimic.this, R.raw.response_70_to_100);
             ai.start();
         }

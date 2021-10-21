@@ -66,13 +66,16 @@ public class PatinigLesson2 extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
 
-        DB = new DBHelper(this);
+        ai = MediaPlayer.create(PatinigLesson2.this, R.raw.kab3_p2_a);
+        ai.start();
 
-        String letter = getIntent().getStringExtra("letter");
+        //DB = new DBHelper(this);
 
-        c = DB.getlessondata(letter);
+        //String letter = getIntent().getStringExtra("letter");
 
-        if(c.getCount()==0){
+        //c = DB.getlessondata(letter);
+
+        /*if(c.getCount()==0){
             Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -82,7 +85,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                 //P_Lesson_Words[i] = buff.toString();
             }
         }
-        c.close();
+        c.close();*/
 
         txtword.setText(P_Lesson_Words[all_ctr]);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
@@ -96,10 +99,6 @@ public class PatinigLesson2 extends AppCompatActivity {
 
                 stopPlaying();
 
-                //pampagrayscale lang to nung bot na icon
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(0);
-                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
                 //progress bar
                 CurrentProgress = CurrentProgress +7;
                 progressBar.setProgress(CurrentProgress);
@@ -189,11 +188,12 @@ public class PatinigLesson2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic.setImageResource(R.drawable.mic_on);
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
@@ -296,48 +296,3 @@ public class PatinigLesson2 extends AppCompatActivity {
 
     }
 }
-
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT);
-            }
-        } else {
-            Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT);
-        }
-    }
-
-    public void getSpeechInput(View view) {
-
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "fil-PH");
-
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, 10);
-        } else {
-            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case 10:
-                if (resultCode == RESULT_OK && data != null) {
-                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    word = result.get(0);
-                    if(word.equals(P_Lesson_Words[all_ctr])){
-                        txtresult.setText("CORRECT WORD!");
-                    }
-                    else{
-                        txtresult.setText("Try again!");
-                    }
-                }
-                break;
-        }
-    }*/
