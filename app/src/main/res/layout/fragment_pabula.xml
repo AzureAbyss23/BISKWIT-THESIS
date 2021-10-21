@@ -33,7 +33,7 @@
                 android:layout_gravity="center" />
 
             <Button
-                android:id="@+id/Tula"
+                android:id="@+id/LamokLeon"
                 android:layout_width="350dp"
                 android:layout_height="90dp"
                 android:background="@drawable/roundshape"
@@ -44,13 +44,25 @@
                 app:backgroundTint="#FFFFFF" />
 
             <Button
-                android:id="@+id/Pabula"
+                android:id="@+id/LanggamTipaklong"
                 android:layout_width="350dp"
                 android:layout_height="90dp"
                 android:background="@drawable/roundshape"
                 android:text="Si Langgam at si Tipaklong"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="119dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="45dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/roundshape"
+                android:text="Go Back"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF" />
 
