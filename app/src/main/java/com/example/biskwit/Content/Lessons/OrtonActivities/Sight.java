@@ -45,7 +45,7 @@ public class Sight extends AppCompatActivity {
     int all_ctr = 0;
     int click = 0;
     int ctr = 0;
-    int score = 0;
+    int score = 0, add = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -94,6 +94,7 @@ public class Sight extends AppCompatActivity {
                     if (all_ctr < 14) {
                         ++all_ctr;
                         ++ctr;
+                        score += add;
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Speak Now");
                     } else {
@@ -109,11 +110,6 @@ public class Sight extends AppCompatActivity {
                 }
 
                 stopPlaying();
-
-                //pampagrayscale lang to nung bot na icon
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(0);
-                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
             }
         });
 
@@ -199,11 +195,12 @@ public class Sight extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
-                    toastMsg("Start speaking");
+                    mic.setImageResource(R.drawable.mic_on);
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }
             }
@@ -292,14 +289,17 @@ public class Sight extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
+            add = 0;
             ai = MediaPlayer.create(Sight.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
+            add = 1;
             ai = MediaPlayer.create(Sight.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
+            add = 2;
             ai = MediaPlayer.create(Sight.this, R.raw.response_70_to_100);
             ai.start();
         }
