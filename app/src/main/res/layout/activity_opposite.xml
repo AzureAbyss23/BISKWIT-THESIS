@@ -93,7 +93,7 @@
                     android:layout_marginEnd="22dp"
                     android:layout_marginRight="22dp"
                     android:layout_gravity="right"
-                    android:background="@drawable/mic_logo"
+                    android:background="@drawable/mic_off"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_height="91dp"
                     android:layout_marginEnd="22dp"
                     android:layout_marginRight="22dp"
-                    android:background="@drawable/mic_logo"
+                    android:background="@drawable/mic_off"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
@@ -154,7 +154,7 @@
                     android:layout_height="91dp"
                     android:layout_marginEnd="22dp"
                     android:layout_marginRight="22dp"
-                    app:srcCompat="@drawable/next_icon"
+                    app:srcCompat="@drawable/nextbutton"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 

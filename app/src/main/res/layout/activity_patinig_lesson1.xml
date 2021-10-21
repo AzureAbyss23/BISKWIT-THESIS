@@ -91,7 +91,7 @@
           android:textStyle="bold"
           android:text="Mga Halimbawa dito ay: \nA ay Apoy (A-POY)\nE ay Eroplano (E-RO-PLA-NO)\nI ay Ilaw (I-LAW)\nO ay Orasan (O-RA-SAN)\nU ay Unan (U-NAN)"/>
 
-      <ImageView
+      <ImageButton
           android:id="@+id/backbutton"
           android:layout_width="93dp"
           android:layout_height="91dp"
@@ -99,7 +99,7 @@
           android:layout_marginRight="22dp"
           android:layout_marginTop="50dp"
           android:layout_marginBottom="30dp"
-          app:srcCompat="@drawable/backbutton"
+          android:background="@drawable/backbutton"
           android:layout_gravity="right"
           tools:ignore="SpeakableTextPresentCheck" />
 

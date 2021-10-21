@@ -9,7 +9,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="361dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +22,7 @@
                 android:id="@+id/Bot2"
                 android:layout_width="82dp"
                 android:layout_height="80dp"
+                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/bot_icon" />
 
@@ -110,16 +113,16 @@
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/backbutton"
                 android:layout_width="93dp"
                 android:layout_height="91dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="50dp"
                 android:layout_marginEnd="22dp"
                 android:layout_marginRight="22dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="30dp"
-                app:srcCompat="@drawable/backbutton"
+                android:background="@drawable/backbutton"
+                android:layout_gravity="right"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </ScrollView>
