@@ -26,14 +26,14 @@ import java.util.ArrayList;
 
 public class Phoenimic extends AppCompatActivity {
 
-    TextView word1,word2,category;
+    TextView word1,word2,category,txtresult;
     ImageButton mic1,mic2;
     ImageView next,bot,bot2;
     String word;
     String[][] words1 = {{"ibon","aso","bibe","matsing","pusa"},{"polo","pantalon","medyas","kwintas","palda"}};
     String[][] words2 = {{"hipon","oso","tigre","kambing","daga"},{"sando","sinturon","tsinelas","pulseras","blusa"}};
     String[] categ = {"Hayop","Kasuotan","Prutas","Gulay"};
-    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, add = 0, score = 0;
+    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0, add = 0, score = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -52,6 +52,7 @@ public class Phoenimic extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
+        txtresult = findViewById(R.id.result);
 
         word1.setText(words1[all_ctr][all_ctr2]);
         word2.setText(words2[all_ctr][all_ctr2]);
@@ -70,9 +71,7 @@ public class Phoenimic extends AppCompatActivity {
             }
 
             @Override
-            public void onBeginningOfSpeech() {
-                //txtresult.setHint("Listening...");
-            }
+            public void onBeginningOfSpeech() { txtresult.setText("Listening..."); }
 
             @Override
             public void onRmsChanged(float v) {
@@ -86,7 +85,7 @@ public class Phoenimic extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press Mic Button Again");
             }
 
             @Override
@@ -129,12 +128,15 @@ public class Phoenimic extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic1.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     micctr1++;
+                    mic_ctr1++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
                     mic1.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button to Try Again");
                     click=0;
                 }
             }
@@ -146,12 +148,15 @@ public class Phoenimic extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic2.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     micctr2++;
+                    mic_ctr2++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
                     mic2.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button to Try Again");
                     click=0;
                 }
             }
@@ -181,19 +186,21 @@ public class Phoenimic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(all_ctr < 19) {
-                    if (micctr1 == 0 && micctr2 == 0) {
-                        toastMsg("Try the words first.");
+                    if (mic_ctr1 == 0 || mic_ctr2 == 0) {
+                        txtresult.setText("Try it first!");
                     } else {
                         setupnext();
+                        txtresult.setText("Press the Mic Button");
                         word1.setText(words1[all_ctr][all_ctr2]);
                         word2.setText(words2[all_ctr][all_ctr2]);
                         category.setText(categ[all_ctr]);
-
+                        mic_ctr1 = 0;
+                        mic_ctr2 = 0;
                         stopPlaying();
                     }
                 } else {
-                    if (micctr1 == 0 && micctr2 == 0) {
-                        toastMsg("Try the words first.");
+                    if (mic_ctr1 == 0 || mic_ctr2 == 0) {
+                        txtresult.setText("Try it first!");
                     } else {
                         setupnext();
                         Intent intent = new Intent(Phoenimic.this, Score.class);

@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,10 +19,9 @@ import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
 import com.example.biskwit.R;
@@ -52,6 +48,9 @@ public class Alphabet extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +67,12 @@ public class Alphabet extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        progressBar = findViewById(R.id.ProgressBar);
+
+        ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
+        ai.start();
 
         //DB = new DBHelper(this);
-
-        String letter = getIntent().getStringExtra("letter");
 
         //c = DB.getlessondata(letter);
 
@@ -94,30 +95,30 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < 25) {
                     if (mic_ctr == 0) {
-                        toastMsg("Try the word first.");
+                        txtresult.setText("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
                         txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
-                        txtresult.setText("Speak Now");
+                        txtresult.setText("Press the Mic Button");
                         score += add;
+                        add = 0;
+
+                        CurrentProgress = CurrentProgress +4;
+                        progressBar.setProgress(CurrentProgress);
+                        progressBar.setMax(100);
                     }
                 } else {
                     if (mic_ctr == 0) {
-                        toastMsg("Try the word first.");
+                        txtresult.setText("Try it first!");
                     } else {
+                        score += add;
                         Intent intent = new Intent(Alphabet.this, Score.class);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
                 }
-
                 stopPlaying();
-
-                //pampagrayscale lang to nung bot na icon
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(0);
-                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
             }
         });
 
@@ -155,7 +156,7 @@ public class Alphabet extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -170,7 +171,7 @@ public class Alphabet extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override
@@ -203,11 +204,14 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
+                    txtresult.setText("Speak Now");
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
+                    txtresult.setText("Press the Mic Button to Try Again");
                     mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }

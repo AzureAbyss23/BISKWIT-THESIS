@@ -19,7 +19,7 @@ public class Sounds extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patinig_lesson1);
+        setContentView(R.layout.activity_sounds);
 
         next = findViewById(R.id.backbutton);
         bot2 = findViewById(R.id.Bot2);

@@ -165,7 +165,6 @@ public class PatinigLesson2 extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
-                //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
                 printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
