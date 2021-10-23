@@ -1,7 +1,6 @@
 package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ public class Sounds extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sounds);
 
-        next = findViewById(R.id.backbutton);
+        next = findViewById(R.id.nextbutton);
         bot2 = findViewById(R.id.Bot2);
 
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
