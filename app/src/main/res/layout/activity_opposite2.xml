@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/actbg"
+    tools:context=".Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="330dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="center_horizontal"
+        android:text="Opposite"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@color/text"
+        android:textColorHint="#000000"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Word"
+        android:layout_width="330dp"
+        android:layout_height="76dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="center_horizontal"
+        android:hint="a_ _"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@color/text"
+        android:textColorHint="#000000"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="143dp"
+        android:layout_height="229dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384"
+        app:srcCompat="@drawable/dog" />
+
+    <ImageView
+        android:id="@+id/Bot"
+        android:layout_width="82dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193"
+        app:srcCompat="@drawable/kuyamatt" />
+
+    <ImageView
+        android:id="@+id/Bot2"
+        android:layout_width="82dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193"
+        app:srcCompat="@drawable/atechay" />
+
+    <Button
+        android:id="@+id/Choice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Button1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Choice2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Word"
+        app:layout_constraintVertical_bias="0.387" />
+
+    <Button
+        android:id="@+id/Choice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Button2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Word"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <Button
+        android:id="@+id/Choice3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Button3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Choice2"
+        app:layout_constraintTop_toBottomOf="@+id/Word"
+        app:layout_constraintVertical_bias="0.198" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

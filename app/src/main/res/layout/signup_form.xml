@@ -42,11 +42,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Email: aj@gmail.com"
+                android:hint="Email:"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/password"
@@ -58,8 +58,8 @@
                 android:hint="Password:"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/confirm_password"
@@ -71,8 +71,8 @@
                 android:hint="Confirm Password:"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/parent_or_instructor"
@@ -81,11 +81,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Name of Parents/Instuctor: (Full Name)"
+                android:hint="Name of Parents/Instuctor:"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/child_name"
@@ -94,11 +94,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Name of Child: Full Name"
+                android:hint="Name of Child:"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/age"
@@ -110,8 +110,8 @@
                 android:hint="Age of Child:"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/birthday"
@@ -123,8 +123,8 @@
                 android:hint="Birthdate of Child: 03-26-00"
                 android:inputType="date"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/level_severity"
@@ -136,8 +136,8 @@
                 android:hint="Severity level of Child:"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:textColor="#000000"
-                android:textColorHint="#000000" />
+                android:textColorHint="#000000"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/signup"
@@ -146,7 +146,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:text="Sign-Up"
-
                 android:minHeight="48dp"/>
 
             <Button

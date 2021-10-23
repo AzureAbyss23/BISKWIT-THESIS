@@ -4,115 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/actbg"
     tools:context=".Content.Lessons.PatinigActivities.PatinigLesson1">
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:text="Pagsusulit # 1"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:layout_editor_absoluteX="0dp"
+      tools:layout_editor_absoluteY="361dp">
 
-    <TextView
-        android:id="@+id/Word"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.754" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="128dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:text="Speak Now"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+      <ImageView
+          android:id="@+id/Bot2"
+          android:layout_width="82dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="50dp"
+          android:layout_marginBottom="10dp"
+          android:layout_gravity="center"
+          app:srcCompat="@drawable/atechay" />
 
-    <ImageButton
-        android:id="@+id/imageView2"
-        android:layout_width="93dp"
-        android:layout_height="91dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        android:background="@drawable/mic_logo"
-        tools:ignore="SpeakableTextPresentCheck" />
+      <TextView
+          android:id="@+id/aralin"
+          android:layout_width="312dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/crimson_text"
+          android:text="Aralin 1"
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+          android:textColor="#1C388F"
+          android:textColorHint="#000000"
+          android:textSize="50dp"
+          android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/nextButton"
-        android:layout_width="93dp"
-        android:layout_height="91dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        app:srcCompat="@drawable/next_icon"
-        tools:ignore="SpeakableTextPresentCheck" />
+      <TextView
+          android:id="@+id/aralin2"
+          android:layout_width="312dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="5dp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/crimson_text"
+          android:text="Patinig"
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+          android:textColor="#FF7F7F"
+          android:textColorHint="#000000"
+          android:textSize="40dp"
+          android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="143dp"
-        android:layout_height="229dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.384"
-        app:srcCompat="@drawable/dog" />
+      <TextView
+          android:id="@+id/lesson1"
+          android:layout_width="312dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/crimson_text"
+          android:text="Ito ay galaw ng bibig, saltik ng dila na may kasabay na tunog ng lalamunan o walang antalang bugso ng tinig sa pagbigkas ng salita. (a,e,i,o,u)."
+          android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+          android:textColor="#1C388F"
+          android:textColorHint="#000000"
+          android:lineSpacingExtra="3dp"
+          android:textSize="25dp"
+          android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/Bot"
-        android:layout_width="82dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193"
-        app:srcCompat="@drawable/bot_icon" />
+      <TextView
+          android:id="@+id/lesson2"
+          android:layout_width="312dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/crimson_text"
+          android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+          android:textColor="#1C388F"
+          android:textColorHint="#000000"
+          android:textSize="25dp"
+          android:lineSpacingExtra="3dp"
+          android:textStyle="bold"
+          android:text="Mga Halimbawa dito ay: \nA ay Apoy (A-POY)\nE ay Eroplano (E-RO-PLA-NO)\nI ay Ilaw (I-LAW)\nO ay Orasan (O-RA-SAN)\nU ay Unan (U-NAN)"/>
+
+      <ImageButton
+          android:id="@+id/backbutton"
+          android:layout_width="93dp"
+          android:layout_height="91dp"
+          android:layout_marginEnd="22dp"
+          android:layout_marginRight="22dp"
+          android:layout_marginTop="50dp"
+          android:layout_marginBottom="30dp"
+          android:background="@drawable/backbutton"
+          android:layout_gravity="right"
+          tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+  </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

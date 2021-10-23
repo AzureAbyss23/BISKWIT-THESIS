@@ -9,10 +9,10 @@
 
     <queries>
         <intent>
-            <action
-                android:name="android.speech.RecognitionService" />
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/mainlogo"
@@ -20,6 +20,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Sounds.SoundsAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Years.YearsAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous.SynonymousAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlamkoitoActivities.Days.DaysAct"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.Score"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.OrtonActivities.Phoenimic"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
+            android:exported="true" />
         <activity
             android:name=".Content.Story.TulaActivities.Maglaro"
             android:exported="true" />
@@ -39,22 +66,19 @@
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson2"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
+            android:name=".Content.Lessons.AlamkoitoActivities.Sounds.Sounds"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Sounds"
+            android:name=".Content.Lessons.AlamkoitoActivities.Years.Years"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Years"
+            android:name=".Content.Lessons.AlamkoitoActivities.Days.Days"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Days"
+            android:name=".Content.Lessons.AlamkoitoActivities.Opposite.Opposite"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Opposite"
-            android:exported="true" />
-        <activity
-            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous"
+            android:name=".Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.OrtonActivities.Pagbabaybay"
@@ -72,7 +96,7 @@
             android:name=".Content.Lessons.PatinigActivities.PatinigChoices1"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
+            android:name=".Content.Lessons.PatinigActivities.PatinigLesson2"
             android:exported="true" />
         <activity
             android:name=".MainNavMenu"

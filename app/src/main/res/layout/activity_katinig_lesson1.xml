@@ -7,100 +7,124 @@
     android:background="@drawable/bg"
     tools:context=".Content.Lessons.KatinigActivities.KatinigLesson1">
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal"
-        android:text="Pagsusulit # 1"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:fontFamily="@font/chewy"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="361dp">
 
-    <TextView
-        android:id="@+id/Word"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="330dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="148dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:text="Speak Now"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/Bot2"
+                android:layout_width="82dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/atechay" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="93dp"
-        android:layout_height="91dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:onClick="getSpeechInput"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        app:srcCompat="@drawable/mic_logo"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/aralin"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/crimson_text"
+                android:text="Aralin 1"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#1C388F"
+                android:textColorHint="#000000"
+                android:textSize="50dp"
+                android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/nextButton"
-        android:layout_width="93dp"
-        android:layout_height="91dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        app:srcCompat="@drawable/next_icon"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/aralin2"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/crimson_text"
+                android:text="Katinig"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#FFA500"
+                android:textColorHint="#000000"
+                android:textSize="40dp"
+                android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="143dp"
-        android:layout_height="229dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328"
-        app:srcCompat="@drawable/house" />
+            <TextView
+                android:id="@+id/lesson1"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/crimson_text"
+                android:lineSpacingExtra="3dp"
+                android:text="Ito ay isang paraan ng artikulasyon ng tunog. Ang katinig ay binubuo ng dalawampu’t tatlong katinig. (b,c,d,f,g,h,j,k,l,m,n,ng,p,q,r,s,t,v,w,x,y,z)."
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#1C388F"
+                android:textColorHint="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lesson2"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/crimson_text"
+                android:lineSpacingExtra="5dp"
+                android:text="Mga Halimbawa dito ay: \nB - Baboy (BA-BOY)
+                                \nC = K - Cassette (CA-SETTE)
+                                \nC = S Circle (CIR-CLE)
+                                \nD - Daga (DA-GA)
+                                \nF - Folder (FOL-DER)
+                                \nG - Ginto (GIN-TO)
+                                \nJ = Dy - Juice (DYU-S),
+                                \nJ = H - Jose (HO-SE)
+                                \nK - Kamatis (KA-MA-TIS)
+                                \nL - Lapis (LA-PIS)
+                                \nM - Mangga (MANG-GA)
+                                \nN - Niyog (NI-YOG)
+                                \nNg - Ngipin (NGI-PIN)
+                                \nP - Pera (PE-RA)
+                                \nQ = K - Quiz (KU-WIZ)
+                                \nR - Rosaryo (RO-SAR-YO)
+                                \nS - Sandok (SAN-DOK)
+                                \nT - Tuka (TU-KA)
+                                \nV - Van(V-AN),
+                                \nW - Walis (WA-LIS),
+                                \nX = Eks - X-ray (EKS-RAY)
+                                \nX = S - Xerox (SE-ROX)
+                                \nY - Yaya (YA-YA)
+                                \nZ - Zombie (ZOM-BIE)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#1C388F"
+                android:textColorHint="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/backbutton"
+                android:layout_width="93dp"
+                android:layout_height="91dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/backbutton"
+                android:layout_gravity="right"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,94 +8,82 @@
     tools:context=".Content.LessonFragment">
 
 
-    <Button
-        android:id="@+id/Alphabet"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:background="@drawable/roundshape"
-        android:text="Kabanata 1"
-        app:backgroundTint="#FF7F7F"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/Patinig"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:background="@drawable/roundshape"
-        android:text="Kabanata 3"
-        app:backgroundTint="#FFEB3B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/Katinig"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:background="@drawable/roundshape"
-        android:text="Kabanata 4"
-        app:backgroundTint="#90EE90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/chewy"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:text="Aralin"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="@color/text"
+                android:textColorHint="#000000"
+                android:textSize="50dp" />
 
-    <Button
-        android:id="@+id/Alamkoito"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:background="@drawable/roundshape"
-        android:text="Kabanata 5"
-        app:backgroundTint="#00BCD4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+            <Button
+                android:id="@+id/Alphabet"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:text="Kabanata 1: Alphabet"
+                app:backgroundTint="#FF7F7F" />
 
-    <Button
-        android:id="@+id/Orton"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:background="@drawable/roundshape"
-        android:text="Kabanata 2"
-        app:backgroundTint="#FFA500"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+            <Button
+                android:id="@+id/Orton"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/roundshape"
+                android:text="Kabanata 2: Orton-Gillingham"
+                app:backgroundTint="#FFA500" />
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="340dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/chewy"
-        android:gravity="center_horizontal"
-        android:text="Aralin"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/text"
-        android:textColorHint="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+            <Button
+                android:id="@+id/Patinig"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:text="Kabanata 3: Patinig"
+                app:backgroundTint="#FFEB3B" />
+
+            <Button
+                android:id="@+id/Katinig"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:text="Kabanata 4: Katinig"
+                app:backgroundTint="#90EE90" />
+
+            <Button
+                android:id="@+id/Alamkoito"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:text="Kabanata 5: Alam ko ito"
+                app:backgroundTint="#00BCD4" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
