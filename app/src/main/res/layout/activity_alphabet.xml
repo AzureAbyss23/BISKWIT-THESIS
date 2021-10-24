@@ -58,7 +58,6 @@
                 android:id="@+id/Word"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:hint="A"
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"

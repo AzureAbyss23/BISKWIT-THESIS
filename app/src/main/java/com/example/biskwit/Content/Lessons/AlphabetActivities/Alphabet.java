@@ -6,7 +6,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -22,11 +26,30 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
+import com.example.biskwit.Data.Constants;
+
+import com.example.biskwit.MainActivity;
+import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class Alphabet extends AppCompatActivity {
 
@@ -36,9 +59,7 @@ public class Alphabet extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-    String[] UpperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    StringBuffer buff;
+    String[] alphabet;
     int all_ctr = 0;
     int click = 0;
     int mic_ctr = 0;
@@ -50,6 +71,8 @@ public class Alphabet extends AppCompatActivity {
 
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
+
+    ProgressDialog progressDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -72,41 +95,28 @@ public class Alphabet extends AppCompatActivity {
         ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
         ai.start();
 
-        //DB = new DBHelper(this);
+        progressDialog = new ProgressDialog(Alphabet.this);
 
-        //c = DB.getlessondata(letter);
-
-        /*if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();*/
-
-        txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
+        //Database here
+        getData();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(all_ctr < 25) {
+                if(all_ctr < (alphabet.length - 1)) {
                     if (mic_ctr == 0) {
                         txtresult.setText("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
-                        txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
+                        txtword.setText(alphabet[all_ctr]+alphabet[all_ctr].toLowerCase());
                         txtresult.setText("Press the Mic Button");
                         score += add;
                         add = 0;
 
-                        CurrentProgress = CurrentProgress +4;
+                        CurrentProgress = CurrentProgress + 370;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
+                        progressBar.setMax(10000);
                     }
                 } else {
                     if (mic_ctr == 0) {
@@ -127,7 +137,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(alphabet[all_ctr].toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(Alphabet.this, sound);
                 ai.start();
             }
@@ -181,10 +191,9 @@ public class Alphabet extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
-                //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
-                printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
+                printSimilarity(word.toString(),alphabet[all_ctr]);
             }
 
             @Override
@@ -315,6 +324,77 @@ public class Alphabet extends AppCompatActivity {
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }
+    }
+
+    private void getData() {
+
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_alphabet.php";
+
+        StringRequest stringRequest = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Alphabet.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
     }
+
+    private void showJSONS(String response) {
+        ArrayList<String> letter = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                letter.add(collegeData.getString("letter"));
+            }
+            alphabet = new String[letter.size()];
+            alphabet = letter.toArray(alphabet);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!alphabet[0].equals("")){
+            txtword.setText(alphabet[0]+alphabet[0].toLowerCase());
+            progressDialog.dismiss();
+        } else {
+            Toast.makeText(Alphabet.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
+    // code para di magkeep playing yung sounds
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Alphabet.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
+    }
+
 }
