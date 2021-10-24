@@ -1,38 +1,36 @@
 package com.example.biskwit;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Data.Constants;
-import com.example.biskwit.Data.Database;
-import com.example.biskwit.Data.LoginResponseModel;
-import com.example.biskwit.Data.NetworkClient;
-import com.example.biskwit.Data.NetworkService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity{
     Button LoginButton,CreateAccButton;
     public EditText User, Pass;
     Intent intent;
-    Database db;
+    String Email = "";
+    String Password = "";
+    ProgressDialog progressDialog;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //db = new Database();
 
         LoginButton = (Button) findViewById(R.id.login);
 
@@ -40,64 +38,87 @@ public class MainActivity extends AppCompatActivity{
 
         User = findViewById(R.id.email);
         Pass = findViewById(R.id.password);
+        progressDialog = new ProgressDialog(MainActivity.this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Email = User.getText().toString();
-                String Password = Pass.getText().toString();
+                Email = User.getText().toString().trim();
+                Password = Pass.getText().toString().trim();
 
-                if (User.getText().toString().equals("")) {
+                if (Email.equals("")) {
                     Toast.makeText(MainActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
-                } /*else if (!emailValidator(inputEmail.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Please Field Valid Email", Toast.LENGTH_SHORT).show();
-                }*/ else if (Pass.getText().toString().equals("")) {
+                } else if (!emailValidator(Email)) {
+                    Toast.makeText(MainActivity.this, "Please Enter Valid Email", Toast.LENGTH_SHORT).show();
+                } else if (Password.equals("")) {
                     Toast.makeText(MainActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
                 } else {
-                    login();
+                    progressDialog.setTitle("Please wait");
+                    progressDialog.setMessage("Logging you in...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                    getData();
                 }
             }
         });
 
     }
 
-    private void login() {
+    public boolean emailValidator(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
 
-        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Please wait");
-        progressDialog.setMessage("Logging in...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        NetworkService networkService = NetworkClient.getClient().create(NetworkService.class);
-        Call<LoginResponseModel> login = networkService.login(User.getText().toString(), Pass.getText().toString());
-        login.enqueue(new Callback<LoginResponseModel>() {
+    }
+
+    private void getData() {
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetchdata.php?email="+Email+"&pass="+Password;
+
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
-            public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
-                LoginResponseModel responseBody = response.body();
-                if (responseBody != null) {
-                    if (responseBody.getSuccess().equals("1")) {
-                        SharedPreferences preferences = getSharedPreferences(Constants.PREFERENCE_NAME, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean(Constants.KEY_ISE_LOGGED_IN, true);
-                        //editor.putString(Constants.KEY_USERNAME, responseBody.getUserDetailObject().getUserDetails().get(0).getFirstName() + " " + responseBody.getUserDetailObject().getUserDetails().get(0).getLastName());
-                        /*editor.putString(Constants.KEY_LASTNAME, responseBody.getUserDetailObject().getUserDetails().get(0).getLastName());*/
-                        editor.putString(Constants.KEY_EMAIL, responseBody.getUserDetailObject().getUserDetails().get(0).getEmail());
-                        editor.apply();
-                        Toast.makeText(MainActivity.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), MainNavMenu.class));
-                        finish();
-                    } else {
-                        Toast.makeText(MainActivity.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-                }
-                progressDialog.dismiss();
-            }
+                });
 
-            @Override
-            public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
-                progressDialog.dismiss();
-            }
-        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        int id = 0;
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            JSONObject collegeData = result.getJSONObject(0);
+            id = collegeData.getInt("id");
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(id>0){
+            progressDialog.dismiss();
+            Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
+            startActivity(intent);
+        } else {
+            progressDialog.dismiss();
+            Toast.makeText(MainActivity.this, "Wrong email or Password", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -107,8 +128,4 @@ public class MainActivity extends AppCompatActivity{
         intent = new Intent(MainActivity.this, Terms.class);
         startActivity(intent);
     }
-
-
-
-
 }

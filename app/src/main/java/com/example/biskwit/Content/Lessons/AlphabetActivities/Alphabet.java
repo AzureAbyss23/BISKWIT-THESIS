@@ -6,7 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -24,9 +26,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
+import com.example.biskwit.Data.Constants;
+
 import com.example.biskwit.R;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Alphabet extends AppCompatActivity {
 
@@ -36,8 +46,9 @@ public class Alphabet extends AppCompatActivity {
     String word = "";
     DBHelper DB;
     Cursor c;
-    String[] P_Lesson_Words = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-    String[] UpperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    //String[] P_Lesson_Words = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    //String[] UpperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    String[] alphabet;
     StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
@@ -72,23 +83,9 @@ public class Alphabet extends AppCompatActivity {
         ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
         ai.start();
 
-        //DB = new DBHelper(this);
+        //Database here
 
-        //c = DB.getlessondata(letter);
-
-        /*if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();*/
-
-        txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
+        txtword.setText(alphabet[all_ctr]);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +96,7 @@ public class Alphabet extends AppCompatActivity {
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
-                        txtword.setText(UpperCase[all_ctr] + P_Lesson_Words[all_ctr]);
+                        txtword.setText(alphabet[all_ctr]);
                         txtresult.setText("Press the Mic Button");
                         score += add;
                         add = 0;
@@ -127,7 +124,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(alphabet[all_ctr], "raw", getPackageName());
                 ai = MediaPlayer.create(Alphabet.this, sound);
                 ai.start();
             }
@@ -184,7 +181,7 @@ public class Alphabet extends AppCompatActivity {
                 //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
-                printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
+                printSimilarity(word.toString(),alphabet[all_ctr]);
             }
 
             @Override
@@ -317,4 +314,5 @@ public class Alphabet extends AppCompatActivity {
         }
 
     }
+
 }
