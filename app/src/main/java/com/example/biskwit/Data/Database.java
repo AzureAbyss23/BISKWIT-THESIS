@@ -1,55 +1,75 @@
 package com.example.biskwit.Data;
 
-import static android.content.Context.MODE_PRIVATE;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
-import androidx.annotation.NonNull;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import javax.net.ssl.HttpsURLConnection;
 
 public class Database {
-    public boolean login(String email, String pass) {
 
-        final boolean[] log = new boolean[1];
-        Context context = null;
+    public String sendPostRequest(String requestURL,
+                                  HashMap<String, String> postDataParams) {
 
-        NetworkService networkService = NetworkClient.getClient().create(NetworkService.class);
-        Call<LoginResponseModel> login = networkService.login(email,pass);
-        login.enqueue(new Callback<LoginResponseModel>() {
-            @Override
-            public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
-                LoginResponseModel responseBody = response.body();
-                if (responseBody != null) {
-                    if (responseBody.getSuccess().equals("1")) {
-                        SharedPreferences preferences = context.getSharedPreferences(Constants.PREFERENCE_NAME, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean(Constants.KEY_ISE_LOGGED_IN, true);
-                        //editor.putString(Constants.KEY_USERNAME, responseBody.getUserDetailObject().getUserDetails().get(0).getFirstName() + " " + responseBody.getUserDetailObject().getUserDetails().get(0).getLastName());
-                        /*editor.putString(Constants.KEY_LASTNAME, responseBody.getUserDetailObject().getUserDetails().get(0).getLastName());*/
-                        editor.putString(Constants.KEY_EMAIL, responseBody.getUserDetailObject().getUserDetails().get(0).getEmail());
-                        editor.apply();
-                        //Toast.makeText(LoginActivity.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
-                        //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        //finish();
-                        log[0] = true;
-                    } else {
-                        log[0] = false;
-                        //Toast.makeText(LoginActivity.this, responseBody.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+        URL url;
+        String response = "";
+        try {
+            url = new URL(requestURL);
 
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(getPostDataString(postDataParams));
+
+            writer.flush();
+            writer.close();
+            os.close();
+            int responseCode=conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                response = br.readLine();
             }
-
-            @Override
-            public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
-                log[0] = false;
+            else {
+                response="Error Registering";
             }
-        });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        return log[0];
+        return response;
+    }
+
+    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for(Map.Entry<String, String> entry : params.entrySet()){
+            if (first)
+                first = false;
+            else
+                result.append("&");
+
+            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+        }
+
+        return result.toString();
     }
 }
