@@ -6,6 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -24,29 +27,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class Sight extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot,bot2;
+    ImageView next,bot,bot2, wordimg;
     ImageButton mic;
     String word = "";
-    DBHelper DB;
-    Cursor c;
-    String[] P_Lesson_Words = {"atis","anak","ahas","emosyon","ensayo","ekis","ilog",
-                    "ihaw","itik","okoy","okra","oso","uod","uwak","usa"};
-    StringBuffer buff;
+    String[] words;
     int all_ctr = 0;
     int click = 0;
     int ctr = 0;
-    int score = 0, add = 0;
+    int score = 0, add = 0, id = 0;
+    int mic_ctr = 0;
     MediaPlayer ai;
+    ProgressDialog progressDialog;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -66,42 +78,38 @@ public class Sight extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        wordimg = findViewById(R.id.WordImg);
+        progressDialog = new ProgressDialog(Sight.this);
 
-        //DB = new DBHelper(this);
-
-        //String letter = getIntent().getStringExtra("letter");
-
-        //c = DB.getlessondata(letter);
-
-        /*if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();*/
-
-        txtword.setText(P_Lesson_Words[all_ctr]);
+        getData();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ctr < 28) {
-                    if (all_ctr < 14) {
-                        ++all_ctr;
-                        ++ctr;
-                        score += add;
-                        txtword.setText(P_Lesson_Words[all_ctr]);
-                        txtresult.setText("Speak Now");
+                int all_length = (words.length * 2);
+                if(ctr < (all_length - 1)) {
+                    if (all_ctr < (words.length - 1)) {
+                        if (mic_ctr == 0) {
+                            txtresult.setText("Try it first!");
+                        } else {
+                            ++all_ctr;
+                            ++ctr;
+                            mic_ctr = 0;
+                            score += add;
+                            id = setImg();
+                            wordimg.setImageResource(id);
+                            txtword.setText(words[all_ctr]);
+                            txtresult.setText("Speak Now");
+                        }
                     } else {
-                        all_ctr = 0;
-                        txtword.setText(P_Lesson_Words[all_ctr]);
-                        View b = findViewById(R.id.imageView3);
-                        b.setVisibility(View.GONE);
+                        if (mic_ctr == 0) {
+                            txtresult.setText("Try it first!");
+                        } else {
+                            all_ctr = 0;
+                            txtword.setText(words[all_ctr]);
+                            View b = findViewById(R.id.WordImg);
+                            b.setVisibility(View.GONE);
+                        }
                     }
                 } else {
                     Intent intent = new Intent(Sight.this, Score.class);
@@ -118,7 +126,7 @@ public class Sight extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(words[all_ctr].toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(Sight.this, sound);
                 ai.start();
             }
@@ -172,10 +180,9 @@ public class Sight extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
-                //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
-                printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
+                printSimilarity(word.toString(),words[all_ctr]);
             }
 
             @Override
@@ -196,6 +203,7 @@ public class Sight extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
@@ -205,6 +213,12 @@ public class Sight extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public int setImg(){
+        Resources res = this.getResources();
+        int resID;
+        return resID = res.getIdentifier("patinig_"+words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
     }
 
     protected void stopPlaying(){
@@ -304,5 +318,78 @@ public class Sight extends AppCompatActivity {
             ai.start();
         }
 
+    }
+
+    private void getData() {
+
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_sight.php";
+
+        StringRequest stringRequest = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Sight.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> data = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                data.add(collegeData.getString("word"));
+            }
+            words = new String[data.size()];
+            words = data.toArray(words);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!words[0].equals("")){
+            txtword.setText(words[0]);
+            id = setImg();
+            wordimg.setImageResource(id);
+            progressDialog.dismiss();
+        } else {
+            Toast.makeText(Sight.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
+    // code para di magkeep playing yung sounds
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Sight.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }
