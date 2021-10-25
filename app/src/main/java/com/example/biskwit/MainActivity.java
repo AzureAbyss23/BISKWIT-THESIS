@@ -1,7 +1,10 @@
 package com.example.biskwit;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -115,6 +118,7 @@ public class MainActivity extends AppCompatActivity{
             progressDialog.dismiss();
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);
+            finish();
         } else {
             progressDialog.dismiss();
             Toast.makeText(MainActivity.this, "Wrong email or Password", Toast.LENGTH_LONG).show();
@@ -127,5 +131,22 @@ public class MainActivity extends AppCompatActivity{
     {
         intent = new Intent(MainActivity.this, Terms.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Leaving already?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        MainActivity.super.onBackPressed();
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        startActivity(intent);
+                    }
+                }).create().show();
     }
 }
