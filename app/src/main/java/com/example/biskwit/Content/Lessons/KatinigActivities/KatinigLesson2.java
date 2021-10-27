@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,22 +24,31 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import com.example.biskwit.DBHelper;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class KatinigLesson2 extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot,bot2;
+    ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
-    DBHelper DB;
-    Cursor c;
-    String[] P_Lesson_Words = {"aso","aklat","antigo","ama","anak","atis","alay","aliw","amihan"};
-    StringBuffer buff;
+    String[] P_Lesson_Words;
     int all_ctr = 0;
     int click = 0;
+    int id = 0;
+    int mic_ctr = 0, score = 0, add = 0;
     MediaPlayer ai;
+    Intent intent;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -48,10 +57,13 @@ public class KatinigLesson2 extends AppCompatActivity {
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_katinig_lesson2);
+
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -63,45 +75,47 @@ public class KatinigLesson2 extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        wordimg = findViewById(R.id.WordImg);
 
-        DB = new DBHelper(this);
+        getData();
 
-        String letter = getIntent().getStringExtra("letter");
-
-        c = DB.getlessondata(letter);
-
-        if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();
-
-        txtword.setText(P_Lesson_Words[all_ctr]);
+        String letter = intent.getStringExtra("letter");
+        Resources res = getResources();
+        int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+        ai = MediaPlayer.create(KatinigLesson2.this, sound);
+        ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ++all_ctr;
-                txtword.setText(P_Lesson_Words[all_ctr]);
-                txtresult.setText("Speak Now");
-
-                stopPlaying();
-
-                //pampagrayscale lang to nung bot na icon
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(0);
-                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
-                //progress bar
-                CurrentProgress = CurrentProgress +15;
-                progressBar.setProgress(CurrentProgress);
-                progressBar.setMax(100);
+                if(all_ctr < (P_Lesson_Words.length - 1)) {
+                    if(mic_ctr == 0){
+                        txtresult.setText("Try it first!");
+                    } else {
+                        ++all_ctr;
+                        mic_ctr = 0;
+                        score += add;
+                        txtword.setText(P_Lesson_Words[all_ctr]);
+                        txtresult.setText("Speak Now");
+                        id = setImg();
+                        wordimg.setImageResource(id);
+                        stopPlaying();
+                        CurrentProgress = CurrentProgress + 714;
+                        progressBar.setProgress(CurrentProgress);
+                        progressBar.setMax(10000);
+                    }
+                } else {
+                    if(mic_ctr == 0){
+                        txtresult.setText("Try it first!");
+                    } else {
+                        score += add;
+                        Intent intent = new Intent(KatinigLesson2.this, Score.class);
+                        intent.putExtra("Score", score);
+                        startActivity(intent);
+                    }
+                }
             }
         });
 
@@ -120,11 +134,15 @@ public class KatinigLesson2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(KatinigLesson2.this, R.raw.kab4_p2_b);
+                String letter = intent.getStringExtra("letter");
+                Resources res = getResources();
+                int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+                ai = MediaPlayer.create(KatinigLesson2.this, sound);
                 ai.start();
             }
         });
 
+        //SPEECH RECOGNIZER
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -164,7 +182,6 @@ public class KatinigLesson2 extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
-                //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
                 printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
@@ -188,6 +205,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
@@ -235,8 +253,6 @@ public class KatinigLesson2 extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -249,6 +265,7 @@ public class KatinigLesson2 extends AppCompatActivity {
 
     }
 
+    // LEVENSHTEIN DISTANCE ALGORITHM
     public static int editDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();
@@ -281,62 +298,101 @@ public class KatinigLesson2 extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
+            add = 0;
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
+            add = 1;
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
+            add = 2;
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
         }
 
     }
-}
 
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT);
-            }
-        } else {
-            Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT);
-        }
+    public int setImg(){
+        Resources res = this.getResources();
+        int resID;
+        return resID = res.getIdentifier("Katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
     }
 
-    public void getSpeechInput(View view) {
+    private void getData() {
+        progressDialog = new ProgressDialog(KatinigLesson2.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "fil-PH");
+        intent = getIntent();
+        String letter = intent.getStringExtra("letter");
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_katinig2.php?letter="+letter;
 
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, 10);
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(KatinigLesson2.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> data = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                data.add(collegeData.getString("word"));
+            }
+            P_Lesson_Words = new String[data.size()];
+            P_Lesson_Words = data.toArray(P_Lesson_Words);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!P_Lesson_Words[0].equals("")){
+            txtword.setText(P_Lesson_Words[0]);
+            id = setImg();
+            wordimg.setImageResource(id);
+            progressDialog.dismiss();
         } else {
-            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
+            Toast.makeText(KatinigLesson2.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-        switch (requestCode) {
-            case 10:
-                if (resultCode == RESULT_OK && data != null) {
-                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    word = result.get(0);
-                    if(word.equals(P_Lesson_Words[all_ctr])){
-                        txtresult.setText("CORRECT WORD!");
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        KatinigLesson2.super.onBackPressed();
+                        stopPlaying();
                     }
-                    else{
-                        txtresult.setText("Try again!");
-                    }
-                }
-                break;
-        }
-    }*/
+                }).create().show();
+    }
+}
