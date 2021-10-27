@@ -19,14 +19,13 @@
             <TextView
                 android:id="@+id/Title"
                 android:layout_width="330dp"
-                android:layout_height="76dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
-                android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Opposite"
-                android:textAlignment="center"
+                android:layout_marginBottom="25dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="@color/text"
                 android:textColorHint="#000000"
@@ -41,8 +40,7 @@
                     android:id="@+id/Bot3"
                     android:layout_width="82dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
                     android:layout_marginBottom="25dp"
                     app:srcCompat="@drawable/kuyamatt" />
 
@@ -50,9 +48,6 @@
                     android:id="@+id/Bot2"
                     android:layout_width="82dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="50dp"
                     android:layout_marginBottom="25dp"
                     app:srcCompat="@drawable/kuyamatt" />
 
@@ -60,9 +55,7 @@
                     android:id="@+id/Bot"
                     android:layout_width="82dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
                     android:layout_marginBottom="25dp"
                     app:srcCompat="@drawable/atechay" />
             </LinearLayout>
@@ -80,8 +73,7 @@
                     android:layout_marginRight="25dp"
                     android:layout_marginLeft="30dp"
                     android:fontFamily="@font/chewy"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="@color/text"
                     android:textColorHint="#000000"
@@ -112,8 +104,7 @@
                     android:layout_marginRight="25dp"
                     android:layout_marginLeft="30dp"
                     android:fontFamily="@font/chewy"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="@color/text"
                     android:textColorHint="#000000"
@@ -142,14 +133,14 @@
                     android:layout_marginRight="25dp"
                     android:layout_marginBottom="44dp"
                     android:fontFamily="@font/chewy"
-                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
                     android:layout_marginLeft="30dp"
-                    android:text="Speak Now"
-                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:text="Press the Mic Button"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="@color/text"
                     android:textColorHint="#000000"
-                    android:textSize="50dp" />
+                    android:textSize="30dp" />
 
                 <ImageView
                     android:id="@+id/nextButton"

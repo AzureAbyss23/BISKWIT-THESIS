@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/nav_aboutus"
         android:name="com.example.biskwit.MainDrawer.Aboutus"
-        android:label="fragment_aboutus"
+        android:label="About Us"
         tools:layout="@layout/fragment_aboutus" />
 
 </navigation>

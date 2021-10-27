@@ -57,7 +57,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
         }
 
-        txtresult = (TextView) findViewById(R.id.Result);
+        txtresult = (TextView) findViewById(R.id.result);
         txtword = (TextView) findViewById(R.id.Word);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);

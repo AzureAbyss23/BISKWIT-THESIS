@@ -33,7 +33,7 @@ public class Opposite extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phoenimic);
+        setContentView(R.layout.activity_opposite);
 
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);

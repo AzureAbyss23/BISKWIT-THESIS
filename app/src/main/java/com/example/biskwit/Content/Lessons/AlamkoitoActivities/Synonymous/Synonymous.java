@@ -40,7 +40,7 @@ public class Synonymous extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phoenimic);
+        setContentView(R.layout.activity_synonymous);
 
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
