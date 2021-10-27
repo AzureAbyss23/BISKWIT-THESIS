@@ -30,7 +30,7 @@ public class DaysAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_days2);
+        setContentView(R.layout.activity_days);
 
         score = getIntent().getIntExtra("Score",0);
 
