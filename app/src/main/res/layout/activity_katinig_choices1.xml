@@ -42,7 +42,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_b" />
 
                 <ImageView
                     android:id="@+id/space"
@@ -56,7 +56,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_d" />
 
             </LinearLayout>
 
@@ -71,7 +71,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_g" />
 
                 <ImageView
                     android:id="@+id/space1"
@@ -85,7 +85,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_h" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,7 +99,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_k" />
 
                 <ImageView
                     android:id="@+id/space2"
@@ -113,7 +113,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_l" />
             </LinearLayout>
 
             <LinearLayout
@@ -127,7 +127,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_m" />
 
                 <ImageView
                     android:id="@+id/space3"
@@ -141,7 +141,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_n" />
 
             </LinearLayout>
 
@@ -156,7 +156,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_ng" />
 
                 <ImageView
                     android:id="@+id/space4"
@@ -170,7 +170,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_p" />
 
             </LinearLayout>
 
@@ -185,7 +185,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_r" />
 
                 <ImageView
                     android:id="@+id/space5"
@@ -199,7 +199,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_s" />
 
             </LinearLayout>
 
@@ -214,7 +214,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_t" />
 
                 <ImageView
                     android:id="@+id/space6"
@@ -228,7 +228,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_y" />
 
             </LinearLayout>
 

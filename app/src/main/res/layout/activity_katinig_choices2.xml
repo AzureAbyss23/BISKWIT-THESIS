@@ -41,7 +41,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_ck" />
 
                 <ImageView
                     android:id="@+id/space"
@@ -55,7 +55,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_cs" />
 
             </LinearLayout>
 
@@ -70,7 +70,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_f" />
 
                 <ImageView
                     android:id="@+id/space2"
@@ -84,7 +84,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_j" />
 
             </LinearLayout>
 
@@ -99,7 +99,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_q" />
 
                 <ImageView
                     android:id="@+id/space3"
@@ -113,7 +113,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_v" />
 
             </LinearLayout>
 
@@ -128,7 +128,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/hiram_w" />
 
                 <ImageView
                     android:id="@+id/space4"
@@ -142,7 +142,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_xk" />
             </LinearLayout>
 
             <LinearLayout
@@ -156,7 +156,7 @@
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_xs" />
 
                 <ImageView
                     android:id="@+id/space5"
@@ -170,7 +170,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/patinig_e" />
+                    android:background="@drawable/katinig_z" />
 
             </LinearLayout>
 
