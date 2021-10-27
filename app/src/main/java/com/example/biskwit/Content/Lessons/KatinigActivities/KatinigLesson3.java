@@ -81,9 +81,9 @@ public class KatinigLesson3 extends AppCompatActivity {
 
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
-        int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
-        ai = MediaPlayer.create(KatinigLesson3.this, sound);
-        ai.start();
+        //int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
+        //ai = MediaPlayer.create(KatinigLesson3.this, sound);
+        //ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -136,7 +136,7 @@ public class KatinigLesson3 extends AppCompatActivity {
                 stopPlaying();
                 String letter = intent.getStringExtra("letter");
                 Resources res = getResources();
-                int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+                int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(KatinigLesson3.this, sound);
                 ai.start();
             }
@@ -318,7 +318,7 @@ public class KatinigLesson3 extends AppCompatActivity {
     public int setImg(){
         Resources res = this.getResources();
         int resID;
-        return resID = res.getIdentifier("Katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
+        return resID = res.getIdentifier("hiram_"+P_Lesson_Words[all_ctr].replace(" ","_").replace("-","").toLowerCase(), "drawable", this.getPackageName());
     }
 
     private void getData() {

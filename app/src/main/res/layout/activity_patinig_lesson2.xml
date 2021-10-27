@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/actbg"
-    tools:context=".Content.Lessons.OrtonActivities.Sight">
+    tools:context=".Content.Lessons.PatinigActivities.PatinigLesson2">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -117,7 +117,6 @@
                     android:layout_width="93dp"
                     android:layout_height="91dp"
                     android:layout_weight="1"
-
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
