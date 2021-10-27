@@ -113,8 +113,7 @@ public class Alphabet extends AppCompatActivity {
                         txtresult.setText("Press the Mic Button");
                         score += add;
                         add = 0;
-
-                        CurrentProgress = CurrentProgress + 370;
+                        CurrentProgress = CurrentProgress + 384;
                         progressBar.setProgress(CurrentProgress);
                         progressBar.setMax(10000);
                     }

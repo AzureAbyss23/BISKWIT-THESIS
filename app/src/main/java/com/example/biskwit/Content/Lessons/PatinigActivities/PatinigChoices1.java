@@ -29,7 +29,7 @@ public class PatinigChoices1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
-                intent.putExtra("letter","a");
+                intent.putExtra("letter","A");
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class PatinigChoices1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
-                intent.putExtra("letter","e");
+                intent.putExtra("letter","E");
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class PatinigChoices1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
-                intent.putExtra("letter","i");
+                intent.putExtra("letter","I");
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class PatinigChoices1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
-                intent.putExtra("letter","o");
+                intent.putExtra("letter","O");
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class PatinigChoices1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(PatinigChoices1.this, PatinigLesson2.class);
-                intent.putExtra("letter","u");
+                intent.putExtra("letter","U");
                 startActivity(intent);
             }
         });

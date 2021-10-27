@@ -2,7 +2,11 @@ package com.example.biskwit.Content.Lessons.OrtonActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -10,18 +14,33 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Pagbabaybay extends AppCompatActivity {
 
     EditText spell;
     ImageView nextButton;
-    String[] data = {"aso","elepante","ibon","oso",",unggoy","ako ay isang pilipino","ako ay masipag",
-            "si maria ay maganda","naglinis ng banyo si mama","napakainit ng panahon ngayon"};
-    int all_ctr = 0, score = 0;
+    String[] words;
+    String[] botins;
+    int all_ctr = 0, all_ctr2 = 0, score = 0;
     MediaPlayer ai;
     ImageView bot, bot2;
+
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +49,12 @@ public class Pagbabaybay extends AppCompatActivity {
 
         spell = findViewById(R.id.Spell);
         nextButton = findViewById(R.id.nextButton);
+        bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
+
+        progressDialog = new ProgressDialog(Pagbabaybay.this);
+
+        getData();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,9 +64,10 @@ public class Pagbabaybay extends AppCompatActivity {
                     toastMsg("You must enter your spelling.");
                 } else {
                     spell.getText().clear();
-                    printSimilarity(word, data[all_ctr]);
+                    printSimilarity(word, words[all_ctr]);
                     if (all_ctr < 9) {
                         ++all_ctr;
+                        if(all_ctr > 5) all_ctr2++;
                         toastMsg("Next Word.");
                     } else {
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
@@ -50,6 +75,22 @@ public class Pagbabaybay extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
+            }
+        });
+
+        bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                Resources res = getResources();
+                if(all_ctr < 5) {
+                    int sound = res.getIdentifier(words[all_ctr].toLowerCase(), "raw", getPackageName());
+                    ai = MediaPlayer.create(Pagbabaybay.this, sound);
+                } else {
+                    int sound = res.getIdentifier(botins[all_ctr2].toLowerCase(), "raw", getPackageName());
+                    ai = MediaPlayer.create(Pagbabaybay.this, sound);
+                }
+                ai.start();
             }
         });
 
@@ -130,5 +171,79 @@ public class Pagbabaybay extends AppCompatActivity {
             score += 2;
         }
 
+    }
+
+    private void getData() {
+
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_pagbabaybay.php";
+
+        StringRequest stringRequest = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Pagbabaybay.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> data = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                data.add(collegeData.getString("word"));
+            }
+            words = new String[data.size()];
+            words = data.toArray(words);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!words[0].equals("")){
+            botins = new String[5];
+            for(int i = 0, j = 5;i < 5 && j < 10; i++, j++) {
+                botins[i] = words[j].replaceAll(" ","_").toLowerCase();
+            }
+            progressDialog.dismiss();
+        } else {
+            Toast.makeText(Pagbabaybay.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
+    // code para di magkeep playing yung sounds
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Pagbabaybay.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }
