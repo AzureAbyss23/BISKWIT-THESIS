@@ -81,7 +81,7 @@ public class KatinigLesson2 extends AppCompatActivity {
 
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
-        int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+        int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
         ai = MediaPlayer.create(KatinigLesson2.this, sound);
         ai.start();
 
@@ -318,7 +318,7 @@ public class KatinigLesson2 extends AppCompatActivity {
     public int setImg(){
         Resources res = this.getResources();
         int resID;
-        return resID = res.getIdentifier("Katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
+        return resID = res.getIdentifier("katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
     }
 
     private void getData() {

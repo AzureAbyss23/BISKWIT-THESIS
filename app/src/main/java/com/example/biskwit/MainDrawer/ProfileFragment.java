@@ -1,11 +1,12 @@
 package com.example.biskwit.MainDrawer;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Phoenimic;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.databinding.FragmentProfileBinding;
 import org.json.JSONArray;
@@ -25,6 +25,9 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     ProgressDialog progressDialog;
+
+    public static final String filename = "idfetch";
+    public static final String UserID = "userid";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,12 +45,16 @@ public class ProfileFragment extends Fragment {
 
     private void getData() {
 
+        int id;
+        SharedPreferences logger = getActivity().getSharedPreferences(filename,Context.MODE_PRIVATE);
+        id = logger.getInt(UserID,0);
+
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading your profile details...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_profile.php";
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_profile.php?id="+id;
 
         StringRequest stringRequest = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
             @Override

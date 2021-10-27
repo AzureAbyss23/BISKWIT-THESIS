@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -26,14 +30,29 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity{
     Button LoginButton,CreateAccButton;
     public EditText User, Pass;
+    CheckBox remember;
     Intent intent;
     String Email = "";
     String Password = "";
     ProgressDialog progressDialog;
+    SharedPreferences logger, IDFetch;
+    SharedPreferences.Editor editor,editor2;
+
+    public static final String filename = "logger";
+    public static final String filename2 = "idfetch";
+    public static final String UserID = "userid";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        IDFetch = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        if(logger.contains(UserID)){
+            Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
+            startActivity(intent);
+            finish();
+        }
 
         LoginButton = (Button) findViewById(R.id.login);
 
@@ -41,6 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
         User = findViewById(R.id.email);
         Pass = findViewById(R.id.password);
+        remember = findViewById(R.id.Remember);
         progressDialog = new ProgressDialog(MainActivity.this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +135,14 @@ public class MainActivity extends AppCompatActivity{
         }
 
         if(id>0){
+            if(remember.isChecked()) {
+                editor = logger.edit();
+                editor.putInt(UserID, id);
+                editor.commit();
+            }
+            editor2 = IDFetch.edit();
+            editor2.putInt(UserID, id);
+            editor2.commit();
             progressDialog.dismiss();
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);
