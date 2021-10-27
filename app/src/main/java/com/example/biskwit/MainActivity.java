@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+
+
+
     private void login() {
 
         final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
@@ -107,6 +110,8 @@ public class MainActivity extends AppCompatActivity{
         intent = new Intent(MainActivity.this, Terms.class);
         startActivity(intent);
     }
+
+
 
 
 
