@@ -36,7 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class KatinigLesson2 extends AppCompatActivity {
+public class KatinigLesson3 extends AppCompatActivity {
 
     TextView txtresult,txtword;
     ImageView next,bot,bot2,wordimg;
@@ -62,7 +62,7 @@ public class KatinigLesson2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_katinig_lesson2);
+        setContentView(R.layout.activity_katinig_lesson3);
 
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -81,9 +81,9 @@ public class KatinigLesson2 extends AppCompatActivity {
 
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
-        int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
-        ai = MediaPlayer.create(KatinigLesson2.this, sound);
-        ai.start();
+        //int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
+        //ai = MediaPlayer.create(KatinigLesson3.this, sound);
+        //ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -111,7 +111,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                         txtresult.setText("Try it first!");
                     } else {
                         score += add;
-                        Intent intent = new Intent(KatinigLesson2.this, Score.class);
+                        Intent intent = new Intent(KatinigLesson3.this, Score.class);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -125,7 +125,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 stopPlaying();
                 Resources res = getResources();
                 int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
-                ai = MediaPlayer.create(KatinigLesson2.this, sound);
+                ai = MediaPlayer.create(KatinigLesson3.this, sound);
                 ai.start();
             }
         });
@@ -136,8 +136,8 @@ public class KatinigLesson2 extends AppCompatActivity {
                 stopPlaying();
                 String letter = intent.getStringExtra("letter");
                 Resources res = getResources();
-                int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
-                ai = MediaPlayer.create(KatinigLesson2.this, sound);
+                int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
+                ai = MediaPlayer.create(KatinigLesson3.this, sound);
                 ai.start();
             }
         });
@@ -299,17 +299,17 @@ public class KatinigLesson2 extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
-            ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_0_to_49);
+            ai = MediaPlayer.create(KatinigLesson3.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 1;
-            ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_50_to_69);
+            ai = MediaPlayer.create(KatinigLesson3.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 2;
-            ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_70_to_100);
+            ai = MediaPlayer.create(KatinigLesson3.this, R.raw.response_70_to_100);
             ai.start();
         }
 
@@ -318,11 +318,11 @@ public class KatinigLesson2 extends AppCompatActivity {
     public int setImg(){
         Resources res = this.getResources();
         int resID;
-        return resID = res.getIdentifier("katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
+        return resID = res.getIdentifier("hiram_"+P_Lesson_Words[all_ctr].replace(" ","_").replace("-","").toLowerCase(), "drawable", this.getPackageName());
     }
 
     private void getData() {
-        progressDialog = new ProgressDialog(KatinigLesson2.this);
+        progressDialog = new ProgressDialog(KatinigLesson3.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
@@ -330,7 +330,7 @@ public class KatinigLesson2 extends AppCompatActivity {
 
         intent = getIntent();
         String letter = intent.getStringExtra("letter");
-        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_katinig2.php?letter="+letter;
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_katinig3.php?letter="+letter;
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -342,7 +342,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(KatinigLesson2.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(KatinigLesson3.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -376,7 +376,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             wordimg.setImageResource(id);
             progressDialog.dismiss();
         } else {
-            Toast.makeText(KatinigLesson2.this, "No data", Toast.LENGTH_LONG).show();
+            Toast.makeText(KatinigLesson3.this, "No data", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
         }
     }
@@ -390,7 +390,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        KatinigLesson2.super.onBackPressed();
+                        KatinigLesson3.super.onBackPressed();
                         stopPlaying();
                     }
                 }).create().show();
