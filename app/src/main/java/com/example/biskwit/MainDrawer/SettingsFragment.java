@@ -22,7 +22,7 @@ public class SettingsFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        // Alde lods ikaw na bahala magcode ng settings natin dito ka magcode
+
 
     }
 }
