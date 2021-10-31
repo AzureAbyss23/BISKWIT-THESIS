@@ -29,7 +29,7 @@
                 android:text="Aralin"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textSize="50dp" />
 
@@ -41,7 +41,8 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Kabanata 1: Alphabet"
-                app:backgroundTint="#FF7F7F" />
+                app:backgroundTint="#FF7F7F"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/Orton"
@@ -51,7 +52,8 @@
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/roundshape"
                 android:text="Kabanata 2: Orton-Gillingham"
-                app:backgroundTint="#FFA500" />
+                app:backgroundTint="#FFA500"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/Patinig"
@@ -61,7 +63,8 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Kabanata 3: Patinig"
-                app:backgroundTint="#FFEB3B" />
+                app:backgroundTint="#FFEB3B"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/Katinig"
@@ -71,7 +74,8 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Kabanata 4: Katinig"
-                app:backgroundTint="#90EE90" />
+                app:backgroundTint="#90EE90"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/Alamkoito"
@@ -81,7 +85,8 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:text="Kabanata 5: Alam ko ito"
-                app:backgroundTint="#00BCD4" />
+                app:backgroundTint="#00BCD4"
+                android:textColor="#000000" />
 
         </LinearLayout>
     </ScrollView>

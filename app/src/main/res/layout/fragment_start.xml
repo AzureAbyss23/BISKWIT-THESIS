@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textSize="50dp" />
 

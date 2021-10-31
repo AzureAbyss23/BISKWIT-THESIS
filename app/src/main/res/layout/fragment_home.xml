@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg"
     tools:context=".MainDrawer.HomeFragment">
 
@@ -10,8 +11,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="-78dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-137dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:text="HELLO, WELCOME TO BISKWIT!"
@@ -34,372 +35,491 @@
                 android:textColorHint="#000000"
                 android:textSize="40dp" />
 
-            <TextView
-                android:id="@+id/objective"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="355dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="BISKWIT\n(Bringing Insight to Special-needs Kids through Words and Interactive Tales)"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/objective1"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="An application software that is designed to enhance basic Filipino speech for grade 1 students with special needs (Dyslexic Students). What your children can expect from this app is a portable and accessible language companion app which will be dubbed in full Tagalog, tailored to improve the communicative skills of your children."
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/syllabus"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="SYLLABUS"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#48CCCD"
-                android:textColorHint="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/aralin"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/objective"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="110dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="BISKWIT\n(Bringing Insight to Special-needs Kids through Words and Interactive Tales)"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/objective1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="An application software that is designed to enhance basic Filipino speech for grade 1 students with special needs (Dyslexic Students). What your children can expect from this app is a portable and accessible language companion app which will be dubbed in full Tagalog, tailored to improve the communicative skills of your children."
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Aralin"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#48CCCD"
-                android:textColorHint="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/kab1"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/syllabus"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="SYLLABUS"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Kabanata 1"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FF7F7F"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="1dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/alphabet"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/aralin"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Aralin"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#FF9393"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 1"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/alphabet"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Alphabet"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#FFBE45"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab2"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="70dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 2"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/orton"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Orton Gillingham"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ortong"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Phonemic Awareness\n\u2022 Sight Words\n\u2022 Blending Drills\n\u2022 Pagbabaybay "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#FFF389"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab3"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="60dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 3"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/patinig1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Patinig"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/patinig2"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Patinig Aralin 1\n\u2022 Patinig Aralin 2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="170dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#AFFAAF"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab4"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="70dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 4"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/katinig1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="43dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Katinig"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/katinig2"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Katinig Aralin 1\n\u2022 Katinig Aralin 2\n\u2022 Katinig Aralin 3"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="230dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#9EF4FF"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab5"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 5"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/alam"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="55dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Alam Ko Ito"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/alam2"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Mga araw sa isang linggo\n\u2022 Mga buwan sa isang taon\n\u2022 Mga salitang magkasingkahulugan\n\u2022 Mga salitang magkasalungat\n\u2022 Mga tunog "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Alphabet"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/kab2"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Kabanata 2"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFA500"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/orton"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/magbasa"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Magbasa"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="Orton Gillingham"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFA500"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#EBDAFF"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/ortong"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Phoenimic Awareness\n\u2022 Sight Words\n\u2022 Blending Drills\n\u2022 Pagbabaybay "
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/kab3"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tula"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Tula"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tulas"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Tayo ay magdasal \n\u2022Ang Paruparo at ang Rosas\n\u2022Halina at maglaro"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Kabanata 3"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFEB3B"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#FFBCDA"
+                app:cardCornerRadius="20dp">
 
-            <TextView
-                android:id="@+id/patinig1"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="Patinig"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#FFEB3B"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/pabula"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Pabula"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/patinig2"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Patinig Aralin 1\n\u2022 Patinig Aralin 2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/pabulas"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Si lamok at si leon \n\u2022Si langgam at si tipaklong"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/kab4"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Kabanata 4"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#90EE90"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/katinig1"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="Katinig"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#90EE90"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/katinig2"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Katinig Aralin 1\n\u2022 Katinig Aralin 2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/kab5"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Kabanata 5"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#00BCD4"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/alam"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="Alam Ko Ito"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#00BCD4"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/alam2"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Mga araw sa isang linggo\n\u2022 Mga buwan sa isang taon\n\u2022 Mga salitang magkasingkahulugan\n\u2022 Mga salitang magkasalungat\n\u2022 Mga tunog "
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/magbasa"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Magbasa"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#48CCCD"
-                android:textColorHint="#000000"
-                android:textSize="30dp" />
-
-            <TextView
-                android:id="@+id/tula"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Tula"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#B09FCA"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tulas"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Tayo ay magdasal \n\u2022Ang Paruparo at ang Rosas\n\u2022Halina at maglaro"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/pabula"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:gravity="center_horizontal"
-                android:text="Pabula"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#00BCD4"
-                android:textColorHint="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/pabulas"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/crimson_text"
-                android:text="\u2022 Si lamok at si leon \n\u2022Si langgam at si tipaklong"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#1C388F"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/cite"
-                android:layout_width="312dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
