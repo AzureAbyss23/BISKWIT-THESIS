@@ -57,13 +57,11 @@ public class Alphabet extends AppCompatActivity {
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
-    DBHelper DB;
-    Cursor c;
     String[] alphabet;
     int all_ctr = 0;
     int click = 0;
     int mic_ctr = 0;
-    int score = 0, add = 0;
+    double score = 0, add = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -314,12 +312,12 @@ public class Alphabet extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }

@@ -41,7 +41,8 @@ public class Phoenimic extends AppCompatActivity {
     String[][] words1;
     String[][] words2;
     String[] categ;
-    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0, add = 0, score = 0;
+    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0;
+    double add = 0, score = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -217,6 +218,7 @@ public class Phoenimic extends AppCompatActivity {
                         category.setText(categ[all_ctr]);
                         mic_ctr1 = 0;
                         mic_ctr2 = 0;
+                        score += add;
                         stopPlaying();
                     }
                 } else {
@@ -304,12 +306,12 @@ public class Phoenimic extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             ai = MediaPlayer.create(Phoenimic.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val == 1.0){
-            add = 2;
+            add = 1;
             ai = MediaPlayer.create(Phoenimic.this, R.raw.response_70_to_100);
             ai.start();
         }

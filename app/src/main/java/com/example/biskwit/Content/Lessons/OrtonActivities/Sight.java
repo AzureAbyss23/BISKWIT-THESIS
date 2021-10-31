@@ -55,7 +55,8 @@ public class Sight extends AppCompatActivity {
     int all_ctr = 0;
     int click = 0;
     int ctr = 0;
-    int score = 0, add = 0, id = 0;
+    double score = 0, add = 0;
+    int id = 0;
     int mic_ctr = 0;
     MediaPlayer ai;
     ProgressDialog progressDialog;

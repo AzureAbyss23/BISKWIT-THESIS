@@ -37,7 +37,8 @@ public class Blending extends AppCompatActivity {
             {"llisi","nergy","nsayo"},{"saw","law","sda"},{"saw","law","sda"},
             {"po","lo","so"},{"po","lo","so"},{"lo","od","so"},{"sa","bo","lo"}};
     String spaces = "";
-    int all_ctr = 0, score = 0, id = 0;
+    int all_ctr = 0, id = 0;
+    double score = 0;
     TextView txtword;
     ImageView bot,bot2,wordimg;
     MediaPlayer ai;
@@ -134,7 +135,7 @@ public class Blending extends AppCompatActivity {
         if(s.equals(words[all_ctr])){
             Toast toast = Toast.makeText(this, "Correct!", Toast.LENGTH_LONG);
             toast.show();
-            score += 2;
+            score += 1;
         }
         else{
             Toast toast = Toast.makeText(this, "Wrong!", Toast.LENGTH_LONG);

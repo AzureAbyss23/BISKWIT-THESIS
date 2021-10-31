@@ -22,8 +22,8 @@ public class Score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        int s = getIntent().getIntExtra("Score",0);
-        String Score = Integer.toString(s);
+        double s = getIntent().getDoubleExtra("Score",0);
+        String Score = Double.toString(s);
         score = findViewById(R.id.Score);
         next = findViewById(R.id.nextButton);
 
