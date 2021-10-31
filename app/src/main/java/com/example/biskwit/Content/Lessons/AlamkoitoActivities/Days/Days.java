@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -25,10 +28,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Days extends AppCompatActivity {
 
@@ -36,13 +50,10 @@ public class Days extends AppCompatActivity {
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
-    DBHelper DB;
-    Cursor c;
-    String[] P_Lesson_Words = {"linggo","lunes","martes","miyerkules","huwebes","biyernes","sabado"};
-    StringBuffer buff;
+    String[] P_Lesson_Words;
     int all_ctr = 0;
     int click = 0;
-    int add = 0, score = 0;
+    int add = 0, score = 0, mic_ctr = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -52,11 +63,12 @@ public class Days extends AppCompatActivity {
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_days);
-
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -68,51 +80,36 @@ public class Days extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
-
-        //DB = new DBHelper(this);
-
-        //String letter = getIntent().getStringExtra("letter");
-
-        //c = DB.getlessondata(letter);
-
-        /*if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();*/
-
-        txtword.setText(P_Lesson_Words[all_ctr]);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
+        getData();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(all_ctr < 6) {
-                    ++all_ctr;
-                    txtword.setText(P_Lesson_Words[all_ctr]);
-                    txtresult.setText("Speak Now");
-                    score += add;
-
-                    stopPlaying();
-
-                    //pampagrayscale lang to nung bot na icon
-                    ColorMatrix matrix = new ColorMatrix();
-                    matrix.setSaturation(0);
-                    bot.setColorFilter(new ColorMatrixColorFilter(matrix));
-                    //progress bar
-                    CurrentProgress = CurrentProgress + 7;
-                    progressBar.setProgress(CurrentProgress);
-                    progressBar.setMax(100);
+                if(all_ctr < (P_Lesson_Words.length - 1)) {
+                    if(mic_ctr == 0){
+                        txtresult.setText("Try it first!");
+                    } else {
+                        ++all_ctr;
+                        txtword.setText(P_Lesson_Words[all_ctr]);
+                        txtresult.setText("Speak Now");
+                        score += add;
+                        mic_ctr = 0;
+                        stopPlaying();
+                        CurrentProgress = CurrentProgress + 7;
+                        progressBar.setProgress(CurrentProgress);
+                        progressBar.setMax(100);
+                    }
                 } else {
-                    Intent intent = new Intent(Days.this, DaysAct.class);
-                    intent.putExtra("Score", score);
-                    startActivity(intent);
+                    if(mic_ctr == 0){
+                        txtresult.setText("Try it first!");
+                    } else {
+                        score += add;
+                        Intent intent = new Intent(Days.this, DaysAct.class);
+                        intent.putExtra("Score", score);
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -200,6 +197,7 @@ public class Days extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
@@ -309,6 +307,77 @@ public class Days extends AppCompatActivity {
             ai.start();
         }
 
+    }
+
+    private void getData() {
+        progressDialog = new ProgressDialog(Days.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_days.php";
+
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Days.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> data = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                data.add(collegeData.getString("word"));
+            }
+            P_Lesson_Words = new String[data.size()];
+            P_Lesson_Words = data.toArray(P_Lesson_Words);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!P_Lesson_Words[0].equals("")){
+            txtword.setText(P_Lesson_Words[0]);
+            progressDialog.dismiss();
+        } else {
+            Toast.makeText(Days.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Days.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }
 
