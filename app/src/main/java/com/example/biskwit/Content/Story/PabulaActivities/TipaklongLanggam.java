@@ -194,6 +194,7 @@ public class TipaklongLanggam extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
