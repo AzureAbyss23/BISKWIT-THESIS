@@ -5,18 +5,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.biskwit.Content.LessonFragment;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
 import com.example.biskwit.Content.Story.TulaActivities.Magdasal;
+import com.example.biskwit.Content.Story.TulaActivities.Maglaro;
+import com.example.biskwit.Content.Story.TulaActivities.ParuparoRosas;
 import com.example.biskwit.Content.storyFragment;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentPatinigBinding;
 import com.example.biskwit.databinding.FragmentTulaBinding;
 
 public class TulaFragment extends Fragment {
@@ -41,6 +37,22 @@ public class TulaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getContext(), Magdasal.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.Maglaro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getContext(), Maglaro.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.Paruparo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getContext(), ParuparoRosas.class);
                 startActivity(intent);
             }
         });
