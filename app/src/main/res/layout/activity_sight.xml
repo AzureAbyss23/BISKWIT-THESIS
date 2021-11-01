@@ -73,7 +73,7 @@
                 android:id="@+id/Word"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/asul"
+                android:fontFamily="@font/crimson_text"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
                 android:textAlignment="center"

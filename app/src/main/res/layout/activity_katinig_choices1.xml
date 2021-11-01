@@ -22,7 +22,7 @@
                 android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="MENU"
+                android:text="HIRAM NA KATINIG"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"
                 android:layout_marginTop="50dp"
