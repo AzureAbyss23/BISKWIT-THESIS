@@ -105,7 +105,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (alphabet.length - 1)) {
                     if (mic_ctr == 0) {
-                        showToast("Try it first!");
+                        showToast("Try it first! Try it Again!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;

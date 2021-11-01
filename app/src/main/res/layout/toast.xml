@@ -9,18 +9,18 @@
 
     <ImageView
         android:id="@+id/toast_image"
-        android:layout_width="51dp"
-        android:layout_height="50dp"
+        android:layout_width="84dp"
+        android:layout_height="86dp"
         android:layout_marginRight="8dp"
         android:src="@drawable/kuyamatt" />
 
     <TextView
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="86dp"
         android:gravity="center"
         android:fontFamily="@font/chewy"
         android:textColor="@android:color/black"
-        android:textSize="40dp" />
+        android:textSize="30dp" />
 
 </LinearLayout>
