@@ -40,7 +40,10 @@
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:text="Aralin"
-                app:backgroundTint="#FF7F7F" />
+                app:backgroundTint="#FF7F7F"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/StoryButton"
@@ -50,7 +53,10 @@
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:text="Magbasa"
-                app:backgroundTint="#FFA500" />
+                app:backgroundTint="#FFA500"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/ProgressButton"
@@ -60,7 +66,10 @@
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:text="Progreso"
-                app:backgroundTint="#FFEB3B" />
+                app:backgroundTint="#FFEB3B"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
         </LinearLayout>
     </ScrollView>
 
