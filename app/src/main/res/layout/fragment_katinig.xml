@@ -42,7 +42,7 @@
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/crimson_text"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/Katinig_aralin2"
@@ -55,7 +55,7 @@
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/crimson_text"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/Katinig_aralin3"
@@ -68,7 +68,7 @@
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/crimson_text"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/back"
