@@ -19,19 +19,19 @@
 
             <TextView
                 android:id="@+id/Title"
-                android:layout_width="200dp"
+                android:layout_width="411dp"
                 android:layout_height="57dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:text="Orton-Gillingham"
-                android:layout_marginBottom="50dp"
-                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
-                android:textSize="50dp" />
+                android:textSize="40dp" />
 
             <Button
                 android:id="@+id/Phoenimic"
@@ -42,7 +42,9 @@
                 android:layout_marginBottom="25dp"
                 android:text="Phoenimic Awareness"
                 android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/Sight"
@@ -53,7 +55,9 @@
                 android:layout_marginBottom="25dp"
                 android:text="Sight Words"
                 android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/Blending"
@@ -64,7 +68,9 @@
                 android:layout_marginBottom="25dp"
                 android:text="Blending Drills"
                 android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="25dp"/>
 
             <Button
                 android:id="@+id/Pagbabaybay"
@@ -75,16 +81,19 @@
                 android:layout_marginBottom="25dp"
                 android:text="Pagbabaybay"
                 android:textColor="#000000"
-                app:backgroundTint="#FFFFFF" />
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="25dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/back"
-                android:layout_width="119dp"
-                android:layout_height="wrap_content"
+                android:layout_width="93dp"
+                android:layout_height="91dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="45dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/roundshape"
+                app:srcCompat="@drawable/backbutton"
                 android:text="Go Back"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF" />
