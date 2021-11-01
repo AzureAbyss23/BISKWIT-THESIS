@@ -20,7 +20,10 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -95,7 +98,6 @@ public class Alphabet extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(Alphabet.this);
 
-        //Database here
         getData();
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +105,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (alphabet.length - 1)) {
                     if (mic_ctr == 0) {
-                        txtresult.setText("Try it first!");
+                        showToast("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -117,7 +119,7 @@ public class Alphabet extends AppCompatActivity {
                     }
                 } else {
                     if (mic_ctr == 0) {
-                        txtresult.setText("Try it first!");
+                        showToast("Try it first!");
                     } else {
                         score += add;
                         Intent intent = new Intent(Alphabet.this, Score.class);
@@ -234,9 +236,19 @@ public class Alphabet extends AppCompatActivity {
         }
     }
 
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
 
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        TextView toastText = layout.findViewById(R.id.toast_text);
+
+        toastText.setText(s);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
         toast.show();
     }
 
@@ -261,8 +273,6 @@ public class Alphabet extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -308,16 +318,19 @@ public class Alphabet extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
+            showToast("TRY AGAIN");
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
+            showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }

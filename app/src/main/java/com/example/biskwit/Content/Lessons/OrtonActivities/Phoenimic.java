@@ -184,7 +184,7 @@ public class Phoenimic extends AppCompatActivity {
             }
         });
 
-        word2.setOnClickListener(new View.OnClickListener() {
+        bot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopPlaying();
@@ -193,7 +193,7 @@ public class Phoenimic extends AppCompatActivity {
             }
         });
 
-        bot3.setOnClickListener(new View.OnClickListener() {
+       word2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopPlaying();
