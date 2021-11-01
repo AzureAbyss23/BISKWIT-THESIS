@@ -20,7 +20,10 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -33,6 +36,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.DBHelper;
@@ -81,7 +85,6 @@ public class Magdasal extends AppCompatActivity {
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
         mic = findViewById(R.id.imageView2);
-
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
@@ -91,7 +94,7 @@ public class Magdasal extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
                     if (mic_ctr == 0) {
-                        // do something
+                        showToast("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -111,7 +114,7 @@ public class Magdasal extends AppCompatActivity {
                     }
                 } else {
                     if (mic_ctr == 0) {
-                        // do something
+                        showToast("Try it first!");
                     } else {
                         score += add;
                         Intent intent = new Intent(Magdasal.this, Score.class);
@@ -175,7 +178,7 @@ public class Magdasal extends AppCompatActivity {
                 //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
-                printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
+                printSimilarity(word.toString(),P_Lesson_Words[all_ctr].replace(".", "").replace(",",""));
             }
 
             @Override
@@ -188,7 +191,6 @@ public class Magdasal extends AppCompatActivity {
 
             }
         });
-
 
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,9 +219,15 @@ public class Magdasal extends AppCompatActivity {
         }
     }
 
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
@@ -257,8 +265,8 @@ public class Magdasal extends AppCompatActivity {
     }
 
     public static int editDistance(String s1, String s2) {
-        s1 = s1.replaceAll("['+^]*.", "").toLowerCase();
-        s2 = s2.replaceAll("['+^]*.", "").toLowerCase();
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
 
         int[] costs = new int[s2.length() + 1];
         for (int i = 0; i <= s1.length(); i++) {
@@ -289,20 +297,22 @@ public class Magdasal extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
+            showToast("TRY AGAIN");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
+            showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_70_to_100);
             ai.start();
         }
-
     }
 
     private void getData() {

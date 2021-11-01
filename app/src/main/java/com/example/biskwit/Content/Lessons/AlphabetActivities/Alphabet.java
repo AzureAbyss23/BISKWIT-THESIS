@@ -239,16 +239,12 @@ public class Alphabet extends AppCompatActivity {
     public void showToast(String s) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
-
         TextView toastText = layout.findViewById(R.id.toast_text);
-
         toastText.setText(s);
-
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
-
         toast.show();
     }
 
