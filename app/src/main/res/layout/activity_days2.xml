@@ -24,7 +24,7 @@
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
-                android:text="Years"
+                android:text="Days"
                 android:layout_marginBottom="25dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"

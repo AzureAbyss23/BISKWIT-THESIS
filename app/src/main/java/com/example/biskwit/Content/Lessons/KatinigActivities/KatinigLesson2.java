@@ -203,11 +203,11 @@ public class KatinigLesson2 extends AppCompatActivity {
             }
         });
 
-
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
                     mic_ctr++;

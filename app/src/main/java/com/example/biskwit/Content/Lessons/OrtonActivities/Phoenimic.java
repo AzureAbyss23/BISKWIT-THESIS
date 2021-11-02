@@ -44,7 +44,7 @@ public class Phoenimic extends AppCompatActivity {
     String[] holder;
     String[][] words1;
     String[][] words2;
-    String[] categ;
+    String[] categ = {"Hayop","Kasuotan","Prutas","Gulay"};
     int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0;
     double add = 0, score = 0;
     MediaPlayer ai;
@@ -139,6 +139,7 @@ public class Phoenimic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic1.setImageResource(R.drawable.mic_on);
                     txtresult.setText("Speak Now");
@@ -159,6 +160,7 @@ public class Phoenimic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic2.setImageResource(R.drawable.mic_on);
                     txtresult.setText("Speak Now");
@@ -169,7 +171,7 @@ public class Phoenimic extends AppCompatActivity {
                 else{
                     speechRecognizer.stopListening();
                     mic2.setImageResource(R.drawable.mic_off);
-                    txtresult.setText("Press the Mic Button to Try Again");
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }
@@ -211,7 +213,7 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (words1.length - 1)) {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
-                        showToast("Try it first!");
+                        showToast("Try it both first!");
                     } else {
                         setupnext();
                         txtresult.setText("Press the Mic Button");
@@ -225,7 +227,7 @@ public class Phoenimic extends AppCompatActivity {
                     }
                 } else {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
-                        showToast("Try it first!");
+                        showToast("Try it both first!");
                     } else {
                         setupnext();
                         Intent intent = new Intent(Phoenimic.this, Score.class);
@@ -358,7 +360,7 @@ public class Phoenimic extends AppCompatActivity {
     }
 
     private void showJSONS(String response) {
-        HashSet<String> data = new HashSet<String>();
+        //HashSet<String> data = new HashSet<String>();
         ArrayList<String> data2 = new ArrayList<String>();
 
         try {
@@ -367,11 +369,11 @@ public class Phoenimic extends AppCompatActivity {
             int length = result.length();
             for(int i = 0; i < length; i++) {
                 JSONObject collegeData = result.getJSONObject(i);
-                data.add(collegeData.getString("category"));
+                //data.add(collegeData.getString("category"));
                 data2.add(collegeData.getString("word"));
             }
-            categ = new String[data.size()];
-            categ = data.toArray(categ);
+            //categ = new String[data.size()];
+            //categ = data.toArray(categ);
             holder = new String[data2.size()];
             holder = data2.toArray(holder);
 

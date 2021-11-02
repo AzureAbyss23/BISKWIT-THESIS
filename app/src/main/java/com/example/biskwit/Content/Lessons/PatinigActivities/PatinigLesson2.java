@@ -208,6 +208,7 @@ public class PatinigLesson2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
                     txtresult.setText("Speak Now");

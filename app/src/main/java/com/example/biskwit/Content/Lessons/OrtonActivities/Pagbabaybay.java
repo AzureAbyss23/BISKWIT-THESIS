@@ -64,6 +64,7 @@ public class Pagbabaybay extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 String word = spell.getText().toString();
                 if(word.matches("")){
                     showToast("You must enter your spelling.");

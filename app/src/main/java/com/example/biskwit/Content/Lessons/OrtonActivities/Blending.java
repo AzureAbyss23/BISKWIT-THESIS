@@ -71,6 +71,7 @@ public class Blending extends AppCompatActivity {
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 char ltr = txtword.getText().toString().charAt(0);
                 String wrd = ch1.getText().toString();
                 String Rword = ltr+wrd;
@@ -81,6 +82,7 @@ public class Blending extends AppCompatActivity {
         ch2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 char ltr = txtword.getText().toString().charAt(0);
                 String wrd = ch2.getText().toString();
                 String Rword = ltr+wrd;
@@ -91,6 +93,7 @@ public class Blending extends AppCompatActivity {
         ch3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 char ltr = txtword.getText().toString().charAt(0);
                 String wrd = ch3.getText().toString();
                 String Rword = ltr+wrd;
@@ -126,7 +129,7 @@ public class Blending extends AppCompatActivity {
         toastText.setText(s);
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
     }

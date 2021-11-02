@@ -211,6 +211,7 @@ public class Alphabet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     txtresult.setText("Speak Now");
                     mic.setImageResource(R.drawable.mic_on);
