@@ -89,12 +89,12 @@
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
-                android:text="Press the Mic Button"
+                android:text="Press the mic button"
                 android:layout_marginBottom="25dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"
                 android:textColorHint="#000000"
-                android:textSize="35dp" />
+                android:textSize="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
