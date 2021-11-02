@@ -3,7 +3,7 @@ package com.example.biskwit.MainDrawer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
+import android.widget.Button;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +21,6 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
-
-
     }
+
 }
