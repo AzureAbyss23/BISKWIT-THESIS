@@ -54,6 +54,13 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/WordImg"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="229dp"
+                android:scaleType="fitCenter" />
+
             <TextView
                 android:id="@+id/Word"
                 android:layout_width="330dp"
