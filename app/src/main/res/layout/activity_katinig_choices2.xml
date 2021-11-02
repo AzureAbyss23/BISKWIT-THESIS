@@ -24,9 +24,9 @@
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="MENU"
+                android:text="HIRAM NA KATINIG"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
+                android:textColor="#48CCCD"
                 android:textStyle="bold"
                 app:fontFamily="@font/chewy" />
 
@@ -142,7 +142,7 @@
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/katinig_xk" />
+                    android:background="@drawable/hiram_xk" />
             </LinearLayout>
 
             <LinearLayout

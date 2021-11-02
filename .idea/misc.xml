@@ -3,30 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_contactinfo.xml" value="0.17346014492753623" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_days.xml" value="0.182518115942029" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_lesson2.xml" value="0.1766304347826087" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_aboutus.xml" value="0.17346014492753623" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_home.xml" value="0.1634963768115942" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/mainmenu.xml" value="0.25" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/profile.xml" value="0.25" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/settings.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/signup_form.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/start.xml" value="0.17889492753623187" />
-        <entry key="..\:/Users/Republic of Gamers/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/terms.xml" value="0.22" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable-v21/ic_menu_camera.xml" value="0.3685185185185185" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.3685185185185185" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable-v21/ic_menu_slideshow.xml" value="0.3685185185185185" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable/buttonshapes.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable/roundshape.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable/side_nav_bar.xml" value="0.3685185185185185" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_alphabet.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_blending.xml" value="0.3582427536231884" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_contactinfo.xml" value="0.33" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_days.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_days2.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_choices1.xml" value="0.21875" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_choices2.xml" value="0.18819655521783182" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson2.xml" value="0.33" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson3.xml" value="0.10638297872340426" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_magdasal.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_maglaro.xml" value="0.18819655521783182" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main_nav_menu.xml" value="0.33" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_opposite.xml" value="0.2427536231884058" />
@@ -39,6 +38,7 @@
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sounds.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sounds2.xml" value="0.33" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_synonymous.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_tipaklong_langgam.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_years.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/app_bar_main_nav_menu.xml" value="0.5" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/content_main_nav_menu.xml" value="0.18819655521783182" />
@@ -47,11 +47,12 @@
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_blank.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_gallery.xml" value="0.33" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_katinig.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_lesson.xml" value="0.25" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_logout.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_patinig.xml" value="0.5" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
+        <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_settings.xml" value="0.5" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_slideshow.xml" value="0.18819655521783182" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_start.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/denze/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_story.xml" value="0.33" />
@@ -77,27 +78,38 @@
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable/roundshapewhite.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/drawable/side_nav_bar.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/.xml" value="0.17407407407407408" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/arya.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/asul.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/chewy.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/crimson_text.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/source_sans_pro.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/font/yrsa.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_alphabet.xml" value="0.1796875" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_blending.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_blending.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_days.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_days2.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson1.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_daysactivity.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_choices1.xml" value="0.1796875" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_choices2.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson1.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson2.xml" value="0.1796875" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_katinig_lesson3.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_lamok_leon.xml" value="0.1796875" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_magdasal.xml" value="0.1796875" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_magdasal.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_maglaro.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_main_nav_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_opposite.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_opposite2.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_pagbabaybay.xml" value="0.22" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_paruparo_rosas.xml" value="0.1" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_paruparo_rosas.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_choices1.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_lesson1.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_patinig_lesson2.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_phoenimic.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sight.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sounds.xml" value="0.1796875" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_sounds2.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_synonymous.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_synonymous2.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/activity_tipaklong_langgam.xml" value="0.1796875" />
@@ -109,15 +121,17 @@
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_alamkoito.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_alphabet.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_gallery.xml" value="0.17864583333333334" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_home.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_katinig.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_lesson.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_katinig.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_lesson.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_logout.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_orton.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_pabula.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_patinig.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_profile.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_start.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_story.xml" value="0.22" />
+        <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_story.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/fragment_tula.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/nav_header_main_nav_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/test/AndroidStudioProjects/BISKWIT/app/src/main/res/layout/signup_form.xml" value="0.16666666666666666" />

@@ -36,7 +36,8 @@ public class Pagbabaybay extends AppCompatActivity {
     ImageView nextButton;
     String[] words;
     String[] botins;
-    int all_ctr = 0, all_ctr2 = 0, score = 0;
+    int all_ctr = 0, all_ctr2 = 0;
+    double score = 0;
     MediaPlayer ai;
     ImageView bot, bot2;
 

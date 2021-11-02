@@ -26,7 +26,7 @@
                 android:text="Magbasa"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textSize="50dp"
                 android:layout_marginBottom="50dp"
@@ -38,9 +38,12 @@
                 android:layout_height="90dp"
                 android:background="@drawable/roundshape"
                 android:text="Tula"
-                app:backgroundTint="#00BCD4"
+                app:backgroundTint="#EBDAFF"
+                android:textColor="#000000"
                 android:layout_marginBottom="50dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/Pabula"
@@ -48,9 +51,13 @@
                 android:layout_height="90dp"
                 android:background="@drawable/roundshape"
                 android:text="Pabula"
-                app:backgroundTint="#B09FCA"
+                app:backgroundTint="#FA92BA"
+                android:textColor="#000000"
                 android:layout_marginBottom="50dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp"
+                />
 
         </LinearLayout>
     </ScrollView>

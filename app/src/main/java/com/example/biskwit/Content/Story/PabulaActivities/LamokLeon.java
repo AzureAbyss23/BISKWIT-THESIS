@@ -5,27 +5,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import com.example.biskwit.DBHelper;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Story.TulaActivities.ParuparoRosas;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LamokLeon extends AppCompatActivity {
 
@@ -33,21 +46,13 @@ public class LamokLeon extends AppCompatActivity {
     ImageView next,bot;
     ImageButton mic;
     String word = "";
-    DBHelper DB;
-    Cursor c;
-    String[] P_Lesson_Words = {"Pagod na pagod si Leon mula sa paghahanap ng pagkain","Kailangan kong matulog upang bumalik ang aking lakas sabi ni Leon sa kaniyang sarili",
-            "Katutulog pa lamang ni Leon nang dumating si Lamok", "Nakita niya na natutulog si Leon kaya naisipan niyang guluhin ito",
-            "Lumipad siya nang paikot-ikot kay Leon","Minsan ay binubulungan niya ito o kaya naman ay kinakagat niya ito sa tainga",
-            "Pakiusap huwag mo akong guluhin","Kailangan kong matulog sabi ni Leon","Hindi kita susundin","Hindi ako natatakot sa iyo",
-            "ang mayabang na sagot ni Lamok","Muling ginulo ni Lamok si Leon","Sa kalilipad ni Lamok nang paikot-ikot","hindi niya napansin ang sapot sa halaman na nasa likuran ni Leon",
-            "Patuloy pa rin sa panggugulo si Lamak kaya nang tila hahampasin na siya ni Leon","bigla siyang napaatras","Sa kaniyang pag-atras ay napadikit siya sa sapot",
-            "Sinubukan ni Lamok na makawala sa pagkakadikit sa sapot ngunit hindi niya magawa","Nang maubos ang kaniyang lakas at mawalan ng pag-asa",
-            "bigla niyang naisip ang panggugulong ginawa niya kay Leon"};
+    String[] P_Lesson_Words;
     String queue="",story="";
-    StringBuffer buff;
     int all_ctr = 0;
     int click = 0;
     int queuectr=2;
+    int mic_ctr = 0;
+    double score = 0, add = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -55,6 +60,8 @@ public class LamokLeon extends AppCompatActivity {
 
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
+
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,59 +78,43 @@ public class LamokLeon extends AppCompatActivity {
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
         mic = findViewById(R.id.imageView2);
-
-        //DB = new DBHelper(this);
-
-        //String letter = getIntent().getStringExtra("letter");
-
-        //c = DB.getlessondata(letter);
-
-        /*if(c.getCount()==0){
-            Toast.makeText(this, "No data...", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            for (int i = 0;c.moveToNext();i++) {
-                buff = new StringBuffer();
-                //buff.append(c.getString(c.getColumnIndex("P_Lesson_Word")));
-                //P_Lesson_Words[i] = buff.toString();
-            }
-        }
-        c.close();*/
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
-        txtword.setText(P_Lesson_Words[all_ctr]);
-        for(int i = 1; i < 9; i++) {
-            queue += (P_Lesson_Words[i] + "\n ");
-            txtqueue.setText(queue);
-        }
+        getData();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ++all_ctr;
-                story += (P_Lesson_Words[all_ctr-1] + ". ");
-                txtstory.setText(story);
-
-                txtword.setText(P_Lesson_Words[all_ctr]);
-                queue = " ";
-
-                for(int i = queuectr; i < 9; i++) {
-                    queue += (P_Lesson_Words[i] + ". ");
+                if(all_ctr < (P_Lesson_Words.length - 1)) {
+                    if (mic_ctr == 0) {
+                        showToast("Try it first!");
+                    } else {
+                        ++all_ctr;
+                        mic_ctr = 0;
+                        story += (P_Lesson_Words[all_ctr - 1] + "\n");
+                        txtstory.setText(story);
+                        txtword.setText(P_Lesson_Words[all_ctr]);
+                        queue = " ";
+                        for (int i = queuectr; i < P_Lesson_Words.length; i++) {
+                            queue += (P_Lesson_Words[i] + "\n");
+                        }
+                        txtqueue.setText(queue);
+                        ++queuectr;
+                        stopPlaying();
+                        CurrentProgress = CurrentProgress + 11;
+                        progressBar.setProgress(CurrentProgress);
+                        progressBar.setMax(100);
+                    }
+                } else {
+                    if (mic_ctr == 0) {
+                        showToast("Try it first!");
+                    } else {
+                        score += add;
+                        Intent intent = new Intent(LamokLeon.this, Score.class);
+                        intent.putExtra("Score", score);
+                        startActivity(intent);
+                    }
                 }
-
-                txtqueue.setText(queue);
-                ++queuectr;
-
-                stopPlaying();
-
-                CurrentProgress = CurrentProgress +11;
-                progressBar.setProgress(CurrentProgress);
-                progressBar.setMax(100);
-
-                //pampagrayscale lang to nung bot na icon
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(0);
-                bot.setColorFilter(new ColorMatrixColorFilter(matrix));
             }
         });
 
@@ -180,7 +171,7 @@ public class LamokLeon extends AppCompatActivity {
                 //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
-                printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
+                printSimilarity(word.toString(),P_Lesson_Words[all_ctr].replace(".", "").replace(",","").replace("!","").replace("\"",""));
             }
 
             @Override
@@ -194,13 +185,13 @@ public class LamokLeon extends AppCompatActivity {
             }
         });
 
-
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    mic_ctr++;
                     click++;
                 }
                 else{
@@ -221,9 +212,15 @@ public class LamokLeon extends AppCompatActivity {
         }
     }
 
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
@@ -248,8 +245,6 @@ public class LamokLeon extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -294,17 +289,99 @@ public class LamokLeon extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
+            add = 0;
+            showToast("TRY AGAIN");
             ai = MediaPlayer.create(LamokLeon.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
+            add = 0.5;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(LamokLeon.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
+            add = 1;
+            showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(LamokLeon.this, R.raw.response_70_to_100);
             ai.start();
         }
+    }
 
+    private void getData() {
+        progressDialog = new ProgressDialog(LamokLeon.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String title = "Si Lamok at si Leon";
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_magbasa.php?title="+title;
+
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LamokLeon.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> data = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                data.add(collegeData.getString("word"));
+            }
+            P_Lesson_Words = new String[data.size()];
+            P_Lesson_Words = data.toArray(P_Lesson_Words);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!P_Lesson_Words[0].equals("")){
+            txtword.setText(P_Lesson_Words[all_ctr]);
+            for(int i = 1; i < P_Lesson_Words.length; i++) {
+                queue += (P_Lesson_Words[i] + "\n ");
+                txtqueue.setText(queue);
+            }
+            progressDialog.dismiss();
+        } else {
+            Toast.makeText(LamokLeon.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        LamokLeon.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }
