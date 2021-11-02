@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -116,6 +119,18 @@ public class Blending extends AppCompatActivity {
         });
     }
 
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
     protected void stopPlaying(){
         // If media player is not null then try to stop it
         if(ai!=null){
@@ -133,13 +148,11 @@ public class Blending extends AppCompatActivity {
 
     public void result(String s){
         if(s.equals(words[all_ctr])){
-            Toast toast = Toast.makeText(this, "Correct!", Toast.LENGTH_LONG);
-            toast.show();
-            score += 1;
+            showToast("CORRECT!");
+            score += 5;
         }
         else{
-            Toast toast = Toast.makeText(this, "Wrong!", Toast.LENGTH_LONG);
-            toast.show();
+            showToast("WRONG!");
         }
 
         if(all_ctr < (words.length - 1)) {
@@ -218,7 +231,6 @@ public class Blending extends AppCompatActivity {
         }
     }
 
-    // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)

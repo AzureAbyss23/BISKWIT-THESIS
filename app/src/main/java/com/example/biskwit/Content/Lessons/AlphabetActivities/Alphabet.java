@@ -105,7 +105,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (alphabet.length - 1)) {
                     if (mic_ctr == 0) {
-                        showToast("Try it first! Try it Again!");
+                        showToast("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -219,7 +219,7 @@ public class Alphabet extends AppCompatActivity {
                 }
                 else{
                     speechRecognizer.stopListening();
-                    txtresult.setText("Press the Mic Button to Try Again");
+                    txtresult.setText("Press the Mic Button");
                     mic.setImageResource(R.drawable.mic_off);
                     click=0;
                 }

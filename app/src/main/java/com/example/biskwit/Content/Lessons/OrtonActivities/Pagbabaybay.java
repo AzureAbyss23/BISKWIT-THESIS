@@ -9,9 +9,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -62,14 +66,13 @@ public class Pagbabaybay extends AppCompatActivity {
             public void onClick(View v) {
                 String word = spell.getText().toString();
                 if(word.matches("")){
-                    toastMsg("You must enter your spelling.");
+                    showToast("You must enter your spelling.");
                 } else {
                     spell.getText().clear();
                     printSimilarity(word, words[all_ctr]);
                     if (all_ctr < 9) {
                         ++all_ctr;
                         if(all_ctr > 5) all_ctr2++;
-                        toastMsg("Next Word.");
                     } else {
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
                         intent.putExtra("Score", score);
@@ -114,8 +117,15 @@ public class Pagbabaybay extends AppCompatActivity {
         }
     }
 
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
@@ -164,14 +174,22 @@ public class Pagbabaybay extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             score += 0;
+            showToast("YOUR SPELLING IS WRONG :(");
+            ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_0_to_49);
+            ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             score += 1;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
+            ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_50_to_69);
+            ai.start();
         }
         else if(val ==1.0){
             score += 2;
+            showToast("GREAT! YOU DID IT!");
+            ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_70_to_100);
+            ai.start();
         }
-
     }
 
     private void getData() {
@@ -232,7 +250,6 @@ public class Pagbabaybay extends AppCompatActivity {
         }
     }
 
-    // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)

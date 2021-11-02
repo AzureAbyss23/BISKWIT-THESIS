@@ -21,7 +21,10 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -91,7 +94,7 @@ public class Sight extends AppCompatActivity {
                 if(ctr < (all_length - 1)) {
                     if (all_ctr < (words.length - 1)) {
                         if (mic_ctr == 0) {
-                            txtresult.setText("Try it first!");
+                            showToast("Try it first!");
                         } else {
                             ++all_ctr;
                             ++ctr;
@@ -100,11 +103,11 @@ public class Sight extends AppCompatActivity {
                             id = setImg();
                             wordimg.setImageResource(id);
                             txtword.setText(words[all_ctr]);
-                            txtresult.setText("Speak Now");
+                            txtresult.setText("Press the Mic Button");
                         }
                     } else {
                         if (mic_ctr == 0) {
-                            txtresult.setText("Try it first!");
+                            showToast("Try it first!");
                         } else {
                             all_ctr = 0;
                             txtword.setText(words[all_ctr]);
@@ -171,7 +174,7 @@ public class Sight extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override
@@ -204,6 +207,7 @@ public class Sight extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr++;
                     click++;
                 }
@@ -231,9 +235,15 @@ public class Sight extends AppCompatActivity {
         }
     }
 
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
@@ -258,8 +268,6 @@ public class Sight extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -305,20 +313,22 @@ public class Sight extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
+            showToast("TRY AGAIN");
             ai = MediaPlayer.create(Sight.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 1;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(Sight.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 2;
+            showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(Sight.this, R.raw.response_70_to_100);
             ai.start();
         }
-
     }
 
     private void getData() {
@@ -378,7 +388,6 @@ public class Sight extends AppCompatActivity {
         }
     }
 
-    // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
