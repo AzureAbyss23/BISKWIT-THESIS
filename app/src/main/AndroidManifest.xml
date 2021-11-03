@@ -24,6 +24,9 @@
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson3"
             android:exported="true" />
         <activity
+            android:name=".Contact_Info"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.KatinigActivities.KatinigChoices1"
             android:exported="true" />
         <activity
