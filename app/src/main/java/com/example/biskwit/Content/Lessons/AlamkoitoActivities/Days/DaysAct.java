@@ -19,7 +19,7 @@ import com.example.biskwit.R;
 public class DaysAct extends AppCompatActivity {
 
     Button ch1,ch2,ch3;
-    String[] data = {"linggo","lunes","martes","miyerkules","huwebes","biyernes","sabado"};
+    String[] data;
     String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"5","2","4"},{"5","2","7"},{"6","2","7"},{"5","2","7"}};
     int all_ctr = 0, score = 0;
     TextView word;
@@ -30,9 +30,10 @@ public class DaysAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_days);
+        setContentView(R.layout.activity_days2);
 
         score = getIntent().getIntExtra("Score",0);
+        data = getIntent().getStringArrayExtra("data");
 
         ch1 = findViewById(R.id.Choice1);
         ch2 = findViewById(R.id.Choice2);

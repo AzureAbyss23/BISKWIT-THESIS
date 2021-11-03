@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/actbg"
-    tools:context=".Content.Lessons.AlphabetActivities.Alphabet">
+    tools:context=".Content.Lessons.AlamkoitoActivities.Days.DaysAct">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,18 +24,16 @@
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
+                android:text="Days"
                 android:layout_marginBottom="25dp"
-                android:text="Years"
-                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#48CCCD"
                 android:textColorHint="#000000"
-                android:textSize="50dp"
-                android:textColor="#48CCCD"/>
+                android:textSize="50dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -51,23 +49,17 @@
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/kuyamatt" />
-
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/WordImg"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="229dp"
-                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/Word"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:hint="Enero"
+                android:hint="Linggo"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColorHint="#000000"
                 android:textColor="#000000"
@@ -78,60 +70,51 @@
                 android:id="@+id/ProgressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="300dp"
+                android:layout_marginBottom="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:progressDrawable="@drawable/custom_progressbar"/>
 
-            <TextView
-                android:id="@+id/result"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/chewy"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center"
-                android:text="Press the mic button"
-                android:layout_marginBottom="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#48CCCD"
-                android:textColorHint="#000000"
-                android:textSize="20dp" />
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="25dp"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageView2"
-                    android:layout_width="93dp"
-                    android:layout_height="91dp"
-                    android:layout_marginLeft="40dp"
-                    android:scaleType="fitXY"
-                    android:layout_weight="1"
-                    android:background="@drawable/mic_off"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <Button
+                    android:id="@+id/Choice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="Button1"
+                    android:background="@drawable/roundshape"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/crimson_text"/>
 
-                <ImageView
-                    android:id="@+id/space"
-                    android:layout_width="93dp"
-                    android:layout_height="91dp"
-                    android:layout_weight="1"
+                <Button
+                    android:id="@+id/Choice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Button2"
+                    android:background="@drawable/roundshape"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/crimson_text"/>
 
-                    tools:ignore="SpeakableTextPresentCheck" />
+                <Button
+                    android:id="@+id/Choice3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Button3"
+                    android:background="@drawable/roundshape"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/crimson_text"/>
 
-                <ImageView
-                    android:id="@+id/nextButton"
-                    android:layout_width="93dp"
-                    android:layout_height="91dp"
-                    android:layout_weight="1"
-                    android:layout_marginRight="40dp"
-                    app:srcCompat="@drawable/nextbutton"
-                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

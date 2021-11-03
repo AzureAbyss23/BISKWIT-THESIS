@@ -11,7 +11,7 @@ import com.example.biskwit.R;
 
 public class Sounds extends AppCompatActivity {
 
-    ImageButton next;
+    ImageView next;
     ImageView bot2;
     MediaPlayer ai;
 
@@ -20,7 +20,7 @@ public class Sounds extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sounds);
 
-        next = findViewById(R.id.nextbutton);
+        next = findViewById(R.id.nextButton);
         bot2 = findViewById(R.id.Bot2);
 
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
