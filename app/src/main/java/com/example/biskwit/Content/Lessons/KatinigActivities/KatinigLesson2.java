@@ -17,7 +17,10 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -29,6 +32,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
@@ -92,13 +97,13 @@ public class KatinigLesson2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
                     if(mic_ctr == 0){
-                        txtresult.setText("Try it first!");
+                        showToast("Try it first!");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
                         score += add;
                         txtword.setText(P_Lesson_Words[all_ctr]);
-                        txtresult.setText("Speak Now");
+                        txtresult.setText("Press the Mic Button");
                         id = setImg();
                         wordimg.setImageResource(id);
                         stopPlaying();
@@ -108,7 +113,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                     }
                 } else {
                     if(mic_ctr == 0){
-                        txtresult.setText("Try it first!");
+                        showToast("Try it first!");
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson2.this, Score.class);
@@ -136,7 +141,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 stopPlaying();
                 String letter = intent.getStringExtra("letter");
                 Resources res = getResources();
-                int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+                int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(KatinigLesson2.this, sound);
                 ai.start();
             }
@@ -172,7 +177,7 @@ public class KatinigLesson2 extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override
@@ -198,11 +203,11 @@ public class KatinigLesson2 extends AppCompatActivity {
             }
         });
 
-
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
                     mic_ctr++;
@@ -226,9 +231,15 @@ public class KatinigLesson2 extends AppCompatActivity {
         }
     }
 
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
@@ -299,20 +310,22 @@ public class KatinigLesson2 extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
+            showToast("TRY AGAIN");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 1;
+            showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 2;
+            showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
         }
-
     }
 
     public int setImg(){

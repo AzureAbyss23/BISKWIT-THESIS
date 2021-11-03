@@ -81,9 +81,9 @@ public class KatinigLesson3 extends AppCompatActivity {
 
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
-        //int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
-        //ai = MediaPlayer.create(KatinigLesson3.this, sound);
-        //ai.start();
+        int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
+        ai = MediaPlayer.create(KatinigLesson3.this, sound);
+        ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -142,7 +142,6 @@ public class KatinigLesson3 extends AppCompatActivity {
             }
         });
 
-        //SPEECH RECOGNIZER
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -203,6 +202,7 @@ public class KatinigLesson3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
                     mic_ctr++;
@@ -225,7 +225,6 @@ public class KatinigLesson3 extends AppCompatActivity {
             ai = null;
         }
     }
-
 
     public void toastMsg(String msg) {
         Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
