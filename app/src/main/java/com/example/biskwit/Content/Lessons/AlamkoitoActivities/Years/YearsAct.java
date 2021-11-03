@@ -15,11 +15,10 @@ import com.example.biskwit.R;
 
 public class YearsAct extends AppCompatActivity {
 
-    Button ch1,ch2,ch3;
-    String[] data = {"enero","pebrero","marso","abril","mayo","hunyo","hulyo","agosto","setyembre","oktubre","nobyembre","disyembre"};
-    String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"5","2","4"},{"5","2","7"},{"6","2","7"},{"5","2","7"}};
+    Button ch1,ch3;
+    String[] data;
+    String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"5","2","4"},{"5","2","7"},{"6","2","7"},{"5","2","7"},{"5","2","7"},{"5","2","7"},{"5","2","7"},{"5","2","7"},{"5","2","7"}};
     int all_ctr = 0, score = 0;
-    TextView word;
     ImageView bot2;
     MediaPlayer ai;
 
@@ -30,32 +29,20 @@ public class YearsAct extends AppCompatActivity {
         setContentView(R.layout.activity_years2);
 
         score = getIntent().getIntExtra("Score",0);
+        data = getIntent().getStringArrayExtra("data");
 
         ch1 = findViewById(R.id.Choice1);
-        ch2 = findViewById(R.id.Choice2);
         ch3 = findViewById(R.id.Choice3);
-        word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
 
-        word.setText(data[all_ctr]);
         ch1.setText(choice[all_ctr][0]);
-        ch2.setText(choice[all_ctr][1]);
         ch3.setText(choice[all_ctr][2]);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String day = word.getText().toString();
+                String day = data[all_ctr];
                 int num = Integer.parseInt(ch1.getText().toString());
-                result(day,num);
-            }
-        });
-
-        ch2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String day = word.getText().toString();
-                int num = Integer.parseInt(ch2.getText().toString());
                 result(day,num);
             }
         });
@@ -63,7 +50,7 @@ public class YearsAct extends AppCompatActivity {
         ch3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String day = word.getText().toString();
+                String day = data[all_ctr];
                 int num = Integer.parseInt(ch3.getText().toString());
                 result(day,num);
             }
@@ -89,7 +76,7 @@ public class YearsAct extends AppCompatActivity {
     }
 
     public void result(String s,int num){
-        switch(s){
+        switch(s.toLowerCase()){
             case "enero":
                 if(num==1){
                     score += 2;
@@ -151,11 +138,10 @@ public class YearsAct extends AppCompatActivity {
                 }
                 break;
         }
-        if(all_ctr < 11) {
+        if(all_ctr < (data.length - 1)) {
             ++all_ctr;
-            word.setText(data[all_ctr]);
+            //word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
-            ch2.setText(choice[all_ctr][1]);
             ch3.setText(choice[all_ctr][2]);
         } else {
             Intent intent = new Intent(YearsAct.this, Score.class);
