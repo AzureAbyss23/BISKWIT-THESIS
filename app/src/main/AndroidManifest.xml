@@ -21,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Progress.Progress_Kwento"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Progress.Progress_Aralin"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson3"
             android:exported="true" />
         <activity
