@@ -62,7 +62,8 @@ public class Phoenimic extends AppCompatActivity {
         mic2 = findViewById(R.id.Mic2);
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
-        bot3 = findViewById(R.id.Bot3);
+        //comment din muna to
+        //bot3 = findViewById(R.id.Bot3);
         next = findViewById(R.id.nextButton);
         txtresult = findViewById(R.id.result);
 
