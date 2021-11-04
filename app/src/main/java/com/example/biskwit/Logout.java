@@ -20,6 +20,10 @@ public class Logout extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        //mag stop sya kapag nag log out
+        MainNavMenu frommainnav = (MainNavMenu)getActivity();
+        frommainnav.stopMusic();
+
         container.removeAllViews();
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);

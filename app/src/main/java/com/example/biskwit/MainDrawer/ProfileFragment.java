@@ -1,9 +1,15 @@
 package com.example.biskwit.MainDrawer;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +31,7 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     ProgressDialog progressDialog;
-
+    public static final int PICK_IMAGE = 1;
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
 
@@ -39,8 +45,23 @@ public class ProfileFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
 
         getData();
+        binding.gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
 
         return root;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            binding.profilepic.setImageURI(data.getData());
+        }
     }
 
     private void getData() {

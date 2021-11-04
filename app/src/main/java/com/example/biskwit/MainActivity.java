@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
     SharedPreferences logger, IDFetch;
     SharedPreferences.Editor editor,editor2;
 
+    AssetFileDescriptor asd;
     public static final String filename = "logger";
     public static final String filename2 = "idfetch";
     public static final String UserID = "userid";
@@ -45,9 +48,11 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         IDFetch = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+
+
+
         if(logger.contains(UserID)){
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);

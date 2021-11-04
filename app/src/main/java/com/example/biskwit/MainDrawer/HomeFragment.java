@@ -1,10 +1,14 @@
 package com.example.biskwit.MainDrawer;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
+
+import com.example.biskwit.MainActivity;
+import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentHomeBinding;
 
@@ -18,14 +22,16 @@ public class HomeFragment extends Fragment {
 
         // dito iniinitialize yung layout ng home and navbar
 
-        container.removeAllViews();
+        //ito ung galing sa mainnavmenu tapos itawag lang si function para mag play sya
+        MainNavMenu frommainnav = (MainNavMenu)getActivity();
+        frommainnav.startMusic();
 
+        container.removeAllViews();
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         return rootView;
     }
-
-
 
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override
@@ -33,4 +39,6 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
