@@ -117,6 +117,9 @@ public class Sight extends AppCompatActivity {
                     }
                 } else {
                     Intent intent = new Intent(Sight.this, Score.class);
+                    intent.putExtra("LessonType","Orton");
+                    intent.putExtra("LessonMode","Sight");
+                    //intent.putExtra("Letter",letter);
                     intent.putExtra("Score", score);
                     startActivity(intent);
                 }

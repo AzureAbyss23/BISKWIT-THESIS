@@ -123,6 +123,8 @@ public class Alphabet extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(Alphabet.this, Score.class);
+                        intent.putExtra("LessonType","Alphabet");
+                        intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }

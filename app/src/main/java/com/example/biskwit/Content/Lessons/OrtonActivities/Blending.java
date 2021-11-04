@@ -170,7 +170,10 @@ public class Blending extends AppCompatActivity {
             ch3.setText(choice[all_ctr][2]);
         } else {
             Intent intent = new Intent(Blending.this, Score.class);
-            intent.putExtra("Score",score);
+            intent.putExtra("LessonType","Orton");
+            intent.putExtra("LessonMode","Blending");
+            //intent.putExtra("Letter",letter);
+            intent.putExtra("Score", score);
             startActivity(intent);
         }
     }

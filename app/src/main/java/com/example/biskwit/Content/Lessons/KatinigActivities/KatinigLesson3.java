@@ -112,6 +112,9 @@ public class KatinigLesson3 extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson3.this, Score.class);
+                        intent.putExtra("LessonType","Hiram");
+                        intent.putExtra("LessonMode","Aralin3");
+                        intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }

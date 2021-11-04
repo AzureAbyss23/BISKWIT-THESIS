@@ -117,6 +117,9 @@ public class KatinigLesson2 extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson2.this, Score.class);
+                        intent.putExtra("LessonType","Katinig");
+                        intent.putExtra("LessonMode","Aralin2");
+                        intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -276,7 +279,6 @@ public class KatinigLesson2 extends AppCompatActivity {
 
     }
 
-    // LEVENSHTEIN DISTANCE ALGORITHM
     public static int editDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();

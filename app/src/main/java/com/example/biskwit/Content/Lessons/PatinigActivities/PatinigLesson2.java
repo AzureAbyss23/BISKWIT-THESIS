@@ -117,6 +117,9 @@ public class PatinigLesson2 extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(PatinigLesson2.this, Score.class);
+                        intent.putExtra("LessonType","Patinig");
+                        intent.putExtra("LessonMode","Aralin2");
+                        intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }

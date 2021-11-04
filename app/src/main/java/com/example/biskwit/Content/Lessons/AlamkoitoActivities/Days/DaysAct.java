@@ -93,7 +93,7 @@ public class DaysAct extends AppCompatActivity {
     }
 
     public void result(String s,int num){
-        switch(s){
+        switch(s.toLowerCase()){
             case "linggo":
                 if(num==1){
                     score += 2;
@@ -130,7 +130,7 @@ public class DaysAct extends AppCompatActivity {
                 }
                 break;
         }
-        if(all_ctr < 6) {
+        if(all_ctr < (data.length - 1)) {
             ++all_ctr;
             word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
@@ -138,7 +138,9 @@ public class DaysAct extends AppCompatActivity {
             ch3.setText(choice[all_ctr][2]);
         } else {
             Intent intent = new Intent(DaysAct.this, Score.class);
-            intent.putExtra("Score",score);
+            intent.putExtra("LessonType","Alamkoito");
+            intent.putExtra("LessonMode","Days");
+            intent.putExtra("Score", score);
             startActivity(intent);
         }
     }

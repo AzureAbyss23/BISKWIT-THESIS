@@ -76,6 +76,9 @@ public class Pagbabaybay extends AppCompatActivity {
                         if(all_ctr > 5) all_ctr2++;
                     } else {
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
+                        intent.putExtra("LessonType","Orton");
+                        intent.putExtra("LessonMode","Pagbabaybay");
+                        //intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
