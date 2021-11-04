@@ -31,6 +31,8 @@ public class Score extends AppCompatActivity {
     String lessontype = "";
     String lessonmode = "";
     String letter = "";
+    double average = 0;
+    double compute = 0;
 
     private static final String REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php";
     public static final String filename = "idfetch";
@@ -44,13 +46,15 @@ public class Score extends AppCompatActivity {
         SharedPreferences logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
         str_id = Integer.toString(id);
+        average = getIntent().getIntExtra("Average",0);
         lessontype = getIntent().getStringExtra("LessonType");
         lessonmode = getIntent().getStringExtra("LessonMode");
         letter = getIntent().getStringExtra("Letter");
         if(letter==null) letter = "default";
         double s = getIntent().getDoubleExtra("Score",0);
-        str_score = Double.toString(s);
-        String Score = Double.toString(s);
+        compute = (s / average) * 100;
+        str_score = Double.toString(compute);
+        String Score = Double.toString(compute);
         score = findViewById(R.id.Score);
         next = findViewById(R.id.nextButton);
 

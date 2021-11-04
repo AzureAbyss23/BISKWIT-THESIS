@@ -12,9 +12,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,19 +26,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
-import com.example.biskwit.DBHelper;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,7 +83,7 @@ public class Sight extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int all_length = (words.length * 2);
-                if(ctr < (all_length - 1)) {
+                if(ctr < (all_length - 2)) {
                     if (all_ctr < (words.length - 1)) {
                         if (mic_ctr == 0) {
                             showToast("Try it first!");
@@ -100,6 +92,7 @@ public class Sight extends AppCompatActivity {
                             ++ctr;
                             mic_ctr = 0;
                             score += add;
+                            add = 0;
                             id = setImg();
                             wordimg.setImageResource(id);
                             txtword.setText(words[all_ctr]);

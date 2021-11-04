@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.biskwit.Content.LessonFragment;
+import com.example.biskwit.Content.ProgressFragment;
 import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentStartBinding;
@@ -86,11 +87,11 @@ public class StartFragment extends Fragment {
         binding.ProgressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragmentStory = new storyFragment();
+                Fragment fragmentProgress = new ProgressFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentStory);
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentProgress);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
