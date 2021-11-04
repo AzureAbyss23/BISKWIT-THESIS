@@ -38,7 +38,7 @@ import org.json.JSONObject;
 public class Years extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot,bot2;
+    ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
@@ -48,6 +48,7 @@ public class Years extends AppCompatActivity {
     int mic_ctr = 0;
     int score = 0;
     int add = 0;
+    int id = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -74,6 +75,7 @@ public class Years extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        wordimg = findViewById(R.id.WordImg);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
@@ -91,6 +93,8 @@ public class Years extends AppCompatActivity {
                         score += add;
                         mic_ctr = 0;
                         stopPlaying();
+                        id = setImg();
+                        wordimg.setImageResource(id);
                         CurrentProgress = CurrentProgress + 7;
                         progressBar.setProgress(CurrentProgress);
                         progressBar.setMax(100);
@@ -102,6 +106,7 @@ public class Years extends AppCompatActivity {
                         score += add;
                         Intent intent = new Intent(Years.this, YearsAct.class);
                         intent.putExtra("Score", score);
+                        intent.putExtra("data",Title);
                         startActivity(intent);
                     }
                 }
@@ -212,9 +217,10 @@ public class Years extends AppCompatActivity {
         }
     }
 
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
-        toast.show();
+    public int setImg(){
+        Resources res = this.getResources();
+        int resID;
+        return resID = res.getIdentifier("years_"+Title[all_ctr].replace(" ","").toLowerCase(), "drawable", this.getPackageName());
     }
 
     @Override
@@ -238,8 +244,6 @@ public class Years extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -351,6 +355,8 @@ public class Years extends AppCompatActivity {
 
         if(!P_Lesson_Words[0].equals("")){
             txtword.setText(P_Lesson_Words[0]);
+            id = setImg();
+            wordimg.setImageResource(id);
             progressDialog.dismiss();
         } else {
             Toast.makeText(Years.this, "No data", Toast.LENGTH_LONG).show();

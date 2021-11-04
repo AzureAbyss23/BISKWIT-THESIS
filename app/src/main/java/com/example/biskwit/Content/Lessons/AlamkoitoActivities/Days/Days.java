@@ -100,6 +100,7 @@ public class Days extends AppCompatActivity {
                         score += add;
                         Intent intent = new Intent(Days.this, DaysAct.class);
                         intent.putExtra("Score", score);
+                        intent.putExtra("data",P_Lesson_Words);
                         startActivity(intent);
                     }
                 }

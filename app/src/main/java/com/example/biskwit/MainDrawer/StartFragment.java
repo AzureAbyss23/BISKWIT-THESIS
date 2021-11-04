@@ -83,6 +83,18 @@ public class StartFragment extends Fragment {
             }
         });
 
+        binding.ProgressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragmentStory = new storyFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentStory);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya

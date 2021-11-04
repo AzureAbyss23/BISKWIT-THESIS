@@ -18,7 +18,7 @@
 
             <ImageView
                 android:id="@+id/Title"
-                android:layout_width="330dp"
+                android:layout_width="350dp"
                 android:layout_height="186dp"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/chewy"

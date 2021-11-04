@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/actbg"
-    tools:context=".Content.Lessons.AlamkoitoActivities.Years.YearsAct">
+    tools:context=".Content.Lessons.AlamkoitoActivities.Days.DaysAct">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +34,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="25dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -52,12 +51,20 @@
                     app:srcCompat="@drawable/kuyamatt" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/WordImg"
-                android:layout_width="wrap_content"
-                android:layout_height="229dp"
+            <TextView
+                android:id="@+id/Word"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:hint="Linggo"
+                android:gravity="center_horizontal"
                 android:layout_gravity="center"
-                android:scaleType="fitCenter" />
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColorHint="#000000"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="60dp"/>
 
             <ProgressBar
                 android:id="@+id/ProgressBar"
