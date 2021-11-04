@@ -1,10 +1,8 @@
 package com.example.biskwit;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -21,9 +19,17 @@ public class MainNavMenu extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainNavMenuBinding binding;
 
+    public static MediaPlayer bgsong;
+    public static float globalvolume = 0.3f;
+    public static Boolean tapsoundon = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        bgsong = MediaPlayer.create(this, R.raw.bg_music);
+
 
         //Dito dinedeclare saka sineset yung Drawer Layout natin
         binding = ActivityMainNavMenuBinding.inflate(getLayoutInflater());
@@ -44,6 +50,27 @@ public class MainNavMenu extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+    //pang start ng music sa lahat ng activity itawag lang ito
+    public void startMusic(){
+        if(!bgsong.isPlaying()) {
+            bgsong.setVolume(globalvolume, globalvolume);
+            bgsong.start();
+            bgsong.setLooping(true);
+        }
+    }
+    //pang stop ito kapag may important sounds na gagawin
+    public void stopMusic(){
+        if(bgsong.isPlaying()) {
+            bgsong.pause();
+            bgsong.seekTo(0);
+        }
+    }
+
+    //magchachange nung volume function
+    public void changeVolume(float volume) {
+        globalvolume = volume;
+        bgsong.setVolume(volume,volume);
     }
 
     @Override
