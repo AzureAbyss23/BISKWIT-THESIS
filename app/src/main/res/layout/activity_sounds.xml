@@ -45,13 +45,6 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/atechay" />
 
-                <ImageView
-                    android:id="@+id/Bot"
-                    android:layout_width="82dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/kuyamatt" />
-
             </LinearLayout>
 
             <ImageView
@@ -60,6 +53,7 @@
                 android:layout_gravity="center"
                 android:layout_height="229dp"
                 android:scaleType="fitCenter" />
+
             <TextView
                 android:id="@+id/Word"
                 android:layout_width="330dp"

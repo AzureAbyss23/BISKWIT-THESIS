@@ -10,6 +10,7 @@ import android.widget.VideoView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAboutusBinding;
 
@@ -20,6 +21,9 @@ public class Aboutus extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        MainNavMenu frommainnav = (MainNavMenu)getActivity();
+        frommainnav.stopMusic();
 
         // dito iniinitialize yung layout ng home and navbar
 
