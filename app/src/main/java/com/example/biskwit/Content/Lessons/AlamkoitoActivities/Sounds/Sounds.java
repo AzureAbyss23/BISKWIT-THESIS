@@ -113,7 +113,7 @@ public class Sounds extends AppCompatActivity {
                         showToast("Try it first!");
                     } else {
                         score += add;
-                        Intent intent = new Intent(Sounds.this, SoundsAct.class);
+                        intent = new Intent(Sounds.this, SoundsAct.class);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -205,7 +205,7 @@ public class Sounds extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier("sound_"+ tunog[all_ctr].toLowerCase(),"raw", getPackageName());
+                int sound = res.getIdentifier(tunog[all_ctr].toLowerCase(),"raw", getPackageName());
                 ai = MediaPlayer.create(Sounds.this, sound);
                 ai.start();
             }
