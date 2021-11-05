@@ -94,7 +94,7 @@
                         android:textColorHint="#000000"
                         android:textSize="25dp"
                         android:gravity="center_horizontal"
-                        android:text="0%" />
+                        android:hint="0%" />
 
                 </LinearLayout>
 

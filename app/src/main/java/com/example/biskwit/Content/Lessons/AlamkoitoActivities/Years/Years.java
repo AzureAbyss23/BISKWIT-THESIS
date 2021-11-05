@@ -106,7 +106,7 @@ public class Years extends AppCompatActivity {
                         score += add;
                         Intent intent = new Intent(Years.this, YearsAct.class);
                         intent.putExtra("Score", score);
-                        intent.putExtra("data",P_Lesson_Words);
+                        intent.putExtra("data",Title);
                         startActivity(intent);
                     }
                 }

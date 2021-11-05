@@ -46,7 +46,8 @@ public class KatinigLesson3 extends AppCompatActivity {
     int all_ctr = 0;
     int click = 0;
     int id = 0;
-    int mic_ctr = 0, score = 0, add = 0;
+    int mic_ctr = 0;
+    double score = 0, add = 0;
     MediaPlayer ai;
     Intent intent;
 
@@ -112,6 +113,10 @@ public class KatinigLesson3 extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson3.this, Score.class);
+                        intent.putExtra("Average",P_Lesson_Words.length);
+                        intent.putExtra("LessonType","Hiram");
+                        intent.putExtra("LessonMode","Aralin3");
+                        intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -302,12 +307,12 @@ public class KatinigLesson3 extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             ai = MediaPlayer.create(KatinigLesson3.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             ai = MediaPlayer.create(KatinigLesson3.this, R.raw.response_70_to_100);
             ai.start();
         }

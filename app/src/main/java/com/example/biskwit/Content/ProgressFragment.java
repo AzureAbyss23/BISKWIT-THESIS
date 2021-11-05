@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.biskwit.Content.Progress.Progress_Aralin;
 import com.example.biskwit.Content.Progress.Progress_Kwento;
+import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentProgressBinding;
 
@@ -53,7 +54,7 @@ public class ProgressFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragmentBack = new LessonFragment();
+                Fragment fragmentBack = new StartFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

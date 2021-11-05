@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Data.Constants;
+import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,8 +44,8 @@ public class Days extends AppCompatActivity {
     String word = "";
     String[] P_Lesson_Words;
     int all_ctr = 0;
-    int click = 0;
-    int add = 0, score = 0, mic_ctr = 0;
+    int click = 0, mic_ctr = 0;
+    double add = 0, score = 0;
     MediaPlayer ai;
 
     public static final Integer RecordAudioRequestCode = 1;
@@ -98,7 +99,7 @@ public class Days extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(Days.this, DaysAct.class);
-                        intent.putExtra("Score", score);
+                        intent.putExtra("FScore", score);
                         intent.putExtra("data",P_Lesson_Words);
                         startActivity(intent);
                     }
@@ -289,12 +290,12 @@ public class Days extends AppCompatActivity {
 
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             ai = MediaPlayer.create(Days.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             ai = MediaPlayer.create(Days.this, R.raw.response_70_to_100);
             ai.start();
         }

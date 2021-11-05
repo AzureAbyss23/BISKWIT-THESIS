@@ -51,7 +51,8 @@ public class PatinigLesson2 extends AppCompatActivity {
     int all_ctr = 0;
     int click = 0;
     int id = 0;
-    int mic_ctr = 0, score = 0, add = 0;
+    int mic_ctr = 0;
+    double score = 0, add = 0;
     MediaPlayer ai;
     Intent intent;
 
@@ -117,6 +118,10 @@ public class PatinigLesson2 extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(PatinigLesson2.this, Score.class);
+                        intent.putExtra("Average",P_Lesson_Words.length);
+                        intent.putExtra("LessonType","Patinig");
+                        intent.putExtra("LessonMode","Aralin2");
+                        intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -317,13 +322,13 @@ public class PatinigLesson2 extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(PatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(PatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
