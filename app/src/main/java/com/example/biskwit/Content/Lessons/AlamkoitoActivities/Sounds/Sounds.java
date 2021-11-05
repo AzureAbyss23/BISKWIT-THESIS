@@ -35,7 +35,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Sounds extends AppCompatActivity {
-
+    public static final Integer RecordAudioRequestCode = 1;
+    private SpeechRecognizer speechRecognizer;
+    ProgressDialog progressDialog;
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
     ImageView next;
     ImageView bot2;
     MediaPlayer ai;
@@ -50,17 +54,6 @@ public class Sounds extends AppCompatActivity {
     int id = 0;
     int mic_ctr = 0;
     double score = 0, add = 0;
-
-
-    public static final Integer RecordAudioRequestCode = 1;
-    private SpeechRecognizer speechRecognizer;
-
-    //ito yung sa progress bar
-    private int CurrentProgress = 0;
-    private ProgressBar progressBar;
-
-    ProgressDialog progressDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +99,11 @@ public class Sounds extends AppCompatActivity {
                         id = setImg();
                         wordimg.setImageResource(id);
                         stopPlaying();
+                        //yung automatic instruction
+                        Resources res = getResources();
+                        int sound = res.getIdentifier("kab5_p5_"+ tunog[all_ctr].toLowerCase(),"raw", getPackageName());
+                        ai = MediaPlayer.create(Sounds.this, sound);
+                        ai.start();
                         CurrentProgress = CurrentProgress + 714;
                         progressBar.setProgress(CurrentProgress);
                         progressBar.setMax(10000);
@@ -200,6 +198,19 @@ public class Sounds extends AppCompatActivity {
                 }
             }
         });
+
+        //sound of the image to be button
+        wordimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                Resources res = getResources();
+                int sound = res.getIdentifier("sound_"+ tunog[all_ctr].toLowerCase(),"raw", getPackageName());
+                ai = MediaPlayer.create(Sounds.this, sound);
+                ai.start();
+            }
+        });
+
 
     }
 
