@@ -36,6 +36,7 @@ public class Progress_Aralin extends AppCompatActivity {
 
     TextView score_alphabet,score_phonemic,score_sight,score_blending,score_pagbabaybay;
     TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
+    TextView score_p_aralin1, score_p_aralin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,9 @@ public class Progress_Aralin extends AppCompatActivity {
         score_synonymous = findViewById(R.id.Synonymousscore);
         score_opposite = findViewById(R.id.Oppositescore);
         score_sound = findViewById(R.id.Soundscore);
+
+        score_p_aralin1 = findViewById(R.id.patinigscore);
+        score_p_aralin2 = findViewById(R.id.patinig2score);
 
         getData();
 
@@ -137,6 +141,10 @@ public class Progress_Aralin extends AppCompatActivity {
                     score_opposite.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Sounds")){
                     score_sound.setText(sco + "%");
+                } else if(type.equals("Patinig") && mode.equals("Aralin1")){
+                    score_p_aralin1.setText(sco + "%");
+                } else if(type.equals("Patinig") && mode.equals("Aralin2")){
+                    score_p_aralin2.setText(sco + "%");
                 }
             }
         } else {

@@ -76,9 +76,9 @@ public class Pagbabaybay extends AppCompatActivity {
                         if(all_ctr > 5) all_ctr2++;
                     } else {
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
+                        intent.putExtra("Average",words.length);
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Pagbabaybay");
-                        //intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -183,13 +183,13 @@ public class Pagbabaybay extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            score += 1;
+            score += 0.5;
             showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            score += 2;
+            score += 1;
             showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_70_to_100);
             ai.start();

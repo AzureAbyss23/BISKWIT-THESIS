@@ -2,6 +2,7 @@ package com.example.biskwit.Content.Lessons.PatinigActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson2;
+import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
 public class PatinigLesson1 extends AppCompatActivity {
@@ -41,7 +43,12 @@ public class PatinigLesson1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                finish();
+                Intent intent = new Intent(PatinigLesson1.this, Score.class);
+                intent.putExtra("Average",100);
+                intent.putExtra("LessonType","Patinig");
+                intent.putExtra("LessonMode","Aralin1");
+                intent.putExtra("Score", 100.0);
+                startActivity(intent);
             }
         });
     }

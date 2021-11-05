@@ -110,9 +110,9 @@ public class Sight extends AppCompatActivity {
                     }
                 } else {
                     Intent intent = new Intent(Sight.this, Score.class);
+                    intent.putExtra("Average",words.length);
                     intent.putExtra("LessonType","Orton");
                     intent.putExtra("LessonMode","Sight");
-                    //intent.putExtra("Letter",letter);
                     intent.putExtra("Score", score);
                     startActivity(intent);
                 }
@@ -315,13 +315,13 @@ public class Sight extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             showToast("GOOD, BUT YOU CAN DO BETTER");
             ai = MediaPlayer.create(Sight.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             showToast("GREAT! YOU DID IT!");
             ai = MediaPlayer.create(Sight.this, R.raw.response_70_to_100);
             ai.start();
