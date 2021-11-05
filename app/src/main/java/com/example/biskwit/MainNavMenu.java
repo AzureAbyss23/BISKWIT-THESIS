@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.biskwit.databinding.ActivityMainNavMenuBinding;
 
+import java.sql.SQLOutput;
+
 public class MainNavMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -29,7 +31,6 @@ public class MainNavMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         bgsong = MediaPlayer.create(this, R.raw.bg_music);
-
 
         //Dito dinedeclare saka sineset yung Drawer Layout natin
         binding = ActivityMainNavMenuBinding.inflate(getLayoutInflater());
@@ -54,6 +55,8 @@ public class MainNavMenu extends AppCompatActivity {
     //pang start ng music sa lahat ng activity itawag lang ito
     public void startMusic(){
         if(!bgsong.isPlaying()) {
+//            bgsong.prepareAsync();
+
             bgsong.setVolume(globalvolume, globalvolume);
             bgsong.start();
             bgsong.setLooping(true);
@@ -63,7 +66,6 @@ public class MainNavMenu extends AppCompatActivity {
     public void stopMusic(){
         if(bgsong.isPlaying()) {
             bgsong.pause();
-            bgsong.seekTo(0);
         }
     }
 

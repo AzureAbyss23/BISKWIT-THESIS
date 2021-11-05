@@ -20,7 +20,7 @@ public class SettingsFragment extends Fragment {
 
     FragmentSettingsBinding binding;
     Intent intent;
-
+    MainNavMenu frommainnav;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,7 +28,8 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentSettingsBinding.inflate(getLayoutInflater());
 
-        MainNavMenu frommainnav = (MainNavMenu)getActivity();
+        frommainnav = (MainNavMenu)getActivity();
+        frommainnav.startMusic();
 
         binding.seekBar.setProgress((int) (globalvolume*100));
 
@@ -88,11 +89,14 @@ public class SettingsFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onPause() {
+        frommainnav.stopMusic();
+        super.onPause();
     }
 
-
-
+    @Override
+    public void onResume() {
+        frommainnav.startMusic();
+        super.onResume();
+    }
 }

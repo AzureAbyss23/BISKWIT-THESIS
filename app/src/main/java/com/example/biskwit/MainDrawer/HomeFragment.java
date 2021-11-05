@@ -15,15 +15,17 @@ import com.example.biskwit.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     FragmentHomeBinding binding;
+    MainNavMenu frommainnav;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        System.out.println("HOME ACTIVITY CREATE");
 
         // dito iniinitialize yung layout ng home and navbar
 
         //ito ung galing sa mainnavmenu tapos itawag lang si function para mag play sya
-        MainNavMenu frommainnav = (MainNavMenu)getActivity();
+        frommainnav = (MainNavMenu)getActivity();
         frommainnav.startMusic();
 
         container.removeAllViews();
@@ -40,5 +42,15 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onPause() {
+        frommainnav.stopMusic();
+        super.onPause();
+    }
 
+    @Override
+    public void onResume() {
+        frommainnav.startMusic();
+        super.onResume();
+    }
 }
