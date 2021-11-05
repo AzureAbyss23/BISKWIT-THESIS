@@ -24,7 +24,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Phoenimic;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -34,14 +33,15 @@ import java.util.ArrayList;
 
 public class Opposite extends AppCompatActivity {
 
-    TextView word1,word2;
+    TextView word1,word2,txtresult;
     ImageButton mic1,mic2;
-    ImageView next,bot,bot2;
+    ImageView next,bot2;
     String word;
     String[] words1;
     String[] words2;
     String[] holder;
     int all_ctr = 0, click = 0, micctr1 = 0, micctr2 = 0;
+    int mic_ctr1 = 0, mic_ctr2 = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
 
@@ -59,9 +59,10 @@ public class Opposite extends AppCompatActivity {
         word2 = findViewById(R.id.Word2);
         mic1 = findViewById(R.id.Mic);
         mic2 = findViewById(R.id.Mic2);
-        bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
+        txtresult = findViewById(R.id.result);
+        progressDialog = new ProgressDialog(Opposite.this);
 
         getData();
 
@@ -135,6 +136,7 @@ public class Opposite extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic1.setImageResource(R.drawable.mic_on);
+                    mic_ctr1++;
                     micctr1++;
                     click++;
                 }
@@ -152,6 +154,7 @@ public class Opposite extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic2.setImageResource(R.drawable.mic_on);
+                    mic_ctr2++;
                     micctr2++;
                     click++;
                 }
@@ -189,7 +192,7 @@ public class Opposite extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Opposite.this, R.raw.kab2_p1);
+                ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p3_1);
                 ai.start();
             }
         });
@@ -197,11 +200,31 @@ public class Opposite extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                word1.setText(words1[all_ctr]);
-                word2.setText(words2[all_ctr]);
-
-                stopPlaying();
-
+                if(all_ctr < (words1.length - 1)) {
+                    if (mic_ctr1 == 0 || mic_ctr2 == 0) {
+                        showToast("Try it both first!");
+                    } else {
+                        all_ctr++;
+                        txtresult.setText("Press the Mic Button");
+                        word1.setText(words1[all_ctr]);
+                        word2.setText(words2[all_ctr]);
+                        mic_ctr1 = 0;
+                        mic_ctr2 = 0;
+                        score += add;
+                        stopPlaying();
+                    }
+                } else {
+                    if (mic_ctr1 == 0 || mic_ctr2 == 0) {
+                        showToast("Try it both first!");
+                    } else {
+                        Intent intent = new Intent(Opposite.this, OppositeAct.class);
+                        intent.putExtra("Average",words1.length);
+                        intent.putExtra("LessonType","Alamkoito");
+                        intent.putExtra("LessonMode","Opposite");
+                        intent.putExtra("Score", score);
+                        startActivity(intent);
+                    }
+                }
             }
         });
     }
@@ -213,7 +236,7 @@ public class Opposite extends AppCompatActivity {
         toastText.setText(s);
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
     }
@@ -332,13 +355,13 @@ public class Opposite extends AppCompatActivity {
             holder = data2.toArray(holder);
 
             int holder_ctr=0;
-            words1 = new String[holder.length/10];
-            words2 = new String[holder.length/10];
-            for (int i = 0; i < 10; i++) {
+            words1 = new String[holder.length/2];
+            words2 = new String[holder.length/2];
+            for (int i = 0; i < holder.length/2; i++) {
                 words1[i] = holder[holder_ctr];
                 holder_ctr++;
             }
-            for (int k = 0; k < 10; k++) {
+            for (int k = 0; k < holder.length/2; k++) {
                 words2[k] = holder[holder_ctr];
                 holder_ctr++;
             }
