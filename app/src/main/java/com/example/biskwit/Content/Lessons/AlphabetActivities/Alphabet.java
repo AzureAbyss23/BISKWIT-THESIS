@@ -10,10 +10,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,30 +27,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Lessons.Score;
-import com.example.biskwit.DBHelper;
 import com.example.biskwit.Data.Constants;
-
-import com.example.biskwit.MainActivity;
-import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class Alphabet extends AppCompatActivity {
 
@@ -123,6 +109,7 @@ public class Alphabet extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(Alphabet.this, Score.class);
+                        intent.putExtra("Average",alphabet.length);
                         intent.putExtra("LessonType","Alphabet");
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);

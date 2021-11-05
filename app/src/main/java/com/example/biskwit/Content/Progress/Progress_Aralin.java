@@ -7,6 +7,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -26,15 +30,13 @@ public class Progress_Aralin extends AppCompatActivity {
 
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
-    String[] ltype;
-    String[] lmode;
-    String[] fscore;
 
     int id = 0;
     ProgressDialog progressDialog;
 
     TextView score_alphabet,score_phonemic,score_sight,score_blending,score_pagbabaybay;
     TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
+    TextView score_p_aralin1, score_p_aralin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,9 @@ public class Progress_Aralin extends AppCompatActivity {
         score_synonymous = findViewById(R.id.Synonymousscore);
         score_opposite = findViewById(R.id.Oppositescore);
         score_sound = findViewById(R.id.Soundscore);
+
+        score_p_aralin1 = findViewById(R.id.patinigscore);
+        score_p_aralin2 = findViewById(R.id.patinig2score);
 
         getData();
 
@@ -104,17 +109,11 @@ public class Progress_Aralin extends AppCompatActivity {
                 data2.add(collegeData.getString("lessonmode"));
                 data3.add(collegeData.getString("score"));
             }
-            ltype = new String[data.size()];
-            ltype = data.toArray(ltype);
-            lmode = new String[data2.size()];
-            lmode = data2.toArray(lmode);
-            fscore = new String[data3.size()];
-            fscore = data3.toArray(fscore);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(!ltype[0].equals("")&&!lmode[0].equals("")&&!fscore[0].equals("")){
+        if(!data.isEmpty() && !data2.isEmpty() && !data3.isEmpty()){
             Iterator<String> i1= data.iterator();
             Iterator<String> i2= data2.iterator();
             Iterator<String> i3= data3.iterator();
@@ -125,28 +124,46 @@ public class Progress_Aralin extends AppCompatActivity {
                 if (type.equals("Alphabet") && mode.equals("ABCD")) {
                     score_alphabet.setText(sco + "%");
                 } else if (type.equals("Orton") && mode.equals("Phonemic")) {
-                    score_blending.setText(sco + "%");
+                    score_phonemic.setText(sco + "%");
                 } else if (type.equals("Orton") && mode.equals("Sight")) {
-                    score_blending.setText(sco + "%");
+                    score_sight.setText(sco + "%");
                 } else if (type.equals("Orton") && mode.equals("Blending")) {
                     score_blending.setText(sco + "%");
                 } else if(type.equals("Orton") && mode.equals("Pagbabaybay")){
-                    score_blending.setText(sco + "%");
+                    score_pagbabaybay.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Days")){
-                    score_blending.setText(sco + "%");
+                    score_days.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Years")){
-                    score_blending.setText(sco + "%");
+                    score_years.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Synonymous")){
-                    score_blending.setText(sco + "%");
+                    score_synonymous.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Opposite")){
-                    score_blending.setText(sco + "%");
+                    score_opposite.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Sounds")){
-                    score_blending.setText(sco + "%");
+                    score_sound.setText(sco + "%");
+                } else if(type.equals("Patinig") && mode.equals("Aralin1")){
+                    score_p_aralin1.setText(sco + "%");
+                } else if(type.equals("Patinig") && mode.equals("Aralin2")){
+                    score_p_aralin2.setText(sco + "%");
                 }
             }
+        } else {
+            showToast("No scores yet");
         }
 
         progressDialog.dismiss();
+    }
+
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
 }

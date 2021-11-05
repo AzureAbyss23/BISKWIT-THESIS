@@ -231,9 +231,9 @@ public class Phoenimic extends AppCompatActivity {
                     } else {
                         setupnext();
                         Intent intent = new Intent(Phoenimic.this, Score.class);
+                        intent.putExtra("Average",words1.length);
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Phonemic");
-                        //intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
