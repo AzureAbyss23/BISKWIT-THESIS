@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -79,6 +80,8 @@ public class Years extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
+        ai = MediaPlayer.create(Years.this, R.raw.kab5_p2_1);
+        ai.start();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +131,7 @@ public class Years extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Years.this, R.raw.kab3_p2_a);
+                ai = MediaPlayer.create(Years.this, R.raw.kab5_p2_1);
                 ai.start();
             }
         });

@@ -23,7 +23,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
 import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
@@ -63,6 +65,8 @@ public class Blending extends AppCompatActivity {
         progressDialog = new ProgressDialog(Blending.this);
 
         getData();
+        ai = MediaPlayer.create(Blending.this, R.raw.kab2_p3);
+        ai.start();
 
         ch1.setText(choice[all_ctr][0]);
         ch2.setText(choice[all_ctr][1]);

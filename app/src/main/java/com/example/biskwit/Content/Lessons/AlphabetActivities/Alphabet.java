@@ -119,7 +119,7 @@ public class Alphabet extends AppCompatActivity {
                 stopPlaying();
             }
         });
-
+        //
         bot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +130,7 @@ public class Alphabet extends AppCompatActivity {
                 ai.start();
             }
         });
-
+        //ate chay
         bot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

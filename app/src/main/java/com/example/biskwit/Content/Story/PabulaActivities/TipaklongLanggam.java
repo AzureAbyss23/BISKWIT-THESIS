@@ -48,7 +48,7 @@ import org.json.JSONObject;
 public class TipaklongLanggam extends AppCompatActivity {
 
     TextView txtstory,txtword,txtqueue;
-    ImageView next,bot;
+    ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
@@ -82,10 +82,13 @@ public class TipaklongLanggam extends AppCompatActivity {
         txtqueue = (TextView) findViewById(R.id.Queue);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
+        ai = MediaPlayer.create(TipaklongLanggam.this, R.raw.basa_pabula2);
+        ai.start();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +126,7 @@ public class TipaklongLanggam extends AppCompatActivity {
             }
         });
 
+        //kuya matt
         bot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +137,16 @@ public class TipaklongLanggam extends AppCompatActivity {
                 ai.start();
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(TipaklongLanggam.this, R.raw.basa_pabula2);
+                ai.start();
+            }
+        });
+
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 

@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
@@ -75,6 +76,8 @@ public class Days extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
+        ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
+        ai.start();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +125,7 @@ public class Days extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Days.this, R.raw.kab3_p2_a);
+                ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
                 ai.start();
             }
         });

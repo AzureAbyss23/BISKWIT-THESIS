@@ -60,6 +60,8 @@ public class Pagbabaybay extends AppCompatActivity {
         progressDialog = new ProgressDialog(Pagbabaybay.this);
 
         getData();
+        ai = MediaPlayer.create(Pagbabaybay.this, R.raw.kab2_p4);
+        ai.start();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override

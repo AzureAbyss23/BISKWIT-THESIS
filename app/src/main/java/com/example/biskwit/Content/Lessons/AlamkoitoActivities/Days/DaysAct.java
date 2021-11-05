@@ -48,6 +48,9 @@ public class DaysAct extends AppCompatActivity {
         ch2.setText(choice[all_ctr][1]);
         ch3.setText(choice[all_ctr][2]);
 
+        ai = MediaPlayer.create(DaysAct.this, R.raw.kab5_p1_2);
+        ai.start();
+
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,7 @@ public class DaysAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(DaysAct.this, R.raw.kab5_p1_1);
+                ai = MediaPlayer.create(DaysAct.this, R.raw.kab5_p1_2);
                 ai.start();
             }
         });

@@ -68,9 +68,9 @@ public class Sounds extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar);
         progressDialog = new ProgressDialog(Sounds.this);
+        getData();
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
         ai.start();
-        getData();
 
 
         //ate chay bot

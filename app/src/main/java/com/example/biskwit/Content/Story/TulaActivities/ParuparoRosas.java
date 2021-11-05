@@ -48,14 +48,14 @@ import org.json.JSONObject;
 public class ParuparoRosas extends AppCompatActivity {
 
     TextView txtstory,txtword,txtqueue;
-    ImageView next,bot;
+    ImageView next, bot, bot2;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
     String queue="",story="";
     int all_ctr = 0;
     int click = 0;
-    int queuectr=2;
+    int queuectr = 2;
     int mic_ctr = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
@@ -82,8 +82,12 @@ public class ParuparoRosas extends AppCompatActivity {
         txtqueue = (TextView) findViewById(R.id.Queue);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
+        ai = MediaPlayer.create(ParuparoRosas.this, R.raw.basa_tula2);
+        ai.start();
 
         getData();
 
@@ -133,6 +137,16 @@ public class ParuparoRosas extends AppCompatActivity {
                 ai.start();
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(ParuparoRosas.this, R.raw.basa_tula2);
+                ai.start();
+            }
+        });
+
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
