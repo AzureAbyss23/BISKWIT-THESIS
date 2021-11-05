@@ -72,8 +72,9 @@ public class Sounds extends AppCompatActivity {
         txtword = findViewById(R.id.Word);
         wordimg = findViewById(R.id.WordImg);
         txtresult = findViewById(R.id.result);
-        mic = findViewById(R.id.Mic);
+        mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar);
+        progressDialog = new ProgressDialog(Sounds.this);
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
         ai.start();
         getData();
@@ -114,7 +115,7 @@ public class Sounds extends AppCompatActivity {
                         showToast("Try it first!");
                     } else {
                         score += add;
-                        Intent intent = new Intent(Sounds.this, Score.class);
+                        Intent intent = new Intent(Sounds.this, SoundsAct.class);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -268,7 +269,6 @@ public class Sounds extends AppCompatActivity {
 
     //get data for the database
     private void getData() {
-        ProgressDialog progressDialog = new ProgressDialog(Sounds.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
@@ -330,7 +330,7 @@ public class Sounds extends AppCompatActivity {
     public int setImg(){
         Resources res = this.getResources();
         int resID;
-        return resID = res.getIdentifier("sounds_"+tunog[all_ctr].toLowerCase(), "drawable", this.getPackageName());
+        return resID = res.getIdentifier("sound_"+tunog[all_ctr].toLowerCase(), "drawable", this.getPackageName());
     }
 
     //back button
