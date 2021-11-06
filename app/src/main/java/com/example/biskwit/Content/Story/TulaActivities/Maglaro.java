@@ -48,7 +48,7 @@ import org.json.JSONObject;
 public class Maglaro extends AppCompatActivity {
 
     TextView txtstory,txtword,txtqueue;
-    ImageView next,bot;
+    ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
@@ -85,6 +85,8 @@ public class Maglaro extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
+        ai = MediaPlayer.create(Maglaro.this, R.raw.basa_tula3);
+        ai.start();
         getData();
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +135,16 @@ public class Maglaro extends AppCompatActivity {
                 ai.start();
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(Maglaro.this, R.raw.basa_tula3);
+                ai.start();
+            }
+        });
+
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 

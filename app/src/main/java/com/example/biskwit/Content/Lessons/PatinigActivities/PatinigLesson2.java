@@ -32,8 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
@@ -82,12 +81,13 @@ public class PatinigLesson2 extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         wordimg = findViewById(R.id.WordImg);
-
         getData();
 
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
+
         int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
+
         ai = MediaPlayer.create(PatinigLesson2.this, sound);
         ai.start();
 

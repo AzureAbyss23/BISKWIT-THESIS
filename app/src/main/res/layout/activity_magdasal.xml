@@ -135,7 +135,7 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="#65B670"
+                android:textColor="#C0C0C0"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="30dp" />
 

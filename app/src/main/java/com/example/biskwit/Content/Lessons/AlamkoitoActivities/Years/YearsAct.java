@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
@@ -50,6 +51,9 @@ public class YearsAct extends AppCompatActivity {
 
         ch1.setText(choice[all_ctr][0]);
         ch3.setText(choice[all_ctr][1]);
+
+        ai = MediaPlayer.create(YearsAct.this, R.raw.kab5_p2_2);
+        ai.start();
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override

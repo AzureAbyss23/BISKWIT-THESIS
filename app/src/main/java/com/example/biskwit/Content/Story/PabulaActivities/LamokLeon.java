@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Content.Story.TulaActivities.ParuparoRosas;
 import com.example.biskwit.Data.Constants;
@@ -43,7 +44,7 @@ import org.json.JSONObject;
 public class LamokLeon extends AppCompatActivity {
 
     TextView txtstory,txtword,txtqueue;
-    ImageView next,bot;
+    ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
@@ -77,10 +78,13 @@ public class LamokLeon extends AppCompatActivity {
         txtqueue = (TextView) findViewById(R.id.Queue);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         getData();
+        ai = MediaPlayer.create(LamokLeon.this, R.raw.basa_pabula1);
+        ai.start();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +132,16 @@ public class LamokLeon extends AppCompatActivity {
                 ai.start();
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(LamokLeon.this, R.raw.basa_pabula1);
+                ai.start();
+            }
+        });
+
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 

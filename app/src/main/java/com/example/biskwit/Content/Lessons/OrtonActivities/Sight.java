@@ -78,6 +78,8 @@ public class Sight extends AppCompatActivity {
         progressDialog = new ProgressDialog(Sight.this);
 
         getData();
+        ai = MediaPlayer.create(Sight.this, R.raw.kab2_p2);
+        ai.start();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

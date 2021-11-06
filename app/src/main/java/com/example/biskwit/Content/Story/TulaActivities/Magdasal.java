@@ -50,7 +50,7 @@ import org.json.JSONObject;
 public class Magdasal extends AppCompatActivity {
 
     TextView txtstory,txtword,txtqueue;
-    ImageView next,bot;
+    ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words;
@@ -61,6 +61,7 @@ public class Magdasal extends AppCompatActivity {
     int mic_ctr = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
+
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -84,8 +85,12 @@ public class Magdasal extends AppCompatActivity {
         txtqueue = (TextView) findViewById(R.id.Queue);
         next = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
+        bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
+        MediaPlayer.create(Magdasal.this, R.raw.basa_tula1);
+        ai.start();
 
         getData();
 
@@ -135,6 +140,16 @@ public class Magdasal extends AppCompatActivity {
                 ai.start();
             }
         });
+
+        bot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                ai = MediaPlayer.create(Magdasal.this, R.raw.basa_tula1);
+                ai.start();
+            }
+        });
+
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
