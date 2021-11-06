@@ -32,14 +32,15 @@
                 android:textColorHint="#000000"
                 android:textSize="50dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/LessonButton"
                 android:background="@drawable/roundshape"
                 android:layout_width="350dp"
-                android:layout_height="90dp"
+                android:layout_height="100dp"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
-                android:text="Aralin"
+                android:src="@drawable/buttonaralin"
+                android:scaleType="fitXY"
                 app:backgroundTint="#FF7F7F"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
