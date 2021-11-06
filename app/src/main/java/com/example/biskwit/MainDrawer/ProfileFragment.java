@@ -225,6 +225,7 @@ public class ProfileFragment extends Fragment {
             binding.Age.setText(age);
             binding.Bday.setText(bday);
             binding.Severity.setText(severity);
+            binding.Parent.setText(parent);
 
             System.out.println(imageholder);
             byte[] decodedString = Base64.decode(imageholder, Base64.DEFAULT);
