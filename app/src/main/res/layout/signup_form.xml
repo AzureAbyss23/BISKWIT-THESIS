@@ -81,11 +81,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Name of Parents/Instuctor:"
+                android:hint="Name of Parents/Instuctor: (LN,FN,MI.)"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColorHint="#000000"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/child_name"
@@ -94,11 +94,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:ems="10"
-                android:hint="Name of Child:"
+                android:hint="Name of Child: (LN,FN,MI.)"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColorHint="#000000"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
 
             <EditText
                 android:id="@+id/age"
