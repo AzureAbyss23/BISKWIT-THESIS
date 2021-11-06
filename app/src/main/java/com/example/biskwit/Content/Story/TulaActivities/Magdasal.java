@@ -89,7 +89,7 @@ public class Magdasal extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
-        MediaPlayer.create(Magdasal.this, R.raw.basa_tula1);
+        ai = MediaPlayer.create(Magdasal.this, R.raw.basa_tula1);
         ai.start();
 
         getData();
