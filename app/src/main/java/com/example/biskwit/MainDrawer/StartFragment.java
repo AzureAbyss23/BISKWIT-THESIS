@@ -57,7 +57,6 @@ public class StartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 playTapSound();
-
                 Fragment fragmentLesson = new LessonFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -73,7 +72,6 @@ public class StartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 playTapSound();
-
                 Fragment fragmentStory = new storyFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -87,6 +85,7 @@ public class StartFragment extends Fragment {
         binding.ProgressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                playTapSound();
                 Fragment fragmentProgress = new ProgressFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -101,9 +100,6 @@ public class StartFragment extends Fragment {
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override
     public void onDestroyView() {
-        MainNavMenu frommainnav = (MainNavMenu)getActivity();
-        frommainnav.startMusic();
-
         super.onDestroyView();
         binding = null;
     }

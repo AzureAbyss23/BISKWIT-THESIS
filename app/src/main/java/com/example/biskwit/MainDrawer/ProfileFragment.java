@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -24,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.Data.Database;
 import com.example.biskwit.MainNavMenu;
@@ -37,6 +39,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 public class ProfileFragment extends Fragment {
 
@@ -45,13 +48,24 @@ public class ProfileFragment extends Fragment {
     public static final int PICK_IMAGE = 1;
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
+    public static final String PROFILE_URL = "https://biskwitteamdelete.000webhostapp.com/update_profile_image.php";
+
+
+    String encodedImage;
+
     MainNavMenu frommainnav;
+
+    SharedPreferences logger;
+    int id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         frommainnav = (MainNavMenu)getActivity();
         frommainnav.startMusic();
+
+        logger = frommainnav.getSharedPreferences(filename, Context.MODE_PRIVATE);
+        id = logger.getInt(UserID,0);
 
         // dito iniinitialize yung layout niya
         binding = FragmentProfileBinding.inflate(inflater, container, false);
@@ -69,19 +83,57 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
             }
         });
-
+        //save image
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Database imageTest = new Database();
-
-                //Bitmap bm = BitmapFactory.decodeStream(ProfilePicURI);
+                if(encodedImage != null) {
+                    updateProfilePicture();
+                }
             }
         });
 
         return root;
     }
+    //insert sa database
+    private void updateProfilePicture() {
+        class SetProfilePicture extends AsyncTask<String, Void, String> {
+            ProgressDialog loading;
+            Database profileUploader = new Database();
 
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(getActivity(), "Inserting your Picture...", null, true, true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                HashMap<String, String> data = new HashMap<String, String>();
+
+                data.put("id", Integer.toString(id));
+                data.put("imageholder", encodedImage);
+
+                String result = profileUploader.sendPostRequest(PROFILE_URL, data);
+
+                return result;
+            }
+        }
+
+        SetProfilePicture profileUploader = new SetProfilePicture();
+        profileUploader.execute();
+    }
+
+    //from image to byte
     private String encodeImage(Bitmap bm)
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -92,6 +144,7 @@ public class ProfileFragment extends Fragment {
         return encImage;
     }
 
+    //select image
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri imageUri = data.getData();
@@ -102,7 +155,7 @@ public class ProfileFragment extends Fragment {
                 e.printStackTrace();
             }
             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-            String encodedImage = encodeImage(selectedImage);
+            encodedImage = encodeImage(selectedImage);
             System.out.println("IMAGE" + encodedImage);
             binding.profilepic.setImageURI(imageUri);
         }
@@ -146,6 +199,7 @@ public class ProfileFragment extends Fragment {
         String bday = "";
         String severity = "";
         String parent = "";
+        String imageholder= "";
 
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -158,6 +212,8 @@ public class ProfileFragment extends Fragment {
                 bday = collegeData.getString("birthday");
                 severity = collegeData.getString("severity");
                 parent = collegeData.getString("parent");
+                imageholder = collegeData.getString("imageholder");
+
             }
 
         } catch (JSONException e) {
@@ -169,7 +225,11 @@ public class ProfileFragment extends Fragment {
             binding.Age.setText(age);
             binding.Bday.setText(bday);
             binding.Severity.setText(severity);
-            binding.Parent.setText(parent);
+
+            System.out.println(imageholder);
+            byte[] decodedString = Base64.decode(imageholder, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            binding.profilepic.setImageBitmap(decodedByte); 
             progressDialog.dismiss();
         } else {
             Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
