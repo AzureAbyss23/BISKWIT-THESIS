@@ -8,8 +8,10 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -47,11 +49,14 @@ public class Alphabet extends AppCompatActivity {
     ImageButton mic;
     String word = "";
     String[] alphabet;
+    String holder = "";
     int all_ctr = 0;
     int click = 0;
     int mic_ctr = 0;
+    int status = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
+    Intent intent;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -61,11 +66,41 @@ public class Alphabet extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabet);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("ABCD" + id)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -108,8 +143,9 @@ public class Alphabet extends AppCompatActivity {
                         showToast("Try it first!");
                     } else {
                         score += add;
-                        Intent intent = new Intent(Alphabet.this, Score.class);
+                        intent = new Intent(Alphabet.this, Score.class);
                         intent.putExtra("Average",alphabet.length);
+                        intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Alphabet");
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);

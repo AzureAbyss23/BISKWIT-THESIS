@@ -31,32 +31,49 @@ public class Score extends AppCompatActivity {
     String lessontype = "";
     String lessonmode = "";
     String letter = "";
+    String score_save = "";
+    int status = 0;
+    double conv_score;
     double average = 0;
     double compute = 0;
+    SharedPreferences scores, logger;
+    SharedPreferences.Editor editor;
 
-    private static final String REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php";
     public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
     public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
+    String REGISTER_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        SharedPreferences logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
         str_id = Integer.toString(id);
+        status = getIntent().getIntExtra("Status",0);
         average = getIntent().getIntExtra("Average",0);
         lessontype = getIntent().getStringExtra("LessonType");
         lessonmode = getIntent().getStringExtra("LessonMode");
         letter = getIntent().getStringExtra("Letter");
+        score_save = lessonmode + str_id;
+        editor = scores.edit();
+        editor.putString(UserScore, score_save);
+        editor.commit();
         if(letter==null) letter = "default";
         double s = getIntent().getDoubleExtra("Score",0);
         compute = (s / average) * 100;
-        str_score = Double.toString(compute);
-        String Score = Double.toString(compute);
+        conv_score = Math.round(compute);
+        str_score = Double.toString(conv_score);
+        String Score = Double.toString(conv_score);
         score = findViewById(R.id.Score);
         next = findViewById(R.id.nextButton);
+
+        REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php?status="+status+"&lessonmode="+lessonmode;
 
         score.setText(Score);
         insert(str_id,lessontype,lessonmode,letter,str_score);
@@ -86,7 +103,6 @@ public class Score extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
             }
 
             @Override

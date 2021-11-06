@@ -65,7 +65,7 @@ public class Progress_Aralin extends AppCompatActivity {
     private void getData() {
         progressDialog = new ProgressDialog(Progress_Aralin.this);
         progressDialog.setTitle("Please wait");
-        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setMessage("Loading your scores...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
