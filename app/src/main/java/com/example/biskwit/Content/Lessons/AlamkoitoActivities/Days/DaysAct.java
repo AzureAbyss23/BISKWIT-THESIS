@@ -23,6 +23,7 @@ public class DaysAct extends AppCompatActivity {
     String[] data;
     String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"5","2","4"},{"5","2","7"},{"6","2","7"},{"5","2","7"}};
     int all_ctr = 0;
+    int status = 0;
     double score = 0, add = 0;
     TextView word;
     ImageView bot2;
@@ -36,6 +37,7 @@ public class DaysAct extends AppCompatActivity {
 
         score = getIntent().getIntExtra("FScore",0);
         data = getIntent().getStringArrayExtra("data");
+        status = getIntent().getIntExtra("Status",0);
 
         ch1 = findViewById(R.id.Choice1);
         ch2 = findViewById(R.id.Choice2);
@@ -134,6 +136,8 @@ public class DaysAct extends AppCompatActivity {
         } else {
             score += add;
             Intent intent = new Intent(DaysAct.this, Score.class);
+            intent.putExtra("Average",data.length*2);
+            intent.putExtra("Status",status);
             intent.putExtra("LessonType","Alamkoito");
             intent.putExtra("LessonMode","Days");
             intent.putExtra("Score", score);

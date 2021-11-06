@@ -12,6 +12,7 @@ import com.example.biskwit.Content.Lessons.AlphabetFragment;
 import com.example.biskwit.Content.Lessons.KatinigFragment;
 import com.example.biskwit.Content.Lessons.OrtonFragment;
 import com.example.biskwit.Content.Lessons.PatinigFragment;
+import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentLessonBinding;
 
@@ -101,8 +102,19 @@ public class LessonFragment extends Fragment {
             }
         });
 
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragmentBack = new StartFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentBack);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
-
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override
     public void onDestroyView() {

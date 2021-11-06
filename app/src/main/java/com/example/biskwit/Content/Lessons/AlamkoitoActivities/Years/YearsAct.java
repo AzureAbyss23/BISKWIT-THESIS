@@ -32,6 +32,7 @@ public class YearsAct extends AppCompatActivity {
             {"Flores de Mayo","Araw ng mga Patay"},{"Bagong Taon","Pasko"}};
     String[] title;
     int all_ctr = 0, score = 0, id = 0;
+    int status = 0;
     ImageView bot2,wordimg;
     MediaPlayer ai;
 
@@ -43,6 +44,7 @@ public class YearsAct extends AppCompatActivity {
 
         score = getIntent().getIntExtra("Score",0);
         title = getIntent().getStringArrayExtra("data");
+        status = getIntent().getIntExtra("Status",0);
 
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
@@ -193,7 +195,11 @@ public class YearsAct extends AppCompatActivity {
             ch3.setText(choice[all_ctr][1]);
         } else {
             Intent intent = new Intent(YearsAct.this, Score.class);
-            intent.putExtra("Score",score);
+            intent.putExtra("Average",data.length*2);
+            intent.putExtra("Status",status);
+            intent.putExtra("LessonType","Alamkoito");
+            intent.putExtra("LessonMode","Years");
+            intent.putExtra("Score", score);
             startActivity(intent);
         }
     }

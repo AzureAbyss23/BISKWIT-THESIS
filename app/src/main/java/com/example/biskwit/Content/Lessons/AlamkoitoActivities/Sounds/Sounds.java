@@ -3,8 +3,10 @@ package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -46,6 +48,7 @@ public class Sounds extends AppCompatActivity {
     Intent intent;
     String[] tunog;
     String word = "";
+    String holder = "";
     TextView txtword, txtresult;
     ImageView wordimg;
     ImageButton mic;
@@ -53,12 +56,43 @@ public class Sounds extends AppCompatActivity {
     int click = 0;
     int id = 0;
     int mic_ctr = 0;
+    int status = 0;
     double score = 0, add = 0;
+
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sounds);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id2 = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("Sounds" + id2)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         next = findViewById(R.id.nextButton);
         bot2 = findViewById(R.id.Bot2);
@@ -71,7 +105,6 @@ public class Sounds extends AppCompatActivity {
         getData();
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
         ai.start();
-
 
         //ate chay bot
         bot2.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +147,7 @@ public class Sounds extends AppCompatActivity {
                     } else {
                         score += add;
                         intent = new Intent(Sounds.this, SoundsAct.class);
+                        intent.putExtra("Status",status);
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }
@@ -205,13 +239,11 @@ public class Sounds extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(tunog[all_ctr].toLowerCase(),"raw", getPackageName());
+                int sound = res.getIdentifier("kab5_p5_"+tunog[all_ctr].toLowerCase(),"raw", getPackageName());
                 ai = MediaPlayer.create(Sounds.this, sound);
                 ai.start();
             }
         });
-
-
     }
 
     //algo

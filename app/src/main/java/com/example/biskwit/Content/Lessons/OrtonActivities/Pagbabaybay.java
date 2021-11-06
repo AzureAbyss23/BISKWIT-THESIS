@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -40,17 +42,49 @@ public class Pagbabaybay extends AppCompatActivity {
     ImageView nextButton;
     String[] words;
     String[] botins;
+    String holder = "";
     int all_ctr = 0, all_ctr2 = 0;
+    int status = 0;
     double score = 0;
     MediaPlayer ai;
     ImageView bot, bot2;
 
     ProgressDialog progressDialog;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagbabaybay);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("Pagbabaybay" + id)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         spell = findViewById(R.id.Spell);
         nextButton = findViewById(R.id.nextButton);
@@ -79,6 +113,7 @@ public class Pagbabaybay extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
                         intent.putExtra("Average",words.length);
+                        intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Pagbabaybay");
                         intent.putExtra("Score", score);

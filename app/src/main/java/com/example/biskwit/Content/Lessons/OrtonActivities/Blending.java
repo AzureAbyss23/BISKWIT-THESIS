@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -42,18 +44,50 @@ public class Blending extends AppCompatActivity {
             {"llisi","nergy","nsayo"},{"saw","law","sda"},{"saw","law","sda"},
             {"po","lo","so"},{"po","lo","so"},{"lo","od","so"},{"sa","bo","lo"}};
     String spaces = "";
+    String holder = "";
     int all_ctr = 0, id = 0;
+    int status = 0;
     double score = 0;
     TextView txtword;
     ImageView bot,bot2,wordimg;
     MediaPlayer ai;
     ProgressDialog progressDialog;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blending);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("Blending" + id)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         ch1 = findViewById(R.id.Choice1);
         ch2 = findViewById(R.id.Choice2);
@@ -175,6 +209,7 @@ public class Blending extends AppCompatActivity {
         } else {
             Intent intent = new Intent(Blending.this, Score.class);
             intent.putExtra("Average",words.length);
+            intent.putExtra("Status",status);
             intent.putExtra("LessonType","Orton");
             intent.putExtra("LessonMode","Blending");
             intent.putExtra("Score", score);

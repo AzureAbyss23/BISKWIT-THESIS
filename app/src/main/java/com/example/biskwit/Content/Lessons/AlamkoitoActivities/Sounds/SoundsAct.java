@@ -20,11 +20,11 @@ public class SoundsAct extends AppCompatActivity {
 
     EditText spell;
     ImageView nextButton;
-    String[] sound_data = {"tunog_car","tunog_cat","tunog_chicken","tunog_bird","tunog_ambulance",
+    String[] sound_data = {"tunog_jeep","tunog_cat","tunog_chicken","tunog_bird","tunog_ambulance",
             "tunog_bee","tunog_thunder","tunog_pig","tunog_dog","tunog_frog"};
-    String[] data = {"tunog_car","tunog_cat","tunog_chicken","tunog_bird",",tunog_ambulance",
-            "tunog_bee","tunog_thunder","tunog_pig","tunog_dog","tunog_frog"};
+    String[] data = {"Jeep","Cat","Manok","Ibon","Ambulansya","Bubuyog","Kidlat","Baboy","Aso","Palaka"};
     int all_ctr = 0, score = 0;
+    int status = 0;
     MediaPlayer ai;
     ImageView sound, bot2;
 
@@ -37,6 +37,9 @@ public class SoundsAct extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         sound = findViewById(R.id.Sound);
         bot2 = findViewById(R.id.Bot2);
+
+        score = getIntent().getIntExtra("Score",0);
+        status = getIntent().getIntExtra("Status",0);
 
         ai = MediaPlayer.create(SoundsAct.this, R.raw.kab5_p5_2);
         ai.start();
@@ -56,6 +59,10 @@ public class SoundsAct extends AppCompatActivity {
                         toastMsg("Next Sound.");
                     } else {
                         Intent intent = new Intent(SoundsAct.this, Score.class);
+                        intent.putExtra("Average",data.length);
+                        intent.putExtra("Status",status);
+                        intent.putExtra("LessonType","Alamkoito");
+                        intent.putExtra("LessonMode","Sounds");
                         intent.putExtra("Score", score);
                         startActivity(intent);
                     }

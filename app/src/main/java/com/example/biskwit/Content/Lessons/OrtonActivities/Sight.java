@@ -8,8 +8,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -46,10 +48,12 @@ public class Sight extends AppCompatActivity {
     ImageView next,bot,bot2, wordimg;
     ImageButton mic;
     String word = "";
+    String holder = "";
     String[] words;
     int all_ctr = 0;
     int click = 0;
     int ctr = 0;
+    int status = 0;
     double score = 0, add = 0;
     int id = 0;
     int mic_ctr = 0;
@@ -59,10 +63,40 @@ public class Sight extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sight);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id2 = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("Sight" + id2)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -113,6 +147,7 @@ public class Sight extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Sight.this, Score.class);
                     intent.putExtra("Average",words.length);
+                    intent.putExtra("Status",status);
                     intent.putExtra("LessonType","Orton");
                     intent.putExtra("LessonMode","Sight");
                     intent.putExtra("Score", score);

@@ -7,8 +7,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -43,8 +45,10 @@ public class Days extends AppCompatActivity {
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
+    String holder = "";
     String[] P_Lesson_Words;
     int all_ctr = 0;
+    int status = 0;
     int click = 0, mic_ctr = 0;
     double add = 0, score = 0;
     MediaPlayer ai;
@@ -58,10 +62,40 @@ public class Days extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_days);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder = scores.getString(UserScore, null);
+            if (holder.equals("Days" + id)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
@@ -102,6 +136,7 @@ public class Days extends AppCompatActivity {
                     } else {
                         score += add;
                         Intent intent = new Intent(Days.this, DaysAct.class);
+                        intent.putExtra("Status",status);
                         intent.putExtra("FScore", score);
                         intent.putExtra("data",P_Lesson_Words);
                         startActivity(intent);
@@ -212,12 +247,6 @@ public class Days extends AppCompatActivity {
             ai.release();
             ai = null;
         }
-    }
-
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
-        toast.show();
     }
 
     @Override
