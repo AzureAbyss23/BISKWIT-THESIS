@@ -104,7 +104,7 @@ public class Pagbabaybay extends AppCompatActivity {
                 stopPlaying();
                 String word = spell.getText().toString();
                 if(word.matches("")){
-                    showToast("You must enter your spelling.");
+                    showToast("Subukan mo muna ispell ito");
                 } else {
                     spell.getText().clear();
                     printSimilarity(word, words[all_ctr]);

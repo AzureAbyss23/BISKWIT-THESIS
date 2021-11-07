@@ -1,6 +1,7 @@
-package com.example.biskwit.Content.Lessons.OrtonActivities;
+package com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.TypedArrayUtils;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,7 +28,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
@@ -35,9 +35,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.HashSet;
 
-public class Phoenimic extends AppCompatActivity {
+public class Phonemic extends AppCompatActivity {
 
     TextView word1,word2,category,txtresult;
     ImageButton mic1,mic2;
@@ -47,6 +46,7 @@ public class Phoenimic extends AppCompatActivity {
     String[][] words1;
     String[][] words2;
     String[] categ = {"Hayop","Kasuotan","Prutas","Gulay"};
+    String[] words_for_act;
     String holder2 = "";
     int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0;
     int status = 0;
@@ -67,7 +67,7 @@ public class Phoenimic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phoenimic);
+        setContentView(R.layout.activity_phonemic);
 
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
@@ -103,7 +103,9 @@ public class Phoenimic extends AppCompatActivity {
         next = findViewById(R.id.nextButton);
         txtresult = findViewById(R.id.result);
 
-        progressDialog = new ProgressDialog(Phoenimic.this);
+        progressDialog = new ProgressDialog(Phonemic.this);
+        ai = MediaPlayer.create(Phonemic.this, R.raw.kab2_p1);
+        ai.start();
 
         getData();
 
@@ -217,8 +219,8 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(words1[all_ctr][all_ctr2], "raw", getPackageName());
-                ai = MediaPlayer.create(Phoenimic.this, sound);
+                int sound = res.getIdentifier(words1[all_ctr][all_ctr2].toLowerCase(), "raw", getPackageName());
+                ai = MediaPlayer.create(Phonemic.this, sound);
                 ai.start();
             }
         });
@@ -227,7 +229,7 @@ public class Phoenimic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Phoenimic.this, R.raw.kab2_p1);
+                ai = MediaPlayer.create(Phonemic.this, R.raw.kab2_p1);
                 ai.start();
             }
         });
@@ -237,8 +239,8 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(words2[all_ctr][all_ctr2], "raw", getPackageName());
-                ai = MediaPlayer.create(Phoenimic.this, sound);
+                int sound = res.getIdentifier(words2[all_ctr][all_ctr2].toLowerCase(), "raw", getPackageName());
+                ai = MediaPlayer.create(Phonemic.this, sound);
                 ai.start();
             }
         });
@@ -248,7 +250,7 @@ public class Phoenimic extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (words1.length - 1)) {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
-                        showToast("Try it both first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         setupnext();
                         txtresult.setText("Press the Mic Button");
@@ -262,15 +264,20 @@ public class Phoenimic extends AppCompatActivity {
                     }
                 } else {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
-                        showToast("Try it both first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         setupnext();
-                        Intent intent = new Intent(Phoenimic.this, Score.class);
-                        intent.putExtra("Average",words1.length);
+                        Intent intent = new Intent(Phonemic.this, PhonemicAct.class);
                         intent.putExtra("Status",status);
-                        intent.putExtra("LessonType","Orton");
-                        intent.putExtra("LessonMode","Phonemic");
-                        intent.putExtra("Score", score);
+                        ArrayList<String> conv = new ArrayList<String>();
+                        for (int i = 0; i < words1.length; i++) {
+                            for (int x = 0; x < words1[i].length; x++) {
+                                conv.add(words1[i][x]);
+                            }
+                        } words_for_act = new String[conv.size()];
+                        words_for_act = conv.toArray(words_for_act);
+                        intent.putExtra("data",words_for_act);
+                        intent.putExtra("FScore", score);
                         startActivity(intent);
                     }
                 }
@@ -354,19 +361,19 @@ public class Phoenimic extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("HINDI TUGMA");
-            ai = MediaPlayer.create(Phoenimic.this, R.raw.response_0_to_49);
+            ai = MediaPlayer.create(Phonemic.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("MABUTI");
-            ai = MediaPlayer.create(Phoenimic.this, R.raw.response_50_to_69);
+            ai = MediaPlayer.create(Phonemic.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("MAHUSAY!");
-            ai = MediaPlayer.create(Phoenimic.this, R.raw.response_70_to_100);
+            ai = MediaPlayer.create(Phonemic.this, R.raw.response_70_to_100);
             ai.start();
         }
     }
@@ -390,7 +397,7 @@ public class Phoenimic extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Phoenimic.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Phonemic.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -441,7 +448,7 @@ public class Phoenimic extends AppCompatActivity {
             word2.setText(words2[0][0]);
             progressDialog.dismiss();
         } else {
-            Toast.makeText(Phoenimic.this, "No data", Toast.LENGTH_LONG).show();
+            Toast.makeText(Phonemic.this, "No data", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
         }
     }
@@ -456,7 +463,7 @@ public class Phoenimic extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Phoenimic.super.onBackPressed();
+                        Phonemic.super.onBackPressed();
                         stopPlaying();
                     }
                 }).create().show();

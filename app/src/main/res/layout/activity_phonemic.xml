@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/actbg"
-    tools:context=".Content.Lessons.OrtonActivities.Phoenimic">
+    tools:context=".Content.Lessons.OrtonActivities.Phonemic.Phonemic">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -132,7 +132,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
                     if(mic_ctr == 0){
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -148,7 +148,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                     }
                 } else {
                     if(mic_ctr == 0){
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson2.this, Score.class);

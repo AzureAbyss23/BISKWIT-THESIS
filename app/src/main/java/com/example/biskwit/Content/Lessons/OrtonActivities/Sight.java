@@ -123,7 +123,7 @@ public class Sight extends AppCompatActivity {
                 if(ctr < (all_length - 2)) {
                     if (all_ctr < (words.length - 1)) {
                         if (mic_ctr == 0) {
-                            showToast("Try it first!");
+                            showToast("Subukan mo muna ito");
                         } else {
                             ++all_ctr;
                             ++ctr;
@@ -137,7 +137,7 @@ public class Sight extends AppCompatActivity {
                         }
                     } else {
                         if (mic_ctr == 0) {
-                            showToast("Try it first!");
+                            showToast("Subukan mo muna ito");
                         } else {
                             all_ctr = 0;
                             txtword.setText(words[all_ctr]);
