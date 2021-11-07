@@ -21,7 +21,7 @@ public class DaysAct extends AppCompatActivity {
 
     Button ch1,ch2,ch3;
     String[] data;
-    String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"5","2","4"},{"5","2","7"},{"6","2","7"},{"5","2","7"}};
+    String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"7","2","4"},{"3","5","7"},{"6","1","7"},{"2","5","7"}};
     int all_ctr = 0;
     int status = 0;
     double score = 0, add = 0;
@@ -102,27 +102,27 @@ public class DaysAct extends AppCompatActivity {
     public void result(String s,int num){
         if(s.equalsIgnoreCase("linggo") && num==1){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("lunes") && num==2){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("martes") && num==3){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("miyerkules") && num==4){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("huwebes") && num==5){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("biyernes") && num==6){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else if(s.equalsIgnoreCase("sabado") && num==7){
             add = 1;
-            showToast("CORRECT!");
+            showToast("TAMA!");
         } else {
-            showToast("WRONG");
+            showToast("MALI");
             add = 0;
         }
         if(all_ctr < (data.length - 1)) {

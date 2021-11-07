@@ -95,6 +95,7 @@ public class Maglaro extends AppCompatActivity {
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
                                 finish();
                             }
                         })
@@ -133,6 +134,7 @@ public class Maglaro extends AppCompatActivity {
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
+                        score += add;
                         story += (P_Lesson_Words[all_ctr - 1] + "\n");
                         txtstory.setText(story);
                         txtword.setText(P_Lesson_Words[all_ctr]);
@@ -347,19 +349,19 @@ public class Maglaro extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
-            showToast("TRY AGAIN");
+            showToast("HINDI TUGMA");
             ai = MediaPlayer.create(Maglaro.this, R.raw.response_0_to_49);
             ai.start();
         }
-        else if(val >= 0.5 && val <= 0.79){
+        else if(val >= 0.5 && val <= 0.89){
             add = 0.5;
-            showToast("GOOD, BUT YOU CAN DO BETTER");
+            showToast("MABUTI");
             ai = MediaPlayer.create(Maglaro.this, R.raw.response_50_to_69);
             ai.start();
         }
-        else if(val >= 0.8 && val <= 1.0){
+        else if(val >= 0.9 && val <= 1.0){
             add = 1;
-            showToast("GREAT! YOU DID IT!");
+            showToast("MAHUSAY!");
             ai = MediaPlayer.create(Maglaro.this, R.raw.response_70_to_100);
             ai.start();
         }

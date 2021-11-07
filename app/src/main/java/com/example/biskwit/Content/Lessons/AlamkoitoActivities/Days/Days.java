@@ -19,7 +19,10 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -32,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
@@ -85,6 +89,7 @@ public class Days extends AppCompatActivity {
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
                                 finish();
                             }
                         })
@@ -270,8 +275,6 @@ public class Days extends AppCompatActivity {
         }
     }
 
-
-    // TRY NEW ALGORITHM
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) {
@@ -317,21 +320,34 @@ public class Days extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
+            showToast("HINDI TUGMA");
             ai = MediaPlayer.create(Days.this, R.raw.response_0_to_49);
             ai.start();
-
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
+            showToast("MABUTI");
             ai = MediaPlayer.create(Days.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
+            showToast("MAHUSAY!");
             ai = MediaPlayer.create(Days.this, R.raw.response_70_to_100);
             ai.start();
         }
+    }
 
+    public void showToast(String s) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        toastText.setText(s);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 
     private void getData() {

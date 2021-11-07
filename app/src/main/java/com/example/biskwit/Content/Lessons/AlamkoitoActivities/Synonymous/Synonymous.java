@@ -3,8 +3,10 @@ package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -40,8 +42,10 @@ public class Synonymous extends AppCompatActivity {
     String[] words1;
     String[] words2;
     String[] holder;
+    String holder2 = "";
     int all_ctr = 0, click = 0, micctr1 = 0, micctr2 = 0;
     int mic_ctr1 = 0, mic_ctr2 = 0;
+    int status = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
 
@@ -50,10 +54,41 @@ public class Synonymous extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    SharedPreferences scores,logger;
+    public static final String filename = "idfetch";
+    public static final String filename2 = "scorer";
+    public static final String UserID = "userid";
+    public static final String UserScore = "userscore";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synonymous);
+
+        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
+        int id = logger.getInt(UserID,0);
+        if(scores.contains(UserScore)) {
+            holder2 = scores.getString(UserScore, null);
+            if (holder.equals("Sounds" + id)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Retry lesson?")
+                        .setMessage("Your previous progress will be reset.")
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                status = 1;
+                            }
+                        }).create().show();
+            }
+        }
 
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
@@ -219,6 +254,7 @@ public class Synonymous extends AppCompatActivity {
                     } else {
                         Intent intent = new Intent(Synonymous.this, SynonymousAct.class);
                         intent.putExtra("Average",words1.length);
+                        intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Alamkoito");
                         intent.putExtra("LessonMode","Synonymous");
                         intent.putExtra("Score", score);
@@ -295,19 +331,19 @@ public class Synonymous extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
-            showToast("TRY AGAIN");
+            showToast("HINDI TUGMA");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
-            showToast("GOOD, BUT YOU CAN DO BETTER");
+            showToast("MABUTI");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
-            showToast("GREAT! YOU DID IT!");
+            showToast("MAHUSAY!");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_70_to_100);
             ai.start();
         }

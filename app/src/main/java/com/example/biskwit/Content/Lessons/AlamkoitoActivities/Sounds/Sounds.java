@@ -82,6 +82,7 @@ public class Sounds extends AppCompatActivity {
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
                                 finish();
                             }
                         })
@@ -292,19 +293,19 @@ public class Sounds extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
-            showToast("TRY AGAIN");
+            showToast("HINDI TUGMA");
             ai = MediaPlayer.create(Sounds.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 1;
-            showToast("GOOD, BUT YOU CAN DO BETTER");
+            showToast("MABUTI");
             ai = MediaPlayer.create(Sounds.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 2;
-            showToast("GREAT! YOU DID IT!");
+            showToast("MAHUSAY!");
             ai = MediaPlayer.create(Sounds.this, R.raw.response_70_to_100);
             ai.start();
         }
@@ -400,7 +401,7 @@ public class Sounds extends AppCompatActivity {
         toastText.setText(s);
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
     }

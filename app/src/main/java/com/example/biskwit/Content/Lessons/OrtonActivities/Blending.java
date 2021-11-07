@@ -77,6 +77,7 @@ public class Blending extends AppCompatActivity {
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
                                 finish();
                             }
                         })
@@ -189,11 +190,11 @@ public class Blending extends AppCompatActivity {
 
     public void result(String s){
         if(s.equals(words[all_ctr])){
-            showToast("CORRECT!");
+            showToast("TAMA");
             score += 1;
         }
         else{
-            showToast("WRONG!");
+            showToast("MALI");
         }
 
         if(all_ctr < (words.length - 1)) {
