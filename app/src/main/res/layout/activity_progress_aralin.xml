@@ -102,6 +102,280 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="360dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#FFF389"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab3"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="70dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 2"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/patinig1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="45dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Patinig"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/patinig"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Patinig Aralin 1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/patinigscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/patinig2"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Patinig Aralin 2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/patinig2score"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="360dp"
+                android:layout_height="210dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#AFFAAF"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab4"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="85dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 3"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/katinig1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="65dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Katinig"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/katinig"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Katinig Aralin 1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/katinig1score"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/katinig2"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Katinig Aralin 2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/katinig2score"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/katinig3"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="170dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Hiram na letra"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/katinig3score"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="170dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="360dp"
                 android:layout_height="270dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
@@ -118,7 +392,7 @@
                     android:layout_marginBottom="100dp"
                     android:fontFamily="@font/crimson_text"
                     android:gravity="center_horizontal"
-                    android:text="Kabanata 2"
+                    android:text="Kabanata 4"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
@@ -288,280 +562,6 @@
                         android:textColorHint="#000000"
                         android:textSize="25dp"
                         app:backgroundTint="#E5E4E2" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="360dp"
-                android:layout_height="180dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#FFF389"
-                app:cardCornerRadius="20dp">
-
-                <TextView
-                    android:id="@+id/kab3"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="70dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:gravity="center_horizontal"
-                    android:text="Kabanata 3"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/patinig1"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="45dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:text="Patinig"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/patinig"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="90dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Patinig Aralin 1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/patinigscore"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="90dp"
-                        android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
-                        android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/patinig2"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="130dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Patinig Aralin 2"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/patinig2score"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
-                        android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="360dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#AFFAAF"
-                app:cardCornerRadius="20dp">
-
-                <TextView
-                    android:id="@+id/kab4"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="85dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:gravity="center_horizontal"
-                    android:text="Kabanata 4"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/katinig1"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="65dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:text="Katinig"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/katinig"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="90dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Katinig Aralin 1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/katinig1score"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="90dp"
-                        android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
-                        android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/katinig2"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="130dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Katinig Aralin 2"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/katinig2score"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
-                        android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/katinig3"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="170dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Hiram na letra"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/katinig3score"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="170dp"
-                        android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
-                        android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
 
                 </LinearLayout>
 

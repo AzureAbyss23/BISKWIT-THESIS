@@ -33,67 +33,83 @@
                 android:textColorHint="#000000"
                 android:textSize="50dp" />
 
-            <Button
+
+            <ImageButton
                 android:id="@+id/Alphabet"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
+                android:padding="10dp"
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
+                android:src="@drawable/buttonalphabet"
+                android:scaleType="centerCrop"
                 android:text="Kabanata 1: Alphabet"
                 app:backgroundTint="#FF7F7F"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp"/>
 
-            <Button
-                android:id="@+id/Orton"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/roundshape"
-                android:text="Kabanata 2: Orton-Gillingham"
-                app:backgroundTint="#FFA500"
-                android:textColor="#000000"
-                android:fontFamily="@font/crimson_text"
-                android:textSize="20dp" />
-
-            <Button
+            <ImageButton
                 android:id="@+id/Patinig"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
-                android:background="@drawable/roundshape"
-                android:layout_marginBottom="25dp"
+                android:padding="10dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 3: Patinig"
-                app:backgroundTint="#FFEB3B"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/roundshape"
+                android:src="@drawable/buttonpatinig"
+                android:scaleType="centerCrop"
+                android:text="Kabanata 2: Patinig"
+                app:backgroundTint="#FFC252"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/Katinig"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
+                android:padding="10dp"
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
-                android:text="Kabanata 4: Katinig"
-                app:backgroundTint="#90EE90"
+                android:src="@drawable/buttonkatinig"
+                android:scaleType="centerCrop"
+                android:text="Kabanata 3: Katinig"
+                app:backgroundTint="#FFF6A1"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp" />
 
-            <Button
+            <ImageButton
+                android:id="@+id/Orton"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:padding="10dp"
+                android:background="@drawable/roundshape"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/buttonorton"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:text="Kabanata 4: Orton Gillingham"
+                app:backgroundTint="#B5FDB5"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
+
+            <ImageButton
                 android:id="@+id/Alamkoito"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
+                android:padding="10dp"
                 android:background="@drawable/roundshape"
                 android:layout_marginBottom="25dp"
+                android:src="@drawable/buttonalamko"
+                android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:text="Kabanata 5: Alam ko ito"
-                app:backgroundTint="#00BCD4"
+                app:backgroundTint="#B0DEF3"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp"/>

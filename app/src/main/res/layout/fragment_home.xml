@@ -175,68 +175,11 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="350dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#FFBE45"
-                app:cardCornerRadius="20dp">
-
-                <TextView
-                    android:id="@+id/kab2"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="70dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:gravity="center_horizontal"
-                    android:text="Kabanata 2"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/orton"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="30dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:text="Orton Gillingham"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/ortong"
-                    android:layout_width="312dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/crimson_text"
-                    android:text="\u2022 Phonemic Awareness\n\u2022 Sight Words\n\u2022 Blending Drills\n\u2022 Pagbabaybay "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="20dp" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="350dp"
                 android:layout_height="160dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#FFF389"
+                app:cardBackgroundColor="#FFBE45"
                 app:cardCornerRadius="20dp">
 
                 <TextView
@@ -248,7 +191,7 @@
                     android:layout_marginBottom="60dp"
                     android:fontFamily="@font/crimson_text"
                     android:gravity="center_horizontal"
-                    android:text="Kabanata 3"
+                    android:text="Kabanata 2"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
@@ -294,7 +237,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#AFFAAF"
+                app:cardBackgroundColor="#FFF389"
                 app:cardCornerRadius="20dp">
 
                 <TextView
@@ -306,7 +249,7 @@
                     android:layout_marginBottom="70dp"
                     android:fontFamily="@font/crimson_text"
                     android:gravity="center_horizontal"
-                    android:text="Kabanata 4"
+                    android:text="Kabanata 3"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
@@ -344,6 +287,64 @@
                     android:textColorHint="#000000"
                     android:textSize="20dp" />
 
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="#AFFAAF"
+                android:layout_marginBottom="10dp"
+
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/kab2"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="70dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 4"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/orton"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Orton Gillingham"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ortong"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="\u2022 Phonemic Awareness\n\u2022 Sight Words\n\u2022 Blending Drills\n\u2022 Pagbabaybay "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
