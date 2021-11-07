@@ -1,113 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profile"
+    android:background="@drawable/bg"
     tools:context=".MainDrawer.ProfileFragment">
 
-    <TextView
-        android:id="@+id/Child"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Output"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Output"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/chewy"
+            android:gravity="center_horizontal"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textColor="#48CCCD"
+            android:textColorHint="#000000"
+            android:textSize="40dp" />
 
-    <TextView
-        android:id="@+id/Bday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Output"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727" />
+        <ImageView
+            android:id="@+id/profilepic"
+            android:layout_width="147dp"
+            android:layout_height="138dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/default_image"
+            tools:src="@drawable/default_image"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/Severity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Output"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/Parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Output"
-        android:textColor="#070707"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+                <Button
+                    android:id="@+id/gallery"
+                    android:layout_width="93dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="40dp"
+                    android:scaleType="fitXY"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundshape"
+                    android:text="Open Gallery" />
 
-    <ImageView
-        android:id="@+id/profilepic"
-        android:layout_width="147dp"
-        android:layout_height="138dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163"
-        app:srcCompat="@drawable/default_image"
-        tools:src="@drawable/default_image"
-        tools:visibility="visible" />
+                <ImageView
+                    android:id="@+id/space"
+                    android:layout_width="93dp"
+                    android:layout_height="65dp"
+                    android:layout_weight="1"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/gallery"
-        android:layout_width="121dp"
-        android:layout_height="62dp"
-        android:text="Open Gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14" />
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="93dp"
+                    android:layout_height="65dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/roundshape"
+                    android:text="Save Image" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="113dp"
-        android:layout_height="62dp"
-        android:text="Save Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
+        <androidx.cardview.widget.CardView
+        android:layout_width="360dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#EAEAEA"
+        app:cardCornerRadius="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="140dp"
+            android:fontFamily="@font/crimson_text"
+            android:gravity="center_horizontal"
+            android:text="Information"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fullname"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/crimson_text"
+                android:text="Fullname:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/Child"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/roundshape"
+                app:backgroundTint="#E5E4E2"
+                android:fontFamily="@font/crimson_text"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="20dp"
+                android:gravity="center_horizontal"
+                android:hint="Output" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="130dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Age:         "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Age"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="130dp"
+                    android:background="@drawable/roundshape"
+                    app:backgroundTint="#E5E4E2"
+                    android:fontFamily="@font/crimson_text"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:hint="Output" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bday"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="178dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Birthday: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Bday"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="178dp"
+                    android:background="@drawable/roundshape"
+                    app:backgroundTint="#E5E4E2"
+                    android:fontFamily="@font/crimson_text"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:hint="Output" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sevi"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="237dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Severity: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Severity"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="237dp"
+                    android:background="@drawable/roundshape"
+                    app:backgroundTint="#E5E4E2"
+                    android:fontFamily="@font/crimson_text"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:hint="Output" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/parents"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="290dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Parents/Guardian: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Parents"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="290dp"
+                    android:background="@drawable/roundshape"
+                    app:backgroundTint="#E5E4E2"
+                    android:fontFamily="@font/crimson_text"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:hint="Output" />
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

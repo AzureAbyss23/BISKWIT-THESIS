@@ -3,14 +3,13 @@
     android:id="@+id/toast_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
     android:orientation="horizontal"
     android:padding="8dp">
 
     <ImageView
         android:id="@+id/toast_image"
         android:layout_width="84dp"
-        android:layout_height="86dp"
+        android:layout_height="80dp"
         android:layout_marginRight="8dp"
         android:src="@drawable/kuyamatt" />
 
@@ -19,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="86dp"
         android:gravity="center"
-        android:fontFamily="@font/chewy"
+        android:fontFamily="@font/crimson_text"
         android:textColor="@android:color/black"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
 </LinearLayout>
