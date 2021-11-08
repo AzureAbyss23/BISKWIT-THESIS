@@ -259,6 +259,7 @@ public class Opposite extends AppCompatActivity {
                         intent.putExtra("LessonMode","Opposite");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }

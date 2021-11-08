@@ -215,6 +215,7 @@ public class Blending extends AppCompatActivity {
             intent.putExtra("LessonMode","Blending");
             intent.putExtra("Score", score);
             startActivity(intent);
+            finish();
         }
     }
 

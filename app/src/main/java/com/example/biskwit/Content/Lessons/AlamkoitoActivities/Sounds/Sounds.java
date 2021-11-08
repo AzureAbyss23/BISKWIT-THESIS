@@ -35,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Sounds extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
@@ -151,6 +152,7 @@ public class Sounds extends AppCompatActivity {
                         intent.putExtra("Status",status);
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -298,13 +300,13 @@ public class Sounds extends AppCompatActivity {
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            add = 1;
+            add = 0.5;
             showToast("MABUTI");
             ai = MediaPlayer.create(Sounds.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
-            add = 2;
+            add = 1;
             showToast("MAHUSAY!");
             ai = MediaPlayer.create(Sounds.this, R.raw.response_70_to_100);
             ai.start();
@@ -351,7 +353,8 @@ public class Sounds extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
-           tunog = new String[data.size()];
+            Collections.shuffle(data);
+            tunog = new String[data.size()];
             tunog = data.toArray(tunog);
 
 

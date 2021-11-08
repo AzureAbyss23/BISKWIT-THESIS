@@ -151,6 +151,7 @@ public class Alphabet extends AppCompatActivity {
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
                 stopPlaying();

@@ -279,6 +279,7 @@ public class Phonemic extends AppCompatActivity {
                         intent.putExtra("data",words_for_act);
                         intent.putExtra("FScore", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }

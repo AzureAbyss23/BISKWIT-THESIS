@@ -145,6 +145,7 @@ public class Days extends AppCompatActivity {
                         intent.putExtra("FScore", score);
                         intent.putExtra("data",P_Lesson_Words);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -155,7 +156,7 @@ public class Days extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(Days.this, sound);
                 ai.start();
             }

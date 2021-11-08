@@ -35,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Pagbabaybay extends AppCompatActivity {
 
@@ -119,6 +120,7 @@ public class Pagbabaybay extends AppCompatActivity {
                         intent.putExtra("LessonMode","Pagbabaybay");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -273,6 +275,7 @@ public class Pagbabaybay extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
+            Collections.shuffle(data);
             words = new String[data.size()];
             words = data.toArray(words);
 

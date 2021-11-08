@@ -259,6 +259,7 @@ public class Synonymous extends AppCompatActivity {
                         intent.putExtra("LessonMode","Synonymous");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }

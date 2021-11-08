@@ -88,6 +88,7 @@ public class PatinigLesson1 extends AppCompatActivity {
                 intent.putExtra("LessonMode","P_Aralin1");
                 intent.putExtra("Score", 100.0);
                 startActivity(intent);
+                finish();
             }
         });
     }

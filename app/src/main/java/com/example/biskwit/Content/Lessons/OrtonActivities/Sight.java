@@ -41,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Sight extends AppCompatActivity {
 
@@ -153,8 +154,8 @@ public class Sight extends AppCompatActivity {
                     intent.putExtra("LessonMode","Sight");
                     intent.putExtra("Score", score);
                     startActivity(intent);
+                    finish();
                 }
-
                 stopPlaying();
             }
         });
@@ -405,6 +406,7 @@ public class Sight extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
+            Collections.shuffle(data);
             words = new String[data.size()];
             words = data.toArray(words);
 
