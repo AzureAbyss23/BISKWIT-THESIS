@@ -128,6 +128,7 @@ public class PatinigLesson2 extends AppCompatActivity {
         ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setProgress(CurrentProgress);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

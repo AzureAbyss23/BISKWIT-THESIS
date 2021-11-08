@@ -121,7 +121,8 @@ public class Alphabet extends AppCompatActivity {
         progressDialog = new ProgressDialog(Alphabet.this);
 
         getData();
-
+        progressBar.setMax(alphabet.length);
+        progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +138,6 @@ public class Alphabet extends AppCompatActivity {
                         add = 0;
                         CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(alphabet.length);
                     }
                 } else {
                     if (mic_ctr == 0) {

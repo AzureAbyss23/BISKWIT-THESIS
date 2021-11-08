@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.biskwit.Content.Lessons.Score;
@@ -30,6 +31,10 @@ public class DaysAct extends AppCompatActivity {
     TextView word;
     ImageView bot2;
     MediaPlayer ai;
+
+    //ito yung sa progress bar
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -54,6 +59,10 @@ public class DaysAct extends AppCompatActivity {
 
         ai = MediaPlayer.create(DaysAct.this, R.raw.kab5_p1_2);
         ai.start();
+
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setMax(data.length*2);
+        progressBar.setProgress(data.length);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +144,8 @@ public class DaysAct extends AppCompatActivity {
             ch1.setText(choice[all_ctr][0]);
             ch2.setText(choice[all_ctr][1]);
             ch3.setText(choice[all_ctr][2]);
+            CurrentProgress = CurrentProgress + 1;
+            progressBar.setProgress(CurrentProgress);
         } else {
             score += add;
             Intent intent = new Intent(DaysAct.this, Score.class);

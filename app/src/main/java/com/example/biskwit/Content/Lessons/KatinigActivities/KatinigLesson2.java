@@ -128,6 +128,7 @@ public class KatinigLesson2 extends AppCompatActivity {
         ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setProgress(CurrentProgress);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +173,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].toLowerCase(), "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].replace("-","_").toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(KatinigLesson2.this, sound);
                 ai.start();
             }
@@ -373,7 +374,7 @@ public class KatinigLesson2 extends AppCompatActivity {
     public int setImg(){
         Resources res = this.getResources();
         int resID;
-        return resID = res.getIdentifier("katinig_"+P_Lesson_Words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
+        return resID = res.getIdentifier("katinig_"+P_Lesson_Words[all_ctr].replace("-","_").toLowerCase(), "drawable", this.getPackageName());
     }
 
     private void getData() {

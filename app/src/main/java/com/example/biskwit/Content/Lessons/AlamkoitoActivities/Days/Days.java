@@ -61,7 +61,7 @@ public class Days extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
 
     //ito yung sa progress bar
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -113,6 +113,8 @@ public class Days extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setMax(P_Lesson_Words.length*2);
+        progressBar.setProgress(CurrentProgress);
 
         getData();
         ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
@@ -131,9 +133,8 @@ public class Days extends AppCompatActivity {
                         score += add;
                         mic_ctr = 0;
                         stopPlaying();
-                        CurrentProgress = CurrentProgress + 7;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
                     }
                 } else {
                     if(mic_ctr == 0){

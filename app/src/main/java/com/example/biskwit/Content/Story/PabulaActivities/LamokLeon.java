@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -28,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import java.util.ArrayList;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -64,7 +67,7 @@ public class LamokLeon extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -118,7 +121,19 @@ public class LamokLeon extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
+        VideoView view = findViewById(R.id.BG);
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.bglamok;
+        view.setVideoURI(Uri.parse(path));
+        view.start();
+        view.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+
         getData();
+        progressBar.setProgress(CurrentProgress);
         ai = MediaPlayer.create(LamokLeon.this, R.raw.basa_pabula1);
         ai.start();
 
@@ -142,9 +157,8 @@ public class LamokLeon extends AppCompatActivity {
                         txtqueue.setText(queue);
                         ++queuectr;
                         stopPlaying();
-                        CurrentProgress = CurrentProgress + 11;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
                     }
                 } else {
                     if (mic_ctr == 0) {
@@ -406,7 +420,7 @@ public class LamokLeon extends AppCompatActivity {
             }
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

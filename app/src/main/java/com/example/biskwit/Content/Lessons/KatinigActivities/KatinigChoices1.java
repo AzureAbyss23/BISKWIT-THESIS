@@ -155,7 +155,7 @@ public class KatinigChoices1 extends AppCompatActivity {
         LetterW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(KatinigChoices1.this, KatinigLesson3.class);
+                intent = new Intent(KatinigChoices1.this, KatinigLesson2.class);
                 intent.putExtra("letter","W");
                 startActivity(intent);
             }
