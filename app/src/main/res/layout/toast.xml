@@ -16,10 +16,12 @@
     <TextView
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
+        android:background="@drawable/roundshape"
         android:layout_height="86dp"
         android:gravity="center"
         android:fontFamily="@font/crimson_text"
         android:textColor="@android:color/black"
+        android:backgroundTint="#EAEAEA"
         android:textSize="25dp" />
 
 </LinearLayout>

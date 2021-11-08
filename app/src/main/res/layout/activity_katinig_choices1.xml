@@ -223,17 +223,29 @@
                     android:layout_weight="1" />
 
                 <ImageButton
-                    android:id="@+id/LetterY"
+                    android:id="@+id/LetterW"
                     android:layout_width="127dp"
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/katinig_y" />
+                    android:background="@drawable/hiram_w" />
 
             </LinearLayout>
 
 
+
+
+            <ImageButton
+                android:id="@+id/LetterY"
+                android:layout_width="127dp"
+                android:layout_height="119dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/katinig_y" />
+
+
         </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

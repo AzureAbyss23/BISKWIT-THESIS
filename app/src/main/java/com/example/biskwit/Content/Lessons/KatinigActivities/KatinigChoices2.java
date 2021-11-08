@@ -11,7 +11,7 @@ import com.example.biskwit.R;
 public class KatinigChoices2 extends AppCompatActivity {
 
     Intent intent;
-    ImageButton LetterCK, LetterCS, LetterF, LetterJ, LetterQ, LetterV, LetterW,
+    ImageButton LetterCK, LetterCS, LetterF, LetterJ, LetterQ, LetterV,
                 LetterXS , LetterXK, LetterZ;
 
     @Override
@@ -25,7 +25,6 @@ public class KatinigChoices2 extends AppCompatActivity {
         LetterJ = findViewById(R.id.LetterJ);
         LetterQ = findViewById(R.id.LetterQ);
         LetterV = findViewById(R.id.LetterV);
-        LetterW = findViewById(R.id.LetterW);
         LetterXK = findViewById(R.id.LetterXK);
         LetterXS = findViewById(R.id.LetterXS);
         LetterZ = findViewById(R.id.LetterZ);
@@ -81,15 +80,6 @@ public class KatinigChoices2 extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(KatinigChoices2.this, KatinigLesson3.class);
                 intent.putExtra("letter","V");
-                startActivity(intent);
-            }
-        });
-
-        LetterW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(KatinigChoices2.this, KatinigLesson3.class);
-                intent.putExtra("letter","W");
                 startActivity(intent);
             }
         });

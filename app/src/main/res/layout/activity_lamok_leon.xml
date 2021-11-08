@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/samplebg"
     tools:context=".Content.Story.PabulaActivities.LamokLeon">
 
     <ScrollView
@@ -28,8 +28,6 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
-                android:textColorHint="#000000"
                 android:textSize="50dp"
                 app:srcCompat="@drawable/kwento_lamok" />
 

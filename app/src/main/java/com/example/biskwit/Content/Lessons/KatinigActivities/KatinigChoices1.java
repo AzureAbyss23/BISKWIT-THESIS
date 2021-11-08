@@ -12,7 +12,7 @@ public class KatinigChoices1 extends AppCompatActivity {
 
     Intent intent;
     ImageButton LetterB, LetterD, LetterG, LetterH, LetterK, LetterL, LetterM, LetterN,
-                LetterNG , LetterP, LetterR, LetterS, LetterT, LetterY ;
+                LetterNG , LetterP, LetterR, LetterS, LetterT, LetterW, LetterY ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class KatinigChoices1 extends AppCompatActivity {
         LetterR = findViewById(R.id.LetterR);
         LetterS = findViewById(R.id.LetterS);
         LetterT = findViewById(R.id.LetterT);
+        LetterW = findViewById(R.id.LetterW);
         LetterY = findViewById(R.id.LetterY);
 
         LetterB.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +151,16 @@ public class KatinigChoices1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LetterW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(KatinigChoices1.this, KatinigLesson3.class);
+                intent.putExtra("letter","W");
+                startActivity(intent);
+            }
+        });
+
 
         LetterY.setOnClickListener(new View.OnClickListener() {
             @Override

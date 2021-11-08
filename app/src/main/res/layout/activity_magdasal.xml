@@ -28,7 +28,6 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@color/text"
                 android:textColorHint="#000000"
                 android:textSize="50dp"
                 app:srcCompat="@drawable/tula_magdasal" />

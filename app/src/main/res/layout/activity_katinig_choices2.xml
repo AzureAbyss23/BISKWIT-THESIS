@@ -117,18 +117,19 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/LetterW"
+                    android:id="@+id/LetterXK"
                     android:layout_width="127dp"
                     android:layout_height="119dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/hiram_w" />
+                    android:background="@drawable/hiram_xk" />
 
                 <ImageView
                     android:id="@+id/space4"
@@ -137,42 +138,26 @@
                     android:layout_weight="1" />
 
                 <ImageButton
-                    android:id="@+id/LetterXK"
+                    android:id="@+id/LetterXS"
                     android:layout_width="127dp"
                     android:layout_height="119dp"
                     android:layout_weight="1"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/hiram_xk" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/LetterXS"
-                    android:layout_width="127dp"
-                    android:layout_height="119dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
                     android:background="@drawable/katinig_xs" />
 
-                <ImageView
-                    android:id="@+id/space5"
-                    android:layout_width="127dp"
-                    android:layout_height="119dp"
-                    android:layout_weight="1" />
+            </LinearLayout>
+
 
                 <ImageButton
                     android:id="@+id/LetterZ"
                     android:layout_width="127dp"
                     android:layout_height="119dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:layout_marginRight="40dp"
                     android:background="@drawable/katinig_z" />
 
-            </LinearLayout>
+
+
 
 
         </LinearLayout>
