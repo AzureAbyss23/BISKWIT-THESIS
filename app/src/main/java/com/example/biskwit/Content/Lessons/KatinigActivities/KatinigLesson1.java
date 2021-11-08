@@ -49,6 +49,7 @@ public class KatinigLesson1 extends AppCompatActivity {
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface arg0, int arg1) {
+                                stopPlaying();
                                 finish();
                             }
                         })
@@ -87,6 +88,7 @@ public class KatinigLesson1 extends AppCompatActivity {
                 intent.putExtra("LessonMode","K_Aralin1");
                 intent.putExtra("Score", 100.0);
                 startActivity(intent);
+                finish();
             }
         });
 

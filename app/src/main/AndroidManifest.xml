@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Lessons.OrtonActivities.Phonemic.PhonemicAct"
+            android:exported="true" />
+        <activity
             android:name=".Content.Progress.Progress_Kwento"
             android:exported="true" />
         <activity
@@ -60,7 +63,7 @@
             android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.OrtonActivities.Phoenimic"
+            android:name=".Content.Lessons.OrtonActivities.Phonemic.Phonemic"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.AlphabetActivities.Alphabet"

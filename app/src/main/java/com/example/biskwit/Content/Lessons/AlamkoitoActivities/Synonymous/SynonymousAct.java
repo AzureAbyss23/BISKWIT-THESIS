@@ -3,6 +3,8 @@ package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
@@ -114,6 +117,22 @@ public class SynonymousAct extends AppCompatActivity {
             Intent intent = new Intent(SynonymousAct.this, Score.class);
             intent.putExtra("Score",score);
             startActivity(intent);
+            finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        SynonymousAct.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }

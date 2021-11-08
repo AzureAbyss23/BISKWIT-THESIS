@@ -3,6 +3,8 @@ package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Years;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -17,13 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
 public class YearsAct extends AppCompatActivity {
 
     Button ch1,ch3;
-    String[] data;
     String[][] choice = {{"Bagong Taon","Pasko"},{"Araw ng mga Puso","Buwan ng Pagtatapos"},
             {"Flores de Mayo","Buwan ng Pagtatapos"},{"Buwan ng Wika","Bakasyon"},
             {"Flores de Mayo","Pasko"},{"Araw ng Kalayaan","Araw ng mga Patay"},
@@ -31,8 +33,10 @@ public class YearsAct extends AppCompatActivity {
             {"Buwan ng Palakasan","Buwan ng Pagtatapos"},{"Araw ng mg Patay","Mga Nagkakaisang Bansa"},
             {"Flores de Mayo","Araw ng mga Patay"},{"Bagong Taon","Pasko"}};
     String[] title;
-    int all_ctr = 0, score = 0, id = 0;
+    String[] data;
+    int all_ctr = 0, id = 0;
     int status = 0;
+    double score = 0;
     ImageView bot2,wordimg;
     MediaPlayer ai;
 
@@ -43,7 +47,8 @@ public class YearsAct extends AppCompatActivity {
         setContentView(R.layout.activity_years2);
 
         score = getIntent().getIntExtra("Score",0);
-        title = getIntent().getStringArrayExtra("data");
+        title = getIntent().getStringArrayExtra("Title");
+        data = getIntent().getStringArrayExtra("data");
         status = getIntent().getIntExtra("Status",0);
 
         ch1 = findViewById(R.id.Choice1);
@@ -53,6 +58,8 @@ public class YearsAct extends AppCompatActivity {
 
         ch1.setText(choice[all_ctr][0]);
         ch3.setText(choice[all_ctr][1]);
+        id = setImg();
+        wordimg.setImageResource(id);
 
         ai = MediaPlayer.create(YearsAct.this, R.raw.kab5_p2_2);
         ai.start();
@@ -60,6 +67,7 @@ public class YearsAct extends AppCompatActivity {
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 String day = data[all_ctr];
                 String event = ch1.getText().toString();
                 result(day,event);
@@ -69,6 +77,7 @@ public class YearsAct extends AppCompatActivity {
         ch3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlaying();
                 String day = data[all_ctr];
                 String event = ch3.getText().toString();
                 result(day,event);
@@ -117,74 +126,74 @@ public class YearsAct extends AppCompatActivity {
             case "enero":
                 if(z=="Bagong Taon"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "pebrero":
                 if(z=="Araw ng mga Puso"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "marso":
                 if(z=="Buwan ng Pagtatapos"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "abril":
                 if(z=="Bakasyon"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "mayo":
                 if(z=="Flores de Mayo"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "hunyo":
                 if(z=="Araw ng Kalayaan"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "hulyo":
                 if(z=="Buwan ng Nutrisyon"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "agosto":
                 if(z=="Buwan ng Wika"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "setyembre":
                 if(z=="Buwan ng Palakasan"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "oktubre":
                 if(z=="Mga Nagkakaisang Bansa"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "nobyembre":
                 if(z=="Araw ng mga Patay"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
             case "disyembre":
                 if(z=="Pasko"){
                     score += 2;
-                    showToast("CORRECT!");
-                } else showToast("WRONG!");
+                    showToast("TAMA!");
+                } else showToast("MALI");
                 break;
         }
         if(all_ctr < (data.length - 1)) {
@@ -201,6 +210,22 @@ public class YearsAct extends AppCompatActivity {
             intent.putExtra("LessonMode","Years");
             intent.putExtra("Score", score);
             startActivity(intent);
+            finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        YearsAct.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }

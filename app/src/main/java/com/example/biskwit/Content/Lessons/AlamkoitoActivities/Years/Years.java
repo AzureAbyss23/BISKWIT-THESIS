@@ -147,8 +147,10 @@ public class Years extends AppCompatActivity {
                         Intent intent = new Intent(Years.this, YearsAct.class);
                         intent.putExtra("Status",status);
                         intent.putExtra("Score", score);
-                        intent.putExtra("data",Title);
+                        intent.putExtra("Title",Title);
+                        intent.putExtra("data",P_Lesson_Words);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -159,7 +161,7 @@ public class Years extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(Years.this, sound);
                 ai.start();
             }
@@ -235,6 +237,7 @@ public class Years extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(click==0){
+                    stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
                     mic_ctr++;

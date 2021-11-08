@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices1;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices2;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
 import com.example.biskwit.Data.Database;
 import com.example.biskwit.MainActivity;
 import com.example.biskwit.MainNavMenu;
@@ -81,8 +84,20 @@ public class Score extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Score.this, MainNavMenu.class);
-                startActivity(intent);
+                if(lessontype.equals("Patinig") && lessonmode.equals("P_Aralin2")){
+                    Intent intent = new Intent(Score.this, PatinigChoices1.class);
+                    startActivity(intent);
+                } else if(lessontype.equals("Katinig") && lessonmode.equals("K_Aralin2")){
+                    Intent intent = new Intent(Score.this, KatinigChoices1.class);
+                    startActivity(intent);
+                } else if(lessontype.equals("Hiram") && lessonmode.equals("K_Aralin3")){
+                    Intent intent = new Intent(Score.this, KatinigChoices2.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Score.this, MainNavMenu.class);
+                    startActivity(intent);
+                }
+                finish();
             }
         });
     }
@@ -91,7 +106,6 @@ public class Score extends AppCompatActivity {
         class RegisterUsers extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
             Database ruc = new Database();
-
 
             @Override
             protected void onPreExecute() {

@@ -1,6 +1,9 @@
 package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -13,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
 import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.R;
 
@@ -23,8 +28,9 @@ public class SoundsAct extends AppCompatActivity {
     String[] sound_data = {"tunog_jeep","tunog_cat","tunog_chicken","tunog_bird","tunog_ambulance",
             "tunog_bee","tunog_thunder","tunog_pig","tunog_dog","tunog_frog"};
     String[] data = {"Jeep","Cat","Manok","Ibon","Ambulansya","Bubuyog","Kidlat","Baboy","Aso","Palaka"};
-    int all_ctr = 0, score = 0;
+    int all_ctr = 0;
     int status = 0;
+    double score = 0, add = 0;
     MediaPlayer ai;
     ImageView sound, bot2;
 
@@ -50,14 +56,15 @@ public class SoundsAct extends AppCompatActivity {
                 stopPlaying();
                 String word = spell.getText().toString();
                 if(word.matches("")){
-                    toastMsg("You must enter your answer.");
+                    showToast("Ilagay ang iyong sagot");
                 } else {
                     spell.getText().clear();
                     printSimilarity(word, data[all_ctr]);
-                    if (all_ctr < 9) {
+                    if (all_ctr < (data.length-1)) {
                         ++all_ctr;
-                        toastMsg("Next Sound.");
+                        score += add;
                     } else {
+                        score += add;
                         Intent intent = new Intent(SoundsAct.this, Score.class);
                         intent.putExtra("Average",data.length);
                         intent.putExtra("Status",status);
@@ -65,6 +72,7 @@ public class SoundsAct extends AppCompatActivity {
                         intent.putExtra("LessonMode","Sounds");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -99,7 +107,7 @@ public class SoundsAct extends AppCompatActivity {
         toastText.setText(s);
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
     }
@@ -111,11 +119,6 @@ public class SoundsAct extends AppCompatActivity {
             ai.release();
             ai = null;
         }
-    }
-
-    public void toastMsg(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
-        toast.show();
     }
 
     public static double similarity(String s1, String s2) {
@@ -162,14 +165,37 @@ public class SoundsAct extends AppCompatActivity {
         float val = Float.parseFloat(String.format(
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
-            score += 0;
+            add = 0;
+            showToast("HINDI TUGMA");
+            ai = MediaPlayer.create(SoundsAct.this, R.raw.response_0_to_49);
+            ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
-            score += 1;
+            add = 0.5;
+            showToast("MABUTI");
+            ai = MediaPlayer.create(SoundsAct.this, R.raw.response_50_to_69);
+            ai.start();
         }
         else if(val ==1.0){
-            score += 2;
+            add = 1;
+            showToast("MAHUSAY!");
+            ai = MediaPlayer.create(SoundsAct.this, R.raw.response_70_to_100);
+            ai.start();
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        SoundsAct.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Blending;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Phoenimic;
+import com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic.Phonemic;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentOrtonBinding;
@@ -40,7 +40,7 @@ public class OrtonFragment extends Fragment {
         binding.Phoenimic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), Phoenimic.class);
+                intent = new Intent(getContext(), Phonemic.class);
                 startActivity(intent);
             }
         });

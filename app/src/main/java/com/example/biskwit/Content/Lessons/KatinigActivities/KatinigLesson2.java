@@ -29,6 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -132,7 +134,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
                     if(mic_ctr == 0){
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -148,7 +150,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                     }
                 } else {
                     if(mic_ctr == 0){
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson2.this, Score.class);
@@ -159,6 +161,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                         intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -414,6 +417,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
+            Collections.shuffle(data);
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
 

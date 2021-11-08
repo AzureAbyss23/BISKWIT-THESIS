@@ -127,7 +127,7 @@ public class Alphabet extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (alphabet.length - 1)) {
                     if (mic_ctr == 0) {
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -141,7 +141,7 @@ public class Alphabet extends AppCompatActivity {
                     }
                 } else {
                     if (mic_ctr == 0) {
-                        showToast("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         score += add;
                         intent = new Intent(Alphabet.this, Score.class);
@@ -151,6 +151,7 @@ public class Alphabet extends AppCompatActivity {
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
                 stopPlaying();

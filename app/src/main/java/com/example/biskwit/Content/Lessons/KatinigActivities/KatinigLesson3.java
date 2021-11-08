@@ -29,6 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -120,8 +122,8 @@ public class KatinigLesson3 extends AppCompatActivity {
         String letter = intent.getStringExtra("letter");
         Resources res = getResources();
         int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
-        ai = MediaPlayer.create(KatinigLesson3.this, sound);
-        ai.start();
+        //ai = MediaPlayer.create(KatinigLesson3.this, sound);
+        //ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -130,7 +132,7 @@ public class KatinigLesson3 extends AppCompatActivity {
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
                     if(mic_ctr == 0){
-                        txtresult.setText("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         ++all_ctr;
                         mic_ctr = 0;
@@ -146,7 +148,7 @@ public class KatinigLesson3 extends AppCompatActivity {
                     }
                 } else {
                     if(mic_ctr == 0){
-                        txtresult.setText("Try it first!");
+                        showToast("Subukan mo muna ito");
                     } else {
                         score += add;
                         Intent intent = new Intent(KatinigLesson3.this, Score.class);
@@ -157,6 +159,7 @@ public class KatinigLesson3 extends AppCompatActivity {
                         intent.putExtra("Letter",letter);
                         intent.putExtra("Score", score);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -167,7 +170,7 @@ public class KatinigLesson3 extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].toLowerCase(), "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].replace(" ","_").replace("-","_").toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(KatinigLesson3.this, sound);
                 ai.start();
             }
@@ -413,6 +416,7 @@ public class KatinigLesson3 extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
+            Collections.shuffle(data);
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
 

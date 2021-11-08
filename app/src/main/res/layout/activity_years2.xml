@@ -44,12 +44,6 @@
                     android:layout_weight="1"
                     app:srcCompat="@drawable/atechay" />
 
-                <ImageView
-                    android:id="@+id/Bot"
-                    android:layout_width="82dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/kuyamatt" />
             </LinearLayout>
 
             <ImageView
