@@ -10,9 +10,10 @@
         android:id="@+id/Title_Setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="Settings"
         android:textSize="50dp"
+        android:textColor="@color/teal_200"
+        android:fontFamily="@font/chewy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -22,52 +23,62 @@
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="145dp"
-        android:layout_height="45dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/crimson_text"
         android:text="Switch"
         android:textOff="OFF"
         android:textOn="ON"
+        android:textSize="25dp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.572" />
 
     <Button
         android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:background="@drawable/roundshape"
+        android:fontFamily="@font/crimson_text"
         android:text="Contact Information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.709" />
 
     <Button
         android:id="@+id/resetbutton"
-        android:layout_width="218dp"
-        android:layout_height="48dp"
-        android:text="Reset Progess."
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:background="@drawable/roundshape"
+        android:fontFamily="@font/crimson_text"
+        android:text="Reset Progess"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.824" />
 
     <TextView
         android:id="@+id/tapsound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/crimson_text"
         android:text="Tap Sound"
-        android:textSize="30dp"
+        android:textColor="#000000"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.463" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -84,7 +95,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volume"
-        android:textSize="30dp"
+        android:textSize="40dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/crimson_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
