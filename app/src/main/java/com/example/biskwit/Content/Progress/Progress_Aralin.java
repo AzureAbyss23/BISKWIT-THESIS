@@ -1,7 +1,6 @@
 package com.example.biskwit.Content.Progress;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;

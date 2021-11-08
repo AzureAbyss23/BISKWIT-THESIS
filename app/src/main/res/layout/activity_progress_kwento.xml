@@ -45,7 +45,7 @@
         app:cardCornerRadius="20dp">
 
         <TextView
-            android:id="@+id/kab4"
+            android:id="@+id/kwento"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,7 +67,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/katinig"
+                android:id="@+id/Magdasal"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -80,7 +80,7 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/katinig1score"
+                android:id="@+id/Magdasalscore"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -104,7 +104,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/katinig2"
+                android:id="@+id/Paruparo"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -117,7 +117,7 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/katinig2score"
+                android:id="@+id/Paruparoscore"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -141,7 +141,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/katinig3"
+                android:id="@+id/Maglaro"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -154,7 +154,7 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/katinig3score"
+                android:id="@+id/Maglaroscore"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -206,7 +206,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/patinig"
+                android:id="@+id/Lamok"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -219,7 +219,7 @@
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/patinigscore"
+                android:id="@+id/Lamokscore"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
@@ -243,7 +243,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/patinig2"
+                android:id="@+id/Langgam"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -256,7 +256,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/patinig2score"
+                android:id="@+id/Langgamscore"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
