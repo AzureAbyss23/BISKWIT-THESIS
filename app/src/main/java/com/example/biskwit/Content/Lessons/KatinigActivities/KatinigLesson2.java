@@ -66,7 +66,7 @@ public class KatinigLesson2 extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
 
     //ito yung sa progress bar
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -144,9 +144,9 @@ public class KatinigLesson2 extends AppCompatActivity {
                         id = setImg();
                         wordimg.setImageResource(id);
                         stopPlaying();
-                        CurrentProgress = CurrentProgress + 714;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(10000);
+                        progressBar.setMax(P_Lesson_Words.length);
                     }
                 } else {
                     if(mic_ctr == 0){

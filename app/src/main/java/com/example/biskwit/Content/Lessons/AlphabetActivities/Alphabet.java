@@ -61,7 +61,7 @@ public class Alphabet extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -135,9 +135,9 @@ public class Alphabet extends AppCompatActivity {
                         txtresult.setText("Press the Mic Button");
                         score += add;
                         add = 0;
-                        CurrentProgress = CurrentProgress + 384;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(10000);
+                        progressBar.setMax(alphabet.length);
                     }
                 } else {
                     if (mic_ctr == 0) {
