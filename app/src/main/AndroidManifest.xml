@@ -42,7 +42,7 @@
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson3"
             android:exported="true" />
         <activity
-            android:name=".Contact_Info"
+            android:name=".MainActivity.Contact_Info"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.KatinigActivities.KatinigChoices1"
@@ -66,7 +66,7 @@
             android:name=".Content.Lessons.AlamkoitoActivities.Days.DaysAct"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.Score"
+            android:name=".Content.Score"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
@@ -129,13 +129,13 @@
             android:name=".Content.Lessons.PatinigActivities.PatinigLesson2"
             android:exported="true" />
         <activity
-            android:name=".MainNavMenu"
+            android:name=".MainActivity.MainNavMenu"
             android:exported="true"
             android:label="@string/title_activity_main_nav_menu"
             android:theme="@style/Theme.BISKWIT.NoActionBar" />
-        <activity android:name=".SignUp_Form" />
-        <activity android:name=".Terms" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity.SignUp_Form" />
+        <activity android:name=".MainActivity.Terms" />
+        <activity android:name=".MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

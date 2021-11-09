@@ -1,4 +1,4 @@
-package com.example.biskwit;
+package com.example.biskwit.MainActivity;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import com.example.biskwit.Data.Database;
+import com.example.biskwit.R;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

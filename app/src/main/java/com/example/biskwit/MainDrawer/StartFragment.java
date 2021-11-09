@@ -1,6 +1,6 @@
 package com.example.biskwit.MainDrawer;
 
-import static com.example.biskwit.MainNavMenu.tapsoundon;
+import static com.example.biskwit.MainActivity.MainNavMenu.tapsoundon;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.ProgressFragment;
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentStartBinding;
 import com.example.biskwit.Content.storyFragment;

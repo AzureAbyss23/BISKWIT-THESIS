@@ -1,4 +1,4 @@
-package com.example.biskwit;
+package com.example.biskwit.MainActivity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.biskwit.R;
 
 public class Logout extends Fragment {
 

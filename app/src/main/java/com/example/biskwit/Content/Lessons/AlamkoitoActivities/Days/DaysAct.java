@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 
 public class DaysAct extends AppCompatActivity {

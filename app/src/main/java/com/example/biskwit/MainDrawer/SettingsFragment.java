@@ -1,8 +1,7 @@
 package com.example.biskwit.MainDrawer;
 
-import static com.example.biskwit.MainNavMenu.tapsoundon;
-import static com.example.biskwit.MainNavMenu.globalvolume;
-
+import static com.example.biskwit.MainActivity.MainNavMenu.tapsoundon;
+import static com.example.biskwit.MainActivity.MainNavMenu.globalvolume;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -10,10 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
-
-
-import com.example.biskwit.Contact_Info;
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.Contact_Info;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {

@@ -34,7 +34,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.biskwit.Logout"
+        android:name="com.example.biskwit.MainActivity.Logout"
         android:label="Logout"
         tools:layout="@layout/fragment_logout" />
     <fragment

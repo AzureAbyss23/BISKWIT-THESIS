@@ -17,8 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 
 public class SoundsAct extends AppCompatActivity {

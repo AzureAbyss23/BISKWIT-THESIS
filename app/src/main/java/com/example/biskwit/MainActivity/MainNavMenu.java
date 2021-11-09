@@ -1,8 +1,9 @@
-package com.example.biskwit;
+package com.example.biskwit.MainActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.example.biskwit.R;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;

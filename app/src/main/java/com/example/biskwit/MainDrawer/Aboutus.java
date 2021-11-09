@@ -10,7 +10,7 @@ import android.widget.VideoView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAboutusBinding;
 

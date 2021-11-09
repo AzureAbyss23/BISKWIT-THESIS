@@ -1,13 +1,11 @@
-package com.example.biskwit;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+package com.example.biskwit.MainActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
+import com.example.biskwit.R;
 
 public class Contact_Info extends AppCompatActivity {
     Button backbutton;

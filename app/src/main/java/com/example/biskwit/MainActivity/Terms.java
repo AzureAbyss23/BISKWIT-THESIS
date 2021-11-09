@@ -1,4 +1,4 @@
-package com.example.biskwit;
+package com.example.biskwit.MainActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.biskwit.R;
 
 public class Terms extends AppCompatActivity {
 

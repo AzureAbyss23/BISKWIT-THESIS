@@ -13,8 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 
 public class KatinigLesson1 extends AppCompatActivity {

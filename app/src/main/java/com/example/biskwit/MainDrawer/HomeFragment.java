@@ -1,14 +1,12 @@
 package com.example.biskwit.MainDrawer;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
-import com.example.biskwit.MainActivity;
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentHomeBinding;
 

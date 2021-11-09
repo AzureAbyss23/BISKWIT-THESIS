@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Lessons;
+package com.example.biskwit.Content;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,19 +9,15 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices1;
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices2;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
 import com.example.biskwit.Data.Database;
-import com.example.biskwit.MainActivity;
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.R;
-import com.example.biskwit.SignUp_Form;
 
 import java.util.HashMap;
 
