@@ -49,7 +49,6 @@ public class Alphabet extends AppCompatActivity {
     ImageButton mic;
     String word = "";
     String[] alphabet;
-    String holder = "";
     int all_ctr = 0;
     int click = 0;
     int mic_ctr = 0;
@@ -70,7 +69,6 @@ public class Alphabet extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -81,26 +79,24 @@ public class Alphabet extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id+"ABCD";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("ABCD" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -121,7 +117,6 @@ public class Alphabet extends AppCompatActivity {
         progressDialog = new ProgressDialog(Alphabet.this);
 
         getData();
-        progressBar.setMax(alphabet.length);
         progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -401,6 +396,7 @@ public class Alphabet extends AppCompatActivity {
             }
             alphabet = new String[letter.size()];
             alphabet = letter.toArray(alphabet);
+            progressBar.setMax(alphabet.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

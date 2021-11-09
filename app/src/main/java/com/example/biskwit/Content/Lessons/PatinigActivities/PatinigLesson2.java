@@ -50,7 +50,6 @@ public class PatinigLesson2 extends AppCompatActivity {
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] P_Lesson_Words;
     int all_ctr = 0;
     int click = 0;
@@ -74,36 +73,34 @@ public class PatinigLesson2 extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patinig_lesson2);
 
+        String letter = getIntent().getStringExtra("letter");
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"P_Aralin2"+letter;
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("P_Aralin2" + id2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -119,7 +116,6 @@ public class PatinigLesson2 extends AppCompatActivity {
         wordimg = findViewById(R.id.WordImg);
         getData();
 
-        String letter = intent.getStringExtra("letter");
         Resources res = getResources();
 
         int sound = res.getIdentifier("kab3_p2_"+letter.toLowerCase(), "raw", getPackageName());
@@ -140,6 +136,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                         ++all_ctr;
                         mic_ctr = 0;
                         score += add;
+                        add = 0;
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
                         id = setImg();

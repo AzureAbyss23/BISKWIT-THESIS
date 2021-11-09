@@ -35,6 +35,7 @@ public class Score extends AppCompatActivity {
     String lessonmode = "";
     String letter = "";
     String score_save = "";
+    String UserScore = "";
     int status = 0;
     double conv_score;
     double average = 0;
@@ -45,7 +46,6 @@ public class Score extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     String REGISTER_URL = "";
 
@@ -63,11 +63,13 @@ public class Score extends AppCompatActivity {
         lessontype = getIntent().getStringExtra("LessonType");
         lessonmode = getIntent().getStringExtra("LessonMode");
         letter = getIntent().getStringExtra("Letter");
-        score_save = lessonmode + str_id;
+        if(letter==null) {
+            letter = "default";
+            UserScore = "userscore"+str_id+lessonmode;
+        } else { UserScore = "userscore"+str_id+lessonmode+letter; }
         editor = scores.edit();
         editor.putString(UserScore, score_save);
-        editor.commit();
-        if(letter==null) letter = "default";
+        editor.apply();
         double s = getIntent().getDoubleExtra("Score",0);
         compute = (s / average) * 100;
         conv_score = Math.round(compute);
@@ -76,7 +78,7 @@ public class Score extends AppCompatActivity {
         score = findViewById(R.id.Score);
         next = findViewById(R.id.nextButton);
 
-        REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php?status="+status+"&lessonmode="+lessonmode;
+        REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php?status="+status+"&lessonmode="+lessonmode+"&letter="+letter;
 
         score.setText(Score);
         insert(str_id,lessontype,lessonmode,letter,str_score);

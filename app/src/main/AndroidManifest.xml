@@ -21,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Progress.ProgressHiram"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Progress.ProgressKatinig"
+            android:exported="true" />
+        <activity
+            android:name=".Content.Progress.ProgressPatinig"
+            android:exported="true" />
+        <activity
             android:name=".Content.Lessons.OrtonActivities.Phonemic.PhonemicAct"
             android:exported="true" />
         <activity

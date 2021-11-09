@@ -47,7 +47,6 @@ public class Years extends AppCompatActivity {
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] P_Lesson_Words;
     String[] Title;
     int all_ctr = 0;
@@ -62,7 +61,7 @@ public class Years extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
 
     //ito yung sa progress bar
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -71,7 +70,6 @@ public class Years extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,26 +79,24 @@ public class Years extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"ABCD";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Years" + id2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -120,6 +116,7 @@ public class Years extends AppCompatActivity {
         ai = MediaPlayer.create(Years.this, R.raw.kab5_p2_1);
         ai.start();
 
+        progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,9 +132,8 @@ public class Years extends AppCompatActivity {
                         stopPlaying();
                         id = setImg();
                         wordimg.setImageResource(id);
-                        CurrentProgress = CurrentProgress + 7;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
                     }
                 } else {
                     if(mic_ctr == 0){
@@ -408,7 +404,7 @@ public class Years extends AppCompatActivity {
             Title = data.toArray(Title);
             P_Lesson_Words = new String[data2.size()];
             P_Lesson_Words = data2.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

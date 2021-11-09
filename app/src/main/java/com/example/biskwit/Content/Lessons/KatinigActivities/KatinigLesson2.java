@@ -51,7 +51,6 @@ public class KatinigLesson2 extends AppCompatActivity {
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] P_Lesson_Words;
     int all_ctr = 0;
     int click = 0;
@@ -75,36 +74,34 @@ public class KatinigLesson2 extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_katinig_lesson2);
 
+        String letter = getIntent().getStringExtra("letter");
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"K_Aralin2"+letter;
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("K_Aralin2" + id2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -121,7 +118,6 @@ public class KatinigLesson2 extends AppCompatActivity {
 
         getData();
 
-        String letter = intent.getStringExtra("letter");
         Resources res = getResources();
         int sound = res.getIdentifier("kab4_p2_"+letter.toLowerCase(), "raw", getPackageName());
         ai = MediaPlayer.create(KatinigLesson2.this, sound);
@@ -140,6 +136,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                         ++all_ctr;
                         mic_ctr = 0;
                         score += add;
+                        add = 0;
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
                         id = setImg();
@@ -147,7 +144,6 @@ public class KatinigLesson2 extends AppCompatActivity {
                         stopPlaying();
                         CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(P_Lesson_Words.length);
                     }
                 } else {
                     if(mic_ctr == 0){
@@ -421,7 +417,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             Collections.shuffle(data);
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

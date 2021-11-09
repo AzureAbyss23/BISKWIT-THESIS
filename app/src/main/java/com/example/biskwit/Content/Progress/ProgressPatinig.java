@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -27,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Progress_Aralin extends AppCompatActivity {
+public class ProgressPatinig extends AppCompatActivity {
 
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
@@ -35,46 +33,25 @@ public class Progress_Aralin extends AppCompatActivity {
     int id = 0;
     ProgressDialog progressDialog;
 
-    TextView score_alphabet,score_phonemic,score_sight,score_blending,score_pagbabaybay;
-    TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
-    TextView score_p_aralin1;
-
-    Button score_p_aralin2;
+    TextView score_a,score_e,score_i,score_o,score_u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress_aralin);
+        setContentView(R.layout.activity_progress_patinig);
 
-        score_alphabet = findViewById(R.id.alphabetscore);
-        score_phonemic = findViewById(R.id.phonemicscore);
-        score_sight = findViewById(R.id.sightscore);
-        score_blending = findViewById(R.id.blendingscore);
-        score_pagbabaybay = findViewById(R.id.pagbabaybayscore);
-
-        score_days = findViewById(R.id.Daysscore);
-        score_years = findViewById(R.id.Yearsscore);
-        score_synonymous = findViewById(R.id.Synonymousscore);
-        score_opposite = findViewById(R.id.Oppositescore);
-        score_sound = findViewById(R.id.Soundscore);
-
-        score_p_aralin1 = findViewById(R.id.patinigscore);
-        score_p_aralin2 = findViewById(R.id.patinig2score);
+        score_a = findViewById(R.id.Patinig_A_Score);
+        score_e = findViewById(R.id.Patinig_E_Score);
+        score_i = findViewById(R.id.Patinig_I_Score);
+        score_o = findViewById(R.id.Patinig_O_Score);
+        score_u = findViewById(R.id.Patinig_U_Score);
 
         getData();
-
-        score_p_aralin2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Progress_Aralin.this, ProgressPatinig.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
     private void getData() {
-        progressDialog = new ProgressDialog(Progress_Aralin.this);
+        progressDialog = new ProgressDialog(ProgressPatinig.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading your scores...");
         progressDialog.setCancelable(false);
@@ -95,7 +72,7 @@ public class Progress_Aralin extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Progress_Aralin.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProgressPatinig.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -109,6 +86,7 @@ public class Progress_Aralin extends AppCompatActivity {
         ArrayList<String> data = new ArrayList<String>();
         ArrayList<String> data2 = new ArrayList<String>();
         ArrayList<String> data3 = new ArrayList<String>();
+        ArrayList<String> data4 = new ArrayList<String>();
 
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -118,42 +96,33 @@ public class Progress_Aralin extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("lessontype"));
                 data2.add(collegeData.getString("lessonmode"));
-                data3.add(collegeData.getString("score"));
+                data3.add(collegeData.getString("letter"));
+                data4.add(collegeData.getString("score"));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(!data.isEmpty() && !data2.isEmpty() && !data3.isEmpty()){
+        if(!data.isEmpty() && !data2.isEmpty() && !data3.isEmpty() && !data4.isEmpty()){
             Iterator<String> i1= data.iterator();
             Iterator<String> i2= data2.iterator();
             Iterator<String> i3= data3.iterator();
-            while(i1.hasNext() && i2.hasNext() && i3.hasNext()) {
+            Iterator<String> i4= data4.iterator();
+            while(i1.hasNext() && i2.hasNext() && i3.hasNext() && i4.hasNext()) {
                 String type = i1.next();
                 String mode = i2.next();
-                String sco = i3.next();
-                if (type.equals("Alphabet") && mode.equals("ABCD")) {
-                    score_alphabet.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Phonemic")) {
-                    score_phonemic.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Sight")) {
-                    score_sight.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Blending")) {
-                    score_blending.setText(sco + "%");
-                } else if(type.equals("Orton") && mode.equals("Pagbabaybay")){
-                    score_pagbabaybay.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Days")){
-                    score_days.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Years")){
-                    score_years.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Synonymous")){
-                    score_synonymous.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Opposite")){
-                    score_opposite.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Sounds")){
-                    score_sound.setText(sco + "%");
-                } else if(type.equals("Patinig") && mode.equals("P_Aralin1")){
-                    score_p_aralin1.setText(sco + "%");
+                String ltr = i3.next();
+                String sco = i4.next();
+                if (type.equals("Patinig") && mode.equals("P_Aralin2") && ltr.equals("A")) {
+                    score_a.setText(sco + "%");
+                } else if (type.equals("Patinig") && mode.equals("P_Aralin2") && ltr.equals("E")) {
+                    score_e.setText(sco + "%");
+                } else if (type.equals("Patinig") && mode.equals("P_Aralin2") && ltr.equals("I")) {
+                    score_i.setText(sco + "%");
+                } else if (type.equals("Patinig") && mode.equals("P_Aralin2") && ltr.equals("O")) {
+                    score_o.setText(sco + "%");
+                } else if(type.equals("Patinig") && mode.equals("P_Aralin2") && ltr.equals("U")){
+                    score_u.setText(sco + "%");
                 }
             }
         } else {

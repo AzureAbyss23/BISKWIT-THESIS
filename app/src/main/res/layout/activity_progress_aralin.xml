@@ -198,22 +198,20 @@
                         android:textColorHint="#000000"
                         android:textSize="25dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/patinig2score"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="130dp"
                         android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
                         android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
+                        android:text="View"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
+                        android:textSize="13dp"
+                        app:backgroundTint="#E5E4E2" />
 
                 </LinearLayout>
 

@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity{
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         IDFetch = getSharedPreferences(filename2, Context.MODE_PRIVATE);
 
-
-
         if(logger.contains(UserID)){
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);
