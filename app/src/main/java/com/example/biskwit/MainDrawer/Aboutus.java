@@ -10,7 +10,7 @@ import android.widget.VideoView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.biskwit.MainNavMenu;
+import com.example.biskwit.MainActivity.MainNavMenu;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAboutusBinding;
 
@@ -43,8 +43,6 @@ public class Aboutus extends Fragment {
         return rootView;
 
     }
-
-
 
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override

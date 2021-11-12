@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     tools:context=".Content.Story.TulaActivities.ParuparoRosas">
+
+    <include layout="@layout/video_background" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,11 +64,10 @@
 
             <TextView
                 android:id="@+id/Story"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_gravity="center"
-                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
@@ -82,17 +82,20 @@
 
             <TextView
                 android:id="@+id/Word"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/crimson_text"
                 android:gravity="center"
+                android:background="@drawable/roundshape"
+                android:backgroundTint="#99F0FFFF"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:layout_gravity="center"
+                android:textColor="#77B44F"
                 android:textColorHint="#000000"
-                android:textColor="#65B670"
-                android:fontFamily="@font/crimson_text"
-                android:textSize="30dp" />
-
+                android:textSize="30dp"
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -128,7 +131,7 @@
 
             <TextView
                 android:id="@+id/Queue"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textAlignment="center"

@@ -33,7 +33,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -49,7 +49,6 @@ public class Sight extends AppCompatActivity {
     ImageView next,bot,bot2, wordimg;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] words;
     int all_ctr = 0;
     int click = 0;
@@ -78,26 +77,24 @@ public class Sight extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"Sight";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Sight" + id2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -194,7 +191,7 @@ public class Sight extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override

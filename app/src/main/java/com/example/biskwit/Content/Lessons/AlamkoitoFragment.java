@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import com.example.biskwit.Content.LessonFragment;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite.Opposite;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous.SynonymousAct;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Years.Years;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAlamkoitoBinding;
@@ -55,7 +57,7 @@ public class AlamkoitoFragment extends Fragment {
         binding.Opposite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), Opposite.class);
+                intent = new Intent(getContext(), OppositeAct.class);
                 startActivity(intent);
             }
         });
@@ -71,7 +73,7 @@ public class AlamkoitoFragment extends Fragment {
         binding.Synonymous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), Synonymous.class);
+                intent = new Intent(getContext(), SynonymousAct.class);
                 startActivity(intent);
             }
         });

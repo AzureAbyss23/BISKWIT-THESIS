@@ -25,8 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 
@@ -35,7 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Pagbabaybay extends AppCompatActivity {
 
@@ -43,7 +41,6 @@ public class Pagbabaybay extends AppCompatActivity {
     ImageView nextButton;
     String[] words;
     String[] botins;
-    String holder = "";
     int all_ctr = 0, all_ctr2 = 0;
     int status = 0;
     double score = 0;
@@ -56,7 +53,6 @@ public class Pagbabaybay extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,26 +62,24 @@ public class Pagbabaybay extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id+"Pagbabaybay";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Pagbabaybay" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         spell = findViewById(R.id.Spell);
@@ -275,7 +269,6 @@ public class Pagbabaybay extends AppCompatActivity {
                 JSONObject collegeData = result.getJSONObject(i);
                 data.add(collegeData.getString("word"));
             }
-            Collections.shuffle(data);
             words = new String[data.size()];
             words = data.toArray(words);
 

@@ -34,10 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.Data.Constants;
-import com.example.biskwit.MainNavMenu;
 import com.example.biskwit.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +46,6 @@ public class Days extends AppCompatActivity {
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] P_Lesson_Words;
     int all_ctr = 0;
     int status = 0;
@@ -61,7 +57,7 @@ public class Days extends AppCompatActivity {
     private SpeechRecognizer speechRecognizer;
 
     //ito yung sa progress bar
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -70,7 +66,6 @@ public class Days extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,26 +75,24 @@ public class Days extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id+"Days";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Days" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -118,6 +111,7 @@ public class Days extends AppCompatActivity {
         ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
         ai.start();
 
+        progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,9 +125,8 @@ public class Days extends AppCompatActivity {
                         score += add;
                         mic_ctr = 0;
                         stopPlaying();
-                        CurrentProgress = CurrentProgress + 7;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
                     }
                 } else {
                     if(mic_ctr == 0){
@@ -185,7 +178,7 @@ public class Days extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -200,7 +193,7 @@ public class Days extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override
@@ -392,7 +385,7 @@ public class Days extends AppCompatActivity {
             }
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length*2);
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -35,7 +37,9 @@ public class Progress_Aralin extends AppCompatActivity {
 
     TextView score_alphabet,score_phonemic,score_sight,score_blending,score_pagbabaybay;
     TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
-    TextView score_p_aralin1, score_p_aralin2;
+    TextView score_p_aralin1;
+
+    Button score_p_aralin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,14 @@ public class Progress_Aralin extends AppCompatActivity {
         score_p_aralin2 = findViewById(R.id.patinig2score);
 
         getData();
+
+        score_p_aralin2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Progress_Aralin.this, ProgressPatinig.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -140,10 +152,8 @@ public class Progress_Aralin extends AppCompatActivity {
                     score_opposite.setText(sco + "%");
                 } else if(type.equals("Alamkoito") && mode.equals("Sounds")){
                     score_sound.setText(sco + "%");
-                } else if(type.equals("Patinig") && mode.equals("Aralin1")){
+                } else if(type.equals("Patinig") && mode.equals("P_Aralin1")){
                     score_p_aralin1.setText(sco + "%");
-                } else if(type.equals("Patinig") && mode.equals("Aralin2")){
-                    score_p_aralin2.setText(sco + "%");
                 }
             }
         } else {

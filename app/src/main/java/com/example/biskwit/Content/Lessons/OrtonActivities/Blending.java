@@ -25,10 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds.Sounds;
-import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
-import com.example.biskwit.Content.Lessons.Score;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -44,7 +41,6 @@ public class Blending extends AppCompatActivity {
             {"llisi","nergy","nsayo"},{"saw","law","sda"},{"saw","law","sda"},
             {"po","lo","so"},{"po","lo","so"},{"lo","od","so"},{"sa","bo","lo"}};
     String spaces = "";
-    String holder = "";
     int all_ctr = 0, id = 0;
     int status = 0;
     double score = 0;
@@ -57,7 +53,6 @@ public class Blending extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -67,27 +62,25 @@ public class Blending extends AppCompatActivity {
 
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
-        int id = logger.getInt(UserID,0);
+        int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"Blending";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Blending" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         ch1 = findViewById(R.id.Choice1);

@@ -27,8 +27,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
-import com.example.biskwit.Content.Lessons.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -41,7 +39,7 @@ public class Sounds extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
     ProgressDialog progressDialog;
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
     ImageView next;
     ImageView bot2;
@@ -49,7 +47,6 @@ public class Sounds extends AppCompatActivity {
     Intent intent;
     String[] tunog;
     String word = "";
-    String holder = "";
     TextView txtword, txtresult;
     ImageView wordimg;
     ImageButton mic;
@@ -64,7 +61,6 @@ public class Sounds extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,26 +70,24 @@ public class Sounds extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"ABCD";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Sounds" + id2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         next = findViewById(R.id.nextButton);
@@ -104,10 +98,13 @@ public class Sounds extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar);
         progressDialog = new ProgressDialog(Sounds.this);
+
         getData();
+
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
         ai.start();
 
+        progressBar.setProgress(CurrentProgress);
         //ate chay bot
         bot2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,9 +136,8 @@ public class Sounds extends AppCompatActivity {
                         int sound = res.getIdentifier("kab5_p5_"+ tunog[all_ctr].toLowerCase(),"raw", getPackageName());
                         ai = MediaPlayer.create(Sounds.this, sound);
                         ai.start();
-                        CurrentProgress = CurrentProgress + 714;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(10000);
                     }
                 } else {
                     if(mic_ctr == 0){
@@ -174,7 +170,7 @@ public class Sounds extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -356,7 +352,7 @@ public class Sounds extends AppCompatActivity {
             Collections.shuffle(data);
             tunog = new String[data.size()];
             tunog = data.toArray(tunog);
-
+            progressBar.setMax(tunog.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

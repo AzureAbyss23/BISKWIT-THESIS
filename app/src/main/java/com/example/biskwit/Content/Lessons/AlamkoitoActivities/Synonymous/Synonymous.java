@@ -42,10 +42,10 @@ public class Synonymous extends AppCompatActivity {
     String[] words1;
     String[] words2;
     String[] holder;
-    String holder2 = "";
     int all_ctr = 0, click = 0, micctr1 = 0, micctr2 = 0;
     int mic_ctr1 = 0, mic_ctr2 = 0;
     int status = 0;
+    int datalength = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
 
@@ -58,36 +58,37 @@ public class Synonymous extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synonymous);
 
+        score = getIntent().getIntExtra("FScore",0);
+        status = getIntent().getIntExtra("Status",0);
+        datalength = getIntent().getIntExtra("DataLength",0);
+
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id+"Synonymous";
         if(scores.contains(UserScore)) {
-            holder2 = scores.getString(UserScore, null);
-            if (holder.equals("Sounds" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         word1 = findViewById(R.id.Word);
@@ -115,7 +116,7 @@ public class Synonymous extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                //txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -130,7 +131,7 @@ public class Synonymous extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override

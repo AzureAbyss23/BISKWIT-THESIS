@@ -13,10 +13,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -31,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import java.util.ArrayList;
 
 import com.android.volley.RequestQueue;
@@ -38,8 +38,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.biskwit.Content.Lessons.Score;
-import com.example.biskwit.DBHelper;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 
@@ -55,7 +54,6 @@ public class Maglaro extends AppCompatActivity {
     String word = "";
     String[] P_Lesson_Words;
     String queue="",story="";
-    String holder = "";
     int all_ctr = 0;
     int click = 0;
     int queuectr=2;
@@ -67,7 +65,7 @@ public class Maglaro extends AppCompatActivity {
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
 
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -76,7 +74,6 @@ public class Maglaro extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,26 +83,24 @@ public class Maglaro extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id+"Maglaro";
         if(scores.contains(UserScore)) {
-            holder = scores.getString(UserScore, null);
-            if (holder.equals("Maglaro" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this)
+                    .setTitle("Retry lesson?")
+                    .setMessage("Your previous progress will be reset.")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            stopPlaying();
+                            finish();
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            status = 1;
+                        }
+                    }).create().show();
         }
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
@@ -120,11 +115,24 @@ public class Maglaro extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setProgress(CurrentProgress);
 
         ai = MediaPlayer.create(Maglaro.this, R.raw.basa_tula3);
         ai.start();
-        getData();
 
+        VideoView view = findViewById(R.id.BG);
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.bgmaglaro;
+        view.setVideoURI(Uri.parse(path));
+        view.start();
+        view.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+
+        getData();
+        progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,9 +153,8 @@ public class Maglaro extends AppCompatActivity {
                         txtqueue.setText(queue);
                         ++queuectr;
                         stopPlaying();
-                        CurrentProgress = CurrentProgress + 11;
+                        CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(100);
                     }
                 } else {
                     if (mic_ctr == 0) {
@@ -410,7 +417,7 @@ public class Maglaro extends AppCompatActivity {
             }
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

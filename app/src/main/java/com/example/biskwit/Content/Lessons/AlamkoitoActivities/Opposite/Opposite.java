@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -42,10 +43,10 @@ public class Opposite extends AppCompatActivity {
     String[] words1;
     String[] words2;
     String[] holder;
-    String holder2 = "";
     int all_ctr = 0, click = 0, micctr1 = 0, micctr2 = 0;
     int mic_ctr1 = 0, mic_ctr2 = 0;
     int status = 0;
+    int datalength = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
 
@@ -54,41 +55,14 @@ public class Opposite extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
-    SharedPreferences scores,logger;
-    public static final String filename = "idfetch";
-    public static final String filename2 = "scorer";
-    public static final String UserID = "userid";
-    public static final String UserScore = "userscore";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opposite);
 
-        logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
-        int id = logger.getInt(UserID,0);
-        if(scores.contains(UserScore)) {
-            holder2 = scores.getString(UserScore, null);
-            if (holder.equals("Sounds" + id)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Retry lesson?")
-                        .setMessage("Your previous progress will be reset.")
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                stopPlaying();
-                                finish();
-                            }
-                        })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                status = 1;
-                            }
-                        }).create().show();
-            }
-        }
+        score = getIntent().getIntExtra("FScore",0);
+        status = getIntent().getIntExtra("Status",0);
+        datalength = getIntent().getIntExtra("DataLength",0);
 
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
@@ -115,7 +89,7 @@ public class Opposite extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                //txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -130,7 +104,7 @@ public class Opposite extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override
@@ -252,7 +226,7 @@ public class Opposite extends AppCompatActivity {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
                         showToast("Try it both first!");
                     } else {
-                        Intent intent = new Intent(Opposite.this, OppositeAct.class);
+                        Intent intent = new Intent(Opposite.this, Score.class);
                         intent.putExtra("Average",words1.length);
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Alamkoito");
