@@ -186,7 +186,7 @@ public class Years extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -201,7 +201,7 @@ public class Years extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override

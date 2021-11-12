@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -189,7 +190,7 @@ public class KatinigLesson3 extends AppCompatActivity {
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "fil-PH");
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
 
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
@@ -199,7 +200,7 @@ public class KatinigLesson3 extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -214,7 +215,7 @@ public class KatinigLesson3 extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-
+                txtresult.setText("Press the Mic Button Again");
             }
 
             @Override

@@ -49,7 +49,6 @@ public class Sight extends AppCompatActivity {
     ImageView next,bot,bot2, wordimg;
     ImageButton mic;
     String word = "";
-    String holder = "";
     String[] words;
     int all_ctr = 0;
     int click = 0;
@@ -192,7 +191,7 @@ public class Sight extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override

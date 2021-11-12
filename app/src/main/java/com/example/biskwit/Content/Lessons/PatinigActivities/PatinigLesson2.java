@@ -143,7 +143,6 @@ public class PatinigLesson2 extends AppCompatActivity {
                         stopPlaying();
                         CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
-                        progressBar.setMax(P_Lesson_Words.length);
                     }
                 } else {
                     if(mic_ctr == 0){
@@ -202,7 +201,7 @@ public class PatinigLesson2 extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
@@ -420,7 +419,7 @@ public class PatinigLesson2 extends AppCompatActivity {
             Collections.shuffle(data);
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-
+            progressBar.setMax(P_Lesson_Words.length);
 
         } catch (JSONException e) {
             e.printStackTrace();

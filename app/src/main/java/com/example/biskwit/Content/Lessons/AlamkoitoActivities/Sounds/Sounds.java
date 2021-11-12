@@ -170,7 +170,7 @@ public class Sounds extends AppCompatActivity {
 
             @Override
             public void onBeginningOfSpeech() {
-                txtresult.setHint("Listening...");
+                txtresult.setText("Listening...");
             }
 
             @Override
