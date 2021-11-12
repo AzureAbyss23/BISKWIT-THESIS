@@ -3,6 +3,7 @@ package com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,9 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.R;
 
 public class PhonemicAct extends AppCompatActivity {
@@ -41,6 +44,9 @@ public class PhonemicAct extends AppCompatActivity {
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
     public static final String UserID = "userid";
+
+    private int CurrentProgress = 1;
+    private ProgressBar progressBar;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -79,6 +85,11 @@ public class PhonemicAct extends AppCompatActivity {
         word.setText(data[all_ctr]);
         ch1.setText(choice[all_ctr][0]);
         ch3.setText(choice[all_ctr][1]);
+
+        progressBar = findViewById(R.id.ProgressBar);
+
+        progressBar.setProgress(CurrentProgress);
+        progressBar.setMax(data.length*2);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,6 +254,8 @@ public class PhonemicAct extends AppCompatActivity {
 
         if(all_ctr < (data.length-1)) {
             ++all_ctr;
+            CurrentProgress = CurrentProgress + 1;
+            progressBar.setProgress(CurrentProgress);
             word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
             ch3.setText(choice[all_ctr][1]);

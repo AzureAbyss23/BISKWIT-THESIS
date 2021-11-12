@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -54,6 +55,9 @@ public class Phonemic extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    private int CurrentProgress = 1;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,7 @@ public class Phonemic extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
         txtresult = findViewById(R.id.result);
+        progressBar = findViewById(R.id.ProgressBar);
 
         progressDialog = new ProgressDialog(Phonemic.this);
         ai = MediaPlayer.create(Phonemic.this, R.raw.kab2_p1);
@@ -78,6 +83,8 @@ public class Phonemic extends AppCompatActivity {
 
         getData();
 
+        CurrentProgress = CurrentProgress + datalength;
+        progressBar.setProgress(CurrentProgress);
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -232,6 +239,8 @@ public class Phonemic extends AppCompatActivity {
                         add = 0;
                         add2 = 0;
                         stopPlaying();
+                        CurrentProgress = CurrentProgress + 1;
+                        progressBar.setProgress(CurrentProgress);
                     }
                 } else {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
@@ -394,6 +403,7 @@ public class Phonemic extends AppCompatActivity {
             //categ = data.toArray(categ);
             holder = new String[data2.size()];
             holder = data2.toArray(holder);
+            progressBar.setMax(holder.length);
 
             int holder_ctr=0;
             words1 = new String[4][5];
