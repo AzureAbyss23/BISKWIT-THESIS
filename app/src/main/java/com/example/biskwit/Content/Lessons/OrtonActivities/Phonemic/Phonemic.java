@@ -43,7 +43,7 @@ public class Phonemic extends AppCompatActivity {
     String[][] words1;
     String[][] words2;
     String[] categ = {"Hayop","Kasuotan","Prutas","Gulay"};
-    int all_ctr = 0, all_ctr2 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0;
+    int all_ctr = 0, all_ctr2 = 0, all_ctr3 = 0, click = 0, micctr1 = 0, micctr2 = 0, mic_ctr1 = 0, mic_ctr2 = 0;
     int status = 0;
     double add = 0, add2 = 0, score = 0;
     int datalength = 0;
@@ -215,10 +215,11 @@ public class Phonemic extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(all_ctr < (words1.length - 1)) {
+                if(all_ctr3 < ((words1.length * words1[0].length)-1)) {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
                         showToast("Subukan mo muna ito");
                     } else {
+                        all_ctr3++;
                         setupnext();
                         txtresult.setText("Press the Mic Button");
                         word1.setText(words1[all_ctr][all_ctr2]);
@@ -239,7 +240,7 @@ public class Phonemic extends AppCompatActivity {
                         score += add;
                         score += add2;
                         Intent intent = new Intent(Phonemic.this, Score.class);
-                        intent.putExtra("Average",(words1.length+datalength));
+                        intent.putExtra("Average",(((words1.length * words1[0].length)-1) + datalength));
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Phonemic");
@@ -402,8 +403,10 @@ public class Phonemic extends AppCompatActivity {
                     words1[z][i] = holder[holder_ctr];
                     holder_ctr++;
                 }
+            }
+            for(int q = 0;q < 4;q++) {
                 for (int k = 0; k < 5; k++) {
-                    words2[z][k] = holder[holder_ctr];
+                    words2[q][k] = holder[holder_ctr];
                     holder_ctr++;
                 }
             }

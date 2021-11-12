@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,9 @@ public class YearsAct extends AppCompatActivity {
     double score = 0;
     ImageView bot2,wordimg;
     MediaPlayer ai;
+
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -61,6 +65,13 @@ public class YearsAct extends AppCompatActivity {
 
         ai = MediaPlayer.create(YearsAct.this, R.raw.kab5_p2_2);
         ai.start();
+
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        CurrentProgress = data.length;
+        progressBar.setMax(data.length*2);
+        progressBar.setProgress(data.length);
+        CurrentProgress = CurrentProgress + 1;
+        progressBar.setProgress(CurrentProgress);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,79 +134,81 @@ public class YearsAct extends AppCompatActivity {
         switch(s.toLowerCase()){
             case "enero":
                 if(z=="Bagong Taon"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "pebrero":
                 if(z=="Araw ng mga Puso"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "marso":
                 if(z=="Buwan ng Pagtatapos"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "abril":
                 if(z=="Bakasyon"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "mayo":
                 if(z=="Flores de Mayo"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "hunyo":
                 if(z=="Araw ng Kalayaan"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "hulyo":
                 if(z=="Buwan ng Nutrisyon"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "agosto":
                 if(z=="Buwan ng Wika"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "setyembre":
                 if(z=="Buwan ng Palakasan"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "oktubre":
                 if(z=="Mga Nagkakaisang Bansa"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "nobyembre":
                 if(z=="Araw ng mga Patay"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
             case "disyembre":
                 if(z=="Pasko"){
-                    score += 2;
+                    score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
         }
         if(all_ctr < (data.length - 1)) {
             ++all_ctr;
+            CurrentProgress = CurrentProgress + 1;
+            progressBar.setProgress(CurrentProgress);
             id = setImg();
             wordimg.setImageResource(id);
             ch1.setText(choice[all_ctr][0]);

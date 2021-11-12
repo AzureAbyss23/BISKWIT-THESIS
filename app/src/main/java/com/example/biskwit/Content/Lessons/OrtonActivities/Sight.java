@@ -247,6 +247,7 @@ public class Sight extends AppCompatActivity {
                 else{
                     speechRecognizer.stopListening();
                     mic.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }

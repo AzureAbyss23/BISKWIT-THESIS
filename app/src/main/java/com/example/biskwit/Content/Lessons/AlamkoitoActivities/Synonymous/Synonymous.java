@@ -172,6 +172,7 @@ public class Synonymous extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic1.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr1++;
                     micctr1++;
                     click++;
@@ -179,6 +180,7 @@ public class Synonymous extends AppCompatActivity {
                 else{
                     speechRecognizer.stopListening();
                     mic1.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }

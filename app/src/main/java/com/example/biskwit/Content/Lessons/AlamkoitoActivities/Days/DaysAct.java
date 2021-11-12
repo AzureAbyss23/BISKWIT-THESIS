@@ -32,7 +32,6 @@ public class DaysAct extends AppCompatActivity {
     ImageView bot2;
     MediaPlayer ai;
 
-    //ito yung sa progress bar
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
@@ -61,8 +60,11 @@ public class DaysAct extends AppCompatActivity {
         ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        CurrentProgress = data.length;
         progressBar.setMax(data.length*2);
         progressBar.setProgress(data.length);
+        CurrentProgress = CurrentProgress + 1;
+        progressBar.setProgress(CurrentProgress);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override

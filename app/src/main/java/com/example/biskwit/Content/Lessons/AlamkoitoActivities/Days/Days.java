@@ -203,7 +203,6 @@ public class Days extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
-                //micButton.setImageResource(R.drawable.ic_mic_black_off);
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 word = data.get(0);
                 printSimilarity(word.toString(),P_Lesson_Words[all_ctr]);
@@ -227,12 +226,14 @@ public class Days extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
                     mic.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }

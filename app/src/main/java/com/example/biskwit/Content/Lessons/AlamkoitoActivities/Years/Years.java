@@ -128,6 +128,7 @@ public class Years extends AppCompatActivity {
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Speak Now");
                         score += add;
+                        add = 0;
                         mic_ctr = 0;
                         stopPlaying();
                         id = setImg();
@@ -236,12 +237,14 @@ public class Years extends AppCompatActivity {
                     stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
                     mic.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }
@@ -404,7 +407,7 @@ public class Years extends AppCompatActivity {
             Title = data.toArray(Title);
             P_Lesson_Words = new String[data2.size()];
             P_Lesson_Words = data2.toArray(P_Lesson_Words);
-            progressBar.setMax(P_Lesson_Words.length);
+            progressBar.setMax(P_Lesson_Words.length*2);
 
         } catch (JSONException e) {
             e.printStackTrace();

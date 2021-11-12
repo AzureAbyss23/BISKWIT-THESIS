@@ -248,12 +248,14 @@ public class KatinigLesson2 extends AppCompatActivity {
                     stopPlaying();
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr++;
                     click++;
                 }
                 else{
                     speechRecognizer.stopListening();
                     mic.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }
