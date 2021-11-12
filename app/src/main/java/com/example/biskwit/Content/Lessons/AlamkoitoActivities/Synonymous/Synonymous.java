@@ -45,6 +45,7 @@ public class Synonymous extends AppCompatActivity {
     int all_ctr = 0, click = 0, micctr1 = 0, micctr2 = 0;
     int mic_ctr1 = 0, mic_ctr2 = 0;
     int status = 0;
+    int datalength = 0;
     double score = 0, add = 0;
     MediaPlayer ai;
 
@@ -62,6 +63,10 @@ public class Synonymous extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synonymous);
+
+        score = getIntent().getIntExtra("FScore",0);
+        status = getIntent().getIntExtra("Status",0);
+        datalength = getIntent().getIntExtra("DataLength",0);
 
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);

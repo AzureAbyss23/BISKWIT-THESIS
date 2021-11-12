@@ -44,8 +44,6 @@ public class Aboutus extends Fragment {
 
     }
 
-
-
     // need ito somehow para di magkabuhol buhol yung navigation thingy niya
     @Override
     public void onDestroyView() {
