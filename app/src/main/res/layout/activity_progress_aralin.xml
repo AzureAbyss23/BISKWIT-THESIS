@@ -106,7 +106,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#FFF389"
+                app:cardBackgroundColor="#FFBE45"
                 app:cardCornerRadius="20dp">
 
                 <TextView
@@ -201,7 +201,7 @@
                     <Button
                         android:id="@+id/patinig2score"
                         android:layout_width="60dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="130dp"
                         android:background="@drawable/roundshape"
@@ -223,7 +223,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#AFFAAF"
+                app:cardBackgroundColor="#FFF389"
                 app:cardCornerRadius="20dp">
 
                 <TextView
@@ -314,22 +314,21 @@
                         android:textColorHint="#000000"
                         android:textSize="25dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/katinig2score"
                         android:layout_width="60dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="25dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="126dp"
                         android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
                         android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
+                        android:text="View"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
+                        android:textSize="13dp"
+                        app:backgroundTint="#E5E4E2" />
+
 
                 </LinearLayout>
 
@@ -351,22 +350,21 @@
                         android:textColorHint="#000000"
                         android:textSize="25dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/katinig3score"
                         android:layout_width="60dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="25dp"
-                        android:layout_marginTop="170dp"
+                        android:layout_marginTop="168dp"
                         android:background="@drawable/roundshape"
-                        app:backgroundTint="#E5E4E2"
                         android:fontFamily="@font/crimson_text"
-                        android:textAlignment="center"
+                        android:text="View"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:gravity="center_horizontal"
-                        android:text="0%" />
+                        android:textSize="13dp"
+                        app:backgroundTint="#E5E4E2" />
+
 
                 </LinearLayout>
 
@@ -378,7 +376,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#FFBE45"
+                app:cardBackgroundColor="#AFFAAF"
                 app:cardCornerRadius="20dp">
 
                 <TextView
