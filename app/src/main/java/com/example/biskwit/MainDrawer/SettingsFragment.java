@@ -34,15 +34,10 @@ public class SettingsFragment extends Fragment {
 
     ProgressDialog progressDialog;
     public static final String filename = "logger";
-    public static final String filename2 = "idfetch";
     public static final String filename3 = "scorer";
     public static final String UserID = "userid";
-    SharedPreferences logger = getContext().getSharedPreferences(filename, Context.MODE_PRIVATE);
-    SharedPreferences IDFetch = getContext().getSharedPreferences(filename2, Context.MODE_PRIVATE);
-    SharedPreferences Scores = getContext().getSharedPreferences(filename2, Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = logger.edit();
-    SharedPreferences.Editor editor2 = IDFetch.edit();
-    SharedPreferences.Editor editor3 = Scores.edit();
+    SharedPreferences Scores;
+    SharedPreferences.Editor editor3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +45,9 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentSettingsBinding.inflate(getLayoutInflater());
         progressDialog = new ProgressDialog(getContext());
+
+        Scores = getContext().getSharedPreferences(filename3, Context.MODE_PRIVATE);
+        editor3 = Scores.edit();
 
         frommainnav = (MainNavMenu)getActivity();
         frommainnav.startMusic();
@@ -133,11 +131,11 @@ public class SettingsFragment extends Fragment {
     private void reset() {
 
         int id;
-        SharedPreferences logger = getActivity().getSharedPreferences(filename, Context.MODE_PRIVATE);
+        SharedPreferences logger = getContext().getSharedPreferences(filename, Context.MODE_PRIVATE);
         id = logger.getInt(UserID,0);
 
         progressDialog.setTitle("Please wait");
-        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setMessage("Resetting all scores...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -176,9 +174,8 @@ public class SettingsFragment extends Fragment {
         }
 
         if(status>0){
-            editor.clear(); editor.apply();
-            editor2.clear(); editor2.apply();
             editor3.clear(); editor3.apply();
+            progressDialog.dismiss();
         } else {
             Toast.makeText(getContext(), "Reset failed...", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
