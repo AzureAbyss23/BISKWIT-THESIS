@@ -177,7 +177,7 @@ public class ParuparoRosas extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].replace(" ","_").replace("-", "_").replace(".", "").replace(",","").replace("?","").replace("“","").replace("\"","").toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(ParuparoRosas.this, sound);
                 ai.start();
             }
