@@ -40,10 +40,36 @@
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/chewy"
                 android:gravity="center_horizontal"
-                android:text=" (Bringing Insight to Special-needs Kids through Words and Interactive Tales)"
+                android:text=" (Bringing Insight to Special-needs (Dyslexic) Kids through Words and Interactive Tales)"
                 android:textColor="#48CCCD"
                 android:textColorHint="#000000"
                 android:textAlignment="center" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="355dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/objective1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Team delete aims to develop an application that will help dyslexic kids under the age of 5 to 8 to enhance their Filipino speech and communication skills by providing them BISKWIT (Bringing Insight to Special-Needs (Dyslexic) Kids Through Words and Interactive Tales (Biskwit): A Speech Application Software) It's an application software that has lessons and interactive tales that will surely help your children to learn."
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
 
             <VideoView
                 android:id="@+id/Intro"
@@ -60,6 +86,344 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:src="@drawable/poster" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="355dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/Members"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="140dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Introducing the developers of BISKWIT"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="150dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/matt"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/biskwitbarcelon" />
+
+                    <ImageView
+                        android:id="@+id/space"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/liam"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/biskwitbaldueza" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/chasey"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/biskwitelizarde" />
+
+                    <ImageView
+                        android:id="@+id/space2"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/alde"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/biskwitalde" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/chaseyname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Chasey Elizarde \n Database Manager"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/adrianename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Adriane Alde \n Lead Tester"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/liamname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="140dp"
+                    android:layout_marginLeft="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Liam Baldueza \n Lead Programmer"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/mattname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="140dp"
+                    android:layout_marginRight="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Matthew Barcelon \n Project Manager"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="355dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/Panels"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="140dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Introducing the Mentors of BISKWIT \n without their help this project wouldn't be possible"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="150dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/maamfanny"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/mentormaamfanny" />
+
+                    <ImageView
+                        android:id="@+id/space3"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/maamdaisy"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="60dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/mentormaamdaisy" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/sirjof"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/mentorsirjof" />
+
+                    <ImageView
+                        android:id="@+id/space4"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/maamresty"
+                        android:layout_width="93dp"
+                        android:layout_height="91dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/mentormaamresty" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/namejof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Joferson Bombasi \n Subject Adviser"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/nameresty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Resty Aldana \n In loving memory.."
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/namedaisy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="140dp"
+                    android:layout_marginLeft="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Daisy Bermudez \n Mentor"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/namefanny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="165dp"
+                    android:layout_marginBottom="140dp"
+                    android:layout_marginRight="90dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Fanny Almeniana \n Mentor"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
