@@ -53,12 +53,12 @@
                     android:layout_marginBottom="110dp"
                     android:fontFamily="@font/crimson_text"
                     android:gravity="center_horizontal"
-                    android:text="BISKWIT\n(Bringing Insight to Special-needs Kids through Words and Interactive Tales)"
+                    android:text="BISKWIT\n(Bringing Insight to Special-needs (Dyslexic) Kids through Words and Interactive Tales)"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="25dp"
+                    android:textSize="23dp"
                     android:textStyle="bold" />
 
                 <TextView
