@@ -64,6 +64,9 @@ public class Opposite extends AppCompatActivity {
         status = getIntent().getIntExtra("Status",0);
         datalength = getIntent().getIntExtra("DataLength",0);
 
+        ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
+        ai.start();
+
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
         mic1 = findViewById(R.id.Mic);
@@ -165,6 +168,7 @@ public class Opposite extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic2.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr2++;
                     micctr2++;
                     click++;
@@ -172,6 +176,7 @@ public class Opposite extends AppCompatActivity {
                 else{
                     speechRecognizer.stopListening();
                     mic2.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }
@@ -203,7 +208,7 @@ public class Opposite extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p3_1);
+                ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
                 ai.start();
             }
         });

@@ -23,14 +23,11 @@ import com.example.biskwit.R;
 public class SynonymousAct extends AppCompatActivity {
 
     Button ch1,ch3;
-    String[] data = {"Ibon","Aso","Kuto","Matsing","Pusa","Barong","Pantalon","Medyas","Kwintas",
-            "Palda","Pinya","Pakwan","Abokado","Ubas","Atis","Sitaw","Kalabasa","Upo","Talong",
-            "Singkamas"};
-    String[][] choice = {{"Hipon","Pusit"},{"Pusa","Oso"},{"Garapata","Pato"}, {"Kambing","Kabayo"},
-            {"Aso","Daga"},{"Putong","Palda"}, {"Sinturon","Blusa"},{"Sapatos","Tsinelas"},
-            {"Pulseras","Hikaw"}, {"Blusa","Sinturon"},{"Mangga","Papaya"},{"Rambutan","Mansanas"},
-            {"Guyabano","Langka"},{"Mansanas","Pongkan"},{"Ubas","Aratilis"},{"Bataw","Kangkong"},
-            {"Mustasa","Singkamas"},{"Lettuce","Repolyo"},{"Kangkong","Kamatis"},{"Sigarilyas","Kalabasa"}};
+    String[] data = {"Maganda","Masarap","Mabagal","Maingay","Mayaman","Malungkot","Mababa","Mataas","Mabango",
+            "Mataba","Matalas"};
+    String[][] choice = {{"Pangit","Marikit"},{"Malinamnam","Maamoy"},{"Makupad","Mabilis"}, {"Maayos","Magulo"},
+            {"Masalapi","Mahirap"}, {"Malumbay","Masaya"},{"Pandak","Mataas"},{"Matangkad","Mababa"},
+            {"Maayos","Mahalimuyak"},{"Malusog","Payat"},{"Mapurol","Matalim"}};
     int all_ctr = 0, score = 0;
     int status = 0;
     TextView word;
@@ -71,6 +68,9 @@ public class SynonymousAct extends AppCompatActivity {
                     }).create().show();
         }
 
+        ai = MediaPlayer.create(SynonymousAct.this, R.raw.kab5_p3_2);
+        ai.start();
+
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
@@ -102,7 +102,7 @@ public class SynonymousAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(SynonymousAct.this, R.raw.kab2_p3);
+                ai = MediaPlayer.create(SynonymousAct.this, R.raw.kab5_p3_2);
                 ai.start();
             }
         });
@@ -119,122 +119,68 @@ public class SynonymousAct extends AppCompatActivity {
 
     public void result(String s, String z){
         switch(s.toLowerCase()){
-            case "ibon":
-                if(z=="Hipon"){
+            case "maganda":
+                if(z=="Marikit"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "aso":
-                if(z=="Oso"){
+            case "masarap":
+                if(z=="Malinamnam"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "kuto":
-                if(z=="Pato"){
+            case "mabagal":
+                if(z=="Makupad"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "matsing":
-                if(z=="Kambing"){
+            case "maingay":
+                if(z=="Magulo"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "pusa":
-                if(z=="Daga"){
+            case "mayaman":
+                if(z=="Masalapi"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "barong":
-                if(z=="Putong"){
+            case "malungkot":
+                if(z=="Malumbay"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "pantalon":
-                if(z=="Sinturon"){
+            case "mababa":
+                if(z=="Pandak"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "medyas":
-                if(z=="Tsinelas"){
+            case "mataas":
+                if(z=="Matangkad"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "kwintas":
-                if(z=="Pulseras"){
+            case "mabango":
+                if(z=="Mahalimuyak"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "palda":
-                if(z=="Blusa"){
+            case "mataba":
+                if(z=="Malusog"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");
                 break;
-            case "pinya":
-                if(z=="Papaya"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "pakwan":
-                if(z=="Rambutan"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "abokado":
-                if(z=="Guyabano"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "ubas":
-                if(z=="Mansanas"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "atis":
-                if(z=="Aratilis"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "sitaw":
-                if(z=="Bataw"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "kalabasa":
-                if(z=="Mustasa"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "upo":
-                if(z=="Repolyo"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "talong":
-                if(z=="Kangkong"){
-                    score += 1;
-                    showToast("TAMA!");
-                } else showToast("MALI");
-                break;
-            case "singkamas":
-                if(z=="Sigarilyas"){
+            case "matalas":
+                if(z=="Matalim"){
                     score += 1;
                     showToast("TAMA!");
                 } else showToast("MALI");

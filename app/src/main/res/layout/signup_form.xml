@@ -133,19 +133,58 @@
                 android:textColorHint="#000000"
                 android:textColor="#000000" />
 
-            <EditText
+            <RadioGroup
                 android:id="@+id/level_severity"
-                android:layout_width="325dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:ems="10"
-                android:fontFamily="@font/crimson_text"
-                android:hint="Severity level of Child:"
-                android:inputType="number"
-                android:minHeight="50dp"
-                android:textColorHint="#000000"
-                android:textColor="#000000" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="325dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:ems="10"
+                    android:fontFamily="@font/crimson_text"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:text="Severity Level of Child:" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/crimson_text"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:text="Mild" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/crimson_text"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:text="Moderate" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/crimson_text"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:text="Severe" />
+            </RadioGroup>
 
             <Button
                 android:id="@+id/signup"

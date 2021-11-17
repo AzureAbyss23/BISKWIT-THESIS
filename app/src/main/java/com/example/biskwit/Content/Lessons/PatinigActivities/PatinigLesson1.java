@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous;
 import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 
@@ -95,5 +96,20 @@ public class PatinigLesson1 extends AppCompatActivity {
             ai.release();
             ai = null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit now?")
+                .setMessage("You will not be able to save your progress.")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        PatinigLesson1.super.onBackPressed();
+                        stopPlaying();
+                    }
+                }).create().show();
     }
 }
