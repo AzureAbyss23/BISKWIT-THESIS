@@ -32,6 +32,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -177,7 +178,7 @@ public class Magdasal extends AppCompatActivity {
             public void onClick(View v) {
                 stopPlaying();
                 Resources res = getResources();
-                int sound = res.getIdentifier(P_Lesson_Words[all_ctr], "raw", getPackageName());
+                int sound = res.getIdentifier(P_Lesson_Words[all_ctr].replace(" ","_").replace("-","_").replace(",","").replace(".","").toLowerCase(), "raw", getPackageName());
                 ai = MediaPlayer.create(Magdasal.this, sound);
                 ai.start();
             }

@@ -39,7 +39,7 @@ public class Progress_Aralin extends AppCompatActivity {
     TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
     TextView score_p_aralin1;
 
-    Button score_p_aralin2;
+    Button score_p_aralin2, score_k_aralin2, score_k_aralin3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,8 @@ public class Progress_Aralin extends AppCompatActivity {
 
         score_p_aralin1 = findViewById(R.id.patinigscore);
         score_p_aralin2 = findViewById(R.id.patinig2score);
+        score_k_aralin2 = findViewById(R.id.katinig2score);
+        score_k_aralin3 = findViewById(R.id.katinig3score);
 
         getData();
 
@@ -67,6 +69,20 @@ public class Progress_Aralin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Progress_Aralin.this, ProgressPatinig.class);
+                startActivity(intent);
+            }
+        });
+        score_k_aralin2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Progress_Aralin.this, ProgressKatinig.class);
+                startActivity(intent);
+            }
+        });
+        score_k_aralin3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Progress_Aralin.this, ProgressHiram.class);
                 startActivity(intent);
             }
         });
