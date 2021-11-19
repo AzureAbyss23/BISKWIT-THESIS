@@ -118,9 +118,9 @@ public class KatinigLesson3 extends AppCompatActivity {
         getData();
 
         Resources res = getResources();
-        int sound = res.getIdentifier("kab4_p3_"+letter.toLowerCase(), "raw", getPackageName());
-        //ai = MediaPlayer.create(KatinigLesson3.this, sound);
-        //ai.start();
+        int sound = res.getIdentifier("kab4_p3_"+letter.replace(" ","").replace("=","_").toLowerCase(), "raw", getPackageName());
+        ai = MediaPlayer.create(KatinigLesson3.this, sound);
+        ai.start();
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
         progressBar.setProgress(CurrentProgress);

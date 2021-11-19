@@ -77,6 +77,9 @@ public class PhonemicAct extends AppCompatActivity {
                     }).create().show();
         }
 
+        ai = MediaPlayer.create(PhonemicAct.this, R.raw.kab2_p1_1);
+        ai.start();
+
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
@@ -113,7 +116,7 @@ public class PhonemicAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(PhonemicAct.this, R.raw.kab2_p3);
+                ai = MediaPlayer.create(PhonemicAct.this, R.raw.kab2_p1_1);
                 ai.start();
             }
         });

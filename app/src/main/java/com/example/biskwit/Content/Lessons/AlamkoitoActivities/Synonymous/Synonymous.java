@@ -91,6 +91,9 @@ public class Synonymous extends AppCompatActivity {
                     }).create().show();
         }
 
+        ai = MediaPlayer.create(Synonymous.this, R.raw.kab5_p3_1);
+        ai.start();
+
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
         mic1 = findViewById(R.id.Mic);
@@ -192,6 +195,7 @@ public class Synonymous extends AppCompatActivity {
                 if(click==0){
                     speechRecognizer.startListening(speechRecognizerIntent);
                     mic2.setImageResource(R.drawable.mic_on);
+                    txtresult.setText("Speak Now");
                     mic_ctr2++;
                     micctr2++;
                     click++;
@@ -199,6 +203,7 @@ public class Synonymous extends AppCompatActivity {
                 else{
                     speechRecognizer.stopListening();
                     mic2.setImageResource(R.drawable.mic_off);
+                    txtresult.setText("Press the Mic Button");
                     click=0;
                 }
             }

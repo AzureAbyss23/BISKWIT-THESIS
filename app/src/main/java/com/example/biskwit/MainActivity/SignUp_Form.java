@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import com.example.biskwit.Data.Database;
 import com.example.biskwit.R;
@@ -17,10 +19,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUp_Form extends AppCompatActivity {
-    Button SignUp,Login;
+    Button SignUp;
+    RadioGroup rGroup;
     public EditText Email, Password, Confirm_Password, Parents_Instructor, Name_Child, Age, Birthdate, Severity_Level;
     Intent intent;
     private static final String REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insertdata.php";
+    String Severity = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,7 @@ public class SignUp_Form extends AppCompatActivity {
         Name_Child = findViewById(R.id.child_name);
         Age = findViewById(R.id.age);
         Birthdate = findViewById(R.id.birthday);
-        Severity_Level = findViewById(R.id.level_severity);
+        rGroup = findViewById(R.id.level_severity);
 
         SignUp = findViewById(R.id.signup);
         SignUp.setOnClickListener(new View.OnClickListener() {
@@ -57,14 +61,27 @@ public class SignUp_Form extends AppCompatActivity {
                     Toast.makeText(SignUp_Form.this, "Enter Child Age", Toast.LENGTH_SHORT).show();
                 } else if (Birthdate.getText().toString().equals("")) {
                     Toast.makeText(SignUp_Form.this, "Enter Birthday", Toast.LENGTH_SHORT).show();
-                } else if (Severity_Level.getText().toString().equals("")) {
-                    Toast.makeText(SignUp_Form.this, "Enter Severity Level", Toast.LENGTH_SHORT).show();
+                } else if (Severity.equals("")) {
+                    Toast.makeText(SignUp_Form.this, "Choose Severity Level", Toast.LENGTH_SHORT).show();
                 } else {
                     registerUser();
                 }
 
             }
 
+        });
+
+        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
+                boolean isChecked = checkedRadioButton.isChecked();
+                if (isChecked)
+                {
+                    Severity = checkedRadioButton.getText().toString();
+                }
+            }
         });
 
     }
@@ -77,7 +94,7 @@ public class SignUp_Form extends AppCompatActivity {
         String child = Name_Child.getText().toString();
         String age = Age.getText().toString();
         String birthday = Birthdate.getText().toString();
-        String severity = Severity_Level.getText().toString();
+        String severity = Severity;
 
         register(email,password,parent,child,age,birthday,severity);
     }
