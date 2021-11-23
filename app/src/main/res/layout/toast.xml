@@ -19,7 +19,8 @@
         android:background="@drawable/roundshape"
         android:layout_height="86dp"
         android:gravity="center"
-        android:fontFamily="@font/crimson_text"
+        android:text=""
+        android:fontFamily="@font/opendyslexic_bold"
         android:textColor="@android:color/black"
         android:backgroundTint="#99EAEAEA"
         android:textSize="25dp" />

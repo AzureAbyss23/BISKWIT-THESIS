@@ -27,7 +27,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Create Account"
-                android:fontFamily="@font/chewy"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textAllCaps="true"
                 android:textColor="@color/teal_200"
                 android:textSize="50dp"
