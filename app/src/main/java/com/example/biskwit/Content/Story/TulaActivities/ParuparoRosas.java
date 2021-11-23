@@ -130,7 +130,15 @@ public class ParuparoRosas extends AppCompatActivity {
         ai = MediaPlayer.create(ParuparoRosas.this, R.raw.basa_tula2);
         ai.start();
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
+
         progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -267,6 +275,24 @@ public class ParuparoRosas extends AppCompatActivity {
             }
         });
     }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("ParuparoRosas",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("ParuparoRosas",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
+    }
+
 
     protected void stopPlaying(){
         // If media player is not null then try to stop it
@@ -437,9 +463,10 @@ public class ParuparoRosas extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
