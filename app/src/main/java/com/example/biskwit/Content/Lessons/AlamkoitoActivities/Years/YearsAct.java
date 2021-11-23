@@ -267,11 +267,11 @@ public class YearsAct extends AppCompatActivity {
     }
 
     private void getData() {
-        progressDialog = new ProgressDialog(YearsAct.this);
+        /*progressDialog = new ProgressDialog(YearsAct.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
-        progressDialog.show();
+        progressDialog.show();*/
 
         String url = "https://biskwitteamdelete.000webhostapp.com/fetch_years.php";
 
@@ -322,9 +322,10 @@ public class YearsAct extends AppCompatActivity {
             ch3.setText(choice[all_ctr][1]);
             id = setImg();
             wordimg.setImageResource(id);
+            //progressDialog.dismiss();
         } else {
             Toast.makeText(YearsAct.this, "No data", Toast.LENGTH_LONG).show();
-            progressDialog.dismiss();
+            //progressDialog.dismiss();
         }
     }
 

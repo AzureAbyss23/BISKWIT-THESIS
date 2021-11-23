@@ -28,8 +28,9 @@ public class OppositeAct extends AppCompatActivity {
     String[][] choice = {{"Mainit","Maginaw"},{"Payat","Manipis"},{"Malinis","Mabaho"}, {"Malungkot","Matingkad"},
             {"Umaga","Hapon"},{"Baluktot","Pantay"}, {"Masikap","Tamad"},{"Pandak","Malawak"},
             {"Mahaba","Makulay"}, {"Mabango","Maliit"},{"Bata","Maedad"}};
-    int all_ctr = 0, score = 0;
+    int all_ctr = 0;
     int status = 0;
+    double score = 0;
     TextView word;
     ImageView bot2;
     MediaPlayer ai;
@@ -68,17 +69,23 @@ public class OppositeAct extends AppCompatActivity {
                     }).create().show();
         }
 
-        ai = MediaPlayer.create(OppositeAct.this, R.raw.kab5_p4_2);
-        ai.start();
+        //ai = MediaPlayer.create(OppositeAct.this, R.raw.kab5_p4_2);
+        //ai.start();
 
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
 
-        word.setText(data[all_ctr]);
-        ch1.setText(choice[all_ctr][0]);
-        ch3.setText(choice[all_ctr][1]);
+        if(LoadPreferences()){
+            word.setText(data[all_ctr]);
+            ch1.setText(choice[all_ctr][0]);
+            ch3.setText(choice[all_ctr][1]);
+        } else {
+            word.setText(data[all_ctr]);
+            ch1.setText(choice[all_ctr][0]);
+            ch3.setText(choice[all_ctr][1]);
+        }
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +113,33 @@ public class OppositeAct extends AppCompatActivity {
                 ai.start();
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("OppositeFin",Context.MODE_PRIVATE);
+        if(sharedPreferences2.contains("Status")){
+            SavePreferences();
+            Intent intent = new Intent(OppositeAct.this, OppositeAct.class);
+            intent.putExtra("DataLength",data.length);
+            intent.putExtra("Status",status);
+            intent.putExtra("FScore", score);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     protected void stopPlaying(){
@@ -197,6 +231,14 @@ public class OppositeAct extends AppCompatActivity {
             intent.putExtra("DataLength",data.length);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);
+            SharedPreferences sharedPreferences = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            SharedPreferences sharedPreferences2 = getSharedPreferences("OppositeFin",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+            editor2.putInt("Status",1);
+            editor2.apply();
             startActivity(intent);
             finish();
         }
@@ -217,9 +259,10 @@ public class OppositeAct extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

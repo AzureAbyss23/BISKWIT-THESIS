@@ -175,6 +175,10 @@ public class Maglaro extends AppCompatActivity {
                         intent.putExtra("LessonType","Tula");
                         intent.putExtra("LessonMode","Maglaro");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Maglaro",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
                         startActivity(intent);
                     }
                 }
@@ -281,14 +285,16 @@ public class Maglaro extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Maglaro",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Counter", all_ctr);
+        editor.putInt("Queue", queuectr);
         editor.putString("Score",Double.toString(score));
         editor.apply();
     }
 
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Maglaro",Context.MODE_PRIVATE);
-        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("Queue")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
+            queuectr = sharedPreferences.getInt("Queue",0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
             return true;
         } else return false;
@@ -449,8 +455,14 @@ public class Maglaro extends AppCompatActivity {
         }
 
         if(!P_Lesson_Words[0].equals("")){
+            if(all_ctr > 0) {
+                for(int i = 0; i < (all_ctr); i++) {
+                    story += (P_Lesson_Words[i] + "\n");
+                    txtstory.setText(story);
+                }
+            }
             txtword.setText(P_Lesson_Words[all_ctr]);
-            for(int i = 1; i < P_Lesson_Words.length; i++) {
+            for(int i = (all_ctr+1); i < P_Lesson_Words.length; i++) {
                 queue += (P_Lesson_Words[i] + "\n ");
                 txtqueue.setText(queue);
             }

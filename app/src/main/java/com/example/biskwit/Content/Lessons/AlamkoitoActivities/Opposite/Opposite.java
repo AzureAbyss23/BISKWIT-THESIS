@@ -26,6 +26,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
 import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
@@ -62,10 +64,7 @@ public class Opposite extends AppCompatActivity {
 
         score = getIntent().getIntExtra("FScore",0);
         status = getIntent().getIntExtra("Status",0);
-        datalength = getIntent().getIntExtra("DataLength",0);
-
-        ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
-        ai.start();
+        datalength = getIntent().getIntExtra("DataLength",10);
 
         word1 = findViewById(R.id.Word);
         word2 = findViewById(R.id.Word2);
@@ -76,7 +75,17 @@ public class Opposite extends AppCompatActivity {
         txtresult = findViewById(R.id.result);
         progressDialog = new ProgressDialog(Opposite.this);
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            //CurrentProgress = all_ctr + 1;
+            //progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            //progressBar.setProgress(CurrentProgress);
+        }
+
+        //ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
+        //ai.start();
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
@@ -239,12 +248,37 @@ public class Opposite extends AppCompatActivity {
                         intent.putExtra("LessonType","Alamkoito");
                         intent.putExtra("LessonMode","Opposite");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Opposite",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("OppositeFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.clear();
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Opposite", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Opposite", Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -389,8 +423,8 @@ public class Opposite extends AppCompatActivity {
         }
 
         if(!holder[0].equals("")){
-            word1.setText(words1[0]);
-            word2.setText(words2[0]);
+            word1.setText(words1[all_ctr]);
+            word2.setText(words2[all_ctr]);
             progressDialog.dismiss();
         } else {
             Toast.makeText(Opposite.this, "No data", Toast.LENGTH_LONG).show();
@@ -401,9 +435,10 @@ public class Opposite extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
