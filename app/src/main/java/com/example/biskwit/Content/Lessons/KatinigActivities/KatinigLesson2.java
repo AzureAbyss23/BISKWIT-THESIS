@@ -127,7 +127,7 @@ public class KatinigLesson2 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(all_ctr < (P_Lesson_Words.length - 1)) {
+                if(all_ctr < 4) {
                     if(mic_ctr == 0){
                         showToast("Subukan mo muna ito");
                     } else {
@@ -417,7 +417,7 @@ public class KatinigLesson2 extends AppCompatActivity {
             Collections.shuffle(data);
             P_Lesson_Words = new String[data.size()];
             P_Lesson_Words = data.toArray(P_Lesson_Words);
-            progressBar.setMax(P_Lesson_Words.length);
+            progressBar.setMax(5);
 
         } catch (JSONException e) {
             e.printStackTrace();

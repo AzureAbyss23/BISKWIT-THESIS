@@ -52,13 +52,13 @@ public class KatinigFragment extends Fragment {
                 }
             });
 
-            binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
+            /*binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     intent = new Intent(getContext(), KatinigChoices2.class);
                     startActivity(intent);
                 }
-            });
+            });*/
 
             binding.back.setOnClickListener(new View.OnClickListener() {
                 @Override

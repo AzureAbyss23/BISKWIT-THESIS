@@ -89,7 +89,15 @@ public class Pagbabaybay extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(Pagbabaybay.this);
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            //CurrentProgress = all_ctr + 1;
+            //progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            //progressBar.setProgress(CurrentProgress);
+        }
+
         ai = MediaPlayer.create(Pagbabaybay.this, R.raw.kab2_p4);
         ai.start();
 
@@ -113,6 +121,10 @@ public class Pagbabaybay extends AppCompatActivity {
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Pagbabaybay");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Pagbabaybay",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -144,6 +156,25 @@ public class Pagbabaybay extends AppCompatActivity {
                 ai.start();
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Pagbabaybay",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putInt("Counter2", all_ctr2);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Pagbabaybay",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("Counter2")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            all_ctr2 = sharedPreferences.getInt("Counter2", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     protected void stopPlaying(){
@@ -290,9 +321,10 @@ public class Pagbabaybay extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

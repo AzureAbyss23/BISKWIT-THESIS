@@ -116,8 +116,15 @@ public class Alphabet extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(Alphabet.this);
 
-        getData();
-        progressBar.setProgress(CurrentProgress);
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +152,10 @@ public class Alphabet extends AppCompatActivity {
                         intent.putExtra("LessonType","Alphabet");
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -248,6 +259,23 @@ public class Alphabet extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     protected void stopPlaying(){
@@ -402,8 +430,8 @@ public class Alphabet extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(!alphabet[0].equals("")){
-            txtword.setText(alphabet[0]+alphabet[0].toLowerCase());
+        if(!alphabet[all_ctr].equals("")){
+            txtword.setText(alphabet[all_ctr]+alphabet[all_ctr].toLowerCase());
             progressDialog.dismiss();
         } else {
             Toast.makeText(Alphabet.this, "No data", Toast.LENGTH_LONG).show();
@@ -414,9 +442,10 @@ public class Alphabet extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

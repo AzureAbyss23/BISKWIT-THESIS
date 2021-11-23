@@ -107,7 +107,15 @@ public class Days extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
+
         ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
         ai.start();
 
@@ -136,7 +144,15 @@ public class Days extends AppCompatActivity {
                         Intent intent = new Intent(Days.this, DaysAct.class);
                         intent.putExtra("Status",status);
                         intent.putExtra("FScore", score);
-                        intent.putExtra("data",P_Lesson_Words);
+                        //intent.putExtra("data",P_Lesson_Words);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("DaysFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.putInt("Status",1);
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -238,6 +254,32 @@ public class Days extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("DaysFin",Context.MODE_PRIVATE);
+        if(sharedPreferences2.contains("Status")){
+            SavePreferences();
+            Intent intent = new Intent(Days.this, DaysAct.class);
+            intent.putExtra("Status",status);
+            intent.putExtra("FScore", score);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     protected void stopPlaying(){
@@ -351,7 +393,6 @@ public class Days extends AppCompatActivity {
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-
         String url = "https://biskwitteamdelete.000webhostapp.com/fetch_days.php";
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
@@ -393,7 +434,7 @@ public class Days extends AppCompatActivity {
         }
 
         if(!P_Lesson_Words[0].equals("")){
-            txtword.setText(P_Lesson_Words[0]);
+            txtword.setText(P_Lesson_Words[all_ctr]);
             progressDialog.dismiss();
         } else {
             Toast.makeText(Days.this, "No data", Toast.LENGTH_LONG).show();
@@ -403,9 +444,10 @@ public class Days extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
