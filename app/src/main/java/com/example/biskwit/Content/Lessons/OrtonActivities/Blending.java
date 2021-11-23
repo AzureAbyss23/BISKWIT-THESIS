@@ -92,7 +92,15 @@ public class Blending extends AppCompatActivity {
         wordimg = findViewById(R.id.WordImg);
         progressDialog = new ProgressDialog(Blending.this);
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            //CurrentProgress = all_ctr + 1;
+            //progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            //progressBar.setProgress(CurrentProgress);
+        }
+
         ai = MediaPlayer.create(Blending.this, R.raw.kab2_p3);
         ai.start();
 
@@ -154,6 +162,23 @@ public class Blending extends AppCompatActivity {
         });
     }
 
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Blending",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Blending",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
+    }
+
     public void showToast(String s) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
@@ -207,6 +232,10 @@ public class Blending extends AppCompatActivity {
             intent.putExtra("LessonType","Orton");
             intent.putExtra("LessonMode","Blending");
             intent.putExtra("Score", score);
+            SharedPreferences sharedPreferences = getSharedPreferences("Blending",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
             startActivity(intent);
             finish();
         }
@@ -273,9 +302,10 @@ public class Blending extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

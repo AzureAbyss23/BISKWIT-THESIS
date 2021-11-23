@@ -35,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.Days;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Days.DaysAct;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -112,7 +113,15 @@ public class Years extends AppCompatActivity {
         wordimg = findViewById(R.id.WordImg);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
+
         ai = MediaPlayer.create(Years.this, R.raw.kab5_p2_1);
         ai.start();
 
@@ -146,6 +155,14 @@ public class Years extends AppCompatActivity {
                         intent.putExtra("Score", score);
                         intent.putExtra("Title",Title);
                         intent.putExtra("data",P_Lesson_Words);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Years",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("YearsFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.putInt("Status",1);
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -249,6 +266,32 @@ public class Years extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Years",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Years",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("YearsFin",Context.MODE_PRIVATE);
+        if(sharedPreferences2.contains("Status")){
+            SavePreferences();
+            Intent intent = new Intent(Years.this, YearsAct.class);
+            intent.putExtra("Status",status);
+            intent.putExtra("FScore", score);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     protected void stopPlaying(){
@@ -414,7 +457,7 @@ public class Years extends AppCompatActivity {
         }
 
         if(!P_Lesson_Words[0].equals("")){
-            txtword.setText(P_Lesson_Words[0]);
+            txtword.setText(P_Lesson_Words[all_ctr]);
             id = setImg();
             wordimg.setImageResource(id);
             progressDialog.dismiss();
@@ -426,6 +469,7 @@ public class Years extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
                 .setMessage("You will not be able to save your progress.")

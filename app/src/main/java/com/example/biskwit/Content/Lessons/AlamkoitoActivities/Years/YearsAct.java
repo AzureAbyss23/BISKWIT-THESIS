@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,8 +22,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.biskwit.Content.Score;
+import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class YearsAct extends AppCompatActivity {
 
@@ -42,6 +57,8 @@ public class YearsAct extends AppCompatActivity {
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
+    ProgressDialog progressDialog;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +75,19 @@ public class YearsAct extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         wordimg = findViewById(R.id.WordImg);
 
-        ch1.setText(choice[all_ctr][0]);
-        ch3.setText(choice[all_ctr][1]);
-        id = setImg();
-        wordimg.setImageResource(id);
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
 
         ai = MediaPlayer.create(YearsAct.this, R.raw.kab5_p2_2);
         ai.start();
-
-        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
-        CurrentProgress = data.length;
-        progressBar.setMax(data.length*2);
-        progressBar.setProgress(data.length);
-        CurrentProgress = CurrentProgress + 1;
-        progressBar.setProgress(CurrentProgress);
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +117,23 @@ public class YearsAct extends AppCompatActivity {
                 ai.start();
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("YearsAct", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("YearsAct",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -220,16 +253,87 @@ public class YearsAct extends AppCompatActivity {
             intent.putExtra("LessonType","Alamkoito");
             intent.putExtra("LessonMode","Years");
             intent.putExtra("Score", score);
+            SharedPreferences sharedPreferences = getSharedPreferences("YearsAct",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            SharedPreferences sharedPreferences2 = getSharedPreferences("YearsFin",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+            editor2.clear();
+            editor2.apply();
             startActivity(intent);
             finish();
         }
     }
 
+    private void getData() {
+        progressDialog = new ProgressDialog(YearsAct.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading lesson...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_years.php";
+
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                showJSONS(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(YearsAct.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void showJSONS(String response) {
+        ArrayList<String> dataL = new ArrayList<String>();
+        ArrayList<String> data2 = new ArrayList<String>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
+            int length = result.length();
+            for(int i = 0; i < length; i++) {
+                JSONObject collegeData = result.getJSONObject(i);
+                dataL.add(collegeData.getString("title"));
+                data2.add(collegeData.getString("word"));
+            }
+            title = new String[dataL.size()];
+            title = dataL.toArray(title);
+            data = new String[data2.size()];
+            data = data2.toArray(data);
+            progressBar.setMax(data.length*2);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(!data[0].equals("")){
+            ch1.setText(choice[all_ctr][0]);
+            ch3.setText(choice[all_ctr][1]);
+            id = setImg();
+            wordimg.setImageResource(id);
+        } else {
+            Toast.makeText(YearsAct.this, "No data", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    }
+
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
