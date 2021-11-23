@@ -28,7 +28,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"
                 android:textStyle="bold"
-                app:fontFamily="@font/chewy" />
+                app:fontFamily="@font/opendyslexic_bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"

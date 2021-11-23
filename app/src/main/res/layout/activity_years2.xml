@@ -21,7 +21,7 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:fontFamily="@font/chewy"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
                 android:text="Years"
@@ -77,7 +77,7 @@
                     android:text="Button1"
                     android:background="@drawable/roundshape"
                     android:textColor="#000000"
-                    android:fontFamily="@font/crimson_text"/>
+                    android:fontFamily="@font/opendyslexic_bold"/>
 
 
                 <Button
@@ -90,7 +90,7 @@
                     android:text="Button3"
                     android:background="@drawable/roundshape"
                     android:textColor="#000000"
-                    android:fontFamily="@font/crimson_text"/>
+                    android:fontFamily="@font/opendyslexic_bold"/>
 
             </LinearLayout>
         </LinearLayout>

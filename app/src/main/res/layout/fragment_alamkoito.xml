@@ -19,10 +19,10 @@
 
             <TextView
                 android:id="@+id/Title"
-                android:layout_width="241dp"
+                android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 android:layout_marginTop="50dp"
-                android:fontFamily="@font/chewy"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
@@ -42,7 +42,7 @@
                 android:text="Mga araw sa isang linggo"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -55,7 +55,7 @@
                 android:text="Mga Buwan sa Isang Taon"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -68,7 +68,7 @@
                 android:layout_marginBottom="25dp"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -81,7 +81,7 @@
                 android:text="Mga Salitang Magkasingkahulugan"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -91,7 +91,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/roundshape"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:text="Mga Tunog"
                 android:textColor="#000000"
                 android:textSize="20dp"

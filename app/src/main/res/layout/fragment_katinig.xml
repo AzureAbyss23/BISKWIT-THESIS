@@ -18,11 +18,11 @@
 
             <TextView
                 android:id="@+id/Title"
-                android:layout_width="287dp"
+                android:layout_width="wrap_content"
                 android:layout_height="73dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="30dp"
-                android:fontFamily="@font/chewy"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
                 android:text="Katinig"
@@ -41,7 +41,7 @@
                 android:text="Aralin 1"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -54,7 +54,7 @@
                 android:text="Aralin 2"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <Button
@@ -67,7 +67,7 @@
                 android:text="Aralin 3"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/crimson_text"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
             <ImageView

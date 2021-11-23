@@ -13,7 +13,7 @@
         android:text="Settings"
         android:textSize="50dp"
         android:textColor="@color/teal_200"
-        android:fontFamily="@font/chewy"
+        android:fontFamily="@font/opendyslexic_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

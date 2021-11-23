@@ -25,7 +25,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/chewy"
+                android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
                 android:text="Progreso ng Katinig"
                 android:textAlignment="center"
