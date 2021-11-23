@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/yellowbg"
-    tools:context=".Content.Lessons.PatinigFragment">
+    android:background="@drawable/redbg"
+    tools:context=".Content.Lessons.AbakadaFragment">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,41 +19,53 @@
 
             <TextView
                 android:id="@+id/Title"
-                android:layout_width="288dp"
-                android:layout_height="73dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
-                android:text="Patinig"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
+                android:text="Alphabet"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#000000"
                 android:textSize="50dp" />
 
             <Button
-                android:id="@+id/Patinig_aralin1"
-                android:layout_width="350dp"
+                android:id="@+id/Patinig"
+                android:layout_width="340dp"
                 android:layout_height="90dp"
                 android:background="@drawable/roundshape"
                 android:layout_gravity="center"
                 android:layout_marginBottom="25dp"
-                android:text="PATINIG Aralin 1"
+                android:text="Abakada 1"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/opendyslexic_bold"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
 
             <Button
-                android:id="@+id/Patinig_aralin2"
-                android:layout_width="350dp"
+                android:id="@+id/Katinig"
+                android:layout_width="340dp"
                 android:layout_height="90dp"
+                android:background="@drawable/roundshape"
                 android:layout_gravity="center"
                 android:layout_marginBottom="25dp"
+                android:text="Abakada 2"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/opendyslexic_bold"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/Abakada"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
                 android:background="@drawable/roundshape"
-                android:text="Patinig Aralin 2"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:text="Abakada 3"
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/opendyslexic_bold"
@@ -72,6 +85,5 @@
 
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

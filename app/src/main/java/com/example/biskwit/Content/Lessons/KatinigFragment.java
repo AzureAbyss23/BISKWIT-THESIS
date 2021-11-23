@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 
 import com.example.biskwit.Content.EasyFragment;
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices1;
-import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.AbakadaActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices2;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentKatinigBinding;
 
@@ -50,13 +51,13 @@ public class KatinigFragment extends Fragment {
                 }
             });
 
-            /*binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
+            binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     intent = new Intent(getContext(), KatinigChoices2.class);
                     startActivity(intent);
                 }
-            });*/
+            });
 
             binding.back.setOnClickListener(new View.OnClickListener() {
                 @Override

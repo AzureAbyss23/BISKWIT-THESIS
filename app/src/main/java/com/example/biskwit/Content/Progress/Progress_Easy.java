@@ -148,7 +148,7 @@ public class Progress_Easy extends AppCompatActivity {
                 String type = i1.next();
                 String mode = i2.next();
                 String sco = i3.next();
-                if (type.equals("Alphabet") && mode.equals("ABCD")) {
+                if (type.equals("Abakada") && mode.equals("ABCD")) {
                     score_alphabet.setText(sco + "%");
                 } else if (type.equals("Orton") && mode.equals("Phonemic")) {
                     score_phonemic.setText(sco + "%");

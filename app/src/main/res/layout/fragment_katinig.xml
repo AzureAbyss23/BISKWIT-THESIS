@@ -57,6 +57,19 @@
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp" />
 
+            <Button
+                android:id="@+id/Katinig_aralin3"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
+                android:background="@drawable/roundshape"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:text="Aralin 3"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
+
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="93dp"

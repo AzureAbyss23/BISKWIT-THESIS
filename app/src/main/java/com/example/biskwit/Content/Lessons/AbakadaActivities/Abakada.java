@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Lessons.AlphabetActivities;
+package com.example.biskwit.Content.Lessons.AbakadaActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-public class Alphabet extends AppCompatActivity {
+public class Abakada extends AppCompatActivity {
 
     TextView txtresult,txtword;
     ImageView next,bot,bot2;
@@ -111,10 +111,10 @@ public class Alphabet extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar);
 
-        ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
+        ai = MediaPlayer.create(Abakada.this, R.raw.kab1);
         ai.start();
 
-        progressDialog = new ProgressDialog(Alphabet.this);
+        progressDialog = new ProgressDialog(Abakada.this);
 
         if(LoadPreferences()){
             getData();
@@ -146,13 +146,13 @@ public class Alphabet extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
-                        intent = new Intent(Alphabet.this, Score.class);
+                        intent = new Intent(Abakada.this, Score.class);
                         intent.putExtra("Average",alphabet.length);
                         intent.putExtra("Status",status);
-                        intent.putExtra("LessonType","Alphabet");
+                        intent.putExtra("LessonType","Abakada");
                         intent.putExtra("LessonMode","ABCD");
                         intent.putExtra("Score", score);
-                        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();
                         editor.apply();
@@ -170,7 +170,7 @@ public class Alphabet extends AppCompatActivity {
                 stopPlaying();
                 Resources res = getResources();
                 int sound = res.getIdentifier(alphabet[all_ctr].toLowerCase(), "raw", getPackageName());
-                ai = MediaPlayer.create(Alphabet.this, sound);
+                ai = MediaPlayer.create(Abakada.this, sound);
                 ai.start();
             }
         });
@@ -179,7 +179,7 @@ public class Alphabet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
+                ai = MediaPlayer.create(Abakada.this, R.raw.kab1);
                 ai.start();
             }
         });
@@ -262,7 +262,7 @@ public class Alphabet extends AppCompatActivity {
     }
 
     private void SavePreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Counter", all_ctr);
         editor.putString("Score",Double.toString(score));
@@ -270,7 +270,7 @@ public class Alphabet extends AppCompatActivity {
     }
 
     private boolean LoadPreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Alphabet",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
@@ -366,19 +366,19 @@ public class Alphabet extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("HINDI TUGMA");
-            ai = MediaPlayer.create(Alphabet.this, R.raw.response_0_to_49);
+            ai = MediaPlayer.create(Abakada.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("MABUTI");
-            ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
+            ai = MediaPlayer.create(Abakada.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("MAHUSAY!");
-            ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
+            ai = MediaPlayer.create(Abakada.this, R.raw.response_70_to_100);
             ai.start();
         }
     }
@@ -402,7 +402,7 @@ public class Alphabet extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Alphabet.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Abakada.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -434,7 +434,7 @@ public class Alphabet extends AppCompatActivity {
             txtword.setText(alphabet[all_ctr]+alphabet[all_ctr].toLowerCase());
             progressDialog.dismiss();
         } else {
-            Toast.makeText(Alphabet.this, "No data", Toast.LENGTH_LONG).show();
+            Toast.makeText(Abakada.this, "No data", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
         }
     }
@@ -450,7 +450,7 @@ public class Alphabet extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Alphabet.super.onBackPressed();
+                        Abakada.super.onBackPressed();
                         stopPlaying();
                     }
                 }).create().show();

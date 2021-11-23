@@ -11,21 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.biskwit.Content.EasyFragment;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
+import com.example.biskwit.Content.Lessons.AbakadaActivities.Abakada;
+import com.example.biskwit.Content.Lessons.AbakadaActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.AbakadaActivities.PatinigLesson1;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentPatinigBinding;
+import com.example.biskwit.databinding.FragmentAbakadaBinding;
 
-public class PatinigFragment extends Fragment {
+public class AbakadaFragment extends Fragment {
 
-    FragmentPatinigBinding binding;
+    FragmentAbakadaBinding binding;
     Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentPatinigBinding.inflate(getLayoutInflater());
+        binding = FragmentAbakadaBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
 
@@ -34,7 +35,7 @@ public class PatinigFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // eto yung code para sa Aralin na button natin
-        binding.PatinigAralin1.setOnClickListener(new View.OnClickListener() {
+        binding.Patinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getContext(), PatinigLesson1.class);
@@ -42,10 +43,18 @@ public class PatinigFragment extends Fragment {
             }
         });
 
-        binding.PatinigAralin2.setOnClickListener(new View.OnClickListener() {
+        binding.Katinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), PatinigChoices1.class);
+                intent = new Intent(getContext(), KatinigLesson1.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.Abakada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getContext(), Abakada.class);
                 startActivity(intent);
             }
         });
@@ -62,6 +71,7 @@ public class PatinigFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
 
     }
 

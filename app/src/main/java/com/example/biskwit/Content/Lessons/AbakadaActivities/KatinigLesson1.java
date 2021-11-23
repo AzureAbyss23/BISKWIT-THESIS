@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Lessons.KatinigActivities;
+package com.example.biskwit.Content.Lessons.AbakadaActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous.Synonymous;
 import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 

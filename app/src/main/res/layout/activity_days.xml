@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/actbg"
-    tools:context=".Content.Lessons.AlphabetActivities.Alphabet">
+    tools:context=".Content.Lessons.AbakadaActivities.Abakada">
 
     <ScrollView
         android:layout_width="match_parent"
