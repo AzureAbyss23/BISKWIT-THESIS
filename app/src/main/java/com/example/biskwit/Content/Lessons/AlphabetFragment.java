@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.biskwit.Content.LessonFragment;
+import com.example.biskwit.Content.EasyFragment;
 import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAlphabetBinding;
@@ -44,7 +44,7 @@ public class AlphabetFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragmentBack = new LessonFragment();
+                Fragment fragmentBack = new EasyFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

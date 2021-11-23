@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Progress_Kwento extends AppCompatActivity {
+public class Progress_Hard extends AppCompatActivity {
 
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
@@ -38,7 +38,7 @@ public class Progress_Kwento extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress_kwento);
+        setContentView(R.layout.activity_progress_hard);
 
         score_magdasal = findViewById(R.id.Magdasalscore);
         score_paruparo = findViewById(R.id.Paruparoscore);
@@ -51,7 +51,7 @@ public class Progress_Kwento extends AppCompatActivity {
     }
 
     private void getData() {
-        progressDialog = new ProgressDialog(Progress_Kwento.this);
+        progressDialog = new ProgressDialog(Progress_Hard.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading your scores...");
         progressDialog.setCancelable(false);
@@ -72,7 +72,7 @@ public class Progress_Kwento extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Progress_Kwento.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Progress_Hard.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 

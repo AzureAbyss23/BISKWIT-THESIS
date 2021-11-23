@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.biskwit.Content.LessonFragment;
+import com.example.biskwit.Content.EasyFragment;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Blending;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic.Phonemic;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic.PhonemicAct;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
 import com.example.biskwit.R;
@@ -73,7 +72,7 @@ public class OrtonFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragmentBack = new LessonFragment();
+                Fragment fragmentBack = new EasyFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

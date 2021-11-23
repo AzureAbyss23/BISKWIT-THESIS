@@ -11,17 +11,17 @@ import com.example.biskwit.Content.Story.PabulaFragment;
 import com.example.biskwit.Content.Story.TulaFragment;
 import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentStoryBinding;
+import com.example.biskwit.databinding.FragmentHardBinding;
 
-public class storyFragment extends Fragment {
+public class HardFragment extends Fragment {
 
-    FragmentStoryBinding binding;
+    FragmentHardBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentStoryBinding.inflate(getLayoutInflater());
+        binding = FragmentHardBinding.inflate(getLayoutInflater());
 
         container.removeAllViews();
 

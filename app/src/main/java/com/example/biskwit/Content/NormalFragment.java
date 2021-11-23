@@ -8,23 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.biskwit.Content.Lessons.AlamkoitoFragment;
-import com.example.biskwit.Content.Lessons.AlphabetFragment;
-import com.example.biskwit.Content.Lessons.KatinigFragment;
 import com.example.biskwit.Content.Lessons.OrtonFragment;
-import com.example.biskwit.Content.Lessons.PatinigFragment;
 import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentLessonBinding;
+import com.example.biskwit.databinding.FragmentNormalBinding;
 
-public class LessonFragment extends Fragment {
+public class NormalFragment extends Fragment {
 
-    FragmentLessonBinding binding;
+    FragmentNormalBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentLessonBinding.inflate(getLayoutInflater());
+        binding = FragmentNormalBinding.inflate(getLayoutInflater());
 
         container.removeAllViews();
 
@@ -35,20 +32,6 @@ public class LessonFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        // eto yung code para sa Aralin para sa patinig na button natin
-        binding.Alphabet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragmentAlphabet = new AlphabetFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentAlphabet);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
         binding.Orton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,33 +40,6 @@ public class LessonFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentOrton);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        binding.Patinig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragmentPatinig = new PatinigFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentPatinig);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        // eto yung code para sa Aralin para sa katinig na button
-        binding.Katinig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragmentKatinig = new KatinigFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentKatinig);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

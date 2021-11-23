@@ -8,8 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.biskwit.Content.Progress.Progress_Aralin;
-import com.example.biskwit.Content.Progress.Progress_Kwento;
+import com.example.biskwit.Content.Progress.Progress_Easy;
+import com.example.biskwit.Content.Progress.Progress_Hard;
 import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentProgressBinding;
@@ -38,7 +38,7 @@ public class ProgressFragment extends Fragment {
         binding.Lesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), Progress_Aralin.class);
+                Intent intent = new Intent(getContext(), Progress_Easy.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +46,7 @@ public class ProgressFragment extends Fragment {
         binding.Story.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), Progress_Kwento.class);
+                Intent intent = new Intent(getContext(), Progress_Hard.class);
                 startActivity(intent);
             }
         });

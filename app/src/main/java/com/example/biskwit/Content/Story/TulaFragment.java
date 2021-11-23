@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.biskwit.Content.Story.TulaActivities.Magdasal;
 import com.example.biskwit.Content.Story.TulaActivities.Maglaro;
 import com.example.biskwit.Content.Story.TulaActivities.ParuparoRosas;
-import com.example.biskwit.Content.storyFragment;
+import com.example.biskwit.Content.HardFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentTulaBinding;
 
@@ -60,7 +60,7 @@ public class TulaFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragmentBack = new storyFragment();
+                Fragment fragmentBack = new HardFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

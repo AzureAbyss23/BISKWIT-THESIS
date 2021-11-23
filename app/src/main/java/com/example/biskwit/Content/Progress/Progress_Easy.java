@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Progress_Aralin extends AppCompatActivity {
+public class Progress_Easy extends AppCompatActivity {
 
     public static final String filename = "idfetch";
     public static final String UserID = "userid";
@@ -44,7 +44,7 @@ public class Progress_Aralin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress_aralin);
+        setContentView(R.layout.activity_progress_easy);
 
         score_alphabet = findViewById(R.id.alphabetscore);
         score_phonemic = findViewById(R.id.phonemicscore);
@@ -68,21 +68,21 @@ public class Progress_Aralin extends AppCompatActivity {
         score_p_aralin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Progress_Aralin.this, ProgressPatinig.class);
+                Intent intent = new Intent(Progress_Easy.this, ProgressPatinig.class);
                 startActivity(intent);
             }
         });
         score_k_aralin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Progress_Aralin.this, ProgressKatinig.class);
+                Intent intent = new Intent(Progress_Easy.this, ProgressKatinig.class);
                 startActivity(intent);
             }
         });
         score_k_aralin3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Progress_Aralin.this, ProgressHiram.class);
+                Intent intent = new Intent(Progress_Easy.this, ProgressHiram.class);
                 startActivity(intent);
             }
         });
@@ -90,7 +90,7 @@ public class Progress_Aralin extends AppCompatActivity {
     }
 
     private void getData() {
-        progressDialog = new ProgressDialog(Progress_Aralin.this);
+        progressDialog = new ProgressDialog(Progress_Easy.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading your scores...");
         progressDialog.setCancelable(false);
@@ -111,7 +111,7 @@ public class Progress_Aralin extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Progress_Aralin.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Progress_Easy.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".Content.LessonFragment">
+    tools:context=".Content.EasyFragment">
 
 
     <ScrollView
@@ -26,7 +26,7 @@
                 android:layout_marginBottom="25dp"
                 android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
-                android:text="Aralin"
+                android:text="Easy"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"
@@ -81,38 +81,6 @@
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp" />
-
-            <ImageButton
-                android:id="@+id/Orton"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:padding="10dp"
-                android:background="@drawable/roundshape"
-                android:layout_marginBottom="25dp"
-                android:src="@drawable/buttonorton"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:text="Kabanata 4: Orton Gillingham"
-                app:backgroundTint="#B5FDB5"
-                android:textColor="#000000"
-                android:fontFamily="@font/crimson_text"
-                android:textSize="20dp" />
-
-            <ImageButton
-                android:id="@+id/Alamkoito"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:padding="10dp"
-                android:background="@drawable/roundshape"
-                android:layout_marginBottom="25dp"
-                android:src="@drawable/buttonalamko"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                android:text="Kabanata 5: Alam ko ito"
-                app:backgroundTint="#B0DEF3"
-                android:textColor="#000000"
-                android:fontFamily="@font/crimson_text"
-                android:textSize="20dp"/>
 
             <ImageView
                 android:id="@+id/back"

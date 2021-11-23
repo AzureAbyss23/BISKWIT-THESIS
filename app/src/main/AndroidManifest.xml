@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BISKWIT">
         <activity
+            android:name=".Content.Progress.ProgressNormal"
+            android:exported="true" />
+        <activity
             android:name=".Content.Progress.ProgressHiram"
             android:exported="true" />
         <activity
@@ -33,10 +36,10 @@
             android:name=".Content.Lessons.OrtonActivities.Phonemic.PhonemicAct"
             android:exported="true" />
         <activity
-            android:name=".Content.Progress.Progress_Kwento"
+            android:name=".Content.Progress.Progress_Hard"
             android:exported="true" />
         <activity
-            android:name=".Content.Progress.Progress_Aralin"
+            android:name=".Content.Progress.Progress_Easy"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.KatinigActivities.KatinigLesson3"
