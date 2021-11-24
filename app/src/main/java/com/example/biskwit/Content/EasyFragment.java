@@ -50,7 +50,7 @@ public class EasyFragment extends Fragment {
         editor = mpath.edit();
 
         // eto yung code para sa Aralin para sa patinig na button natin
-        binding.Alphabet.setOnClickListener(new View.OnClickListener() {
+        binding.Abakada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragmentAlphabet = new AbakadaFragment();
