@@ -36,8 +36,8 @@ public class Score extends AppCompatActivity {
     double conv_score;
     double average = 0;
     double compute = 0;
-    SharedPreferences scores, logger;
-    SharedPreferences.Editor editor;
+    SharedPreferences scores, logger, mpath;
+    SharedPreferences.Editor editor,editor2;
 
     public static final String filename = "idfetch";
     public static final String filename2 = "scorer";
@@ -66,6 +66,11 @@ public class Score extends AppCompatActivity {
         editor = scores.edit();
         editor.putString(UserScore, score_save);
         editor.apply();
+
+        mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        editor2 = mpath.edit();
+        editor2.remove(lessonmode + "Locked").apply();
+
         double s = getIntent().getDoubleExtra("Score",0);
         compute = (s / average) * 100;
         conv_score = Math.round(compute);

@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity{
     String Email = "";
     String Password = "";
     ProgressDialog progressDialog;
-    SharedPreferences logger, IDFetch;
-    SharedPreferences.Editor editor,editor2;
+    SharedPreferences logger, IDFetch, mpath;
+    SharedPreferences.Editor editor,editor2, editor3;
 
     AssetFileDescriptor asd;
     public static final String filename = "logger";
@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
         if(id>0){
+            mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
             if(remember.isChecked()) {
                 editor = logger.edit();
                 editor.putInt(UserID, id);
@@ -146,6 +147,9 @@ public class MainActivity extends AppCompatActivity{
             editor2 = IDFetch.edit();
             editor2.putInt(UserID, id);
             editor2.commit();
+            if(mpath.contains("Locked")){
+                System.out.println("Go");
+            } else MPath(id);
             progressDialog.dismiss();
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);
@@ -156,6 +160,27 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    public void MPath(int id) {
+        mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor3 = mpath.edit();
+        editor3.putInt("Locked",1);
+        editor3.putInt("Abakada1Locked", 1);
+        editor3.putInt("Abakada2Locked", 1);
+        editor3.putInt("Abakada3Locked", 1);
+        editor3.putInt("PatinigLocked", 1);
+        editor3.putInt("KatinigLocked", 1);
+        editor3.putInt("HiramLocked", 1);
+        editor3.putInt("PhonemicLocked", 1);
+        editor3.putInt("SightLocked", 1);
+        editor3.putInt("BlendingLocked", 1);
+        editor3.putInt("PagbabaybayLocked", 1);
+        editor3.putInt("DaysLocked", 1);
+        editor3.putInt("YearsLocked", 1);
+        editor3.putInt("OppositeLocked", 1);
+        editor3.putInt("SynonymousLocked", 1);
+        editor3.putInt("SoundsLocked", 1);
+        editor3.apply();
+    }
 
     //Papuntang Terms.java ito;
     public void Create_Account(View v)

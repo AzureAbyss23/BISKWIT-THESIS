@@ -97,9 +97,15 @@ public class Sounds extends AppCompatActivity {
         txtresult = findViewById(R.id.result);
         mic = findViewById(R.id.imageView2);
         progressBar = findViewById(R.id.ProgressBar);
-        progressDialog = new ProgressDialog(Sounds.this);
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
 
         ai = MediaPlayer.create(Sounds.this, R.raw.kab5_p5_1);
         ai.start();
@@ -147,6 +153,10 @@ public class Sounds extends AppCompatActivity {
                         intent = new Intent(Sounds.this, SoundsAct.class);
                         intent.putExtra("Status",status);
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("SoundsFin", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.putInt("Status",1);
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -245,6 +255,34 @@ public class Sounds extends AppCompatActivity {
         });
     }
 
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Sounds",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Sounds",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("SoundsFin",Context.MODE_PRIVATE);
+        if(sharedPreferences2.contains("Status")){
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            Intent intent = new Intent(Sounds.this, SoundsAct.class);
+            intent.putExtra("Status",status);
+            intent.putExtra("FScore", score);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
+    }
+
     //algo
     public static double similarity(String s1, String s2) {
         String longer = s1, shorter = s2;
@@ -311,11 +349,11 @@ public class Sounds extends AppCompatActivity {
 
     //get data for the database
     private void getData() {
+        progressDialog = new ProgressDialog(Sounds.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-
 
         String url = "https://biskwitteamdelete.000webhostapp.com/fetch_sounds.php";
 
@@ -379,9 +417,10 @@ public class Sounds extends AppCompatActivity {
     //back button
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

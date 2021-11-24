@@ -79,7 +79,7 @@ public class Abakada extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
-        final String UserScore = "userscore"+id+"ABCD";
+        final String UserScore = "userscore"+id+"Abakada1";
         if(scores.contains(UserScore)) {
             new AlertDialog.Builder(this)
                     .setTitle("Retry lesson?")
@@ -150,9 +150,9 @@ public class Abakada extends AppCompatActivity {
                         intent.putExtra("Average",alphabet.length);
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Abakada");
-                        intent.putExtra("LessonMode","ABCD");
+                        intent.putExtra("LessonMode","Abakada1");
                         intent.putExtra("Score", score);
-                        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getSharedPreferences("Abakada1",Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();
                         editor.apply();
@@ -262,7 +262,7 @@ public class Abakada extends AppCompatActivity {
     }
 
     private void SavePreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Abakada1",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Counter", all_ctr);
         editor.putString("Score",Double.toString(score));
@@ -270,7 +270,7 @@ public class Abakada extends AppCompatActivity {
     }
 
     private boolean LoadPreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Abakada",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Abakada1",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));

@@ -3,8 +3,10 @@ package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Sounds;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -46,6 +48,15 @@ public class SoundsAct extends AppCompatActivity {
         score = getIntent().getIntExtra("Score",0);
         status = getIntent().getIntExtra("Status",0);
 
+        if(LoadPreferences()){
+            //getData();
+            //CurrentProgress = all_ctr + 1;
+            //progressBar.setProgress(CurrentProgress);
+        } else {
+            //getData();
+            //progressBar.setProgress(CurrentProgress);
+        }
+
         ai = MediaPlayer.create(SoundsAct.this, R.raw.kab5_p5_2);
         ai.start();
 
@@ -70,6 +81,18 @@ public class SoundsAct extends AppCompatActivity {
                         intent.putExtra("LessonType","Alamkoito");
                         intent.putExtra("LessonMode","Sounds");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferencesF = getSharedPreferences("Sounds", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editorF = sharedPreferencesF.edit();
+                        editorF.clear();
+                        editorF.apply();
+                        SharedPreferences sharedPreferences = getSharedPreferences("SoundsAct", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("SoundsFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.clear();
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
@@ -97,6 +120,23 @@ public class SoundsAct extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SoundsAct", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SoundsAct",Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -185,9 +225,10 @@ public class SoundsAct extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

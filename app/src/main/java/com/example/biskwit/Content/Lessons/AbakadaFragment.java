@@ -1,6 +1,8 @@
 package com.example.biskwit.Content.Lessons;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -22,11 +24,20 @@ public class AbakadaFragment extends Fragment {
     FragmentAbakadaBinding binding;
     Intent intent;
 
+    public static final String filename = "idfetch";
+    public static final String UserID = "userid";
+
+    int id;
+    SharedPreferences logger, mpath;
+    SharedPreferences.Editor editor;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAbakadaBinding.inflate(getLayoutInflater());
+
         return binding.getRoot();
     }
 
@@ -34,22 +45,11 @@ public class AbakadaFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        // eto yung code para sa Aralin na button natin
-        binding.Patinig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(getContext(), PatinigLesson1.class);
-                startActivity(intent);
-            }
-        });
+        logger = getContext().getSharedPreferences(filename,Context.MODE_PRIVATE);
+        id = logger.getInt(UserID,0);
 
-        binding.Katinig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(getContext(), KatinigLesson1.class);
-                startActivity(intent);
-            }
-        });
+        mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        editor = mpath.edit();
 
         binding.Abakada.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,41 @@ public class AbakadaFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        if (mpath.contains("Abakada1Locked")){
+            binding.Patinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //set to grayscale
+                    //magtoast
+                }
+            });
+        } else {
+            binding.Patinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getContext(), PatinigLesson1.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        if(mpath.contains("Abakada1Locked") && mpath.contains("Abakada2Locked")){
+            binding.Katinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //set to grayscale
+                    //magtoast
+                }
+            });
+        } else {
+            binding.Katinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getContext(), KatinigLesson1.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
