@@ -122,7 +122,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/opendyslexic_bold"
                     android:gravity="center_horizontal"
-                    android:text="Aralin"
+                    android:text="Easy"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
@@ -134,7 +134,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="350dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
@@ -146,10 +146,26 @@
                     android:layout_width="312dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="75dp"
                     android:fontFamily="@font/opendyslexic_bold"
                     android:gravity="center_horizontal"
                     android:text="Kabanata 1"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/katinig6"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="45dp"
+                    android:fontFamily="@font/opendyslexic_bold"
+                    android:text="Abakada"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
@@ -162,9 +178,9 @@
                     android:layout_width="312dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="\u2022 Alphabet"
+                    android:text="\u2022 Abakada Aralin 1 \n\u2022 Abakada Aralin 2 \n\u2022 Abakada Aralin 3"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -223,7 +239,7 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="\u2022 Patinig Aralin 1\n\u2022 Patinig Aralin 2"
+                    android:text="\u2022 Patinig Aralin 1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -263,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="43dp"
+                    android:layout_marginBottom="35dp"
                     android:fontFamily="@font/opendyslexic_bold"
                     android:text="Katinig"
                     android:textAlignment="center"
@@ -279,13 +295,41 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="\u2022 Katinig Aralin 1\n\u2022 Katinig Aralin 2\n\u2022 Katinig Aralin 3"
+                    android:text="\u2022 Katinig Aralin 1\n\u2022 Katinig Aralin 2"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/aralin1"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/opendyslexic_bold"
+                    android:gravity="center_horizontal"
+                    android:text="Normal"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
             </androidx.cardview.widget.CardView>
 
@@ -423,7 +467,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/opendyslexic_bold"
                     android:gravity="center_horizontal"
-                    android:text="Magbasa"
+                    android:text="Hard"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
