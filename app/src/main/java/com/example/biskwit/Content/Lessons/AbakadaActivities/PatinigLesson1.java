@@ -37,7 +37,7 @@ public class PatinigLesson1 extends AppCompatActivity {
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
-        final String UserScore = "userscore"+id+"P_Aralin1";
+        final String UserScore = "userscore"+id+"Abakada1";
         if(scores.contains(UserScore)) {
             new AlertDialog.Builder(this)
                     .setTitle("Retry lesson?")
@@ -80,7 +80,7 @@ public class PatinigLesson1 extends AppCompatActivity {
                 intent.putExtra("Average",100);
                 intent.putExtra("Status",status);
                 intent.putExtra("LessonType","Patinig");
-                intent.putExtra("LessonMode","P_Aralin1");
+                intent.putExtra("LessonMode","Abakada1");
                 intent.putExtra("Score", 100.0);
                 startActivity(intent);
                 finish();

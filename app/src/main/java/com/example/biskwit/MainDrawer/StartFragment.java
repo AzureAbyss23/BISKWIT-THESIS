@@ -2,6 +2,8 @@ package com.example.biskwit.MainDrawer;
 
 import static com.example.biskwit.MainActivity.MainNavMenu.tapsoundon;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +25,13 @@ public class StartFragment extends Fragment {
     FragmentStartBinding binding;
     public static MediaPlayer soundbutton;
     MainNavMenu frommainnav;
+
+    public static final String filename = "idfetch";
+    public static final String UserID = "userid";
+
+    int id;
+    SharedPreferences logger, mpath;
+    SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -53,6 +62,12 @@ public class StartFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
+        logger = getContext().getSharedPreferences(filename, Context.MODE_PRIVATE);
+        id = logger.getInt(UserID,0);
+
+        mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        editor = mpath.edit();
+
         // eto yung code para sa Aralin na button natin
         binding.Easy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,34 +83,43 @@ public class StartFragment extends Fragment {
             }
         });
 
-        // eto yung code para sa maikling kwento na button
-        binding.Normal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playTapSound();
-                Fragment fragmentNormal = new NormalFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentNormal);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        if (mpath.contains("KatinigLocked") || mpath.contains("HiramLocked")){
+            //set to grayscale
+            //magtoast
+        } else {
+            binding.Normal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playTapSound();
+                    Fragment fragmentNormal = new NormalFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu, fragmentNormal);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
 
-        binding.Hard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playTapSound();
-                Fragment fragmentHard = new HardFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentHard);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        if (mpath.contains("DaysLocked") || mpath.contains("YearsLocked") || mpath.contains("OppositeLocked") || mpath.contains("SynonymousLocked")){
+            //set to grayscale
+            //magtoast
+        } else {
+            binding.Hard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playTapSound();
+                    Fragment fragmentHard = new HardFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu, fragmentHard);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
 
         binding.ProgressButton.setOnClickListener(new View.OnClickListener() {
             @Override

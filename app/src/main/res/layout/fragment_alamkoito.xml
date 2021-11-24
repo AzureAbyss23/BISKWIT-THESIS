@@ -84,19 +84,6 @@
                 android:fontFamily="@font/opendyslexic_bold"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/Sounds"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/roundshape"
-                android:fontFamily="@font/opendyslexic_bold"
-                android:text="Mga Tunog"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:backgroundTint="#FFFFFF" />
-
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="93dp"

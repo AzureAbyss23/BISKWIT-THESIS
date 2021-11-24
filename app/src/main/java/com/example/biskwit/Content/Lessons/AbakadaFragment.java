@@ -3,6 +3,7 @@ package com.example.biskwit.Content.Lessons;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -51,44 +52,32 @@ public class AbakadaFragment extends Fragment {
         mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor = mpath.edit();
 
-        binding.Abakada.setOnClickListener(new View.OnClickListener() {
+        binding.Patinig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), Abakada.class);
+                intent = new Intent(getContext(), PatinigLesson1.class);
                 startActivity(intent);
             }
         });
 
         if (mpath.contains("Abakada1Locked")){
-            binding.Patinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //set to grayscale
-                    //magtoast
-                }
-            });
-        } else {
-            binding.Patinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), PatinigLesson1.class);
-                    startActivity(intent);
-                }
-            });
-        }
-        if(mpath.contains("Abakada1Locked") && mpath.contains("Abakada2Locked")){
-            binding.Katinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //set to grayscale
-                    //magtoast
-                }
-            });
+            //binding.Katinig.setBackgroundTintMode();
         } else {
             binding.Katinig.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     intent = new Intent(getContext(), KatinigLesson1.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked")){
+            binding.Abakada.setBackgroundColor(Color.GRAY);
+        } else {
+            binding.Abakada.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getContext(), Abakada.class);
                     startActivity(intent);
                 }
             });

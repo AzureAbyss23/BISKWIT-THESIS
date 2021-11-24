@@ -49,8 +49,7 @@ public class EasyFragment extends Fragment {
         mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor = mpath.edit();
 
-        // eto yung code para sa Aralin para sa patinig na button natin
-        binding.Abakada.setOnClickListener(new View.OnClickListener() {
+        binding.AbakadaLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragmentAlphabet = new AbakadaFragment();
@@ -63,7 +62,7 @@ public class EasyFragment extends Fragment {
             }
         });
 
-        if(mpath.contains("Abakada1Locked") && mpath.contains("Abakada2Locked") && mpath.contains("Abakada3Locked")){
+        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
             binding.Patinig.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,19 +79,27 @@ public class EasyFragment extends Fragment {
             });
         }
 
-        // eto yung code para sa Aralin para sa katinig na button
-        binding.Katinig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragmentKatinig = new KatinigFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu,fragmentKatinig);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
+            binding.Katinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //grayscale then lock
+                }
+            });
+        } else {
+            binding.Katinig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragmentKatinig = new KatinigFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu, fragmentKatinig);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,8 @@
 package com.example.biskwit.Content.Lessons;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,8 +23,15 @@ import com.example.biskwit.databinding.FragmentKatinigBinding;
 
 public class KatinigFragment extends Fragment {
 
-    FragmentKatinigBinding binding;
+        FragmentKatinigBinding binding;
         Intent intent;
+
+        public static final String filename = "idfetch";
+        public static final String UserID = "userid";
+
+        int id;
+        SharedPreferences logger, mpath;
+        SharedPreferences.Editor editor;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +44,13 @@ public class KatinigFragment extends Fragment {
         public void onViewCreated(View view, Bundle savedInstanceState)
         {
             super.onViewCreated(view, savedInstanceState);
+
+            logger = getContext().getSharedPreferences(filename, Context.MODE_PRIVATE);
+            id = logger.getInt(UserID,0);
+
+            mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+            editor = mpath.edit();
+
             binding.KatinigAralin1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -43,21 +59,31 @@ public class KatinigFragment extends Fragment {
                 }
             });
 
-            binding.KatinigAralin2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), KatinigChoices1.class);
-                    startActivity(intent);
-                }
-            });
+            if (mpath.contains("Abakada2Locked")){
+                //set to grayscale
+                //magtoast
+            } else {
+                binding.KatinigAralin2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent = new Intent(getContext(), KatinigChoices1.class);
+                        startActivity(intent);
+                    }
+                });
+            }
 
-            binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), KatinigChoices2.class);
-                    startActivity(intent);
-                }
-            });
+            if (mpath.contains("Abakada2Locked") || mpath.contains("KatinigLocked")){
+                //set to grayscale
+                //magtoast
+            } else {
+                binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent = new Intent(getContext(), KatinigChoices2.class);
+                        startActivity(intent);
+                    }
+                });
+            }
 
             binding.back.setOnClickListener(new View.OnClickListener() {
                 @Override
