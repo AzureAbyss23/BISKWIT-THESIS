@@ -1,10 +1,14 @@
 package com.example.biskwit.Content.Lessons;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -42,6 +46,8 @@ public class AbakadaFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -61,7 +67,7 @@ public class AbakadaFragment extends Fragment {
         });
 
         if (mpath.contains("Abakada1Locked")){
-            //binding.Katinig.setBackgroundTintMode();
+            binding.Katinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Katinig.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,7 +78,7 @@ public class AbakadaFragment extends Fragment {
             });
         }
         if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked")){
-            binding.Abakada.setBackgroundColor(Color.GRAY);
+            binding.Abakada.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Abakada.setOnClickListener(new View.OnClickListener() {
                 @Override
