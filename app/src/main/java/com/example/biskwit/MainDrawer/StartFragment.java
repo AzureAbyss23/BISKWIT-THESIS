@@ -2,13 +2,17 @@ package com.example.biskwit.MainDrawer;
 
 import static com.example.biskwit.MainActivity.MainNavMenu.tapsoundon;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -58,6 +62,8 @@ public class StartFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -84,8 +90,8 @@ public class StartFragment extends Fragment {
         });
 
         if (mpath.contains("KatinigLocked") || mpath.contains("HiramLocked")){
-            //set to grayscale
-            //magtoast
+            binding.Normal.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+            binding.Normal.setImageResource(R.drawable.buttonmagbasalock);
         } else {
             binding.Normal.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,8 +109,8 @@ public class StartFragment extends Fragment {
         }
 
         if (mpath.contains("DaysLocked") || mpath.contains("YearsLocked") || mpath.contains("OppositeLocked") || mpath.contains("SynonymousLocked")){
-            //set to grayscale
-            //magtoast
+            binding.Hard.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+            binding.Hard.setImageResource(R.drawable.buttonhardlock);
         } else {
             binding.Hard.setOnClickListener(new View.OnClickListener() {
                 @Override

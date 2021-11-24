@@ -1,9 +1,13 @@
 package com.example.biskwit.Content;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,6 +43,8 @@ public class EasyFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -63,12 +69,8 @@ public class EasyFragment extends Fragment {
         });
 
         if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
-            binding.Patinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //grayscale then lock
-                }
-            });
+            binding.Patinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+            binding.Patinig.setImageResource(R.drawable.buttonpatiniglock);
         } else {
             binding.Patinig.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,12 +82,8 @@ public class EasyFragment extends Fragment {
         }
 
         if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
-            binding.Katinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //grayscale then lock
-                }
-            });
+            binding.Katinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+            binding.Katinig.setImageResource(R.drawable.buttonkatiniglock);
         } else {
             binding.Katinig.setOnClickListener(new View.OnClickListener() {
                 @Override
