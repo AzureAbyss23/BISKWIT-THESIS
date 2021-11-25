@@ -1,33 +1,25 @@
 package com.example.biskwit.Content.Lessons;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.biskwit.Content.EasyFragment;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Blending;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic.PhonemicAct;
-import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentOrtonBinding;
+import com.example.biskwit.databinding.FragmentPatinigBinding;
 
 
-public class OrtonFragment extends Fragment {
+public class PatinigFragment extends Fragment {
 
-    FragmentOrtonBinding binding;
+    FragmentPatinigBinding binding;
     Intent intent;
 
     public static final String filename = "idfetch";
@@ -41,12 +33,10 @@ public class OrtonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentOrtonBinding.inflate(getLayoutInflater());
-        return binding.getRoot();
+        binding = FragmentPatinigBinding.inflate(getLayoutInflater());
+        return binding.getRoot(); // for the drawer
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -57,45 +47,22 @@ public class OrtonFragment extends Fragment {
         mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor = mpath.edit();
 
-        binding.Phoenimic.setOnClickListener(new View.OnClickListener() {
+        binding.PatinigAralin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), PhonemicAct.class);
+                intent = new Intent(getContext(), PatinigLesson1.class);
                 startActivity(intent);
             }
         });
 
-        if (mpath.contains("PhonemicLocked")){
-            binding.Sight.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+        if (mpath.contains("P_Aralin1Locked")){
+            //set to grayscale
+            //magtoast
         } else {
-            binding.Sight.setOnClickListener(new View.OnClickListener() {
+            binding.PatinigAralin2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    intent = new Intent(getContext(), Sight.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        if (mpath.contains("PhonemicLocked") || mpath.contains("SightLocked")){
-            binding.Blending.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
-        } else {
-            binding.Blending.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), Blending.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        if (mpath.contains("PhonemicLocked") || mpath.contains("SightLocked") || mpath.contains("BlendingLocked")){
-            binding.Pagbabaybay.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
-        } else {
-            binding.Pagbabaybay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), Pagbabaybay.class);
+                    intent = new Intent(getContext(), PatinigChoices1.class);
                     startActivity(intent);
                 }
             });
@@ -122,4 +89,5 @@ public class OrtonFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }

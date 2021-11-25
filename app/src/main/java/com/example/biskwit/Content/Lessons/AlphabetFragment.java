@@ -6,26 +6,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.biskwit.Content.EasyFragment;
 import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
-import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
 import com.example.biskwit.R;
-import com.example.biskwit.databinding.FragmentAbakadaBinding;
+import com.example.biskwit.databinding.FragmentAlphabetBinding;
 
-public class AbakadaFragment extends Fragment {
+public class AlphabetFragment extends Fragment {
 
-    FragmentAbakadaBinding binding;
+    FragmentAlphabetBinding binding;
     Intent intent;
 
     public static final String filename = "idfetch";
@@ -40,7 +35,7 @@ public class AbakadaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentAbakadaBinding.inflate(getLayoutInflater());
+        binding = FragmentAlphabetBinding.inflate(getLayoutInflater());
 
         return binding.getRoot();
     }
@@ -57,36 +52,13 @@ public class AbakadaFragment extends Fragment {
         mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor = mpath.edit();
 
-        binding.Patinig.setOnClickListener(new View.OnClickListener() {
+        binding.Alphabet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), PatinigLesson1.class);
+                intent = new Intent(getContext(), Alphabet.class);
                 startActivity(intent);
             }
         });
-
-        if (mpath.contains("Abakada1Locked")){
-            binding.Katinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
-        } else {
-            binding.Katinig.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), KatinigLesson1.class);
-                    startActivity(intent);
-                }
-            });
-        }
-        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked")){
-            binding.Abakada.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
-        } else {
-            binding.Abakada.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    intent = new Intent(getContext(), Alphabet.class);
-                    startActivity(intent);
-                }
-            });
-        }
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override

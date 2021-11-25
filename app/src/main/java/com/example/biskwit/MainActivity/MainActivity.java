@@ -164,11 +164,11 @@ public class MainActivity extends AppCompatActivity{
         mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor3 = mpath.edit();
         editor3.putInt("Locked",1);
-        editor3.putInt("Abakada1Locked", 1);
-        editor3.putInt("Abakada2Locked", 1);
-        editor3.putInt("Abakada3Locked", 1);
-        editor3.putInt("PatinigLocked", 1);
-        editor3.putInt("KatinigLocked", 1);
+        editor3.putInt("ABCDLocked", 1);
+        editor3.putInt("P_Aralin1Locked", 1);
+        editor3.putInt("P_Aralin2Locked", 1);
+        editor3.putInt("K_Aralin1Locked", 1);
+        editor3.putInt("K_Aralin2Locked", 1);
         editor3.putInt("HiramLocked", 1);
         editor3.putInt("PhonemicLocked", 1);
         editor3.putInt("SightLocked", 1);
