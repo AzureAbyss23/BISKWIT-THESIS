@@ -55,7 +55,7 @@ public class EasyFragment extends Fragment {
         mpath = getContext().getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor = mpath.edit();
 
-        binding.AbakadaLessons.setOnClickListener(new View.OnClickListener() {
+        binding.AlphabetLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragmentAlphabet = new AlphabetFragment();
