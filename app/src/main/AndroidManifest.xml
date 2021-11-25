@@ -72,13 +72,13 @@
             android:name=".Content.Score"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AbakadaActivities.PatinigLesson1"
+            android:name=".Content.Lessons.PatinigActivities.PatinigLesson1"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.OrtonActivities.Phonemic.Phonemic"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AbakadaActivities.Abakada"
+            android:name=".Content.Lessons.AlphabetActivities.Alphabet"
             android:exported="true" />
         <activity
             android:name=".Content.Story.TulaActivities.Maglaro"
@@ -123,7 +123,7 @@
             android:name=".Content.Lessons.OrtonActivities.Sight"
             android:exported="true" />
         <activity
-            android:name=".Content.Lessons.AbakadaActivities.KatinigLesson1"
+            android:name=".Content.Lessons.KatinigActivities.KatinigLesson1"
             android:exported="true" />
         <activity
             android:name=".Content.Lessons.PatinigActivities.PatinigChoices1"

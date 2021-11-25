@@ -1,4 +1,4 @@
-package com.example.biskwit.Content.Lessons.AbakadaActivities;
+package com.example.biskwit.Content.Lessons.PatinigActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import com.example.biskwit.Content.Score;
 import com.example.biskwit.R;
 
-public class KatinigLesson1 extends AppCompatActivity {
+public class PatinigLesson1 extends AppCompatActivity {
 
     ImageButton back;
     ImageView bot2;
@@ -32,12 +32,12 @@ public class KatinigLesson1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_katinig_lesson1);
+        setContentView(R.layout.activity_patinig_lesson1);
 
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
         int id = logger.getInt(UserID,0);
-        final String UserScore = "userscore"+id+"Abakada2";
+        final String UserScore = "userscore"+id+"Abakada1";
         if(scores.contains(UserScore)) {
             new AlertDialog.Builder(this)
                     .setTitle("Retry lesson?")
@@ -60,14 +60,14 @@ public class KatinigLesson1 extends AppCompatActivity {
         back = findViewById(R.id.backbutton);
         bot2 = findViewById(R.id.Bot2);
 
-        ai = MediaPlayer.create(KatinigLesson1.this, R.raw.kab4_p1_1);
+        ai = MediaPlayer.create(PatinigLesson1.this, R.raw.kab3_p1);
         ai.start();
 
         bot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                ai = MediaPlayer.create(KatinigLesson1.this, R.raw.kab4_p1_1);
+                ai = MediaPlayer.create(PatinigLesson1.this, R.raw.kab3_p1);
                 ai.start();
             }
         });
@@ -76,17 +76,16 @@ public class KatinigLesson1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                Intent intent = new Intent(KatinigLesson1.this, Score.class);
+                Intent intent = new Intent(PatinigLesson1.this, Score.class);
                 intent.putExtra("Average",100);
                 intent.putExtra("Status",status);
-                intent.putExtra("LessonType","Katinig");
-                intent.putExtra("LessonMode","Abakada2");
+                intent.putExtra("LessonType","Patinig");
+                intent.putExtra("LessonMode","Abakada1");
                 intent.putExtra("Score", 100.0);
                 startActivity(intent);
                 finish();
             }
         });
-
     }
 
     protected void stopPlaying(){
@@ -107,7 +106,7 @@ public class KatinigLesson1 extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        KatinigLesson1.super.onBackPressed();
+                        PatinigLesson1.super.onBackPressed();
                         stopPlaying();
                     }
                 }).create().show();

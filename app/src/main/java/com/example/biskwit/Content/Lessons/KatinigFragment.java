@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.biskwit.Content.EasyFragment;
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices1;
-import com.example.biskwit.Content.Lessons.AbakadaActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
 import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigChoices2;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentKatinigBinding;

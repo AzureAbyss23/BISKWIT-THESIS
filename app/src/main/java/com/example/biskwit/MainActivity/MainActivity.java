@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void MPath(int id) {
         mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor3 = mpath.edit();
+        editor3 = mpath.edit();
         editor3.putInt("Locked",1);
         editor3.putInt("Abakada1Locked", 1);
         editor3.putInt("Abakada2Locked", 1);
@@ -179,6 +179,11 @@ public class MainActivity extends AppCompatActivity{
         editor3.putInt("OppositeLocked", 1);
         editor3.putInt("SynonymousLocked", 1);
         editor3.putInt("SoundsLocked", 1);
+        editor3.putInt("MagdasalLocked", 1);
+        editor3.putInt("MaglaroLocked", 1);
+        editor3.putInt("ParuparoRosasLocked", 1);
+        editor3.putInt("LamokLeonLocked", 1);
+        editor3.putInt("TipaklongLanggamLocked", 1);
         editor3.apply();
     }
 

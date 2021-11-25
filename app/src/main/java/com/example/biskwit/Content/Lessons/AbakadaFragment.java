@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,9 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.biskwit.Content.EasyFragment;
-import com.example.biskwit.Content.Lessons.AbakadaActivities.Abakada;
-import com.example.biskwit.Content.Lessons.AbakadaActivities.KatinigLesson1;
-import com.example.biskwit.Content.Lessons.AbakadaActivities.PatinigLesson1;
+import com.example.biskwit.Content.Lessons.AlphabetActivities.Alphabet;
+import com.example.biskwit.Content.Lessons.KatinigActivities.KatinigLesson1;
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson1;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentAbakadaBinding;
 
@@ -83,7 +82,7 @@ public class AbakadaFragment extends Fragment {
             binding.Abakada.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    intent = new Intent(getContext(), Abakada.class);
+                    intent = new Intent(getContext(), Alphabet.class);
                     startActivity(intent);
                 }
             });
