@@ -2,11 +2,9 @@ package com.example.biskwit.Content;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.biskwit.Content.Lessons.AlphabetFragment;
 import com.example.biskwit.Content.Lessons.KatinigFragment;
-import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
+import com.example.biskwit.Content.Lessons.PatinigFragment;
 import com.example.biskwit.MainDrawer.StartFragment;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentEasyBinding;
@@ -68,20 +66,25 @@ public class EasyFragment extends Fragment {
             }
         });
 
-        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
+        if(mpath.contains("ABCDLocked")){
             binding.Patinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             binding.Patinig.setImageResource(R.drawable.buttonpatiniglock);
         } else {
             binding.Patinig.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), PatinigChoices1.class);
-                    startActivity(intent);
+                    Fragment fragmentPatinig = new PatinigFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main_nav_menu, fragmentPatinig);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
             });
         }
 
-        if(mpath.contains("Abakada1Locked") || mpath.contains("Abakada2Locked") || mpath.contains("Abakada3Locked")){
+        if(mpath.contains("ABCDLocked") || mpath.contains("P_Aralin1Locked") || mpath.contains("P_Aralin2Locked")){
             binding.Katinig.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             binding.Katinig.setImageResource(R.drawable.buttonkatiniglock);
         } else {

@@ -89,7 +89,7 @@ public class StartFragment extends Fragment {
             }
         });
 
-        if (mpath.contains("KatinigLocked") || mpath.contains("HiramLocked")){
+        if (mpath.contains("K_Aralin1Locked") || mpath.contains("K_Aralin2Locked")){
             binding.Normal.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             binding.Normal.setImageResource(R.drawable.buttonmagbasalock);
         } else {

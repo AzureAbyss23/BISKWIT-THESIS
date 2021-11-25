@@ -1,9 +1,13 @@
 package com.example.biskwit.Content.Lessons;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +45,8 @@ public class OrtonFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -60,8 +66,7 @@ public class OrtonFragment extends Fragment {
         });
 
         if (mpath.contains("PhonemicLocked")){
-            //set to grayscale
-            //magtoast
+            binding.Sight.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Sight.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,8 +78,7 @@ public class OrtonFragment extends Fragment {
         }
 
         if (mpath.contains("PhonemicLocked") || mpath.contains("SightLocked")){
-            //set to grayscale
-            //magtoast
+            binding.Blending.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Blending.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,8 +90,7 @@ public class OrtonFragment extends Fragment {
         }
 
         if (mpath.contains("PhonemicLocked") || mpath.contains("SightLocked") || mpath.contains("BlendingLocked")){
-            //set to grayscale
-            //magtoast
+            binding.Pagbabaybay.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Pagbabaybay.setOnClickListener(new View.OnClickListener() {
                 @Override

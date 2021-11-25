@@ -1,8 +1,12 @@
 package com.example.biskwit.Content;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,6 +41,8 @@ public class NormalFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("ResourceType")
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -61,12 +67,8 @@ public class NormalFragment extends Fragment {
         });
 
         if(mpath.contains("PhonemicLocked") || mpath.contains("SightLocked") || mpath.contains("BlendingLocked") || mpath.contains("PagbabaybayLocked")){
-            binding.Alamkoito.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //grayscale then lock
-                }
-            });
+            binding.Alamkoito.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+            binding.Alamkoito.setImageResource(R.drawable.buttonalamkolock);
         } else {
             binding.Alamkoito.setOnClickListener(new View.OnClickListener() {
                 @Override

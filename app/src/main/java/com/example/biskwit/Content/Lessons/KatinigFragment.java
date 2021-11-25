@@ -1,10 +1,13 @@
 package com.example.biskwit.Content.Lessons;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +44,8 @@ public class KatinigFragment extends Fragment {
             return binding.getRoot(); // for the drawer
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        @SuppressLint("ResourceType")
         public void onViewCreated(View view, Bundle savedInstanceState)
         {
             super.onViewCreated(view, savedInstanceState);
@@ -60,8 +65,7 @@ public class KatinigFragment extends Fragment {
             });
 
             if (mpath.contains("K_Aralin1Locked")){
-                //set to grayscale
-                //magtoast
+                binding.KatinigAralin2.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             } else {
                 binding.KatinigAralin2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -73,8 +77,7 @@ public class KatinigFragment extends Fragment {
             }
 
             if (mpath.contains("K_Aralin1Locked") || mpath.contains("K_Aralin2Locked")){
-                //set to grayscale
-                //magtoast
+                binding.KatinigAralin3.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             } else {
                 binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
                     @Override
