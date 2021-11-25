@@ -35,7 +35,7 @@
 
 
             <ImageButton
-                android:id="@+id/AbakadaLessons"
+                android:id="@+id/AlphabetLessons"
                 android:layout_width="340dp"
                 android:layout_height="90dp"
                 android:padding="10dp"
@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/buttonalphabet"
                 android:scaleType="centerCrop"
-                android:text="Kabanata 1: Abakada"
+                android:text="Kabanata 1: Alphabet"
                 app:backgroundTint="#FF7F7F"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
