@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.biskwit.Content.Lessons.AbakadaFragment;
+import com.example.biskwit.Content.Lessons.AlphabetFragment;
 import com.example.biskwit.Content.Lessons.KatinigFragment;
 import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigChoices1;
 import com.example.biskwit.MainDrawer.StartFragment;
@@ -58,7 +58,7 @@ public class EasyFragment extends Fragment {
         binding.AbakadaLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragmentAlphabet = new AbakadaFragment();
+                Fragment fragmentAlphabet = new AlphabetFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

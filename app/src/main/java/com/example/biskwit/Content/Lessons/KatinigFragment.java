@@ -59,7 +59,7 @@ public class KatinigFragment extends Fragment {
                 }
             });
 
-            if (mpath.contains("Abakada2Locked")){
+            if (mpath.contains("K_Aralin1Locked")){
                 //set to grayscale
                 //magtoast
             } else {
@@ -72,7 +72,7 @@ public class KatinigFragment extends Fragment {
                 });
             }
 
-            if (mpath.contains("Abakada2Locked") || mpath.contains("KatinigLocked")){
+            if (mpath.contains("K_Aralin1Locked") || mpath.contains("K_Aralin2Locked")){
                 //set to grayscale
                 //magtoast
             } else {
