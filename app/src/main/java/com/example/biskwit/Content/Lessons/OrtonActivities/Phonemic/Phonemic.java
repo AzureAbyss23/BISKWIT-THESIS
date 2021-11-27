@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -81,10 +83,15 @@ public class Phonemic extends AppCompatActivity {
         ai = MediaPlayer.create(Phonemic.this, R.raw.kab2_p1);
         ai.start();
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            CurrentProgress += all_ctr;
+            progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            progressBar.setProgress(CurrentProgress);
+        }
 
-        CurrentProgress = CurrentProgress + datalength;
-        progressBar.setProgress(CurrentProgress);
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -254,12 +261,45 @@ public class Phonemic extends AppCompatActivity {
                         intent.putExtra("LessonType","Orton");
                         intent.putExtra("LessonMode","Phonemic");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences3 = getSharedPreferences("PhonemicAct",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                        editor3.clear();
+                        editor3.apply();
+                        SharedPreferences sharedPreferences = getSharedPreferences("Phonemic",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("PhonemicFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.clear();
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Phonemic", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putInt("Counter2", all_ctr2);
+        editor.putInt("Counter3", all_ctr3);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Phonemic", Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("Counter2") && sharedPreferences.contains("Counter3")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            all_ctr2 = sharedPreferences.getInt("Counter2", 0);
+            all_ctr3 = sharedPreferences.getInt("Counter3", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -403,6 +443,8 @@ public class Phonemic extends AppCompatActivity {
             //categ = data.toArray(categ);
             holder = new String[data2.size()];
             holder = data2.toArray(holder);
+            CurrentProgress += holder.length / 2;
+            progressBar.setProgress(CurrentProgress);
             progressBar.setMax(holder.length);
 
             int holder_ctr=0;
@@ -427,8 +469,8 @@ public class Phonemic extends AppCompatActivity {
 
         if(!holder[0].equals("")){
             category.setText(categ[0]);
-            word1.setText(words1[0][0]);
-            word2.setText(words2[0][0]);
+            word1.setText(words1[all_ctr][all_ctr2]);
+            word2.setText(words2[all_ctr][all_ctr2]);
             progressDialog.dismiss();
         } else {
             Toast.makeText(Phonemic.this, "No data", Toast.LENGTH_LONG).show();
@@ -439,9 +481,10 @@ public class Phonemic extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
