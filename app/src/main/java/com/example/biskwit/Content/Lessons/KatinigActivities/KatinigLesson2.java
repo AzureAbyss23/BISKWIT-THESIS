@@ -274,9 +274,14 @@ public class KatinigLesson2 extends AppCompatActivity {
     public void showToast(String s) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
-        TextView toastText = layout.findViewById(R.id.toast_text);
-        toastText.setText(s);
         Toast toast = new Toast(getApplicationContext());
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        Resources res = this.getResources();
+        int resID;
+        resID = res.getIdentifier(s, "drawable", this.getPackageName());
+        toastImage.setBackgroundResource(resID);
+
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
@@ -349,19 +354,19 @@ public class KatinigLesson2 extends AppCompatActivity {
                 "%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
-            showToast("HINDI TUGMA");
+            showToast("onestar");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
-            showToast("MABUTI");
+            showToast("twostars");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
-            showToast("MAHUSAY!");
+            showToast("threestars");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
         }
