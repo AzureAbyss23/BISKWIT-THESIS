@@ -44,7 +44,7 @@ import java.util.ArrayList;
 
 public class Alphabet extends AppCompatActivity {
 
-    TextView txtresult,txtword;
+    TextView txtresult,txtword,scorectr;
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
@@ -109,6 +109,7 @@ public class Alphabet extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        scorectr = findViewById(R.id.scorecounter);
         progressBar = findViewById(R.id.ProgressBar);
 
         ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
@@ -125,6 +126,8 @@ public class Alphabet extends AppCompatActivity {
             progressBar.setProgress(CurrentProgress);
         }
 
+        scorectr.setText("Score: 0/" + alphabet.length);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +140,7 @@ public class Alphabet extends AppCompatActivity {
                         txtword.setText(alphabet[all_ctr]+alphabet[all_ctr].toLowerCase());
                         txtresult.setText("Press the Mic Button");
                         score += add;
+                        scorectr.setText("Score:" + score + "/" + alphabet.length);
                         add = 0;
                         CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
@@ -146,6 +150,7 @@ public class Alphabet extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
+                        scorectr.setText("Score:" + score + "/" + alphabet.length);
                         intent = new Intent(Alphabet.this, Score.class);
                         intent.putExtra("Average",alphabet.length);
                         intent.putExtra("Status",status);

@@ -105,7 +105,7 @@ public class Score extends AppCompatActivity {
 
         REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php?status="+status+"&lessonmode="+lessonmode+"&letter="+letter;
 
-        score.setText(Score);
+        score.setText(Score.replace(".","%").replace("0",""));
         insert(str_id,lessontype,lessonmode,letter,str_score);
 
         next.setOnClickListener(new View.OnClickListener() {

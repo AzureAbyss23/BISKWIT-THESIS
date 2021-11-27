@@ -56,9 +56,9 @@
 
             <TextView
                 android:id="@+id/scorecounter"
-                android:layout_width="80dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="290dp"
+                android:layout_marginLeft="220dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/roundshape"
@@ -69,7 +69,7 @@
                 android:textColor="#000000"
                 android:textColorHint="#000000"
                 android:textSize="25dp"
-                android:text="3.5/10" />
+                android:text="Score: 0" />
 
             <TextView
                 android:id="@+id/Word"

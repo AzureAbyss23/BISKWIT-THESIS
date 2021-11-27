@@ -6,470 +6,458 @@
     android:layout_height="match_parent"
     tools:context=".Content.Progress.ProgressNormal">
 
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        tools:context=".Content.Progress.Progress_Easy">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-137dp">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="-137dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="312dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/opendyslexic_bold"
+                android:gravity="center_horizontal"
+                android:text="Progreso ng Aralin"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#48CCCD"
+                android:textColorHint="#000000"
+                android:textSize="40dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#AFFAAF"
+                app:cardCornerRadius="20dp">
 
                 <TextView
-                    android:id="@+id/Title"
+                    android:id="@+id/kab2"
                     android:layout_width="312dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/opendyslexic_bold"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="100dp"
+                    android:fontFamily="@font/crimson_text"
                     android:gravity="center_horizontal"
-                    android:text="Progreso ng Aralin"
+                    android:text="Kabanata 4"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textColor="#48CCCD"
+                    android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="40dp" />
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="360dp"
-                    android:layout_height="270dp"
+                <TextView
+                    android:id="@+id/orton"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="#AFFAAF"
-                    app:cardCornerRadius="20dp">
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="70dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Orton Gillingham"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/kab2"
-                        android:layout_width="312dp"
+                        android:id="@+id/orton1"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="100dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="100dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Phonemic Awareness"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/phonemicscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="100dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/orton2"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="140dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Sight Words"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/sightscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="140dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/orton3"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="180dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Blending Drills"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/blendingscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="180dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/orton4"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="220dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Pagbabaybay"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/pagbabaybayscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="220dp"
+                        android:background="@drawable/roundshape"
                         android:fontFamily="@font/crimson_text"
                         android:gravity="center_horizontal"
-                        android:text="Kabanata 4"
+                        android:text="0%"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textSize="25dp"
-                        android:textStyle="bold" />
+                        app:backgroundTint="#E5E4E2" />
 
-                    <TextView
-                        android:id="@+id/orton"
-                        android:layout_width="312dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginBottom="70dp"
-                        android:fontFamily="@font/crimson_text"
-                        android:text="Orton Gillingham"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:textStyle="bold" />
+                </LinearLayout>
 
+            </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_width="360dp"
+                android:layout_height="290dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#9EF4FF"
+                app:cardCornerRadius="20dp">
 
-                        <TextView
-                            android:id="@+id/orton1"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="100dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Phonemic Awareness"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/phonemicscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="100dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/orton2"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="140dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Sight Words"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/sightscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="140dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/orton3"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="180dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Blending Drills"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/blendingscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="180dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/orton4"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="220dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Pagbabaybay"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/pagbabaybayscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="220dp"
-                            android:background="@drawable/roundshape"
-                            android:fontFamily="@font/crimson_text"
-                            android:gravity="center_horizontal"
-                            android:text="0%"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            app:backgroundTint="#E5E4E2" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="360dp"
-                    android:layout_height="290dp"
+                <TextView
+                    android:id="@+id/kab5"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="#9EF4FF"
-                    app:cardCornerRadius="20dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="120dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:gravity="center_horizontal"
+                    android:text="Kabanata 5"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Alamkoito"
+                    android:layout_width="312dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:text="Alam Ko Ito"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/kab5"
-                        android:layout_width="312dp"
+                        android:id="@+id/Days"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="120dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
                         android:fontFamily="@font/crimson_text"
+                        android:text="Araw sa Isang Linggo"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/Daysscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="90dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
                         android:gravity="center_horizontal"
-                        android:text="Kabanata 5"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="25dp"
-                        android:textStyle="bold" />
+                        android:text="0%" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/Alamkoito"
-                        android:layout_width="312dp"
+                        android:id="@+id/Years"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="100dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
                         android:fontFamily="@font/crimson_text"
-                        android:text="Alam Ko Ito"
+                        android:text="Buwan sa Isang Taon"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/Yearsscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="130dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textSize="25dp"
-                        android:textStyle="bold" />
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/Days"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="90dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Araw sa Isang Linggo"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/Daysscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="90dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
+                    <TextView
+                        android:id="@+id/Synonymous"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="170dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Magkasingkahulugan"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
 
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/Synonymousscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="170dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/Years"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="130dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Buwan sa Isang Taon"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/Yearsscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="130dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
+                    <TextView
+                        android:id="@+id/Opposite"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="210dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Magkasalungat"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
 
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/Oppositescore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="210dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/Synonymous"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="170dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Magkasingkahulugan"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/Synonymousscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="170dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
+                    <TextView
+                        android:id="@+id/Sound"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="250dp"
+                        android:fontFamily="@font/crimson_text"
+                        android:text="Mga Tunog"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp" />
 
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/Soundscore"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="250dp"
+                        android:background="@drawable/roundshape"
+                        app:backgroundTint="#E5E4E2"
+                        android:fontFamily="@font/crimson_text"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="25dp"
+                        android:gravity="center_horizontal"
+                        android:text="0%" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/Opposite"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="210dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Magkasalungat"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/Oppositescore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="210dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/Sound"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="250dp"
-                            android:fontFamily="@font/crimson_text"
-                            android:text="Mga Tunog"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp" />
-
-                        <TextView
-                            android:id="@+id/Soundscore"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="250dp"
-                            android:background="@drawable/roundshape"
-                            app:backgroundTint="#E5E4E2"
-                            android:fontFamily="@font/crimson_text"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="#000000"
-                            android:textColorHint="#000000"
-                            android:textSize="25dp"
-                            android:gravity="center_horizontal"
-                            android:text="0%" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
