@@ -54,7 +54,7 @@ public class YearsAct extends AppCompatActivity {
     ImageView bot2,wordimg;
     MediaPlayer ai;
 
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
 
     ProgressDialog progressDialog;
@@ -66,8 +66,8 @@ public class YearsAct extends AppCompatActivity {
         setContentView(R.layout.activity_years2);
 
         score = getIntent().getIntExtra("Score",0);
-        title = getIntent().getStringArrayExtra("Title");
-        data = getIntent().getStringArrayExtra("data");
+        //title = getIntent().getStringArrayExtra("Title");
+        //data = getIntent().getStringArrayExtra("data");
         status = getIntent().getIntExtra("Status",0);
 
         ch1 = findViewById(R.id.Choice1);
@@ -78,12 +78,10 @@ public class YearsAct extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
+            CurrentProgress += all_ctr;
             getData();
-            CurrentProgress = all_ctr + 1;
-            progressBar.setProgress(CurrentProgress);
         } else {
             getData();
-            progressBar.setProgress(CurrentProgress);
         }
 
         ai = MediaPlayer.create(YearsAct.this, R.raw.kab5_p2_2);
@@ -253,6 +251,10 @@ public class YearsAct extends AppCompatActivity {
             intent.putExtra("LessonType","Alamkoito");
             intent.putExtra("LessonMode","Years");
             intent.putExtra("Score", score);
+            SharedPreferences sharedPreferences3 = getSharedPreferences("Years",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+            editor3.clear();
+            editor3.apply();
             SharedPreferences sharedPreferences = getSharedPreferences("YearsAct",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
@@ -267,11 +269,11 @@ public class YearsAct extends AppCompatActivity {
     }
 
     private void getData() {
-        /*progressDialog = new ProgressDialog(YearsAct.this);
+        progressDialog = new ProgressDialog(YearsAct.this);
         progressDialog.setTitle("Please wait");
         progressDialog.setMessage("Loading lesson...");
         progressDialog.setCancelable(false);
-        progressDialog.show();*/
+        progressDialog.show();
 
         String url = "https://biskwitteamdelete.000webhostapp.com/fetch_years.php";
 
@@ -311,6 +313,8 @@ public class YearsAct extends AppCompatActivity {
             title = dataL.toArray(title);
             data = new String[data2.size()];
             data = data2.toArray(data);
+            CurrentProgress += data.length;
+            progressBar.setProgress(CurrentProgress);
             progressBar.setMax(data.length*2);
 
         } catch (JSONException e) {
@@ -322,10 +326,10 @@ public class YearsAct extends AppCompatActivity {
             ch3.setText(choice[all_ctr][1]);
             id = setImg();
             wordimg.setImageResource(id);
-            //progressDialog.dismiss();
+            progressDialog.dismiss();
         } else {
             Toast.makeText(YearsAct.this, "No data", Toast.LENGTH_LONG).show();
-            //progressDialog.dismiss();
+            progressDialog.dismiss();
         }
     }
 

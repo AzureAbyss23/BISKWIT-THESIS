@@ -46,7 +46,7 @@ public class Days extends AppCompatActivity {
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
-    String[] P_Lesson_Words;
+    String[] P_Lesson_Words = {"Linggo","Lunes","Martes","Miyerkules","Huwebes","Biyernes","Sabado"};
     int all_ctr = 0;
     int status = 0;
     int click = 0, mic_ctr = 0;
@@ -108,13 +108,16 @@ public class Days extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
-            getData();
-            CurrentProgress = all_ctr + 1;
+            CurrentProgress += all_ctr;
             progressBar.setProgress(CurrentProgress);
         } else {
-            getData();
             progressBar.setProgress(CurrentProgress);
         }
+
+        txtword.setText(P_Lesson_Words[all_ctr]);
+        progressBar.setMax(P_Lesson_Words.length * 2);
+
+        //getData();
 
         ai = MediaPlayer.create(Days.this, R.raw.kab5_p1_1);
         ai.start();
@@ -145,10 +148,7 @@ public class Days extends AppCompatActivity {
                         intent.putExtra("Status",status);
                         intent.putExtra("FScore", score);
                         //intent.putExtra("data",P_Lesson_Words);
-                        SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.clear();
-                        editor.apply();
+                        SavePreferences();
                         SharedPreferences sharedPreferences2 = getSharedPreferences("DaysFin",Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
                         editor2.putInt("Status",1);
@@ -268,7 +268,8 @@ public class Days extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences2 = getSharedPreferences("DaysFin",Context.MODE_PRIVATE);
         if(sharedPreferences2.contains("Status")){
-            SavePreferences();
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
             Intent intent = new Intent(Days.this, DaysAct.class);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);

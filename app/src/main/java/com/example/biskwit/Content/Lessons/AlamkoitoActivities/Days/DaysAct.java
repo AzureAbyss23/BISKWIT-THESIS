@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class DaysAct extends AppCompatActivity {
 
     Button ch1,ch2,ch3;
-    String[] data;
+    String[] data = {"Linggo","Lunes","Martes","Miyerkules","Huwebes","Biyernes","Sabado"};
     String[][] choice = {{"1","3","4"},{"5","2","7"},{"3","2","7"},{"7","2","4"},{"3","5","7"},{"6","1","7"},{"2","5","7"}};
     int all_ctr = 0;
     int status = 0;
@@ -48,10 +48,8 @@ public class DaysAct extends AppCompatActivity {
     ImageView bot2;
     MediaPlayer ai;
 
-    private int CurrentProgress = 0;
+    private int CurrentProgress = 1;
     private ProgressBar progressBar;
-
-    ProgressDialog progressDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -71,13 +69,18 @@ public class DaysAct extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
-            getData();
-            CurrentProgress = all_ctr + 1;
+            CurrentProgress += (data.length + all_ctr);
             progressBar.setProgress(CurrentProgress);
         } else {
-            getData();
+            CurrentProgress += data.length;
             progressBar.setProgress(CurrentProgress);
         }
+
+        word.setText(data[all_ctr]);
+        ch1.setText(choice[all_ctr][0]);
+        ch2.setText(choice[all_ctr][1]);
+        ch3.setText(choice[all_ctr][2]);
+        progressBar.setMax(data.length * 2);
 
         ai = MediaPlayer.create(DaysAct.this, R.raw.kab5_p1_2);
         ai.start();
@@ -189,6 +192,10 @@ public class DaysAct extends AppCompatActivity {
             intent.putExtra("LessonType","Alamkoito");
             intent.putExtra("LessonMode","Days");
             intent.putExtra("Score", score);
+            SharedPreferences sharedPreferences3 = getSharedPreferences("Days",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+            editor3.clear();
+            editor3.apply();
             SharedPreferences sharedPreferences = getSharedPreferences("DaysAct",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
@@ -212,64 +219,6 @@ public class DaysAct extends AppCompatActivity {
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
-    }
-
-    private void getData() {
-        progressDialog = new ProgressDialog(DaysAct.this);
-        progressDialog.setTitle("Please wait");
-        progressDialog.setMessage("Loading lesson...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        String url = "https://biskwitteamdelete.000webhostapp.com/fetch_days.php";
-
-        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                showJSONS(response);
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DaysAct.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-    }
-
-    private void showJSONS(String response) {
-        ArrayList<String> dataL = new ArrayList<String>();
-
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
-            int length = result.length();
-            for(int i = 0; i < length; i++) {
-                JSONObject collegeData = result.getJSONObject(i);
-                dataL.add(collegeData.getString("word"));
-            }
-            data = new String[dataL.size()];
-            data = dataL.toArray(data);
-            progressBar.setMax(data.length*2);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        if(!data[0].equals("")){
-            word.setText(data[all_ctr]);
-            ch1.setText(choice[all_ctr][0]);
-            ch2.setText(choice[all_ctr][1]);
-            ch3.setText(choice[all_ctr][2]);
-            progressDialog.dismiss();
-        } else {
-            Toast.makeText(DaysAct.this, "No data", Toast.LENGTH_LONG).show();
-            progressDialog.dismiss();
-        }
     }
 
     @Override

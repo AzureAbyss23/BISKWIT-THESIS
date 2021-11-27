@@ -69,8 +69,8 @@ public class OppositeAct extends AppCompatActivity {
                     }).create().show();
         }
 
-        //ai = MediaPlayer.create(OppositeAct.this, R.raw.kab5_p4_2);
-        //ai.start();
+        ai = MediaPlayer.create(OppositeAct.this, R.raw.kab5_p4_2);
+        ai.start();
 
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
@@ -127,8 +127,9 @@ public class OppositeAct extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences2 = getSharedPreferences("OppositeFin",Context.MODE_PRIVATE);
         if(sharedPreferences2.contains("Status")){
-            SavePreferences();
-            Intent intent = new Intent(OppositeAct.this, OppositeAct.class);
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            Intent intent = new Intent(OppositeAct.this, Opposite.class);
             intent.putExtra("DataLength",data.length);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);
@@ -231,10 +232,7 @@ public class OppositeAct extends AppCompatActivity {
             intent.putExtra("DataLength",data.length);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);
-            SharedPreferences sharedPreferences = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
-            editor.apply();
+            SavePreferences();
             SharedPreferences sharedPreferences2 = getSharedPreferences("OppositeFin",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor2 = sharedPreferences2.edit();
             editor2.putInt("Status",1);

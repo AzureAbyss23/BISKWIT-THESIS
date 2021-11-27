@@ -74,8 +74,8 @@ public class TulaFragment extends Fragment {
             });
         }
 
-        if (mpath.contains("MaglaroLocked") || mpath.contains("ParuparoRosasLocked")){
-            binding.Maglaro.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
+        if (mpath.contains("MagdasalLocked") || mpath.contains("Maglaro")){
+            binding.Paruparo.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
         } else {
             binding.Paruparo.setOnClickListener(new View.OnClickListener() {
                 @Override

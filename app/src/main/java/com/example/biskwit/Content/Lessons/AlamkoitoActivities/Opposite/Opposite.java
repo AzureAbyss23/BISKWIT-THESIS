@@ -84,8 +84,8 @@ public class Opposite extends AppCompatActivity {
             //progressBar.setProgress(CurrentProgress);
         }
 
-        //ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
-        //ai.start();
+        ai = MediaPlayer.create(Opposite.this, R.raw.kab5_p4_1);
+        ai.start();
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
@@ -248,6 +248,10 @@ public class Opposite extends AppCompatActivity {
                         intent.putExtra("LessonType","Alamkoito");
                         intent.putExtra("LessonMode","Opposite");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences3 = getSharedPreferences("OppositeAct",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                        editor3.clear();
+                        editor3.apply();
                         SharedPreferences sharedPreferences = getSharedPreferences("Opposite",Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();

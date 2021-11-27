@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite.Opposite;
+import com.example.biskwit.Content.Lessons.AlamkoitoActivities.Opposite.OppositeAct;
 import com.example.biskwit.R;
 
 public class SynonymousAct extends AppCompatActivity {
@@ -28,8 +30,9 @@ public class SynonymousAct extends AppCompatActivity {
     String[][] choice = {{"Pangit","Marikit"},{"Malinamnam","Maamoy"},{"Makupad","Mabilis"}, {"Maayos","Magulo"},
             {"Masalapi","Mahirap"}, {"Malumbay","Masaya"},{"Pandak","Mataas"},{"Matangkad","Mababa"},
             {"Maayos","Mahalimuyak"},{"Malusog","Payat"},{"Mapurol","Matalim"}};
-    int all_ctr = 0, score = 0;
+    int all_ctr = 0;
     int status = 0;
+    double score = 0;
     TextView word;
     ImageView bot2;
     MediaPlayer ai;
@@ -76,9 +79,15 @@ public class SynonymousAct extends AppCompatActivity {
         word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
 
-        word.setText(data[all_ctr]);
-        ch1.setText(choice[all_ctr][0]);
-        ch3.setText(choice[all_ctr][1]);
+        if(LoadPreferences()){
+            word.setText(data[all_ctr]);
+            ch1.setText(choice[all_ctr][0]);
+            ch3.setText(choice[all_ctr][1]);
+        } else {
+            word.setText(data[all_ctr]);
+            ch1.setText(choice[all_ctr][0]);
+            ch3.setText(choice[all_ctr][1]);
+        }
 
         ch1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,9 +206,42 @@ public class SynonymousAct extends AppCompatActivity {
             intent.putExtra("DataLength",data.length);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);
+            SavePreferences();
+            SharedPreferences sharedPreferences2 = getSharedPreferences("SynonymousFin",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+            editor2.putInt("Status",1);
+            editor2.apply();
             startActivity(intent);
             finish();
         }
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SynonymousAct",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SynonymousAct",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("SynonymousFin",Context.MODE_PRIVATE);
+        if(sharedPreferences2.contains("Status")){
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            Intent intent = new Intent(SynonymousAct.this, Synonymous.class);
+            intent.putExtra("DataLength",data.length);
+            intent.putExtra("Status",status);
+            intent.putExtra("FScore", score);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -217,9 +259,10 @@ public class SynonymousAct extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

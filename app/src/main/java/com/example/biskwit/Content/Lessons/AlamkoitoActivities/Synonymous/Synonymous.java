@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.biskwit.Content.Score;
 import com.example.biskwit.Data.Constants;
 import com.example.biskwit.R;
 import org.json.JSONArray;
@@ -103,7 +104,14 @@ public class Synonymous extends AppCompatActivity {
         txtresult = findViewById(R.id.result);
         progressDialog = new ProgressDialog(Synonymous.this);
 
-        getData();
+        if(LoadPreferences()){
+            getData();
+            //CurrentProgress = all_ctr + 1;
+            //progressBar.setProgress(CurrentProgress);
+        } else {
+            getData();
+            //progressBar.setProgress(CurrentProgress);
+        }
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
@@ -260,18 +268,47 @@ public class Synonymous extends AppCompatActivity {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
                         showToast("Try it both first!");
                     } else {
-                        Intent intent = new Intent(Synonymous.this, SynonymousAct.class);
+                        Intent intent = new Intent(Synonymous.this, Score.class);
                         intent.putExtra("Average",words1.length);
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Alamkoito");
                         intent.putExtra("LessonMode","Synonymous");
                         intent.putExtra("Score", score);
+                        SharedPreferences sharedPreferences3 = getSharedPreferences("SynonymousAct",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                        editor3.clear();
+                        editor3.apply();
+                        SharedPreferences sharedPreferences = getSharedPreferences("Synonymous",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("SynonymousFin",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                        editor2.clear();
+                        editor2.apply();
                         startActivity(intent);
                         finish();
                     }
                 }
             }
         });
+    }
+
+    private void SavePreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Synonymous", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Counter", all_ctr);
+        editor.putString("Score",Double.toString(score));
+        editor.apply();
+    }
+
+    private boolean LoadPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Synonymous", Context.MODE_PRIVATE);
+        if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            return true;
+        } else return false;
     }
 
     public void showToast(String s) {
@@ -416,8 +453,8 @@ public class Synonymous extends AppCompatActivity {
         }
 
         if(!holder[0].equals("")){
-            word1.setText(words1[0]);
-            word2.setText(words2[0]);
+            word1.setText(words1[all_ctr]);
+            word2.setText(words2[all_ctr]);
             progressDialog.dismiss();
         } else {
             Toast.makeText(Synonymous.this, "No data", Toast.LENGTH_LONG).show();
@@ -428,9 +465,10 @@ public class Synonymous extends AppCompatActivity {
     // code para di magkeep playing yung sounds
     @Override
     public void onBackPressed() {
+        SavePreferences();
         new AlertDialog.Builder(this)
                 .setTitle("Exit now?")
-                .setMessage("You will not be able to save your progress.")
+                .setMessage("You can resume your progress later.")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

@@ -48,8 +48,9 @@ public class Years extends AppCompatActivity {
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
-    String[] P_Lesson_Words;
-    String[] Title;
+    String[] P_Lesson_Words = {"Enero","Pebrero","Marso","Abril","Mayo","Hunyo","Hulyo","Agosto","Setyembre","Oktubre","Nobyembre","Disyembre"};
+    String[] Title = {"Bagong Taon","Araw ng mga Puso","Buwan ng Pagtatapos","Bakasyon","Flores de Mayo","Araw ng Kalayaan","Buwan ng Nutrisyon",
+            "Buwan ng Wika","Buwan ng Palakasan","Mga Nagkakaisang Bansa","Araw ng mga Patay","Pasko"};
     int all_ctr = 0;
     int click = 0;
     int mic_ctr = 0;
@@ -114,13 +115,17 @@ public class Years extends AppCompatActivity {
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
-            getData();
-            CurrentProgress = all_ctr + 1;
+            CurrentProgress += all_ctr;
             progressBar.setProgress(CurrentProgress);
         } else {
-            getData();
             progressBar.setProgress(CurrentProgress);
         }
+
+        txtword.setText(P_Lesson_Words[all_ctr]);
+        id = setImg();
+        wordimg.setImageResource(id);
+
+        progressBar.setMax(P_Lesson_Words.length * 2);
 
         ai = MediaPlayer.create(Years.this, R.raw.kab5_p2_1);
         ai.start();
@@ -153,12 +158,9 @@ public class Years extends AppCompatActivity {
                         Intent intent = new Intent(Years.this, YearsAct.class);
                         intent.putExtra("Status",status);
                         intent.putExtra("Score", score);
-                        intent.putExtra("Title",Title);
-                        intent.putExtra("data",P_Lesson_Words);
-                        SharedPreferences sharedPreferences = getSharedPreferences("Years",Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.clear();
-                        editor.apply();
+                        //intent.putExtra("Title",Title);
+                        //intent.putExtra("data",P_Lesson_Words);
+                        SavePreferences();
                         SharedPreferences sharedPreferences2 = getSharedPreferences("YearsFin",Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
                         editor2.putInt("Status",1);
@@ -280,7 +282,8 @@ public class Years extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Years",Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences2 = getSharedPreferences("YearsFin",Context.MODE_PRIVATE);
         if(sharedPreferences2.contains("Status")){
-            SavePreferences();
+            all_ctr = sharedPreferences.getInt("Counter", 0);
+            score = Double.parseDouble(sharedPreferences.getString("Score", null));
             Intent intent = new Intent(Years.this, YearsAct.class);
             intent.putExtra("Status",status);
             intent.putExtra("FScore", score);
