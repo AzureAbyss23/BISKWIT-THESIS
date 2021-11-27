@@ -42,6 +42,26 @@
         app:srcCompat="@drawable/nextbutton"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <TextView
+        android:id="@+id/scorecounter"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundshape"
+        android:fontFamily="@font/crimson_text"
+        android:gravity="center"
+        android:text="3.5/10"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="25dp"
+        app:backgroundTint="#E5E4E2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.206" />
+
     <ImageView
         android:id="@+id/Bot"
         android:layout_width="270dp"

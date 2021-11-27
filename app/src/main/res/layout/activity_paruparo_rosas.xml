@@ -81,6 +81,23 @@
                 android:progressDrawable="@drawable/custom_progressbar" />
 
             <TextView
+                android:id="@+id/scorecounter"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="270dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/roundshape"
+                app:backgroundTint="#E5E4E2"
+                android:fontFamily="@font/crimson_text"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="25dp"
+                android:text="3.5/10" />
+
+            <TextView
                 android:id="@+id/Word"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
