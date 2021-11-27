@@ -125,12 +125,14 @@ public class MainActivity extends AppCompatActivity{
 
     private void showJSONS(String response) {
         int id = 0;
+        String severity = "";
 
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(Constants.JSON_ARRAY);
             JSONObject collegeData = result.getJSONObject(0);
             id = collegeData.getInt("id");
+            severity = collegeData.getString("severity");
 
 
         } catch (JSONException e) {

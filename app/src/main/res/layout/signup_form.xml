@@ -150,7 +150,7 @@
                     android:minHeight="50dp"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:text="Severity Level of Child:" />
+                    android:text="Level of Lessons to be Taken:" />
 
                 <RadioButton
                     android:id="@+id/radioButton1"
@@ -161,7 +161,7 @@
                     android:minHeight="50dp"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:text="Mild" />
+                    android:text="Level 1" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
@@ -172,7 +172,7 @@
                     android:minHeight="50dp"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:text="Moderate" />
+                    android:text="Level 2" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
@@ -183,7 +183,7 @@
                     android:minHeight="50dp"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:text="Severe" />
+                    android:text="Level 3" />
             </RadioGroup>
 
             <Button
