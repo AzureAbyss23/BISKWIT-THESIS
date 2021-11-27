@@ -43,12 +43,13 @@ import org.json.JSONObject;
 public class Days extends AppCompatActivity {
 
     TextView txtresult,txtword;
-    ImageView next,bot,bot2;
+    ImageView next,bot,bot2, img;
     ImageButton mic;
     String word = "";
     String[] P_Lesson_Words = {"Linggo","Lunes","Martes","Miyerkules","Huwebes","Biyernes","Sabado"};
     int all_ctr = 0;
     int status = 0;
+    int id = 0;
     int click = 0, mic_ctr = 0;
     double add = 0, score = 0;
     MediaPlayer ai;
@@ -74,8 +75,8 @@ public class Days extends AppCompatActivity {
 
         logger = getSharedPreferences(filename, Context.MODE_PRIVATE);
         scores = getSharedPreferences(filename2, Context.MODE_PRIVATE);
-        int id = logger.getInt(UserID,0);
-        final String UserScore = "userscore"+id+"Days";
+        int id2 = logger.getInt(UserID,0);
+        final String UserScore = "userscore"+id2+"Days";
         if(scores.contains(UserScore)) {
             new AlertDialog.Builder(this)
                     .setTitle("Retry lesson?")
@@ -105,6 +106,7 @@ public class Days extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        img = findViewById(R.id.WordImg);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
@@ -115,6 +117,8 @@ public class Days extends AppCompatActivity {
         }
 
         txtword.setText(P_Lesson_Words[all_ctr]);
+        id = setImg();
+        img.setImageResource(id);
         progressBar.setMax(P_Lesson_Words.length * 2);
 
         //getData();
@@ -132,6 +136,8 @@ public class Days extends AppCompatActivity {
                     } else {
                         ++all_ctr;
                         txtword.setText(P_Lesson_Words[all_ctr]);
+                        id = setImg();
+                        img.setImageResource(id);
                         txtresult.setText("Speak Now");
                         score += add;
                         mic_ctr = 0;
@@ -290,6 +296,12 @@ public class Days extends AppCompatActivity {
             ai.release();
             ai = null;
         }
+    }
+
+    public int setImg(){
+        Resources res = this.getResources();
+        int resID;
+        return resID = res.getIdentifier(P_Lesson_Words[all_ctr].toLowerCase(),  "drawable", this.getPackageName());
     }
 
     @Override

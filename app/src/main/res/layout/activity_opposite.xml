@@ -66,8 +66,9 @@
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
+                    android:text=""
                     android:textColorHint="#000000"
-                    android:textSize="40dp" />
+                    android:textSize="35dp" />
 
                 <ImageButton
                     android:id="@+id/Mic"
@@ -101,7 +102,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="40dp" />
+                    android:textSize="35dp" />
 
                 <ImageButton
                     android:id="@+id/Mic2"

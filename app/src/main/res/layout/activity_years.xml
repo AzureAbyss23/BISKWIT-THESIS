@@ -72,7 +72,7 @@
                 android:textColorHint="#000000"
                 android:textColor="#000000"
                 android:fontFamily="@font/opendyslexic_bold"
-                android:textSize="60dp"/>
+                android:textSize="50dp"/>
 
             <ProgressBar
                 android:id="@+id/ProgressBar"
