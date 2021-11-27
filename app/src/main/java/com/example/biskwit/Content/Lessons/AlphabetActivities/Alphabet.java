@@ -366,8 +366,7 @@ public class Alphabet extends AppCompatActivity {
 
     public void printSimilarity(String s, String t) {
 
-        float val = Float.parseFloat(String.format(
-                "%.3f", similarity(s, t), s, t));
+        float val = Float.parseFloat(String.format("%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");

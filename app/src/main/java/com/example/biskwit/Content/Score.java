@@ -74,7 +74,30 @@ public class Score extends AppCompatActivity {
         double s = getIntent().getDoubleExtra("Score",0);
         compute = (s / average) * 100;
         conv_score = Math.round(compute);
+
         //here
+        ImageView stars = findViewById(R.id.stars);
+        if(compute >= 1 && compute <= 16){
+            stars.setImageResource(R.drawable.score1);
+        }
+        else if(compute >= 17 && compute <= 32){
+            stars.setImageResource(R.drawable.score2);
+        }
+        else if(compute >= 33 && compute <= 48){
+            stars.setImageResource(R.drawable.score3);
+        }
+        else if(compute >= 49 && compute <= 64){
+            stars.setImageResource(R.drawable.score4);
+        }
+        else if(compute >= 65 && compute <= 80){
+            stars.setImageResource(R.drawable.score5);
+        }
+        else if(compute >= 81 && compute <= 100){
+            stars.setImageResource(R.drawable.score6);
+        }
+        else{
+            stars.setImageResource(R.drawable.score7);
+        }
         str_score = Double.toString(conv_score);
         String Score = Double.toString(conv_score);
         score = findViewById(R.id.Score);

@@ -378,21 +378,21 @@ public class Phonemic extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             if(micctr1>0) { add = 0; micctr1=0; }
             else if(micctr2>0){ add2 = 0; micctr2=0; }
-            showToast("HINDI TUGMA");
+            showToast("onestar");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             if(micctr1>0) { add = 0.25; micctr1=0; }
             else if(micctr2>0){ add2 = 0.25; micctr2=0; }
-            showToast("MABUTI");
+            showToast("twostars");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             if(micctr1>0) { add = 0.5; micctr1=0; }
             else if(micctr2>0){ add2 = 0.5; micctr2=0; }
-            showToast("MAHUSAY!");
+            showToast("threestars");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_70_to_100);
             ai.start();
         }
