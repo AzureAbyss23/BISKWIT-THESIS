@@ -10,19 +10,7 @@
         android:id="@+id/toast_image"
         android:layout_width="84dp"
         android:layout_height="80dp"
-        android:layout_marginRight="8dp"
-        android:src="@drawable/kuyamatt2" />
+        android:layout_marginRight="8dp" />
 
-    <TextView
-        android:id="@+id/toast_text"
-        android:layout_width="wrap_content"
-        android:background="@drawable/roundshape"
-        android:layout_height="86dp"
-        android:gravity="center"
-        android:text=""
-        android:fontFamily="@font/opendyslexic_bold"
-        android:textColor="@android:color/black"
-        android:backgroundTint="#99EAEAEA"
-        android:textSize="25dp" />
 
 </LinearLayout>
