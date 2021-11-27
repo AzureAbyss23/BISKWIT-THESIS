@@ -376,13 +376,13 @@ public class Alphabet extends AppCompatActivity {
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
-            showToast("twostar");
+            showToast("twostars");
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
-            showToast("threestar");
+            showToast("threestars");
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }

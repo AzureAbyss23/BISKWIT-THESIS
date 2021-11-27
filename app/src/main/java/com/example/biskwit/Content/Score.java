@@ -74,6 +74,7 @@ public class Score extends AppCompatActivity {
         double s = getIntent().getDoubleExtra("Score",0);
         compute = (s / average) * 100;
         conv_score = Math.round(compute);
+        //here
         str_score = Double.toString(conv_score);
         String Score = Double.toString(conv_score);
         score = findViewById(R.id.Score);

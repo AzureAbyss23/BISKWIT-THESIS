@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toast_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    app:layout_constrainedWidth="true">
 
     <ImageView
         android:id="@+id/toast_image"
-        android:layout_width="84dp"
+        android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"/>
+
+    <TextView
+        android:id="@+id/toast_text"
+        android:layout_width="wrap_content"
+        android:background="@drawable/roundshape"
+        android:layout_height="86dp"
+        android:gravity="center"
+        android:fontFamily="@font/crimson_text"
+        android:textColor="@android:color/black"
+        android:backgroundTint="#99EAEAEA"
+        android:textSize="25dp" />
 
 
 </LinearLayout>
