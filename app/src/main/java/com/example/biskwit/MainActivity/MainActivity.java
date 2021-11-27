@@ -149,9 +149,23 @@ public class MainActivity extends AppCompatActivity{
             editor2 = IDFetch.edit();
             editor2.putInt(UserID, id);
             editor2.commit();
-            if(mpath.contains("Locked")){
-                System.out.println("Go");
-            } else MPath(id);
+            switch(severity){
+                case "Level 1":
+                    if(mpath.contains("Locked")){
+                        System.out.println("Go");
+                    } else MPath3(id);
+                    break;
+                case "Level 2":
+                    if(mpath.contains("Locked")){
+                        System.out.println("Go");
+                    } else MPath2(id);
+                    break;
+                case "Level 3":
+                    if(mpath.contains("Locked")){
+                        System.out.println("Go");
+                    } else MPath1(id);
+                    break;
+            }
             progressDialog.dismiss();
             Intent intent = new Intent(MainActivity.this, MainNavMenu.class);
             startActivity(intent);
@@ -162,7 +176,40 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    public void MPath(int id) {
+    public void MPath1(int id) {
+        mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        editor3 = mpath.edit();
+        editor3.putInt("Locked",1);
+        editor3.putInt("SynonymousLocked", 1);
+        editor3.putInt("MagdasalLocked", 1);
+        editor3.putInt("MaglaroLocked", 1);
+        editor3.putInt("ParuparoRosasLocked", 1);
+        editor3.putInt("LamokLeonLocked", 1);
+        editor3.putInt("TipaklongLanggamLocked", 1);
+        editor3.apply();
+    }
+
+    public void MPath2(int id) {
+        mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
+        editor3 = mpath.edit();
+        editor3.putInt("Locked",1);
+        editor3.putInt("PhonemicLocked", 1);
+        editor3.putInt("SightLocked", 1);
+        editor3.putInt("BlendingLocked", 1);
+        editor3.putInt("PagbabaybayLocked", 1);
+        editor3.putInt("DaysLocked", 1);
+        editor3.putInt("YearsLocked", 1);
+        editor3.putInt("OppositeLocked", 1);
+        editor3.putInt("SynonymousLocked", 1);
+        editor3.putInt("MagdasalLocked", 1);
+        editor3.putInt("MaglaroLocked", 1);
+        editor3.putInt("ParuparoRosasLocked", 1);
+        editor3.putInt("LamokLeonLocked", 1);
+        editor3.putInt("TipaklongLanggamLocked", 1);
+        editor3.apply();
+    }
+
+    public void MPath3(int id) {
         mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor3 = mpath.edit();
         editor3.putInt("Locked",1);
@@ -180,7 +227,6 @@ public class MainActivity extends AppCompatActivity{
         editor3.putInt("YearsLocked", 1);
         editor3.putInt("OppositeLocked", 1);
         editor3.putInt("SynonymousLocked", 1);
-        editor3.putInt("SoundsLocked", 1);
         editor3.putInt("MagdasalLocked", 1);
         editor3.putInt("MaglaroLocked", 1);
         editor3.putInt("ParuparoRosasLocked", 1);
