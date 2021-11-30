@@ -134,7 +134,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="350dp"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
@@ -146,7 +146,7 @@
                     android:layout_width="312dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="75dp"
+                    android:layout_marginBottom="45dp"
                     android:fontFamily="@font/opendyslexic_bold"
                     android:gravity="center_horizontal"
                     android:text="Kabanata 1"
@@ -163,14 +163,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="45dp"
+                    android:layout_marginBottom="19dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="Abakada"
+                    android:text="Makabagong Alphabeto"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="25dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -180,7 +180,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="\u2022 Abakada Aralin 1 \n\u2022 Abakada Aralin 2 \n\u2022 Abakada Aralin 3"
+                    android:text="\u2022 Alphabeto"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -239,7 +239,7 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/opendyslexic_bold"
-                    android:text="\u2022 Patinig Aralin 1"
+                    android:text="\u2022 Patinig Aralin 1 \n\u2022 Patinig Aralin 2 "
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
