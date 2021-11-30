@@ -27,7 +27,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/opendyslexic_bold"
                 android:gravity="center_horizontal"
-                android:text="Progreso ng Aralin"
+                android:text="Progreso ng Easy"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="#48CCCD"

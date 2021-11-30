@@ -21,6 +21,8 @@ import com.example.biskwit.Content.Lessons.OrtonActivities.Blending;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Pagbabaybay;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic.PhonemicAct;
 import com.example.biskwit.Content.Lessons.OrtonActivities.Sight;
+import com.example.biskwit.Content.NormalFragment;
+import com.example.biskwit.Content.Progress.ProgressNormal;
 import com.example.biskwit.R;
 import com.example.biskwit.databinding.FragmentOrtonBinding;
 
@@ -104,7 +106,7 @@ public class OrtonFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragmentBack = new EasyFragment();
+                Fragment fragmentBack = new NormalFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
