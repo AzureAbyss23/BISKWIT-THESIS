@@ -46,7 +46,7 @@ import org.json.JSONObject;
 
 public class KatinigLesson2 extends AppCompatActivity {
 
-    TextView txtresult,txtword,scorectr;
+    TextView txtresult,txtword,scorectr,accuracyctr;
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
@@ -115,6 +115,7 @@ public class KatinigLesson2 extends AppCompatActivity {
         mic = findViewById(R.id.imageView2);
         wordimg = findViewById(R.id.WordImg);
         scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
 
         getData();
 
@@ -139,6 +140,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                         score += add;
                         add = 0;
                         scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
+                        accuracyctr.setText("Accuracy: 0%");
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
                         id = setImg();
@@ -353,6 +355,7 @@ public class KatinigLesson2 extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -360,18 +363,21 @@ public class KatinigLesson2 extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(KatinigLesson2.this, R.raw.response_70_to_100);
             ai.start();
         }

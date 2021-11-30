@@ -2,6 +2,7 @@ package com.example.biskwit.Content.Lessons.OrtonActivities.Phonemic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 
 public class Phonemic extends AppCompatActivity {
 
-    TextView word1,word2,category,txtresult;
+    TextView word1,word2,category,txtresult,scorectr,accuracyctr;
     ImageButton mic1,mic2;
     ImageView next,bot2;
     String word;
@@ -77,6 +78,8 @@ public class Phonemic extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
         txtresult = findViewById(R.id.result);
+        scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
         progressBar = findViewById(R.id.ProgressBar);
 
         progressDialog = new ProgressDialog(Phonemic.this);
@@ -227,6 +230,7 @@ public class Phonemic extends AppCompatActivity {
         });
 
         next.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(all_ctr3 < ((words1.length * words1[0].length)-1)) {
@@ -243,6 +247,8 @@ public class Phonemic extends AppCompatActivity {
                         mic_ctr2 = 0;
                         score += add;
                         score += add2;
+                        scorectr.setText("Score:" + score + "/" + (words1.length + words2.length));
+                        accuracyctr.setText("Accuracy: 0%");
                         add = 0;
                         add2 = 0;
                         stopPlaying();
@@ -371,6 +377,7 @@ public class Phonemic extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -379,6 +386,7 @@ public class Phonemic extends AppCompatActivity {
             if(micctr1>0) { add = 0; micctr1=0; }
             else if(micctr2>0){ add2 = 0; micctr2=0; }
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_0_to_49);
             ai.start();
         }
@@ -386,6 +394,7 @@ public class Phonemic extends AppCompatActivity {
             if(micctr1>0) { add = 0.25; micctr1=0; }
             else if(micctr2>0){ add2 = 0.25; micctr2=0; }
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_50_to_69);
             ai.start();
         }
@@ -393,6 +402,7 @@ public class Phonemic extends AppCompatActivity {
             if(micctr1>0) { add = 0.5; micctr1=0; }
             else if(micctr2>0){ add2 = 0.5; micctr2=0; }
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Phonemic.this, R.raw.response_70_to_100);
             ai.start();
         }
