@@ -44,7 +44,7 @@ import java.util.ArrayList;
 
 public class Alphabet extends AppCompatActivity {
 
-    TextView txtresult,txtword,scorectr;
+    TextView txtresult,txtword,scorectr, accuracyctr;
     ImageView next,bot,bot2;
     ImageButton mic;
     String word = "";
@@ -110,6 +110,7 @@ public class Alphabet extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.scorecounter);
         progressBar = findViewById(R.id.ProgressBar);
 
         ai = MediaPlayer.create(Alphabet.this, R.raw.kab1);
@@ -367,24 +368,28 @@ public class Alphabet extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format("%.3f", similarity(s, t), s, t));
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");
+            //accuracyctr.setText(""+Integer.parseInt(val*100));
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("twostars");
+            accuracyctr.setText(""+(val*100));
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("threestars");
+            accuracyctr.setText(""+(val*100));
             ai = MediaPlayer.create(Alphabet.this, R.raw.response_70_to_100);
             ai.start();
         }
