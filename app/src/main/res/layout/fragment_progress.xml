@@ -33,14 +33,14 @@
                 android:textSize="50dp" />
 
             <ImageButton
-                android:id="@+id/Lesson"
+                android:id="@+id/Easy"
                 android:background="@drawable/roundshape"
                 android:padding="10dp"
                 android:layout_width="350dp"
                 android:layout_height="90dp"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
-                android:src="@drawable/buttonprogaralin"
+                android:src="@drawable/buttonprogeasy"
                 android:scaleType="centerCrop"
                 android:text="Progreso"
                 app:backgroundTint="#FF7F7F"
@@ -49,20 +49,37 @@
                 android:textSize="20dp" />
 
             <ImageButton
-                android:id="@+id/Story"
+                android:id="@+id/Normal"
                 android:background="@drawable/roundshape"
                 android:padding="10dp"
                 android:layout_width="350dp"
                 android:layout_height="90dp"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
-                android:src="@drawable/buttonprogmagbasa"
+                android:src="@drawable/buttonprognormal"
                 android:scaleType="centerCrop"
                 android:text="Progreso"
                 app:backgroundTint="#FFC252"
                 android:textColor="#000000"
                 android:fontFamily="@font/crimson_text"
                 android:textSize="20dp" />
+
+            <ImageButton
+                android:id="@+id/Hard"
+                android:background="@drawable/roundshape"
+                android:padding="10dp"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/buttonproghard"
+                android:scaleType="centerCrop"
+                android:text="Progreso"
+                app:backgroundTint="#FFF6A1"
+                android:textColor="#000000"
+                android:fontFamily="@font/crimson_text"
+                android:textSize="20dp" />
+
 
             <ImageView
                 android:id="@+id/back"
