@@ -91,7 +91,7 @@
         android:layout_width="268dp"
         android:layout_height="61dp"
         android:ems="10"
-        android:hint="Type Spelling Here: "
+        android:hint="I-type ang sagot dito: "
         android:inputType="textPersonName"
         android:fontFamily="@font/opendyslexic_bold"
         android:textColor="#000000"
