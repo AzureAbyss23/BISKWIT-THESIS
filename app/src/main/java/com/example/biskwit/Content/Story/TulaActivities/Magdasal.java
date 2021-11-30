@@ -50,7 +50,7 @@ import org.json.JSONObject;
 
 public class Magdasal extends AppCompatActivity {
 
-    TextView txtstory,txtword,txtqueue,scorectr;
+    TextView txtstory,txtword,txtqueue,scorectr,accuracyctr;
     ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
@@ -117,6 +117,7 @@ public class Magdasal extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         ai = MediaPlayer.create(Magdasal.this, R.raw.basa_tula1);
@@ -156,6 +157,7 @@ public class Magdasal extends AppCompatActivity {
                         ++all_ctr;
                         mic_ctr = 0;
                         score += add;
+                        add = 0;
                         scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
                         story += (P_Lesson_Words[all_ctr - 1] + "\n");
                         txtstory.setText(story);
@@ -392,6 +394,7 @@ public class Magdasal extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -399,18 +402,21 @@ public class Magdasal extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_0_to_49);
             ai.start();
         }
-        else if(val >= 0.5 && val <= 0.89){
+        else if(val >= 0.5 && val <= 0.94){
             add = 0.5;
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_50_to_69);
             ai.start();
         }
-        else if(val >= 0.9 && val <= 1.0){
+        else if(val >= 0.95 && val <= 1.0){
             add = 1;
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Magdasal.this, R.raw.response_70_to_100);
             ai.start();
         }

@@ -35,9 +35,8 @@ public class Progress_Easy extends AppCompatActivity {
     int id = 0;
     ProgressDialog progressDialog;
 
-    TextView score_alphabet,score_phonemic,score_sight,score_blending,score_pagbabaybay;
-    TextView score_days,score_years,score_synonymous,score_opposite,score_sound;
-    TextView score_p_aralin1;
+    TextView score_alphabet;
+    TextView score_p_aralin1, score_k_aralin1;
 
     Button score_p_aralin2, score_k_aralin2, score_k_aralin3;
 
@@ -47,19 +46,10 @@ public class Progress_Easy extends AppCompatActivity {
         setContentView(R.layout.activity_progress_easy);
 
         score_alphabet = findViewById(R.id.alphabetscore);
-        score_phonemic = findViewById(R.id.phonemicscore);
-        score_sight = findViewById(R.id.sightscore);
-        score_blending = findViewById(R.id.blendingscore);
-        score_pagbabaybay = findViewById(R.id.pagbabaybayscore);
-
-        score_days = findViewById(R.id.Daysscore);
-        score_years = findViewById(R.id.Yearsscore);
-        score_synonymous = findViewById(R.id.Synonymousscore);
-        score_opposite = findViewById(R.id.Oppositescore);
-        score_sound = findViewById(R.id.Soundscore);
 
         score_p_aralin1 = findViewById(R.id.patinigscore);
         score_p_aralin2 = findViewById(R.id.patinig2score);
+        score_k_aralin1 = findViewById(R.id.katinig1score);
         score_k_aralin2 = findViewById(R.id.katinig2score);
         score_k_aralin3 = findViewById(R.id.katinig3score);
 
@@ -150,26 +140,10 @@ public class Progress_Easy extends AppCompatActivity {
                 String sco = i3.next();
                 if (type.equals("Alphabet") && mode.equals("ABCD")) {
                     score_alphabet.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Phonemic")) {
-                    score_phonemic.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Sight")) {
-                    score_sight.setText(sco + "%");
-                } else if (type.equals("Orton") && mode.equals("Blending")) {
-                    score_blending.setText(sco + "%");
-                } else if(type.equals("Orton") && mode.equals("Pagbabaybay")){
-                    score_pagbabaybay.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Days")){
-                    score_days.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Years")){
-                    score_years.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Synonymous")){
-                    score_synonymous.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Opposite")){
-                    score_opposite.setText(sco + "%");
-                } else if(type.equals("Alamkoito") && mode.equals("Sounds")){
-                    score_sound.setText(sco + "%");
                 } else if(type.equals("Patinig") && mode.equals("P_Aralin1")){
                     score_p_aralin1.setText(sco + "%");
+                } else if(type.equals("Katinig") && mode.equals("K_Aralin1")){
+                    score_k_aralin1.setText(sco + "%");
                 }
             }
         } else {

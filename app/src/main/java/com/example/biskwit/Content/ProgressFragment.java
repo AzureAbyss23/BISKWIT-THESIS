@@ -51,6 +51,14 @@ public class ProgressFragment extends Fragment {
             }
         });
 
+        binding.Story.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Progress_Hard.class);
+                startActivity(intent);
+            }
+        });
+
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
