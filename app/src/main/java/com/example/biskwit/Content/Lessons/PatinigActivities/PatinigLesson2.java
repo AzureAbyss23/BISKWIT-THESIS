@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -45,7 +46,7 @@ import org.json.JSONObject;
 
 public class PatinigLesson2 extends AppCompatActivity {
 
-    TextView txtresult,txtword;
+    TextView txtresult,txtword,scorectr;
     ImageView next,bot,bot2,wordimg;
     ImageButton mic;
     String word = "";
@@ -113,6 +114,7 @@ public class PatinigLesson2 extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         wordimg = findViewById(R.id.WordImg);
+        scorectr = findViewById(R.id.scorecounter);
         getData();
 
         Resources res = getResources();
@@ -126,6 +128,7 @@ public class PatinigLesson2 extends AppCompatActivity {
         progressBar.setProgress(CurrentProgress);
 
         next.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(all_ctr < 4) {
@@ -136,6 +139,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                         mic_ctr = 0;
                         score += add;
                         add = 0;
+                        scorectr.setText("Score:" + score + "/5");
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
                         id = setImg();
@@ -149,8 +153,9 @@ public class PatinigLesson2 extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
+                        scorectr.setText("Score:" + score + "/5");
                         Intent intent = new Intent(PatinigLesson2.this, Score.class);
-                        intent.putExtra("Average",P_Lesson_Words.length);
+                        intent.putExtra("Average",5);
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Patinig");
                         intent.putExtra("LessonMode","P_Aralin2");
