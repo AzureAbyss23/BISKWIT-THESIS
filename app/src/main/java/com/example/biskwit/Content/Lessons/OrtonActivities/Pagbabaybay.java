@@ -117,6 +117,7 @@ public class Pagbabaybay extends AppCompatActivity {
                     spell.getText().clear();
                     printSimilarity(word, words[all_ctr]);
                     scorectr.setText("Score:" + score + "/" + words.length);
+                    accuracyctr.setText("Accuracy: 0%");
                     if (all_ctr < 9) {
                         ++all_ctr;
                         if(all_ctr > 5) all_ctr2++;
@@ -174,12 +175,14 @@ public class Pagbabaybay extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Pagbabaybay",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("Counter2")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             all_ctr2 = sharedPreferences.getInt("Counter2", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score:" + score);
             return true;
         } else return false;
     }

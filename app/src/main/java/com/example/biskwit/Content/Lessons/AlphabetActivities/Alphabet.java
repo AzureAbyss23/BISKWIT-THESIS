@@ -139,7 +139,7 @@ public class Alphabet extends AppCompatActivity {
                         txtword.setText(alphabet[all_ctr]+alphabet[all_ctr].toLowerCase());
                         txtresult.setText("Press the Mic Button");
                         score += add;
-                        scorectr.setText("Score:" + score + "/" + alphabet.length);
+                        scorectr.setText("Score: " + score + "/" + alphabet.length);
                         accuracyctr.setText("Accuracy: 0%");
                         add = 0;
                         CurrentProgress = CurrentProgress + 1;
@@ -150,7 +150,7 @@ public class Alphabet extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
-                        scorectr.setText("Score:" + score + "/" + alphabet.length);
+                        scorectr.setText("Score: " + score + "/" + alphabet.length);
                         intent = new Intent(Alphabet.this, Score.class);
                         intent.putExtra("Average",alphabet.length);
                         intent.putExtra("Status",status);
@@ -274,11 +274,13 @@ public class Alphabet extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("ABCD",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
