@@ -126,8 +126,6 @@ public class Alphabet extends AppCompatActivity {
             progressBar.setProgress(CurrentProgress);
         }
 
-        scorectr.setText("Score: 0/" + alphabet.length);
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
