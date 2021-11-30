@@ -2,6 +2,7 @@ package com.example.biskwit.Content.Lessons.OrtonActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -37,6 +38,7 @@ import java.util.ArrayList;
 
 public class Pagbabaybay extends AppCompatActivity {
 
+    TextView scorectr, accuracyctr;
     EditText spell;
     ImageView nextButton;
     String[] words;
@@ -86,6 +88,8 @@ public class Pagbabaybay extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
+        scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
 
         progressDialog = new ProgressDialog(Pagbabaybay.this);
 
@@ -102,6 +106,7 @@ public class Pagbabaybay extends AppCompatActivity {
         ai.start();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 stopPlaying();
@@ -111,10 +116,12 @@ public class Pagbabaybay extends AppCompatActivity {
                 } else {
                     spell.getText().clear();
                     printSimilarity(word, words[all_ctr]);
+                    scorectr.setText("Score:" + score + "/" + words.length);
                     if (all_ctr < 9) {
                         ++all_ctr;
                         if(all_ctr > 5) all_ctr2++;
                     } else {
+                        scorectr.setText("Score:" + score + "/" + words.length);
                         Intent intent = new Intent(Pagbabaybay.this, Score.class);
                         intent.putExtra("Average",words.length);
                         intent.putExtra("Status",status);
@@ -242,6 +249,7 @@ public class Pagbabaybay extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -249,18 +257,21 @@ public class Pagbabaybay extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             score += 0;
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             score += 0.5;
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             score += 1;
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Pagbabaybay.this, R.raw.response_70_to_100);
             ai.start();
         }

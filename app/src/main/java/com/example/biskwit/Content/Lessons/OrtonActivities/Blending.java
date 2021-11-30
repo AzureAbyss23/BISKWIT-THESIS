@@ -44,7 +44,7 @@ public class Blending extends AppCompatActivity {
     int all_ctr = 0, id = 0;
     int status = 0;
     double score = 0;
-    TextView txtword;
+    TextView txtword,scorectr;
     ImageView bot,bot2,wordimg;
     MediaPlayer ai;
     ProgressDialog progressDialog;
@@ -90,6 +90,7 @@ public class Blending extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         wordimg = findViewById(R.id.WordImg);
+        scorectr = findViewById(R.id.scorecounter);
         progressDialog = new ProgressDialog(Blending.this);
 
         if(LoadPreferences()){
@@ -206,6 +207,7 @@ public class Blending extends AppCompatActivity {
         return resID = res.getIdentifier("patinig_"+words[all_ctr].toLowerCase(), "drawable", this.getPackageName());
     }
 
+    @SuppressLint("SetTextI18n")
     public void result(String s){
         if(s.equals(words[all_ctr])){
             showToast("TAMA");
@@ -219,6 +221,7 @@ public class Blending extends AppCompatActivity {
             ++all_ctr;
             for(int i = 0;i<(words[all_ctr].length()-1);i++){ spaces += "_ "; }
             txtword.setText(words[all_ctr].charAt(0)+spaces);
+            scorectr.setText("Score:" + score + "/" + words.length);
             spaces = "";
             id = setImg();
             wordimg.setImageResource(id);
@@ -226,6 +229,7 @@ public class Blending extends AppCompatActivity {
             ch2.setText(choice[all_ctr][1]);
             ch3.setText(choice[all_ctr][2]);
         } else {
+            scorectr.setText("Score:" + score + "/" + words.length);
             Intent intent = new Intent(Blending.this, Score.class);
             intent.putExtra("Average",words.length);
             intent.putExtra("Status",status);

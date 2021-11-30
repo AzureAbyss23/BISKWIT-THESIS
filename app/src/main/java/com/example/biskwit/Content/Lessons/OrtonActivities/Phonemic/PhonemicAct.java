@@ -34,7 +34,7 @@ public class PhonemicAct extends AppCompatActivity {
     int all_ctr = 0;
     int status = 0;
     double score = 0;
-    TextView word;
+    TextView word,scorectr,accuracyctr;
     ImageView bot2;
     MediaPlayer ai;
 
@@ -82,6 +82,8 @@ public class PhonemicAct extends AppCompatActivity {
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
+        scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
 
         if(LoadPreferences()){
             word.setText(data[all_ctr]);
@@ -164,6 +166,7 @@ public class PhonemicAct extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void result(String s, String z){
         switch(s.toLowerCase()){
             case "ibon":
@@ -292,6 +295,8 @@ public class PhonemicAct extends AppCompatActivity {
             ++all_ctr;
             CurrentProgress = CurrentProgress + 1;
             progressBar.setProgress(CurrentProgress);
+            scorectr.setText("Score:" + score + "/" + (data.length*2));
+            accuracyctr.setText("Accuracy: 0%");
             word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
             ch3.setText(choice[all_ctr][1]);
