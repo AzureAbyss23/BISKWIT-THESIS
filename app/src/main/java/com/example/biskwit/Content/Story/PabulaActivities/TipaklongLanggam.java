@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -48,7 +49,7 @@ import org.json.JSONObject;
 
 public class TipaklongLanggam extends AppCompatActivity {
 
-    TextView txtstory,txtword,txtqueue;
+    TextView txtstory,txtword,txtqueue,scorectr;
     ImageView next,bot, bot2;
     ImageButton mic;
     String word = "";
@@ -114,6 +115,7 @@ public class TipaklongLanggam extends AppCompatActivity {
         bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
+        scorectr = findViewById(R.id.scorecounter);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
         progressBar.setProgress(CurrentProgress);
 
@@ -142,6 +144,7 @@ public class TipaklongLanggam extends AppCompatActivity {
 
         progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
@@ -151,6 +154,7 @@ public class TipaklongLanggam extends AppCompatActivity {
                         ++all_ctr;
                         mic_ctr = 0;
                         score += add;
+                        scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
                         story += (P_Lesson_Words[all_ctr - 1] + "\n");
                         txtstory.setText(story);
                         txtword.setText(P_Lesson_Words[all_ctr]);
@@ -169,6 +173,7 @@ public class TipaklongLanggam extends AppCompatActivity {
                         showToast("Try it first!");
                     } else {
                         score += add;
+                        scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
                         Intent intent = new Intent(TipaklongLanggam.this, Score.class);
                         intent.putExtra("Average",P_Lesson_Words.length);
                         intent.putExtra("Status",status);
