@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -18,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.biskwit.Content.Lessons.PatinigActivities.PatinigLesson2;
 import com.example.biskwit.R;
 
 public class PhonemicAct extends AppCompatActivity {
@@ -35,7 +38,7 @@ public class PhonemicAct extends AppCompatActivity {
     int status = 0;
     double score = 0;
     TextView word,scorectr;
-    ImageView bot2;
+    ImageView bot,bot2;
     MediaPlayer ai;
 
     SharedPreferences scores,logger;
@@ -81,6 +84,7 @@ public class PhonemicAct extends AppCompatActivity {
         ch1 = findViewById(R.id.Choice1);
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
+        bot = findViewById(R.id.Bot);
         bot2 = findViewById(R.id.Bot2);
         scorectr = findViewById(R.id.scorecounter);
 
@@ -115,6 +119,17 @@ public class PhonemicAct extends AppCompatActivity {
                 String Tword = word.getText().toString();
                 String wrd = ch3.getText().toString();
                 result(Tword,wrd);
+            }
+        });
+
+        bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                Resources res = getResources();
+                int sound = res.getIdentifier(data[all_ctr].toLowerCase(), "raw", getPackageName());
+                ai = MediaPlayer.create(PhonemicAct.this, sound);
+                ai.start();
             }
         });
 

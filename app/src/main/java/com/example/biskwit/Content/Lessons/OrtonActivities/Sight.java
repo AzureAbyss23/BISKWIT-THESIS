@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
@@ -60,6 +61,9 @@ public class Sight extends AppCompatActivity {
     int mic_ctr = 0;
     MediaPlayer ai;
     ProgressDialog progressDialog;
+
+    private int CurrentProgress = 1;
+    private ProgressBar progressBar;
 
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
@@ -113,13 +117,16 @@ public class Sight extends AppCompatActivity {
         accuracyctr = findViewById(R.id.accuracycounter);
         progressDialog = new ProgressDialog(Sight.this);
 
+        progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
+        progressBar.setProgress(CurrentProgress);
+
         if(LoadPreferences()){
             getData();
-            //CurrentProgress = all_ctr + 1;
-            //progressBar.setProgress(CurrentProgress);
+            CurrentProgress = all_ctr + 1;
+            progressBar.setProgress(CurrentProgress);
         } else {
             getData();
-            //progressBar.setProgress(CurrentProgress);
+            progressBar.setProgress(CurrentProgress);
         }
         ai = MediaPlayer.create(Sight.this, R.raw.kab2_p2);
         ai.start();
@@ -408,7 +415,7 @@ public class Sight extends AppCompatActivity {
         }
         else if(val ==1.0){
             add = 1;
-            showToast("threestar");
+            showToast("threestars");
             accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Sight.this, R.raw.response_70_to_100);
             ai.start();
@@ -457,6 +464,7 @@ public class Sight extends AppCompatActivity {
             //Collections.shuffle(data);
             words = new String[data.size()];
             words = data.toArray(words);
+            progressBar.setMax(words.length*2);
 
         } catch (JSONException e) {
             e.printStackTrace();

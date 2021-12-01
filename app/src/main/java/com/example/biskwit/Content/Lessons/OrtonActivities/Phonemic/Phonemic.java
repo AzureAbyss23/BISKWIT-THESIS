@@ -66,7 +66,7 @@ public class Phonemic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phonemic);
 
-        score = getIntent().getIntExtra("FScore",0);
+        score = getIntent().getDoubleExtra("FScore",0);
         status = getIntent().getIntExtra("Status",0);
         datalength = getIntent().getIntExtra("DataLength",0);
 
@@ -247,7 +247,7 @@ public class Phonemic extends AppCompatActivity {
                         mic_ctr2 = 0;
                         score += add;
                         score += add2;
-                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
+                        scorectr.setText("Score: " + score + "/" + (((words1.length * words1[0].length)) + datalength));
                         accuracyctr.setText("Accuracy: 0%");
                         add = 0;
                         add2 = 0;
@@ -261,7 +261,7 @@ public class Phonemic extends AppCompatActivity {
                     } else {
                         score += add;
                         score += add2;
-                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
+                        scorectr.setText("Score: " + score + "/" + (((words1.length * words1[0].length)) + datalength));
                         Intent intent = new Intent(Phonemic.this, Score.class);
                         intent.putExtra("Average",(((words1.length * words1[0].length)-1) + datalength));
                         intent.putExtra("Status",status);
