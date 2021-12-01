@@ -33,7 +33,7 @@ public class SynonymousAct extends AppCompatActivity {
     int all_ctr = 0;
     int status = 0;
     double score = 0;
-    TextView word;
+    TextView word,scorectr;
     ImageView bot2;
     MediaPlayer ai;
 
@@ -78,6 +78,7 @@ public class SynonymousAct extends AppCompatActivity {
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
+        scorectr = findViewById(R.id.scorecounter);
 
         if(LoadPreferences()){
             word.setText(data[all_ctr]);
@@ -126,6 +127,7 @@ public class SynonymousAct extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void result(String s, String z){
         switch(s.toLowerCase()){
             case "maganda":
@@ -198,10 +200,12 @@ public class SynonymousAct extends AppCompatActivity {
 
         if(all_ctr < (data.length-1)) {
             ++all_ctr;
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
             ch3.setText(choice[all_ctr][1]);
         } else {
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             Intent intent = new Intent(SynonymousAct.this, Synonymous.class);
             intent.putExtra("DataLength",data.length);
             intent.putExtra("Status",status);
@@ -224,6 +228,7 @@ public class SynonymousAct extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("SynonymousAct",Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences2 = getSharedPreferences("SynonymousFin",Context.MODE_PRIVATE);
@@ -240,6 +245,7 @@ public class SynonymousAct extends AppCompatActivity {
         } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }

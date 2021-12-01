@@ -27,7 +27,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/opendyslexic_bold"
         android:gravity="center_horizontal"
-        android:text="Progreso ng Magbasa "
+        android:text="Progreso ng Hard"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#48CCCD"

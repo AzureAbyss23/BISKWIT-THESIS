@@ -139,7 +139,7 @@ public class KatinigLesson2 extends AppCompatActivity {
                         mic_ctr = 0;
                         score += add;
                         add = 0;
-                        scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
+                        scorectr.setText("Score: " + score + "/5");
                         accuracyctr.setText("Accuracy: 0%");
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
@@ -154,9 +154,9 @@ public class KatinigLesson2 extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
-                        scorectr.setText("Score:" + score + "/" + P_Lesson_Words.length);
+                        scorectr.setText("Score: " + score + "/5");
                         Intent intent = new Intent(KatinigLesson2.this, Score.class);
-                        intent.putExtra("Average",P_Lesson_Words.length);
+                        intent.putExtra("Average",5);
                         intent.putExtra("Status",status);
                         intent.putExtra("LessonType","Katinig");
                         intent.putExtra("LessonMode","K_Aralin2");

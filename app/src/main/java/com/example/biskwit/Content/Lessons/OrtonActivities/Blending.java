@@ -171,11 +171,13 @@ public class Blending extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Blending",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score:" + score);
             return true;
         } else return false;
     }

@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity{
         mpath = getSharedPreferences("Mastery" + id, Context.MODE_PRIVATE);
         editor3 = mpath.edit();
         editor3.putInt("Locked",1);
-        editor3.putInt("SynonymousLocked", 1);
         editor3.putInt("MagdasalLocked", 1);
         editor3.putInt("MaglaroLocked", 1);
         editor3.putInt("ParuparoRosasLocked", 1);

@@ -140,7 +140,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                         mic_ctr = 0;
                         score += add;
                         add = 0;
-                        scorectr.setText("Score:" + score + "/5");
+                        scorectr.setText("Score: " + score + "/5");
                         accuracyctr.setText("Accuracy: 0%");
                         txtword.setText(P_Lesson_Words[all_ctr]);
                         txtresult.setText("Press the Mic Button");
@@ -155,7 +155,7 @@ public class PatinigLesson2 extends AppCompatActivity {
                         showToast("Subukan mo muna ito");
                     } else {
                         score += add;
-                        scorectr.setText("Score:" + score + "/5");
+                        scorectr.setText("Score: " + score + "/5");
                         Intent intent = new Intent(PatinigLesson2.this, Score.class);
                         intent.putExtra("Average",5);
                         intent.putExtra("Status",status);

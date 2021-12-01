@@ -1,6 +1,8 @@
 package com.example.biskwit.Content.Lessons.AlamkoitoActivities.Synonymous;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -36,7 +38,7 @@ import java.util.ArrayList;
 
 public class Synonymous extends AppCompatActivity {
 
-    TextView word1,word2,txtresult;
+    TextView word1,word2,txtresult,scorectr,accuracyctr;
     ImageButton mic1,mic2;
     ImageView next,bot2;
     String word;
@@ -102,6 +104,8 @@ public class Synonymous extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         next = findViewById(R.id.nextButton);
         txtresult = findViewById(R.id.result);
+        scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
         progressDialog = new ProgressDialog(Synonymous.this);
 
         if(LoadPreferences()){
@@ -249,6 +253,7 @@ public class Synonymous extends AppCompatActivity {
         });
 
         next.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(all_ctr < (words1.length - 1)) {
@@ -262,12 +267,17 @@ public class Synonymous extends AppCompatActivity {
                         mic_ctr1 = 0;
                         mic_ctr2 = 0;
                         score += add;
+                        add = 0;
+                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
+                        accuracyctr.setText("Accuracy: 0%");
                         stopPlaying();
                     }
                 } else {
                     if (mic_ctr1 == 0 || mic_ctr2 == 0) {
                         showToast("Try it both first!");
                     } else {
+                        score += add;
+                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
                         Intent intent = new Intent(Synonymous.this, Score.class);
                         intent.putExtra("Average",words1.length);
                         intent.putExtra("Status",status);
@@ -302,11 +312,13 @@ public class Synonymous extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Synonymous", Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
@@ -376,6 +388,7 @@ public class Synonymous extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -383,18 +396,21 @@ public class Synonymous extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Synonymous.this, R.raw.response_70_to_100);
             ai.start();
         }

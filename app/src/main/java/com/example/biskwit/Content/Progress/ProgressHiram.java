@@ -36,7 +36,7 @@ public class ProgressHiram extends AppCompatActivity {
     int id = 0;
     ProgressDialog progressDialog;
 
-    TextView score_ck, score_cs, score_f, score_j, score_q, score_v,
+    TextView score_ck, score_f, score_j, score_q, score_v,
              score_xk, score_xs, score_z;
 
     @Override
@@ -45,7 +45,6 @@ public class ProgressHiram extends AppCompatActivity {
         setContentView(R.layout.activity_progress_hiram);
 
         score_ck = findViewById(R.id.Hiram_CK_Score);
-        score_cs = findViewById(R.id.Hiram_CS_Score);
         score_f = findViewById(R.id.Hiram_F_Score);
         score_j = findViewById(R.id.Hiram_J_Score);
         score_q = findViewById(R.id.Hiram_Q_Score);
@@ -122,8 +121,6 @@ public class ProgressHiram extends AppCompatActivity {
                 String sco = i4.next();
                 if (type.equals("Hiram") && mode.equals("K_Aralin3") && ltr.equals("CK")) {
                     score_ck.setText(sco + "%");
-                } else if (type.equals("Hiram") && mode.equals("K_Aralin3") && ltr.equals("CS")) {
-                    score_cs.setText(sco + "%");
                 } else if (type.equals("Hiram") && mode.equals("K_Aralin3") && ltr.equals("F")) {
                     score_f.setText(sco + "%");
                 } else if (type.equals("Hiram") && mode.equals("K_Aralin3") && ltr.equals("J")) {

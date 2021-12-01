@@ -140,6 +140,7 @@ public class Sight extends AppCompatActivity {
                             score += add;
                             add = 0;
                             scorectr.setText("Score:" + score + "/" + words.length);
+                            accuracyctr.setText("Accuracy: 0%");
                             id = setImg();
                             wordimg.setImageResource(id);
                             txtword.setText(words[all_ctr]);
@@ -282,12 +283,14 @@ public class Sight extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Sight",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("All_Counter")) {
             ctr = sharedPreferences.getInt("All_Counter",0);
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score:" + score);
             return true;
         } else return false;
     }

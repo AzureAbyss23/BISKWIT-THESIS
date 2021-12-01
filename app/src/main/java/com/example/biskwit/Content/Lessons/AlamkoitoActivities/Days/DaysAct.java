@@ -44,7 +44,7 @@ public class DaysAct extends AppCompatActivity {
     int all_ctr = 0;
     int status = 0;
     double score = 0, add = 0;
-    TextView word;
+    TextView word,scorectr;
     ImageView bot2;
     MediaPlayer ai;
 
@@ -65,6 +65,7 @@ public class DaysAct extends AppCompatActivity {
         ch3 = findViewById(R.id.Choice3);
         word = findViewById(R.id.Word);
         bot2 = findViewById(R.id.Bot2);
+        scorectr = findViewById(R.id.scorecounter);
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -130,11 +131,13 @@ public class DaysAct extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("DaysAct",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
@@ -148,7 +151,8 @@ public class DaysAct extends AppCompatActivity {
         }
     }
 
-    public void result(String s,int num){
+    @SuppressLint("SetTextI18n")
+    public void result(String s, int num){
         if(s.equalsIgnoreCase("linggo") && num==1){
             add = 1;
             showToast("TAMA!");
@@ -178,6 +182,7 @@ public class DaysAct extends AppCompatActivity {
             ++all_ctr;
             score += add;
             add = 0;
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             word.setText(data[all_ctr]);
             ch1.setText(choice[all_ctr][0]);
             ch2.setText(choice[all_ctr][1]);
@@ -186,6 +191,7 @@ public class DaysAct extends AppCompatActivity {
             progressBar.setProgress(CurrentProgress);
         } else {
             score += add;
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             Intent intent = new Intent(DaysAct.this, Score.class);
             intent.putExtra("Average",data.length*2);
             intent.putExtra("Status",status);

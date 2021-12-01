@@ -52,6 +52,7 @@ public class YearsAct extends AppCompatActivity {
     int status = 0;
     double score = 0;
     ImageView bot2,wordimg;
+    TextView scorectr;
     MediaPlayer ai;
 
     private int CurrentProgress = 1;
@@ -74,6 +75,7 @@ public class YearsAct extends AppCompatActivity {
         ch3 = findViewById(R.id.Choice3);
         bot2 = findViewById(R.id.Bot2);
         wordimg = findViewById(R.id.WordImg);
+        scorectr = findViewById(R.id.scorecounter);
 
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
@@ -125,11 +127,13 @@ public class YearsAct extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("YearsAct",Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
@@ -161,7 +165,8 @@ public class YearsAct extends AppCompatActivity {
         return resID = res.getIdentifier("years_"+title[all_ctr].replace(" ","").toLowerCase(), "drawable", this.getPackageName());
     }
 
-    public void result(String s,String z){
+    @SuppressLint("SetTextI18n")
+    public void result(String s, String z){
         switch(s.toLowerCase()){
             case "enero":
                 if(z=="Bagong Taon"){
@@ -238,6 +243,7 @@ public class YearsAct extends AppCompatActivity {
         }
         if(all_ctr < (data.length - 1)) {
             ++all_ctr;
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             CurrentProgress = CurrentProgress + 1;
             progressBar.setProgress(CurrentProgress);
             id = setImg();
@@ -245,6 +251,7 @@ public class YearsAct extends AppCompatActivity {
             ch1.setText(choice[all_ctr][0]);
             ch3.setText(choice[all_ctr][1]);
         } else {
+            scorectr.setText("Score: " + score + "/" + (data.length*2));
             Intent intent = new Intent(YearsAct.this, Score.class);
             intent.putExtra("Average",data.length*2);
             intent.putExtra("Status",status);

@@ -2,6 +2,7 @@ package com.example.biskwit.Content;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -45,6 +46,7 @@ public class Score extends AppCompatActivity {
 
     String REGISTER_URL = "";
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,13 +101,12 @@ public class Score extends AppCompatActivity {
             stars.setImageResource(R.drawable.score7);
         }
         str_score = Double.toString(conv_score);
-        String Score = Double.toString(conv_score);
         score = findViewById(R.id.Score);
         next = findViewById(R.id.nextButton);
 
         REGISTER_URL = "https://biskwitteamdelete.000webhostapp.com/insert_score.php?status="+status+"&lessonmode="+lessonmode+"&letter="+letter;
 
-        score.setText(Score.replace(".","%").replace("0",""));
+        score.setText(""+Math.round(compute)+"%");
         insert(str_id,lessontype,lessonmode,letter,str_score);
 
         next.setOnClickListener(new View.OnClickListener() {

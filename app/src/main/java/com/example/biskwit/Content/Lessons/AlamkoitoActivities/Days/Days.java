@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -42,7 +43,7 @@ import org.json.JSONObject;
 
 public class Days extends AppCompatActivity {
 
-    TextView txtresult,txtword;
+    TextView txtresult,txtword,scorectr,accuracyctr;
     ImageView next,bot,bot2, img;
     ImageButton mic;
     String word = "";
@@ -107,6 +108,8 @@ public class Days extends AppCompatActivity {
         bot2 = findViewById(R.id.Bot2);
         mic = findViewById(R.id.imageView2);
         img = findViewById(R.id.WordImg);
+        scorectr = findViewById(R.id.scorecounter);
+        accuracyctr = findViewById(R.id.accuracycounter);
         progressBar = findViewById(R.id.ProgressBar); // need ito para sa progress
 
         if(LoadPreferences()){
@@ -128,6 +131,7 @@ public class Days extends AppCompatActivity {
 
         progressBar.setProgress(CurrentProgress);
         next.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(all_ctr < (P_Lesson_Words.length - 1)) {
@@ -140,7 +144,10 @@ public class Days extends AppCompatActivity {
                         img.setImageResource(id);
                         txtresult.setText("Speak Now");
                         score += add;
+                        add = 0;
                         mic_ctr = 0;
+                        scorectr.setText("Score: " + score + "/" + (P_Lesson_Words.length * 2));
+                        accuracyctr.setText("Accuracy: 0%");
                         stopPlaying();
                         CurrentProgress = CurrentProgress + 1;
                         progressBar.setProgress(CurrentProgress);
@@ -150,6 +157,7 @@ public class Days extends AppCompatActivity {
                         txtresult.setText("Try it first!");
                     } else {
                         score += add;
+                        scorectr.setText("Score: " + score + "/" + (P_Lesson_Words.length * 2));
                         Intent intent = new Intent(Days.this, DaysAct.class);
                         intent.putExtra("Status",status);
                         intent.putExtra("FScore", score);
@@ -270,6 +278,7 @@ public class Days extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Days",Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences2 = getSharedPreferences("DaysFin",Context.MODE_PRIVATE);
@@ -285,6 +294,7 @@ public class Days extends AppCompatActivity {
         } else if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
@@ -364,6 +374,7 @@ public class Days extends AppCompatActivity {
         return costs[s2.length()];
     }
 
+    @SuppressLint("SetTextI18n")
     public void printSimilarity(String s, String t) {
 
         float val = Float.parseFloat(String.format(
@@ -371,18 +382,21 @@ public class Days extends AppCompatActivity {
         if(val >= 0.0 && val <= 0.49){
             add = 0;
             showToast("onestar");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Days.this, R.raw.response_0_to_49);
             ai.start();
         }
         else if(val >= 0.5 && val <= 0.99){
             add = 0.5;
             showToast("twostars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Days.this, R.raw.response_50_to_69);
             ai.start();
         }
         else if(val ==1.0){
             add = 1;
             showToast("threestars");
+            accuracyctr.setText("Accuracy: "+Math.round(val*100)+"%");
             ai = MediaPlayer.create(Days.this, R.raw.response_70_to_100);
             ai.start();
         }

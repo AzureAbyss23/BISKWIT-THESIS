@@ -247,7 +247,7 @@ public class Phonemic extends AppCompatActivity {
                         mic_ctr2 = 0;
                         score += add;
                         score += add2;
-                        scorectr.setText("Score:" + score + "/" + (words1.length + words2.length));
+                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
                         accuracyctr.setText("Accuracy: 0%");
                         add = 0;
                         add2 = 0;
@@ -261,6 +261,7 @@ public class Phonemic extends AppCompatActivity {
                     } else {
                         score += add;
                         score += add2;
+                        scorectr.setText("Score: " + score + "/" + (words1.length + words2.length));
                         Intent intent = new Intent(Phonemic.this, Score.class);
                         intent.putExtra("Average",(((words1.length * words1[0].length)-1) + datalength));
                         intent.putExtra("Status",status);
@@ -297,13 +298,15 @@ public class Phonemic extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean LoadPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("Phonemic", Context.MODE_PRIVATE);
         if(sharedPreferences.contains("Counter") && sharedPreferences.contains("Score") && sharedPreferences.contains("Counter2") && sharedPreferences.contains("Counter3")) {
             all_ctr = sharedPreferences.getInt("Counter", 0);
             all_ctr2 = sharedPreferences.getInt("Counter2", 0);
             all_ctr3 = sharedPreferences.getInt("Counter3", 0);
-            score = Double.parseDouble(sharedPreferences.getString("Score", null));
+            score += Double.parseDouble(sharedPreferences.getString("Score", null));
+            scorectr.setText("Score: " + score);
             return true;
         } else return false;
     }
@@ -311,8 +314,13 @@ public class Phonemic extends AppCompatActivity {
     public void showToast(String s) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_root));
-        TextView toastText = layout.findViewById(R.id.toast_text);
-        toastText.setText(s);
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        Resources res = this.getResources();
+        int resID;
+        resID = res.getIdentifier(s, "drawable", this.getPackageName());
+        toastImage.setBackgroundResource(resID);
+
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
