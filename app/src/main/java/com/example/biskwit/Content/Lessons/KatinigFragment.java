@@ -76,7 +76,7 @@ public class KatinigFragment extends Fragment {
                 });
             }
 
-            if (mpath.contains("K_Aralin1Locked") || mpath.contains("K_Aralin2Locked")){
+            /*if (mpath.contains("K_Aralin1Locked") || mpath.contains("K_Aralin2Locked")){
                 binding.KatinigAralin3.setBackgroundTintList(getResources().getColorStateList(R.drawable.buttontint));
             } else {
                 binding.KatinigAralin3.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +86,7 @@ public class KatinigFragment extends Fragment {
                         startActivity(intent);
                     }
                 });
-            }
+            }*/
 
             binding.back.setOnClickListener(new View.OnClickListener() {
                 @Override

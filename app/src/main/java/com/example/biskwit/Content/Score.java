@@ -79,26 +79,32 @@ public class Score extends AppCompatActivity {
 
         //here
         ImageView stars = findViewById(R.id.stars);
-        if(compute >= 1 && compute <= 16){
+        if(compute >= 1 && compute <= 12.5){
             stars.setImageResource(R.drawable.score1);
         }
-        else if(compute >= 17 && compute <= 32){
+        else if(compute >= 12.6 && compute <= 25){
             stars.setImageResource(R.drawable.score2);
         }
-        else if(compute >= 33 && compute <= 48){
+        else if(compute >= 25.01 && compute <= 37.5){
             stars.setImageResource(R.drawable.score3);
         }
-        else if(compute >= 49 && compute <= 64){
+        else if(compute >= 37.6 && compute <= 50){
             stars.setImageResource(R.drawable.score4);
         }
-        else if(compute >= 65 && compute <= 80){
+        else if(compute >= 50.01 && compute <= 62.5){
             stars.setImageResource(R.drawable.score5);
         }
-        else if(compute >= 81 && compute <= 100){
+        else if(compute >= 62.6 && compute <= 75){
             stars.setImageResource(R.drawable.score6);
         }
-        else{
+        else if(compute >= 75.01 && compute <= 87.5){
             stars.setImageResource(R.drawable.score7);
+        }
+        else if(compute >= 87.6 && compute <= 100){
+            stars.setImageResource(R.drawable.score8);
+        }
+        else{
+            stars.setImageResource(R.drawable.score9);
         }
         str_score = Double.toString(conv_score);
         score = findViewById(R.id.Score);
